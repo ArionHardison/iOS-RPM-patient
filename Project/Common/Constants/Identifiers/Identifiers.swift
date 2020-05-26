@@ -1,0 +1,75 @@
+//
+//  Identifiers.swift
+//  User
+//
+//  Created by imac on 12/19/17.
+//  Copyright © 2017 Appoets. All rights reserved.
+//
+
+import Foundation
+
+// MARK:- Storyboard Id
+struct Storyboard {
+    
+    static let Ids = Storyboard()
+    let DrawerController = "DrawerController"
+    let HomeViewController = "HomeViewController"
+    let SigninInViewController = "SigninInViewController"
+    let NameAndEmailViewController = "NameAndEmailViewController"
+    let GenderConfirmationVC = "GenderConfirmationVC"
+    let DateOfBirthViewController = "DateOfBirthViewController"
+    let AppointmentViewController = "AppointmentViewController"
+    let SideBarTableViewController = "SideBarTableViewController"
+    let LaunchNavigationController = "LaunchNavigationController"
+    let UpcomingDetailsController = "UpcomingDetailsController"
+    let OnlineAvailabeDoctorsController = "OnlineAvailabeDoctorsController"
+    let CategoryListController = "CategoryListController"
+    let DoctorsListController = "DoctorsListController"
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+//MARK:- XIB Cell Names
+
+struct XIB {
+    
+    static let Names = XIB()
+    let DoctorsListCell = "DoctorsListCell"
+    let LogoCell = "LogoCell"
+    let SideBarCell = "SideBarCell"
+    let UpcomingTableviewCell = "UpcomingTableviewCell"
+    let OnlineDoctorCell = "OnlineDoctorCell"
+    let ArticlesCell = "ArticlesCell"
+    let ReminderCell = "ReminderCell"
+    let CategoryCell = "CategoryCell"
+    let DoctorCell = "DoctorCell"
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+//MARK:- Notification
+
+extension Notification.Name {
+   //public static let reachabilityChanged = Notification.Name("reachabilityChanged")
+}
+
+
+

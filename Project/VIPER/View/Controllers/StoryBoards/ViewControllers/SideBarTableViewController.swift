@@ -1,0 +1,267 @@
+//
+//  SideBarTableViewController.swift
+//  User
+//
+//  Created by CSS on 02/05/18.
+//  Copyright © 2018 Appoets. All rights reserved.
+//
+
+import UIKit
+import KWDrawerController
+import ObjectMapper
+
+class SideBarTableViewController: UITableViewController {
+    
+    @IBOutlet private var imageViewProfile : UIImageView!
+    @IBOutlet private var labelName : UILabel!
+    @IBOutlet private var labelEmail : UILabel!
+    @IBOutlet private var viewShadow : UIView!
+    @IBOutlet private weak var profileImageCenterContraint : NSLayoutConstraint!
+    
+    private let sideBarList = [Constants.string.appointments,Constants.string.onlineConsultations,Constants.string.favDoctor,Constants.string.medicalRecords,Constants.string.reminder,Constants.string.wallet,Constants.string.articles,Constants.string.relativesManagement,Constants.string.faqAndAdmin,Constants.string.settings]
+    
+    private let imagesList = ["appointment","onlineConsultation","favdoctor","medicalRecords","reminder","wallet","articles","RelativesManagement","faq","settings"]
+    private let cellId = "cellId"
+    private lazy var loader : UIView = {
+        
+        return createActivityIndicator(self.view)
+        
+    }()
+    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.initialLoads()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.localize()
+        self.setValues()
+        self.navigationController?.isNavigationBarHidden = true
+        UIApplication.shared.isStatusBarHidden = true
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.setLayers()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.isStatusBarHidden = false
+    }
+    
+}
+
+// MARK:- Methods
+
+extension SideBarTableViewController {
+    
+    private func initialLoads() {
+        self.drawerController?.shadowOpacity = 0.2
+        let fadeWidth = self.view.frame.width*(0.2)
+        self.profileImageCenterContraint.constant = 0
+        self.drawerController?.drawerWidth = Float(self.view.frame.width - fadeWidth)
+        self.viewShadow.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.imageViewAction)))
+        self.setDesigns()
+    }
+    
+    // MARK:- Set Designs
+    
+    private func setLayers(){
+        
+        self.imageViewProfile.makeRoundedCorner()
+        
+    }
+    
+    
+    // MARK:- Set Designs
+    
+    private func setDesigns () {
+        
+        Common.setFont(to: labelName)
+        Common.setFont(to: labelEmail)
+    }
+    
+    
+    //MARK:- SetValues
+    
+    private func setValues(){
+        
+        Cache.image(forUrl: Common.getImageUrl(for: User.main.picture)) { (image) in
+            DispatchQueue.main.async {
+                self.imageViewProfile.image = image == nil ? #imageLiteral(resourceName: "userPlaceholder") : image
+            }
+        }
+        self.labelName.text = String.removeNil(User.main.firstName)+" "+String.removeNil(User.main.lastName)
+        self.labelEmail.text = User.main.email
+    }
+    
+    
+    
+    // MARK:- Localize
+    private func localize() {
+        
+        self.tableView.reloadData()
+        
+    }
+    
+    // MARK:- ImageView Action
+    
+    @IBAction private func imageViewAction() {
+   
+        
+        self.drawerController?.closeSide()
+        
+    }
+    
+    
+    // MARK:- Selection Action For TableView
+    
+    private func select(at indexPath : IndexPath) {
+        
+        switch (indexPath.section,indexPath.row) {
+            
+            
+        case (0,0):
+            
+        
+           self.push(to: Storyboard.Ids.AppointmentViewController)
+             self.drawerController?.closeSide()
+            
+//            if let vc = self.drawerController?.getViewController(for: .none)?.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.AppointmentViewController) as? AppointmentViewController
+//            {
+//                           vc.isYourTripsSelected = indexPath.row == 0
+//                           (self.drawerController?.getViewController(for: .none) as? UINavigationController)?.pushViewController(vc, animated: true)
+//                }
+//
+            
+            
+        case(0,1):
+            
+            self.push(to: Storyboard.Ids.OnlineAvailabeDoctorsController)
+            self.drawerController?.closeSide()
+            
+        case (0,self.sideBarList.count-1):
+            self.logout()
+            
+        default:
+            break
+        }
+        
+    }
+    
+    private func push(to identifier : String) {
+        let viewController = self.storyboard!.instantiateViewController(withIdentifier: identifier)
+        (self.drawerController?.getViewController(for: .none) as? UINavigationController)?.pushViewController(viewController, animated: true)
+        
+    }
+    
+    
+    // MARK:- Logout
+    
+    private func logout() {
+        
+        let alert = UIAlertController(title: nil, message: Constants.string.areYouSureWantToLogout.localize(), preferredStyle: .actionSheet)
+        let logoutAction = UIAlertAction(title: Constants.string.logout.localize(), style: .destructive) { (_) in
+            self.loader.isHidden = false
+            self.presenter?.HITAPI(api: Base.login.rawValue, params: nil, methodType: .POST, modelClass: LoginModel.self, token: false)
+        }
+        
+        let cancelAction = UIAlertAction(title: Constants.string.Cancel.localize(), style: .cancel, handler: nil)
+        
+        alert.view.tintColor = .primary
+        alert.addAction(logoutAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        
+        return .lightContent
+    }
+    
+}
+
+
+// MARK:- TableView
+
+extension SideBarTableViewController {
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let tableCell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.SideBarCell, for: indexPath) as! SideBarCell
+      
+        tableCell.labelTitle.text = self.sideBarList[indexPath.row]
+        tableCell.menuImage.image = UIImage(imageLiteralResourceName: self.imagesList[indexPath.row])
+        tableCell.selectionStyle = .none
+      
+   
+        return tableCell
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sideBarList.count
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        self.select(at: indexPath)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 65
+    }
+    
+}
+
+
+// MARK:- PostViewProtocol
+
+extension SideBarTableViewController : PresenterOutputProtocol {
+    
+    func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
+        DispatchQueue.main.async {
+            self.loader.isHidden = true
+            forceLogout()
+        }
+    }
+    
+    func showError(error: CustomError) {
+        
+        DispatchQueue.main.async {
+            self.loader.isHidden = true
+            showAlert(message: error.localizedDescription, okHandler: nil, fromView: self)
+        }
+    }
+    
+}
+
+
+
+class SideBarCell: UITableViewCell {
+    
+    
+    @IBOutlet  var menuImage :UIImageView!
+    @IBOutlet  var labelTitle :UILabel!
+    
+  
+    
+    override func awakeFromNib() {
+        
+        Common.setFont(to: labelTitle, isTitle: false, size: 16)
+       
+        
+    }
+    
+    
+}
