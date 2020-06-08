@@ -25,18 +25,13 @@ struct Storyboard {
     let OnlineAvailabeDoctorsController = "OnlineAvailabeDoctorsController"
     let CategoryListController = "CategoryListController"
     let DoctorsListController = "DoctorsListController"
+    let VisitedDoctorsViewController = "VisitedDoctorsViewController"
+    let AppointmentDetailsViewController = "AppointmentDetailsViewController"
+    let ThankYouViewController = "ThankYouViewController"
+    let ChatTableViewController = "ChatTableViewController"
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+ 
     
 }
 
@@ -55,9 +50,9 @@ struct XIB {
     let ReminderCell = "ReminderCell"
     let CategoryCell = "CategoryCell"
     let DoctorCell = "DoctorCell"
-    
-    
-    
+    let VisitedDoctorsCell = "VisitedDoctorsCell"
+    let SuggestedSpecialityCell = "SuggestedSpecialityCell"
+    let ChatCommentCell = "ChatCommentCell"
     
     
     

@@ -170,10 +170,10 @@
             switch indexPath.row {
             case 0:
                 self.push(id: Storyboard.Ids.CategoryListController, animation: true)
-                
-            
+            case 1:
+                self.push(id: Storyboard.Ids.ChatTableViewController, animation: true)
             default:
-                self.push(id: Storyboard.Ids.CategoryListController, animation: true)
+                self.push(id: Storyboard.Ids.VisitedDoctorsViewController, animation: true)
             }
      
         }
@@ -212,6 +212,7 @@
         }
         
         func showError(error: CustomError) {
+            self.loader.isHidden = true
             print(error)
         }
         
