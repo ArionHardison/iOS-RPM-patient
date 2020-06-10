@@ -89,8 +89,9 @@ extension UIView{
 
 
 extension UIView{
-    func setCorneredElevation(shadow With : Int = 2 , corner radius : Int = 10 , color : UIColor = UIColor.clear){
+    func setCorneredElevation(shadow With : Int = 2 , corner radius : Int = 20 , color : UIColor = UIColor.clear){
         self.layer.masksToBounds = false
+        self.clipsToBounds  = false
         self.layer.shadowColor = color.cgColor
         self.layer.shadowOpacity = 0.7
         self.layer.shadowOffset = CGSize(width: With, height: With)

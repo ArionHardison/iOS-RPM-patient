@@ -44,7 +44,7 @@ class DoctorDetailsController: UIViewController {
     @IBOutlet weak var serviceTVHeight: NSLayoutConstraint!
     
     //inital static Data
-    var serviceList : [String] = ["Vaccination/Immunization","Adolescent Medicine","Adolescent Medicine","New Born Care","Infant & Child nutrition"]
+    var serviceList : [String] = ["Vaccination/Immunization","Adolescent Medicine","New Born Care","Infant & Child nutrition"]
     var specializationList : [String] = ["Pediatrician","General Physician","Vaccination/Immunization","Adolescent Medicine","New Born Care","Infant & Child nutrition"]
     
     

@@ -11,10 +11,14 @@ class ReviewCell: UICollectionViewCell {
     @IBOutlet weak var deasesLbl : UILabel!
     @IBOutlet weak var reviewLbl : UILabel!
     @IBOutlet weak var thumpsupImg : UIImageView!
+    @IBOutlet weak var thumpsupBGView : UIView!
     @IBOutlet weak var reviewBgView : UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.reviewBgView.setCorneredElevation(shadow: 1, corner: 10, color: .primary)
+        self.thumpsupBGView.layer.borderColor = UIColor.appColor.cgColor
+        self.thumpsupBGView.layer.borderWidth = 1
+        self.thumpsupBGView.layer.cornerRadius = self.thumpsupImg.frame.width/2
+        self.reviewBgView.setCorneredElevation(shadow: 1, corner: 10, color: .appColor)
     }
 }
