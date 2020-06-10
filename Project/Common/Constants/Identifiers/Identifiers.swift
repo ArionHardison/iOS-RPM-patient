@@ -25,6 +25,7 @@ struct Storyboard {
     let OnlineAvailabeDoctorsController = "OnlineAvailabeDoctorsController"
     let CategoryListController = "CategoryListController"
     let DoctorsListController = "DoctorsListController"
+    let DoctorDetailsController = "DoctorDetailsController"
     let VisitedDoctorsViewController = "VisitedDoctorsViewController"
     let AppointmentDetailsViewController = "AppointmentDetailsViewController"
     let ThankYouViewController = "ThankYouViewController"
@@ -53,6 +54,9 @@ struct XIB {
     let VisitedDoctorsCell = "VisitedDoctorsCell"
     let SuggestedSpecialityCell = "SuggestedSpecialityCell"
     let ChatCommentCell = "ChatCommentCell"
+    let ServiceSpecializationCell = "ServiceSpecializationCell"
+    let PhotosCell = "PhotosCell"
+    let ReviewCell = "ReviewCell"
     
     
     

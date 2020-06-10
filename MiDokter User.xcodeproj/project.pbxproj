@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -114,7 +114,16 @@
 		7E6AEF502488D0F6005F0899 /* SuggestedSpecialityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E6AEF4E2488D0F6005F0899 /* SuggestedSpecialityCell.xib */; };
 		7E6AEF532488D4B5005F0899 /* ChatCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6AEF512488D4B5005F0899 /* ChatCommentCell.swift */; };
 		7E6AEF542488D4B5005F0899 /* ChatCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E6AEF522488D4B5005F0899 /* ChatCommentCell.xib */; };
-		CC8B9BE50603EB67D748169B /* Pods_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DFDAA29CADFE44D3074654D /* Pods_Project.framework */; };
+		90526149248FE0B1008CC272 /* UXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90526148248FE0B1008CC272 /* UXView.swift */; };
+		9052614C248FEB93008CC272 /* ServiceSpecializationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9052614B248FEB93008CC272 /* ServiceSpecializationCell.xib */; };
+		9052614E248FEBBE008CC272 /* ServiceSpecializationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9052614D248FEBBE008CC272 /* ServiceSpecializationCell.swift */; };
+		905383722490C0DA009CCEE4 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 905383712490C0DA009CCEE4 /* Color.xcassets */; };
+		905383742490D35D009CCEE4 /* PhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905383732490D35D009CCEE4 /* PhotosCell.swift */; };
+		905383762490D38F009CCEE4 /* PhotosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 905383752490D38F009CCEE4 /* PhotosCell.xib */; };
+		905383782490E253009CCEE4 /* ReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 905383772490E253009CCEE4 /* ReviewCell.xib */; };
+		9053837A2490E286009CCEE4 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905383792490E286009CCEE4 /* ReviewCell.swift */; };
+		90FAE992248FEEC60025787A /* UXTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAE991248FEEC60025787A /* UXTableView.swift */; };
+		DE55116C2A119B839DCC1246 /* Pods_MiDokter_User.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139CE6C0F3BF6A798146CB46 /* Pods_MiDokter_User.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -240,7 +249,10 @@
 		12B6E21824471C1300BE448F /* ReminderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCell.swift; sourceTree = "<group>"; };
 		12B6E21924471C1300BE448F /* ReminderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReminderCell.xib; sourceTree = "<group>"; };
 		12B6E21D2447219E00BE448F /* AppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentViewController.swift; sourceTree = "<group>"; };
+		139CE6C0F3BF6A798146CB46 /* Pods_MiDokter_User.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiDokter_User.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59F233EFBA148FC7C60E4316 /* Pods-MiDokter User.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiDokter User.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiDokter User/Pods-MiDokter User.debug.xcconfig"; sourceTree = "<group>"; };
 		79004400D2E7DDC3FEEA1E58 /* Pods-Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project.release.xcconfig"; path = "Pods/Target Support Files/Pods-Project/Pods-Project.release.xcconfig"; sourceTree = "<group>"; };
+		7DAC76FEE954B62A8C7B85CD /* Pods-MiDokter User.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiDokter User.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiDokter User/Pods-MiDokter User.release.xcconfig"; sourceTree = "<group>"; };
 		7E401F242487C2E70021991A /* VisitedDoctorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedDoctorsViewController.swift; sourceTree = "<group>"; };
 		7E401F262487CD860021991A /* VisitedDoctorsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedDoctorsCell.swift; sourceTree = "<group>"; };
 		7E401F272487CD860021991A /* VisitedDoctorsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VisitedDoctorsCell.xib; sourceTree = "<group>"; };
@@ -251,7 +263,15 @@
 		7E6AEF4E2488D0F6005F0899 /* SuggestedSpecialityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestedSpecialityCell.xib; sourceTree = "<group>"; };
 		7E6AEF512488D4B5005F0899 /* ChatCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCommentCell.swift; sourceTree = "<group>"; };
 		7E6AEF522488D4B5005F0899 /* ChatCommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatCommentCell.xib; sourceTree = "<group>"; };
-		8DFDAA29CADFE44D3074654D /* Pods_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90526148248FE0B1008CC272 /* UXView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UXView.swift; sourceTree = "<group>"; };
+		9052614B248FEB93008CC272 /* ServiceSpecializationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceSpecializationCell.xib; sourceTree = "<group>"; };
+		9052614D248FEBBE008CC272 /* ServiceSpecializationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSpecializationCell.swift; sourceTree = "<group>"; };
+		905383712490C0DA009CCEE4 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
+		905383732490D35D009CCEE4 /* PhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCell.swift; sourceTree = "<group>"; };
+		905383752490D38F009CCEE4 /* PhotosCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotosCell.xib; sourceTree = "<group>"; };
+		905383772490E253009CCEE4 /* ReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewCell.xib; sourceTree = "<group>"; };
+		905383792490E286009CCEE4 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReviewCell.swift; path = /Users/abservetech/Documents/ShyamalaT/Practice/Midoktar/midokter_ios_user/Project/VIPER/View/XIB/ServiceCell/ReviewCell.swift; sourceTree = "<absolute>"; };
+		90FAE991248FEEC60025787A /* UXTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,7 +279,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC8B9BE50603EB67D748169B /* Pods_Project.framework in Frameworks */,
+				DE55116C2A119B839DCC1246 /* Pods_MiDokter_User.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +385,7 @@
 		084B342420B028E800B79318 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				90526147248FE086008CC272 /* Extension */,
 				08C066F920B03A6900A8C5F0 /* Circular Transition */,
 				08C066F820B03A5100A8C5F0 /* Country Selection */,
 				084B346F20B02D2D00B79318 /* Global */,
@@ -555,6 +576,7 @@
 			isa = PBXGroup;
 			children = (
 				084B346520B02C6A00B79318 /* Colors.swift */,
+				905383712490C0DA009CCEE4 /* Color.xcassets */,
 			);
 			path = Colors;
 			sourceTree = "<group>";
@@ -697,6 +719,7 @@
 		084B348F20B02EE400B79318 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
+				9052614A248FEB6A008CC272 /* ServiceCell */,
 				1293C5652453374000FEC1C9 /* DoctorCell */,
 				12AE3EE92451CFA300E90872 /* CategoryCell */,
 				12B6E21724471B7900BE448F /* ReminderCell */,
@@ -1141,7 +1164,7 @@
 		81BBA370E1E84E584225A6CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8DFDAA29CADFE44D3074654D /* Pods_Project.framework */,
+				139CE6C0F3BF6A798146CB46 /* Pods_MiDokter_User.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1151,16 +1174,40 @@
 			children = (
 				018BDB6993C69B0BD0158FF9 /* Pods-Project.debug.xcconfig */,
 				79004400D2E7DDC3FEEA1E58 /* Pods-Project.release.xcconfig */,
+				59F233EFBA148FC7C60E4316 /* Pods-MiDokter User.debug.xcconfig */,
+				7DAC76FEE954B62A8C7B85CD /* Pods-MiDokter User.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		90526147248FE086008CC272 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				90526148248FE0B1008CC272 /* UXView.swift */,
+				90FAE991248FEEC60025787A /* UXTableView.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		9052614A248FEB6A008CC272 /* ServiceCell */ = {
+			isa = PBXGroup;
+			children = (
+				9052614B248FEB93008CC272 /* ServiceSpecializationCell.xib */,
+				9052614D248FEBBE008CC272 /* ServiceSpecializationCell.swift */,
+				905383732490D35D009CCEE4 /* PhotosCell.swift */,
+				905383752490D38F009CCEE4 /* PhotosCell.xib */,
+				905383792490E286009CCEE4 /* ReviewCell.swift */,
+				905383772490E253009CCEE4 /* ReviewCell.xib */,
+			);
+			path = ServiceCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		084B30D720B01DAA00B79318 /* Project */ = {
+		084B30D720B01DAA00B79318 /* MiDokter User */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 084B310320B01DAD00B79318 /* Build configuration list for PBXNativeTarget "Project" */;
+			buildConfigurationList = 084B310320B01DAD00B79318 /* Build configuration list for PBXNativeTarget "MiDokter User" */;
 			buildPhases = (
 				3406D4EDA0BF4EA7FF90F0E8 /* [CP] Check Pods Manifest.lock */,
 				084B30D420B01DAA00B79318 /* Sources */,
@@ -1173,7 +1220,7 @@
 			);
 			dependencies = (
 			);
-			name = Project;
+			name = "MiDokter User";
 			productName = Goheavy;
 			productReference = 084B30D820B01DAA00B79318 /* Mi Dokter.app */;
 			productType = "com.apple.product-type.application";
@@ -1237,7 +1284,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 084B30D320B01DAA00B79318 /* Build configuration list for PBXProject "Projects" */;
+			buildConfigurationList = 084B30D320B01DAA00B79318 /* Build configuration list for PBXProject "MiDokter User" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1250,7 +1297,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				084B30D720B01DAA00B79318 /* Project */,
+				084B30D720B01DAA00B79318 /* MiDokter User */,
 				084B30EE20B01DAC00B79318 /* GoheavyTests */,
 				084B30F920B01DAD00B79318 /* GoheavyUITests */,
 			);
@@ -1264,10 +1311,14 @@
 			files = (
 				12B6E20C2447010B00BE448F /* UpcomingTableviewCell.xib in Resources */,
 				7E401F292487CD860021991A /* VisitedDoctorsCell.xib in Resources */,
+				905383782490E253009CCEE4 /* ReviewCell.xib in Resources */,
 				08C0660620B0386F00A8C5F0 /* Readme.md in Resources */,
 				084B30E620B01DAC00B79318 /* Assets.xcassets in Resources */,
+				9052614C248FEB93008CC272 /* ServiceSpecializationCell.xib in Resources */,
 				12B6E21B24471C1300BE448F /* ReminderCell.xib in Resources */,
+				905383722490C0DA009CCEE4 /* Color.xcassets in Resources */,
 				12AE3EED2451CFDC00E90872 /* CategoryCell.xib in Resources */,
+				905383762490D38F009CCEE4 /* PhotosCell.xib in Resources */,
 				7E6AEF542488D4B5005F0899 /* ChatCommentCell.xib in Resources */,
 				08C066F220B039A900A8C5F0 /* countryCodes.json in Resources */,
 				08C066F320B039A900A8C5F0 /* CountryPicker.bundle in Resources */,
@@ -1310,7 +1361,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Project-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MiDokter User-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1322,29 +1373,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Project/Pods-Project-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/KWDrawerController/KWDrawerController.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MiDokter User/Pods-MiDokter User-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KWDrawerController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MiDokter User/Pods-MiDokter User-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Project/Pods-Project-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MiDokter User/Pods-MiDokter User-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9A7535F85815E5201890A048 /* [CP] Copy Pods Resources */ = {
@@ -1352,19 +1390,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Project/Pods-Project-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MiDokter User/Pods-MiDokter User-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MiDokter User/Pods-MiDokter User-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Project/Pods-Project-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MiDokter User/Pods-MiDokter User-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1376,6 +1411,7 @@
 			files = (
 				084B344420B02A8E00B79318 /* Cache.swift in Sources */,
 				7E401F2C2487E2340021991A /* AppointmentDetailsViewController.swift in Sources */,
+				90FAE992248FEEC60025787A /* UXTableView.swift in Sources */,
 				084B34B720B030CB00B79318 /* Bundle.swift in Sources */,
 				084B346620B02C6A00B79318 /* Colors.swift in Sources */,
 				12AE3EE52451C88800E90872 /* OnlineAvailabeDoctorsController.swift in Sources */,
@@ -1395,15 +1431,18 @@
 				08C066F620B039C400A8C5F0 /* GooglePlacesHelper.swift in Sources */,
 				084B34AB20B0305400B79318 /* TableView.swift in Sources */,
 				12B6E210244711B100BE448F /* ArticlesCell.swift in Sources */,
+				9053837A2490E286009CCEE4 /* ReviewCell.swift in Sources */,
 				084B348A20B02EAC00B79318 /* PresenterProcessor.swift in Sources */,
 				084B347B20B02DF700B79318 /* Global.swift in Sources */,
 				084B34CC20B031F400B79318 /* ImageView.swift in Sources */,
 				084B34C920B0318700B79318 /* TextField.swift in Sources */,
+				90526149248FE0B1008CC272 /* UXView.swift in Sources */,
 				084B349620B02F8800B79318 /* File.swift in Sources */,
 				12384B3524600D990057943D /* DoctorDetailsController.swift in Sources */,
 				12681EFE2438D5A30072193B /* SigninInViewController.swift in Sources */,
 				084B34BE20B0310800B79318 /* Button.swift in Sources */,
 				084B34A220B02FEA00B79318 /* Image.swift in Sources */,
+				905383742490D35D009CCEE4 /* PhotosCell.swift in Sources */,
 				0825A9B82276F12C00DBD50F /* Json4Swift_Base.swift in Sources */,
 				084B343020B029C000B79318 /* FontHelper.swift in Sources */,
 				084B346C20B02C9100B79318 /* ErrorMessages.swift in Sources */,
@@ -1427,6 +1466,7 @@
 				084B347F20B02E5D00B79318 /* WebService.swift in Sources */,
 				084B349F20B02FD500B79318 /* String.swift in Sources */,
 				084B34A820B0303C00B79318 /* NavigationBar.swift in Sources */,
+				9052614E248FEBBE008CC272 /* ServiceSpecializationCell.swift in Sources */,
 				12B6E2062446E7DF00BE448F /* LogoCell.swift in Sources */,
 				1293C5642453370000FEC1C9 /* DoctorsListController.swift in Sources */,
 				7E6AEF4F2488D0F6005F0899 /* SuggestedSpecialityCell.swift in Sources */,
@@ -1486,12 +1526,12 @@
 /* Begin PBXTargetDependency section */
 		084B30F120B01DAC00B79318 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 084B30D720B01DAA00B79318 /* Project */;
+			target = 084B30D720B01DAA00B79318 /* MiDokter User */;
 			targetProxy = 084B30F020B01DAC00B79318 /* PBXContainerItemProxy */;
 		};
 		084B30FC20B01DAD00B79318 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 084B30D720B01DAA00B79318 /* Project */;
+			target = 084B30D720B01DAA00B79318 /* MiDokter User */;
 			targetProxy = 084B30FB20B01DAD00B79318 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1624,7 +1664,7 @@
 		};
 		084B310420B01DAD00B79318 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 018BDB6993C69B0BD0158FF9 /* Pods-Project.debug.xcconfig */;
+			baseConfigurationReference = 59F233EFBA148FC7C60E4316 /* Pods-MiDokter User.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1643,7 +1683,7 @@
 		};
 		084B310520B01DAD00B79318 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79004400D2E7DDC3FEEA1E58 /* Pods-Project.release.xcconfig */;
+			baseConfigurationReference = 7DAC76FEE954B62A8C7B85CD /* Pods-MiDokter User.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1741,7 +1781,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		084B30D320B01DAA00B79318 /* Build configuration list for PBXProject "Projects" */ = {
+		084B30D320B01DAA00B79318 /* Build configuration list for PBXProject "MiDokter User" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				084B310120B01DAD00B79318 /* Debug */,
@@ -1750,7 +1790,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		084B310320B01DAD00B79318 /* Build configuration list for PBXNativeTarget "Project" */ = {
+		084B310320B01DAD00B79318 /* Build configuration list for PBXNativeTarget "MiDokter User" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				084B310420B01DAD00B79318 /* Debug */,

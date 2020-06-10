@@ -276,6 +276,9 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="docterImage" destination="j2i-hi-MCn" id="RW2-td-akY"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
         </tableViewCell>
     </objects>

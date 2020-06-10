@@ -27,6 +27,9 @@ class DoctorsListController: UIViewController {
            self.navigationController?.navigationBar.isHidden = true
        }
        
+    override func viewWillDisappear(_ animated: Bool) {
+            self.navigationController?.navigationBar.isHidden = false
+    }
      
     private func initilaLoads(){
         
@@ -48,12 +51,17 @@ extension DoctorsListController : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-  
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.DoctorCell, for: indexPath) as! DoctorCell
-        
+        self.doctorCellAction(cell: cell)
         return cell
         
+    }
+    
+    func doctorCellAction(cell : DoctorCell){
+        cell.docterImage.addTap {
+             self.push(id: Storyboard.Ids.DoctorDetailsController, animation: true)
+            print("HEllp")
+        }
     }
     
     

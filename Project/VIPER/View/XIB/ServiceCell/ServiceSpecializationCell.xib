@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ServiceSpecializationCell" id="sZH-3r-WPj" customClass="ServiceSpecializationCell" customModule="Mi_Dokter" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sZH-3r-WPj" id="TFr-zZ-p28">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPR-R8-tN9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dot" translatesAutoresizingMaskIntoConstraints="NO" id="btM-Dd-jwl">
+                                <rect key="frame" x="10" y="17.5" width="9" height="9"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="9" id="Q1H-Fq-oX5"/>
+                                    <constraint firstAttribute="width" constant="9" id="s71-Tt-H7w"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfV-pn-NXK">
+                                <rect key="frame" x="29" y="5" width="375" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="nfV-pn-NXK" secondAttribute="bottom" constant="5" id="4WO-rt-zkC"/>
+                            <constraint firstAttribute="trailing" secondItem="nfV-pn-NXK" secondAttribute="trailing" constant="10" id="6ad-v4-FWg"/>
+                            <constraint firstItem="btM-Dd-jwl" firstAttribute="leading" secondItem="cPR-R8-tN9" secondAttribute="leading" constant="10" id="Lig-Ub-YcY"/>
+                            <constraint firstItem="btM-Dd-jwl" firstAttribute="centerY" secondItem="cPR-R8-tN9" secondAttribute="centerY" id="eWc-Pf-hNL"/>
+                            <constraint firstItem="nfV-pn-NXK" firstAttribute="top" secondItem="cPR-R8-tN9" secondAttribute="top" constant="5" id="mqW-lD-aig"/>
+                            <constraint firstItem="nfV-pn-NXK" firstAttribute="leading" secondItem="btM-Dd-jwl" secondAttribute="trailing" constant="10" id="spL-KF-8pl"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="cPR-R8-tN9" secondAttribute="trailing" id="DYn-6F-eel"/>
+                    <constraint firstItem="cPR-R8-tN9" firstAttribute="top" secondItem="TFr-zZ-p28" secondAttribute="top" id="RTc-EU-wTI"/>
+                    <constraint firstItem="cPR-R8-tN9" firstAttribute="leading" secondItem="TFr-zZ-p28" secondAttribute="leading" id="e9H-KL-yF3"/>
+                    <constraint firstAttribute="bottom" secondItem="cPR-R8-tN9" secondAttribute="bottom" id="rQt-10-9fR"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="serviceLbl" destination="nfV-pn-NXK" id="num-EY-Vm3"/>
+            </connections>
+            <point key="canvasLocation" x="275" y="117"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="dot" width="512" height="512"/>
+    </resources>
+</document>

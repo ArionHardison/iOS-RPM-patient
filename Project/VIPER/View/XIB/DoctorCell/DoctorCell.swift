@@ -10,11 +10,10 @@ import UIKit
 
 class DoctorCell: UITableViewCell {
 
+    @IBOutlet weak var docterImage : UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
-   
-    
 }
