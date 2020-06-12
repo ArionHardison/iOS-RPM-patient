@@ -28,14 +28,10 @@ class AppointmentDetailsViewController: UITableViewController {
     @IBOutlet weak var consultedText: HoshiTextField!
     @IBOutlet weak var commentsText: UITextView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
         initialLoads()
     }
-    
     
 }
 
@@ -49,27 +45,33 @@ extension AppointmentDetailsViewController {
     
     private func setupNavigationBar() {
         self.navigationController?.isNavigationBarHidden = false
-        self.navigationItem.title = "Visited Doctors"
+        self.navigationItem.title = "Appointment Details"
     }
     
     private func setTextFonts() {
-        Common.setFont(to: doctorName)
-        Common.setFont(to: labelDesignation)
-        Common.setFont(to: labelHospitalName)
-        Common.setFont(to: labelBookefor)
-        Common.setFont(to: labelPatientName)
-        Common.setFont(to: labelSchedule)
-        Common.setFont(to: labelDate)
-        Common.setFont(to: labelCategory)
-        Common.setFont(to: labelStatus)
-        Common.setFont(to: labelStatusResponse)
-        Common.setFont(to: labelShare)
-        Common.setFont(to: likeButton)
-        Common.setFont(to: dislikeButton)
-        Common.setFont(to: consultedText)
-        Common.setFont(to: commentsText)
+        Common.setFont(to: doctorName,isTitle: true,size: 22)
+        Common.setFont(to: labelDesignation,isTitle: false,size: 16)
+        Common.setFont(to: labelHospitalName,isTitle: false,size: 16)
+        Common.setFont(to: labelBookefor,isTitle: false,size: 18)
+        Common.setFont(to: labelPatientName,isTitle: true,size: 18)
+        Common.setFont(to: labelSchedule,isTitle: false,size: 18)
+        Common.setFont(to: labelDate,isTitle: true,size: 18)
+        Common.setFont(to: labelCategory,isTitle: false,size: 16)
+        Common.setFont(to: labelStatus,isTitle: true,size: 18)
+        Common.setFont(to: labelStatusResponse,isTitle: false,size: 18)
+        Common.setFont(to: labelShare,isTitle: false,size: 20)
+        Common.setFont(to: likeButton,isTitle: true,size: 18)
+        Common.setFont(to: dislikeButton,isTitle: true,size: 18)
+        Common.setFont(to: consultedText,isTitle: true,size: 18)
+        Common.setFont(to: commentsText,isTitle: true,size: 18)
+        
+        self.likeButton.layer.cornerRadius = self.likeButton.frame.width / 2
+        self.dislikeButton.layer.cornerRadius = self.dislikeButton.frame.width / 2
+        self.likeButton.layer.borderColor = UIColor.appColor.cgColor
+        self.dislikeButton.layer.borderColor = UIColor.appColor.cgColor
+        self.likeButton.layer.borderWidth = 1
+        self.dislikeButton.layer.borderWidth = 1
     }
-    
     
     
     @objc private func pushToThankYou(sender:UIButton) {
@@ -77,7 +79,6 @@ extension AppointmentDetailsViewController {
         self.push(id: Storyboard.Ids.ThankYouViewController, animation: true)
         
     }
-    
     
 }
 
@@ -89,7 +90,6 @@ extension AppointmentDetailsViewController {
         switch section {
         case 3:
             let footerView: UIView = {
-                
                 let footer = UIView()
                 footer.frame = CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 50)
                 let submitBtn = UIButton()

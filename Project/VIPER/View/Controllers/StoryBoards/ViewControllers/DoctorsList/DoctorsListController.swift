@@ -60,7 +60,6 @@ extension DoctorsListController : UITableViewDelegate,UITableViewDataSource{
     func doctorCellAction(cell : DoctorCell){
         cell.docterImage.addTap {
              self.push(id: Storyboard.Ids.DoctorDetailsController, animation: true)
-            print("HEllp")
         }
     }
     

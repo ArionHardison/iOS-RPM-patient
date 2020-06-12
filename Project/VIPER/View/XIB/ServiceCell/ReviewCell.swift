@@ -1,6 +1,12 @@
 //
+//  ReviewCell.swift
+//  MiDokter User
+//
+//  Created by AppleMac on 12/06/20.
+//  Copyright © 2020 css. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 class ReviewCell: UICollectionViewCell {

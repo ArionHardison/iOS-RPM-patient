@@ -168,14 +168,18 @@
         {
             
             switch indexPath.row {
-            case 0:
-                self.push(id: Storyboard.Ids.CategoryListController, animation: true)
-            case 1:
-                self.push(id: Storyboard.Ids.ChatTableViewController, animation: true)
-            default:
-                self.push(id: Storyboard.Ids.VisitedDoctorsViewController, animation: true)
+                case 0:
+                    self.push(id: Storyboard.Ids.CategoryListController, animation: true)
+                case 1:
+                    self.push(id: Storyboard.Ids.ChatTableViewController, animation: true)
+                case 2:
+                    self.push(id: Storyboard.Ids.SearchViewController, animation: true)
+                case 3:
+                    self.push(id: Storyboard.Ids.VisitedDoctorsViewController, animation: true)
+                default:
+                    self.push(id: Storyboard.Ids.VisitedDoctorsViewController, animation: true)
             }
-     
+            
         }
         
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

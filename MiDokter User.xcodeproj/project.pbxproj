@@ -78,6 +78,10 @@
 		08C066F620B039C400A8C5F0 /* GooglePlacesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C066F420B039C400A8C5F0 /* GooglePlacesHelper.swift */; };
 		08C066F720B039C400A8C5F0 /* GMSMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C066F520B039C400A8C5F0 /* GMSMapView.swift */; };
 		08DBC87B20B9F70800AE89E6 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBC87A20B9F70800AE89E6 /* DatePickerDialog.swift */; };
+		102D39AB2493A6E300C61CC6 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102D39AA2493A6E300C61CC6 /* ReviewCell.swift */; };
+		102D39AD2493AC2500C61CC6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102D39AC2493AC2500C61CC6 /* SearchViewController.swift */; };
+		102D39B02493B4CB00C61CC6 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102D39AF2493B4CB00C61CC6 /* SearchCell.swift */; };
+		102D39B22493B4DC00C61CC6 /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 102D39B12493B4DC00C61CC6 /* SearchCell.xib */; };
 		1217F1CA2435BC1F0085F924 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1217F1C92435BC1F0085F924 /* User.storyboard */; };
 		122488B42438F7D8005E7689 /* DateOfBirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122488B32438F7D8005E7689 /* DateOfBirthViewController.swift */; };
 		12384B3524600D990057943D /* DoctorDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12384B3424600D990057943D /* DoctorDetailsController.swift */; };
@@ -121,7 +125,6 @@
 		905383742490D35D009CCEE4 /* PhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905383732490D35D009CCEE4 /* PhotosCell.swift */; };
 		905383762490D38F009CCEE4 /* PhotosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 905383752490D38F009CCEE4 /* PhotosCell.xib */; };
 		905383782490E253009CCEE4 /* ReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 905383772490E253009CCEE4 /* ReviewCell.xib */; };
-		9053837A2490E286009CCEE4 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905383792490E286009CCEE4 /* ReviewCell.swift */; };
 		90FAE992248FEEC60025787A /* UXTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAE991248FEEC60025787A /* UXTableView.swift */; };
 		DE55116C2A119B839DCC1246 /* Pods_MiDokter_User.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139CE6C0F3BF6A798146CB46 /* Pods_MiDokter_User.framework */; };
 /* End PBXBuildFile section */
@@ -223,6 +226,10 @@
 		08C066F420B039C400A8C5F0 /* GooglePlacesHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesHelper.swift; sourceTree = "<group>"; };
 		08C066F520B039C400A8C5F0 /* GMSMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMSMapView.swift; sourceTree = "<group>"; };
 		08DBC87A20B9F70800AE89E6 /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
+		102D39AA2493A6E300C61CC6 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		102D39AC2493AC2500C61CC6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		102D39AF2493B4CB00C61CC6 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		102D39B12493B4DC00C61CC6 /* SearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
 		1217F1C92435BC1F0085F924 /* User.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		122488B32438F7D8005E7689 /* DateOfBirthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOfBirthViewController.swift; sourceTree = "<group>"; };
 		12384B3424600D990057943D /* DoctorDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorDetailsController.swift; sourceTree = "<group>"; };
@@ -270,7 +277,6 @@
 		905383732490D35D009CCEE4 /* PhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCell.swift; sourceTree = "<group>"; };
 		905383752490D38F009CCEE4 /* PhotosCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotosCell.xib; sourceTree = "<group>"; };
 		905383772490E253009CCEE4 /* ReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewCell.xib; sourceTree = "<group>"; };
-		905383792490E286009CCEE4 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReviewCell.swift; path = /Users/abservetech/Documents/ShyamalaT/Practice/Midoktar/midokter_ios_user/Project/VIPER/View/XIB/ServiceCell/ReviewCell.swift; sourceTree = "<absolute>"; };
 		90FAE991248FEEC60025787A /* UXTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -317,6 +323,7 @@
 				12681EFC2438D37F0072193B /* User */,
 				088E4E9D20ECDE6900EEEF22 /* HomeViewController.swift */,
 				088E4E9B20ECDE5500EEEF22 /* SideBarTableViewController.swift */,
+				102D39AC2493AC2500C61CC6 /* SearchViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -719,6 +726,7 @@
 		084B348F20B02EE400B79318 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
+				102D39AE2493B4AC00C61CC6 /* SearchSell */,
 				9052614A248FEB6A008CC272 /* ServiceCell */,
 				1293C5652453374000FEC1C9 /* DoctorCell */,
 				12AE3EE92451CFA300E90872 /* CategoryCell */,
@@ -961,6 +969,15 @@
 			path = DatePicker;
 			sourceTree = "<group>";
 		};
+		102D39AE2493B4AC00C61CC6 /* SearchSell */ = {
+			isa = PBXGroup;
+			children = (
+				102D39AF2493B4CB00C61CC6 /* SearchCell.swift */,
+				102D39B12493B4DC00C61CC6 /* SearchCell.xib */,
+			);
+			path = SearchSell;
+			sourceTree = "<group>";
+		};
 		122488B22438F7BD005E7689 /* DOBVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1196,8 +1213,8 @@
 				9052614D248FEBBE008CC272 /* ServiceSpecializationCell.swift */,
 				905383732490D35D009CCEE4 /* PhotosCell.swift */,
 				905383752490D38F009CCEE4 /* PhotosCell.xib */,
-				905383792490E286009CCEE4 /* ReviewCell.swift */,
 				905383772490E253009CCEE4 /* ReviewCell.xib */,
+				102D39AA2493A6E300C61CC6 /* ReviewCell.swift */,
 			);
 			path = ServiceCell;
 			sourceTree = "<group>";
@@ -1330,6 +1347,7 @@
 				12B6E211244711B100BE448F /* ArticlesCell.xib in Resources */,
 				7E6AEF502488D0F6005F0899 /* SuggestedSpecialityCell.xib in Resources */,
 				084B30E120B01DAA00B79318 /* Main.storyboard in Resources */,
+				102D39B22493B4DC00C61CC6 /* SearchCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1417,7 +1435,9 @@
 				12AE3EE52451C88800E90872 /* OnlineAvailabeDoctorsController.swift in Sources */,
 				084B343920B029E900B79318 /* ParallaxHeader.swift in Sources */,
 				084B343E20B02A3800B79318 /* Toast.swift in Sources */,
+				102D39AD2493AC2500C61CC6 /* SearchViewController.swift in Sources */,
 				08C066F720B039C400A8C5F0 /* GMSMapView.swift in Sources */,
+				102D39AB2493A6E300C61CC6 /* ReviewCell.swift in Sources */,
 				084B346920B02C8000B79318 /* AppData.swift in Sources */,
 				08DBC87B20B9F70800AE89E6 /* DatePickerDialog.swift in Sources */,
 				12AE3EF02451D24E00E90872 /* CategoryListController.swift in Sources */,
@@ -1431,7 +1451,6 @@
 				08C066F620B039C400A8C5F0 /* GooglePlacesHelper.swift in Sources */,
 				084B34AB20B0305400B79318 /* TableView.swift in Sources */,
 				12B6E210244711B100BE448F /* ArticlesCell.swift in Sources */,
-				9053837A2490E286009CCEE4 /* ReviewCell.swift in Sources */,
 				084B348A20B02EAC00B79318 /* PresenterProcessor.swift in Sources */,
 				084B347B20B02DF700B79318 /* Global.swift in Sources */,
 				084B34CC20B031F400B79318 /* ImageView.swift in Sources */,
@@ -1469,6 +1488,7 @@
 				9052614E248FEBBE008CC272 /* ServiceSpecializationCell.swift in Sources */,
 				12B6E2062446E7DF00BE448F /* LogoCell.swift in Sources */,
 				1293C5642453370000FEC1C9 /* DoctorsListController.swift in Sources */,
+				102D39B02493B4CB00C61CC6 /* SearchCell.swift in Sources */,
 				7E6AEF4F2488D0F6005F0899 /* SuggestedSpecialityCell.swift in Sources */,
 				084B34B420B030A800B79318 /* Sequence.swift in Sources */,
 				084B30E420B01DAB00B79318 /* Model.xcdatamodeld in Sources */,

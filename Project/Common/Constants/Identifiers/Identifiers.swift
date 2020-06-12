@@ -30,6 +30,7 @@ struct Storyboard {
     let AppointmentDetailsViewController = "AppointmentDetailsViewController"
     let ThankYouViewController = "ThankYouViewController"
     let ChatTableViewController = "ChatTableViewController"
+    let SearchViewController = "SearchViewController"
     
     
  
@@ -57,6 +58,7 @@ struct XIB {
     let ServiceSpecializationCell = "ServiceSpecializationCell"
     let PhotosCell = "PhotosCell"
     let ReviewCell = "ReviewCell"
+    let SearchCell = "SearchCell"
     
     
     
