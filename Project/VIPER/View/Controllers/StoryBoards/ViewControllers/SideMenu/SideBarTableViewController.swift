@@ -128,32 +128,42 @@ extension SideBarTableViewController {
         
         switch (indexPath.section,indexPath.row) {
             
-            
-        case (0,0):
-            
-        
-           self.push(to: Storyboard.Ids.AppointmentViewController)
-             self.drawerController?.closeSide()
-            
-//            if let vc = self.drawerController?.getViewController(for: .none)?.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.AppointmentViewController) as? AppointmentViewController
-//            {
-//                           vc.isYourTripsSelected = indexPath.row == 0
-//                           (self.drawerController?.getViewController(for: .none) as? UINavigationController)?.pushViewController(vc, animated: true)
-//                }
-//
-            
-            
-        case(0,1):
-            
-            self.push(to: Storyboard.Ids.OnlineAvailabeDoctorsController)
+            case (0,0):
+               self.push(to: Storyboard.Ids.AppointmentViewController)
+               self.drawerController?.closeSide()
+                
+            case(0,1):
+                
+                self.push(to: Storyboard.Ids.OnlineAvailabeDoctorsController)
+                self.drawerController?.closeSide()
+                
+            case(0,2):
+                
+                self.push(to: Storyboard.Ids.FavouriteDoctorsListController)
+                self.drawerController?.closeSide()
+                
+            case(0,3):
+                 
+                self.push(to: Storyboard.Ids.MedicalRecordsViewController)
+                self.drawerController?.closeSide()
+
+            case(0,5):
+                 
+                self.push(to: Storyboard.Ids.WalletViewController)
+                self.drawerController?.closeSide()
+            case(0,6):
+             
+            self.push(to: Storyboard.Ids.HealthFeedViewController)
             self.drawerController?.closeSide()
-            
+
         case (0,self.sideBarList.count-1):
             self.logout()
             
         default:
             break
         }
+        
+        
         
     }
     

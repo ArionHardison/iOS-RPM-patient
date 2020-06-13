@@ -31,15 +31,17 @@ struct Storyboard {
     let ThankYouViewController = "ThankYouViewController"
     let ChatTableViewController = "ChatTableViewController"
     let SearchViewController = "SearchViewController"
-    
-    
- 
+    let FavouriteDoctorsListController = "FavouriteDoctorsListController"
+    let MedicalRecordsViewController = "MedicalRecordsViewController"
+    let WalletViewController = "WalletViewController"
+    let HealthFeedViewController = "HealthFeedViewController"
+    let HealthFeedDetailsViewController = "HealthFeedDetailsViewController"
     
 }
 
 
 //MARK:- XIB Cell Names
-
+    
 struct XIB {
     
     static let Names = XIB()
@@ -59,8 +61,8 @@ struct XIB {
     let PhotosCell = "PhotosCell"
     let ReviewCell = "ReviewCell"
     let SearchCell = "SearchCell"
-    
-    
+    let FavDoctorTableViewCell = "FavDoctorTableViewCell"
+    let HealthFeedTableViewCell = "HealthFeedTableViewCell"
     
     
 }

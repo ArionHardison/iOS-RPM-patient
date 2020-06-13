@@ -56,8 +56,6 @@ class AppointmentViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
     }
-    
-    
    
 
    private func switchViewAction(){
