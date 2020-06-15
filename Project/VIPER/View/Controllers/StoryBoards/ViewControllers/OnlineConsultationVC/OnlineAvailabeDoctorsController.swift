@@ -54,14 +54,14 @@ extension OnlineAvailabeDoctorsController : UITableViewDelegate,UITableViewDataS
         let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.OnlineDoctorCell, for: indexPath) as! OnlineDoctorCell
         cell.selectionStyle = .none
         return cell
-        
-        
-        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.push(id: Storyboard.Ids.ChatViewController, animation: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75
     }
   
-    
 }

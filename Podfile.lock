@@ -3,6 +3,7 @@ PODS:
   - AlamofireObjectMapper (5.2.0):
     - Alamofire (~> 4.7)
     - ObjectMapper (~> 3.4)
+  - CountryPickerView (3.1.2)
   - DynamicBlurView (2.0.2)
   - GoogleMaps (2.7.0):
     - GoogleMaps/Maps (= 2.7.0)
@@ -22,6 +23,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AlamofireObjectMapper
+  - CountryPickerView
   - GoogleMaps
   - GooglePlaces
   - IQKeyboardManagerSwift
@@ -39,10 +41,13 @@ SPEC REPOS:
     - KWDrawerController
     - ObjectMapper
     - PopupDialog
+  trunk:
+    - CountryPickerView
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
+  CountryPickerView: 08ff5f391143aa79e2ae21b0eaa5c15395a80d22
   DynamicBlurView: aa6db4defc6e537eb86fc5e58dd3991666178399
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
@@ -51,6 +56,6 @@ SPEC CHECKSUMS:
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   PopupDialog: 39598b7d41719f5c025b4b70e62728bae7734fef
 
-PODFILE CHECKSUM: 22152cea4e59a20e7fc3b5c76062ad26a4cdae01
+PODFILE CHECKSUM: 6b9072b5208a6f48767e9171e02afb1ac59e2c6d
 
 COCOAPODS: 1.9.1

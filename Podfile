@@ -12,5 +12,6 @@ target 'MiDokter User' do
     pod 'PopupDialog', '~> 0.7'
     pod 'KWDrawerController', '~> 4.1.6'
     pod 'AlamofireObjectMapper'
-
+    pod 'CountryPickerView'
+    
 end

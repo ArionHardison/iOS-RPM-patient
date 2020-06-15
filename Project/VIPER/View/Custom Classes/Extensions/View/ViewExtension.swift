@@ -395,7 +395,7 @@ extension UIView {
     
     func makeRoundedCorner(){
         
-        self.layer.masksToBounds = true
+       // self.layer.masksToBounds = true
         self.layer.cornerRadius = self.bounds.width/2
         
     }

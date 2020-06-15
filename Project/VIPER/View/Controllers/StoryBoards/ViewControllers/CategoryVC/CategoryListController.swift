@@ -86,6 +86,11 @@ extension CategoryListController : UICollectionViewDelegate,UICollectionViewData
 
         let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: XIB.Names.CategoryCell, for: indexPath) as! CategoryCell
         cell.labelCategoryName.text = self.categoryListArray[indexPath.row]
+        if indexPath.row%2 == 0{
+            cell.leftstripeview.isHidden = false
+        }else{
+            cell.leftstripeview.isHidden = true
+        }
         return cell
         
     }
@@ -96,7 +101,7 @@ extension CategoryListController : UICollectionViewDelegate,UICollectionViewData
         let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
         let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
         let size:CGFloat = (collectionView.frame.size.width - space) / 2.0
-        return CGSize(width: size, height: size)
+        return CGSize(width: size, height: size - 35)
         
        }
     

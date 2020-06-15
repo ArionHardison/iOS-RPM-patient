@@ -27,9 +27,13 @@ class NameAndEmailViewController: UIViewController {
     @IBOutlet weak var buttonAcceptance: UIButton!
     
     @IBOutlet weak var labelOffers: UILabel!
+    
+    var signupReq: SignupReq?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.setupDelegate()
         // Do any additional setup after loading the view.
         
         
@@ -37,12 +41,20 @@ class NameAndEmailViewController: UIViewController {
         buttonContinue.addTarget(self, action: #selector(continueAction(sender:)), for: .touchUpInside)
     }
     
-
-   @IBAction func continueAction(sender:UIButton){
-          
-          self.push(id: Storyboard.Ids.GenderConfirmationVC, animation: true)
-          
-      }
+    
+    @IBAction func continueAction(sender:UIButton){
+        self.view.endEditing(true)
+        if self.txtName.getText.isEmpty || self.txtName.getText.count < 3{
+            showToast(msg: "Enter User name")
+        }else{
+            self.signupReq?.first_name = self.txtName.getText
+            let vc = EmailViewController.initVC(storyBoardName: .user, vc: EmailViewController.self, viewConrollerID: Storyboard.Ids.EmailViewController)
+            vc.signupReq = self.signupReq
+            self.push(from: self, ToViewContorller: vc)
+        }
+        
+        
+    }
     
     @IBAction func backAction(sender:UIButton){
         
@@ -55,4 +67,12 @@ class NameAndEmailViewController: UIViewController {
        }
 
 
+}
+extension NameAndEmailViewController : UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+    }
+    func setupDelegate(){
+        self.txtName.delegate = self
+    }
 }

@@ -8,6 +8,12 @@
 
 import Foundation
 
+public enum storyboardName : String{
+    case main = "Main"
+    case user = "User"
+    
+}
+
 // MARK:- Storyboard Id
 struct Storyboard {
     
@@ -16,6 +22,7 @@ struct Storyboard {
     let HomeViewController = "HomeViewController"
     let SigninInViewController = "SigninInViewController"
     let NameAndEmailViewController = "NameAndEmailViewController"
+    let EmailViewController = "EmailViewController"
     let GenderConfirmationVC = "GenderConfirmationVC"
     let DateOfBirthViewController = "DateOfBirthViewController"
     let AppointmentViewController = "AppointmentViewController"
@@ -36,6 +43,13 @@ struct Storyboard {
     let WalletViewController = "WalletViewController"
     let HealthFeedViewController = "HealthFeedViewController"
     let HealthFeedDetailsViewController = "HealthFeedDetailsViewController"
+    let ReminderViewController = "ReminderViewController"
+    let ReminderDetailViewController = "ReminderDetailViewController"
+    let ServiceListViewController = "ServiceListViewController"
+    let ChatQuestionViewController = "ChatQuestionViewController"
+    let SelectedProblemAreaVC = "SelectedProblemAreaVC"
+    let SummaryViewController = "SummaryViewController"
+    let ChatViewController = "ChatViewController"
     
 }
 
@@ -63,6 +77,9 @@ struct XIB {
     let SearchCell = "SearchCell"
     let FavDoctorTableViewCell = "FavDoctorTableViewCell"
     let HealthFeedTableViewCell = "HealthFeedTableViewCell"
+    let SuggestedCell = "SuggestedCell"
+    let ProblemCell = "ProblemCell"
+    let ChatRightCell = "ChatRightCell"
     
     
 }

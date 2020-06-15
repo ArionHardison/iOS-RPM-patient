@@ -133,26 +133,26 @@ extension SideBarTableViewController {
                self.drawerController?.closeSide()
                 
             case(0,1):
-                
                 self.push(to: Storyboard.Ids.OnlineAvailabeDoctorsController)
                 self.drawerController?.closeSide()
                 
             case(0,2):
-                
                 self.push(to: Storyboard.Ids.FavouriteDoctorsListController)
                 self.drawerController?.closeSide()
                 
             case(0,3):
-                 
                 self.push(to: Storyboard.Ids.MedicalRecordsViewController)
                 self.drawerController?.closeSide()
-
+            
+            case(0,4):
+                self.push(to: Storyboard.Ids.ReminderViewController)
+                self.drawerController?.closeSide()
+            
             case(0,5):
-                 
                 self.push(to: Storyboard.Ids.WalletViewController)
                 self.drawerController?.closeSide()
+            
             case(0,6):
-             
             self.push(to: Storyboard.Ids.HealthFeedViewController)
             self.drawerController?.closeSide()
 
@@ -162,28 +162,22 @@ extension SideBarTableViewController {
         default:
             break
         }
-        
-        
-        
     }
     
     private func push(to identifier : String) {
         let viewController = self.storyboard!.instantiateViewController(withIdentifier: identifier)
         (self.drawerController?.getViewController(for: .none) as? UINavigationController)?.pushViewController(viewController, animated: true)
-        
     }
     
     
     // MARK:- Logout
     
     private func logout() {
-        
         let alert = UIAlertController(title: nil, message: Constants.string.areYouSureWantToLogout.localize(), preferredStyle: .actionSheet)
         let logoutAction = UIAlertAction(title: Constants.string.logout.localize(), style: .destructive) { (_) in
             self.loader.isHidden = false
             self.presenter?.HITAPI(api: Base.login.rawValue, params: nil, methodType: .POST, modelClass: LoginModel.self, token: false)
         }
-        
         let cancelAction = UIAlertAction(title: Constants.string.Cancel.localize(), style: .cancel, handler: nil)
         
         alert.view.tintColor = .primary
@@ -193,9 +187,7 @@ extension SideBarTableViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        
         return .lightContent
     }
     

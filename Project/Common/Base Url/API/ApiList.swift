@@ -46,6 +46,10 @@ enum Base : String{
     case distanceMarix = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins="
     case updateLocation = "api/provider/profile/location"
     case onlineStatus = "/api/provider/profile/available"
+    
+    //loginSingup
+    case generateOTP = "/api/patient/otp"
+    case verify_otp = "/api/patient/verify_otp"
    
     init(fromRawValue: String){
         self = Base(rawValue: fromRawValue) ?? .signUp

@@ -42,10 +42,22 @@ extension UIViewController {
     func present(id : String, animation : Bool){
         
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: id){
+            vc.modalPresentationStyle = .custom
             self.present(vc, animated: animation, completion: nil)
+            
         }
         
     }
+    
+    
+    static func getStoryBoard(withName name : storyboardName) -> UIStoryboard{
+        return UIStoryboard.init(name: name.rawValue, bundle: Bundle.main)
+    }
+    
+    static func initVC<T : UIViewController>(storyBoardName name : storyboardName , vc : T.Type , viewConrollerID id : String) -> T{
+        return getStoryBoard(withName: name).instantiateViewController(withIdentifier: id) as! T
+    }
+    
     
     //MARK:- Push
     
@@ -55,6 +67,10 @@ extension UIViewController {
             self.navigationController?.pushViewController(vc, animated: animation)
         }
      
+    }
+    
+    func push<T : UIViewController>(from vc : T ,ToViewContorller contoller : UIViewController ){
+        vc.navigationController?.pushViewController(contoller, animated: true)
     }
     
     //MARK:- Push To Right

@@ -82,6 +82,27 @@
 		102D39AD2493AC2500C61CC6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102D39AC2493AC2500C61CC6 /* SearchViewController.swift */; };
 		102D39B02493B4CB00C61CC6 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102D39AF2493B4CB00C61CC6 /* SearchCell.swift */; };
 		102D39B22493B4DC00C61CC6 /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 102D39B12493B4DC00C61CC6 /* SearchCell.xib */; };
+		104A9F6E24975DAC00337AB9 /* AuthReqRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104A9F6D24975DAC00337AB9 /* AuthReqRes.swift */; };
+		104A9F71249770F500337AB9 /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104A9F70249770F500337AB9 /* LogHelper.swift */; };
+		1073727B2497A8020080A5A5 /* UXLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073727A2497A8020080A5A5 /* UXLabel.swift */; };
+		1073727E2497B6680080A5A5 /* VerifyNumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073727D2497B6680080A5A5 /* VerifyNumVC.swift */; };
+		107372802497D2150080A5A5 /* UXUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073727F2497D2150080A5A5 /* UXUserDefaults.swift */; };
+		107372822497D7000080A5A5 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107372812497D7000080A5A5 /* EmailViewController.swift */; };
+		107372842497D97C0080A5A5 /* UXString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107372832497D97C0080A5A5 /* UXString.swift */; };
+		108010BA2494A69400C7249D /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108010B92494A69400C7249D /* ReminderViewController.swift */; };
+		108010BE2494C6DE00C7249D /* ReminderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108010BD2494C6DE00C7249D /* ReminderDetailViewController.swift */; };
+		108010C02494DAEE00C7249D /* ServiceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108010BF2494DAEE00C7249D /* ServiceListViewController.swift */; };
+		108010C32494E1B700C7249D /* ChatQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108010C22494E1B700C7249D /* ChatQuestionViewController.swift */; };
+		108010C62494EA3900C7249D /* SuggestedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108010C52494EA3900C7249D /* SuggestedCell.swift */; };
+		108010C82494EA4100C7249D /* SuggestedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 108010C72494EA4100C7249D /* SuggestedCell.xib */; };
+		108010CA2494F48600C7249D /* SelectedProblemAreaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108010C92494F48600C7249D /* SelectedProblemAreaVC.swift */; };
+		10C22C0B2494F9DC00D43704 /* ProblemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C22C0A2494F9DC00D43704 /* ProblemCell.swift */; };
+		10C22C0D2494F9F600D43704 /* ProblemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10C22C0C2494F9F600D43704 /* ProblemCell.xib */; };
+		10C22C0F24950F6800D43704 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C22C0E24950F6800D43704 /* SummaryViewController.swift */; };
+		10C22C112495194600D43704 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C22C102495194600D43704 /* ChatViewController.swift */; };
+		10C22C142495240800D43704 /* ChatRightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10C22C132495240800D43704 /* ChatRightCell.xib */; };
+		10C22C162495241E00D43704 /* ChatRightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C22C152495241E00D43704 /* ChatRightCell.swift */; };
+		10C22C182495243300D43704 /* ChatLeftCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10C22C172495243300D43704 /* ChatLeftCell.xib */; };
 		1217F1CA2435BC1F0085F924 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1217F1C92435BC1F0085F924 /* User.storyboard */; };
 		122488B42438F7D8005E7689 /* DateOfBirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122488B32438F7D8005E7689 /* DateOfBirthViewController.swift */; };
 		12384B3524600D990057943D /* DoctorDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12384B3424600D990057943D /* DoctorDetailsController.swift */; };
@@ -238,6 +259,27 @@
 		102D39AC2493AC2500C61CC6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		102D39AF2493B4CB00C61CC6 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		102D39B12493B4DC00C61CC6 /* SearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
+		104A9F6D24975DAC00337AB9 /* AuthReqRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthReqRes.swift; sourceTree = "<group>"; };
+		104A9F70249770F500337AB9 /* LogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
+		1073727A2497A8020080A5A5 /* UXLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXLabel.swift; sourceTree = "<group>"; };
+		1073727D2497B6680080A5A5 /* VerifyNumVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyNumVC.swift; sourceTree = "<group>"; };
+		1073727F2497D2150080A5A5 /* UXUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXUserDefaults.swift; sourceTree = "<group>"; };
+		107372812497D7000080A5A5 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
+		107372832497D97C0080A5A5 /* UXString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXString.swift; sourceTree = "<group>"; };
+		108010B92494A69400C7249D /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
+		108010BD2494C6DE00C7249D /* ReminderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDetailViewController.swift; sourceTree = "<group>"; };
+		108010BF2494DAEE00C7249D /* ServiceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceListViewController.swift; sourceTree = "<group>"; };
+		108010C22494E1B700C7249D /* ChatQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatQuestionViewController.swift; sourceTree = "<group>"; };
+		108010C52494EA3900C7249D /* SuggestedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedCell.swift; sourceTree = "<group>"; };
+		108010C72494EA4100C7249D /* SuggestedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestedCell.xib; sourceTree = "<group>"; };
+		108010C92494F48600C7249D /* SelectedProblemAreaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedProblemAreaVC.swift; sourceTree = "<group>"; };
+		10C22C0A2494F9DC00D43704 /* ProblemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemCell.swift; sourceTree = "<group>"; };
+		10C22C0C2494F9F600D43704 /* ProblemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProblemCell.xib; sourceTree = "<group>"; };
+		10C22C0E24950F6800D43704 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
+		10C22C102495194600D43704 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		10C22C132495240800D43704 /* ChatRightCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatRightCell.xib; sourceTree = "<group>"; };
+		10C22C152495241E00D43704 /* ChatRightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRightCell.swift; sourceTree = "<group>"; };
+		10C22C172495243300D43704 /* ChatLeftCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatLeftCell.xib; sourceTree = "<group>"; };
 		1217F1C92435BC1F0085F924 /* User.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		122488B32438F7D8005E7689 /* DateOfBirthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOfBirthViewController.swift; sourceTree = "<group>"; };
 		12384B3424600D990057943D /* DoctorDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorDetailsController.swift; sourceTree = "<group>"; };
@@ -325,6 +367,9 @@
 		08487FA620B5E94100D4DEE4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				107372762497982C0080A5A5 /* CountryPicker */,
+				108010C12494E17800C7249D /* ChatControllers */,
+				108010BC2494C6BE00C7249D /* Reminder */,
 				779DBC4C2493EFA20055FCB9 /* SideMenu */,
 				7E6AEF4A2488CC1D005F0899 /* ChatVC */,
 				7E401F2D248810D30021991A /* ThankYouVc */,
@@ -340,6 +385,7 @@
 				12681EFC2438D37F0072193B /* User */,
 				088E4E9D20ECDE6900EEEF22 /* HomeViewController.swift */,
 				102D39AC2493AC2500C61CC6 /* SearchViewController.swift */,
+				10C22C102495194600D43704 /* ChatViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -369,6 +415,7 @@
 		084B30DA20B01DAA00B79318 /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				104A9F6F249770E900337AB9 /* Helper */,
 				08C0660520B0386F00A8C5F0 /* Readme.md */,
 				084B347C20B02E0D00B79318 /* VIPER */,
 				084B342120B0289B00B79318 /* ProtoCol */,
@@ -703,6 +750,7 @@
 		084B348320B02E7800B79318 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				104A9F6C24975D8500337AB9 /* LoginSignup */,
 				084B34CF20B0424E00B79318 /* Country.swift */,
 				0825A9B62276F12C00DBD50F /* Json4Swift_Base.swift */,
 				0825A9B72276F12C00DBD50F /* Success.swift */,
@@ -742,6 +790,9 @@
 		084B348F20B02EE400B79318 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
+				10C22C12249523EE00D43704 /* ChatCells */,
+				10C22C092494F9B700D43704 /* ProblemsCell */,
+				108010C42494EA2900C7249D /* SuggestedCell */,
 				779DBC542493F9570055FCB9 /* HealthFeedTableViewCell.swift */,
 				779DBC512493F9570055FCB9 /* HealthFeedTableViewCell.xib */,
 				779DBC492493E7600055FCB9 /* FavDoctorTableViewCell.swift */,
@@ -998,6 +1049,76 @@
 			path = SearchSell;
 			sourceTree = "<group>";
 		};
+		104A9F6C24975D8500337AB9 /* LoginSignup */ = {
+			isa = PBXGroup;
+			children = (
+				104A9F6D24975DAC00337AB9 /* AuthReqRes.swift */,
+			);
+			path = LoginSignup;
+			sourceTree = "<group>";
+		};
+		104A9F6F249770E900337AB9 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				104A9F70249770F500337AB9 /* LogHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		107372762497982C0080A5A5 /* CountryPicker */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CountryPicker;
+			sourceTree = "<group>";
+		};
+		108010BC2494C6BE00C7249D /* Reminder */ = {
+			isa = PBXGroup;
+			children = (
+				108010B92494A69400C7249D /* ReminderViewController.swift */,
+				108010BD2494C6DE00C7249D /* ReminderDetailViewController.swift */,
+			);
+			path = Reminder;
+			sourceTree = "<group>";
+		};
+		108010C12494E17800C7249D /* ChatControllers */ = {
+			isa = PBXGroup;
+			children = (
+				108010C22494E1B700C7249D /* ChatQuestionViewController.swift */,
+				108010C92494F48600C7249D /* SelectedProblemAreaVC.swift */,
+				10C22C0E24950F6800D43704 /* SummaryViewController.swift */,
+			);
+			path = ChatControllers;
+			sourceTree = "<group>";
+		};
+		108010C42494EA2900C7249D /* SuggestedCell */ = {
+			isa = PBXGroup;
+			children = (
+				108010C52494EA3900C7249D /* SuggestedCell.swift */,
+				108010C72494EA4100C7249D /* SuggestedCell.xib */,
+			);
+			path = SuggestedCell;
+			sourceTree = "<group>";
+		};
+		10C22C092494F9B700D43704 /* ProblemsCell */ = {
+			isa = PBXGroup;
+			children = (
+				10C22C0A2494F9DC00D43704 /* ProblemCell.swift */,
+				10C22C0C2494F9F600D43704 /* ProblemCell.xib */,
+			);
+			path = ProblemsCell;
+			sourceTree = "<group>";
+		};
+		10C22C12249523EE00D43704 /* ChatCells */ = {
+			isa = PBXGroup;
+			children = (
+				10C22C132495240800D43704 /* ChatRightCell.xib */,
+				10C22C152495241E00D43704 /* ChatRightCell.swift */,
+				10C22C172495243300D43704 /* ChatLeftCell.xib */,
+			);
+			path = ChatCells;
+			sourceTree = "<group>";
+		};
 		122488B22438F7BD005E7689 /* DOBVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1010,6 +1131,7 @@
 			isa = PBXGroup;
 			children = (
 				12384B3424600D990057943D /* DoctorDetailsController.swift */,
+				108010BF2494DAEE00C7249D /* ServiceListViewController.swift */,
 			);
 			path = DoctorDetailsVC;
 			sourceTree = "<group>";
@@ -1018,6 +1140,7 @@
 			isa = PBXGroup;
 			children = (
 				12681EFD2438D5A30072193B /* SigninInViewController.swift */,
+				1073727D2497B6680080A5A5 /* VerifyNumVC.swift */,
 			);
 			path = SignInView;
 			sourceTree = "<group>";
@@ -1037,6 +1160,7 @@
 			isa = PBXGroup;
 			children = (
 				12681F002438E1840072193B /* NameAndEmailViewController.swift */,
+				107372812497D7000080A5A5 /* EmailViewController.swift */,
 			);
 			path = NameAndEmailVC;
 			sourceTree = "<group>";
@@ -1234,6 +1358,9 @@
 			children = (
 				90526148248FE0B1008CC272 /* UXView.swift */,
 				90FAE991248FEEC60025787A /* UXTableView.swift */,
+				1073727A2497A8020080A5A5 /* UXLabel.swift */,
+				1073727F2497D2150080A5A5 /* UXUserDefaults.swift */,
+				107372832497D97C0080A5A5 /* UXString.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1361,13 +1488,16 @@
 				12B6E20C2447010B00BE448F /* UpcomingTableviewCell.xib in Resources */,
 				7E401F292487CD860021991A /* VisitedDoctorsCell.xib in Resources */,
 				905383782490E253009CCEE4 /* ReviewCell.xib in Resources */,
+				108010C82494EA4100C7249D /* SuggestedCell.xib in Resources */,
 				08C0660620B0386F00A8C5F0 /* Readme.md in Resources */,
 				084B30E620B01DAC00B79318 /* Assets.xcassets in Resources */,
 				9052614C248FEB93008CC272 /* ServiceSpecializationCell.xib in Resources */,
 				12B6E21B24471C1300BE448F /* ReminderCell.xib in Resources */,
 				905383722490C0DA009CCEE4 /* Color.xcassets in Resources */,
+				10C22C0D2494F9F600D43704 /* ProblemCell.xib in Resources */,
 				12AE3EED2451CFDC00E90872 /* CategoryCell.xib in Resources */,
 				779DBC552493F9570055FCB9 /* HealthFeedTableViewCell.xib in Resources */,
+				10C22C182495243300D43704 /* ChatLeftCell.xib in Resources */,
 				779DBC4A2493E7600055FCB9 /* FavDoctorTableViewCell.xib in Resources */,
 				905383762490D38F009CCEE4 /* PhotosCell.xib in Resources */,
 				7E6AEF542488D4B5005F0899 /* ChatCommentCell.xib in Resources */,
@@ -1379,6 +1509,7 @@
 				1293C5692453376000FEC1C9 /* DoctorCell.xib in Resources */,
 				12B6E2072446E7DF00BE448F /* LogoCell.xib in Resources */,
 				12B6E211244711B100BE448F /* ArticlesCell.xib in Resources */,
+				10C22C142495240800D43704 /* ChatRightCell.xib in Resources */,
 				7E6AEF502488D0F6005F0899 /* SuggestedSpecialityCell.xib in Resources */,
 				084B30E120B01DAA00B79318 /* Main.storyboard in Resources */,
 				102D39B22493B4DC00C61CC6 /* SearchCell.xib in Resources */,
@@ -1480,7 +1611,9 @@
 				084B343720B029E900B79318 /* UIView+Blur.swift in Sources */,
 				084B347520B02DA400B79318 /* ShimmerButton.swift in Sources */,
 				084B348220B02E7300B79318 /* Router.swift in Sources */,
+				107372822497D7000080A5A5 /* EmailViewController.swift in Sources */,
 				084B34AE20B0306600B79318 /* ViewExtension.swift in Sources */,
+				108010CA2494F48600C7249D /* SelectedProblemAreaVC.swift in Sources */,
 				084B34C720B0318700B79318 /* HoshiTextField.swift in Sources */,
 				08C066F620B039C400A8C5F0 /* GooglePlacesHelper.swift in Sources */,
 				084B34AB20B0305400B79318 /* TableView.swift in Sources */,
@@ -1495,6 +1628,7 @@
 				12681EFE2438D5A30072193B /* SigninInViewController.swift in Sources */,
 				084B34BE20B0310800B79318 /* Button.swift in Sources */,
 				084B34A220B02FEA00B79318 /* Image.swift in Sources */,
+				1073727B2497A8020080A5A5 /* UXLabel.swift in Sources */,
 				905383742490D35D009CCEE4 /* PhotosCell.swift in Sources */,
 				0825A9B82276F12C00DBD50F /* Json4Swift_Base.swift in Sources */,
 				084B343020B029C000B79318 /* FontHelper.swift in Sources */,
@@ -1502,18 +1636,23 @@
 				7E401F282487CD860021991A /* VisitedDoctorsCell.swift in Sources */,
 				084B343B20B029E900B79318 /* UIAplication+RLT.swift in Sources */,
 				084B34CE20B0422000B79318 /* ErrorLog.swift in Sources */,
+				107372802497D2150080A5A5 /* UXUserDefaults.swift in Sources */,
 				12681F012438E1840072193B /* NameAndEmailViewController.swift in Sources */,
 				12B6E215244717DB00BE448F /* OnlineDoctorCell.swift in Sources */,
+				108010C32494E1B700C7249D /* ChatQuestionViewController.swift in Sources */,
 				084B347820B02DD800B79318 /* Common.swift in Sources */,
+				108010C62494EA3900C7249D /* SuggestedCell.swift in Sources */,
 				084B34D020B0424E00B79318 /* Country.swift in Sources */,
 				779DBC582493F9570055FCB9 /* HealthFeedTableViewCell.swift in Sources */,
 				12B6E20B2447010B00BE448F /* UpcomingTableviewCell.swift in Sources */,
 				084B34A520B0302100B79318 /* ViewController.swift in Sources */,
 				779DBC4E2493EFC20055FCB9 /* MedicalRecordsViewController.swift in Sources */,
+				108010BE2494C6DE00C7249D /* ReminderDetailViewController.swift in Sources */,
 				084B346020B02C2B00B79318 /* WebConstants.swift in Sources */,
 				12B6E21E2447219E00BE448F /* AppointmentViewController.swift in Sources */,
 				084B349920B02FA100B79318 /* Error.swift in Sources */,
 				7E6AEF4C2488CC48005F0899 /* ChatTableViewController.swift in Sources */,
+				108010C02494DAEE00C7249D /* ServiceListViewController.swift in Sources */,
 				084B345620B02B9200B79318 /* JsonSerializing.swift in Sources */,
 				088E4E9E20ECDE6900EEEF22 /* HomeViewController.swift in Sources */,
 				084B30DC20B01DAA00B79318 /* AppDelegate.swift in Sources */,
@@ -1523,10 +1662,14 @@
 				084B34A820B0303C00B79318 /* NavigationBar.swift in Sources */,
 				9052614E248FEBBE008CC272 /* ServiceSpecializationCell.swift in Sources */,
 				12B6E2062446E7DF00BE448F /* LogoCell.swift in Sources */,
+				108010BA2494A69400C7249D /* ReminderViewController.swift in Sources */,
+				10C22C112495194600D43704 /* ChatViewController.swift in Sources */,
 				1293C5642453370000FEC1C9 /* DoctorsListController.swift in Sources */,
 				102D39B02493B4CB00C61CC6 /* SearchCell.swift in Sources */,
 				779DBC4B2493E7600055FCB9 /* FavDoctorTableViewCell.swift in Sources */,
 				7E6AEF4F2488D0F6005F0899 /* SuggestedSpecialityCell.swift in Sources */,
+				10C22C162495241E00D43704 /* ChatRightCell.swift in Sources */,
+				104A9F6E24975DAC00337AB9 /* AuthReqRes.swift in Sources */,
 				084B34B420B030A800B79318 /* Sequence.swift in Sources */,
 				084B30E420B01DAB00B79318 /* Model.xcdatamodeld in Sources */,
 				779DBC562493F9570055FCB9 /* HealthFeedViewController.swift in Sources */,
@@ -1534,25 +1677,30 @@
 				7E6AEF532488D4B5005F0899 /* ChatCommentCell.swift in Sources */,
 				084B348920B02EAC00B79318 /* Presenter.swift in Sources */,
 				1293C5682453376000FEC1C9 /* DoctorCell.swift in Sources */,
+				107372842497D97C0080A5A5 /* UXString.swift in Sources */,
 				084B345D20B02C0500B79318 /* Constants.swift in Sources */,
 				084B344120B02A5000B79318 /* Bind.swift in Sources */,
 				084B343A20B029E900B79318 /* ParallaxHeaderMode.swift in Sources */,
 				0825A9B92276F12C00DBD50F /* Success.swift in Sources */,
 				084B349C20B02FB900B79318 /* Int.swift in Sources */,
 				12681F042438F1E70072193B /* GenderConfirmationVC.swift in Sources */,
+				10C22C0B2494F9DC00D43704 /* ProblemCell.swift in Sources */,
 				084B34C120B0311A00B79318 /* View.swift in Sources */,
 				084B34C820B0318700B79318 /* TextFieldEffects.swift in Sources */,
 				122488B42438F7D8005E7689 /* DateOfBirthViewController.swift in Sources */,
 				084B345320B02B7200B79318 /* ApiList.swift in Sources */,
 				084B34B120B0308F00B79318 /* Application.swift in Sources */,
 				779DBC572493F9570055FCB9 /* HealthFeedDetailsViewController.swift in Sources */,
+				104A9F71249770F500337AB9 /* LogHelper.swift in Sources */,
 				084B342320B028BC00B79318 /* Protocol.swift in Sources */,
 				779DBC472493DFDB0055FCB9 /* FavouriteDoctorsListController.swift in Sources */,
+				10C22C0F24950F6800D43704 /* SummaryViewController.swift in Sources */,
 				084B345020B02B5B00B79318 /* MakeJson.swift in Sources */,
 				084B344720B02AA300B79318 /* Formatter.swift in Sources */,
 				12AE3EE22451C15200E90872 /* UpcomingDetailsController.swift in Sources */,
 				084B348D20B02ED500B79318 /* Interactor.swift in Sources */,
 				084B346320B02C5500B79318 /* Identifiers.swift in Sources */,
+				1073727E2497B6680080A5A5 /* VerifyNumVC.swift in Sources */,
 				08C066EF20B0399D00A8C5F0 /* CircularTransition.swift in Sources */,
 				084B342D20B0297A00B79318 /* GoogleMapsHelper.swift in Sources */,
 				12B6E21A24471C1300BE448F /* ReminderCell.swift in Sources */,

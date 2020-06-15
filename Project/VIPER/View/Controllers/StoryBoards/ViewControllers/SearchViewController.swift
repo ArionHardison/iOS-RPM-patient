@@ -44,6 +44,8 @@ class SearchViewController: UIViewController {
     }
     
     func setupNavigation(){
+        
+        self.navigationController?.isNavigationBarHidden = false
         self.title = "Search Doctors"
     }
     

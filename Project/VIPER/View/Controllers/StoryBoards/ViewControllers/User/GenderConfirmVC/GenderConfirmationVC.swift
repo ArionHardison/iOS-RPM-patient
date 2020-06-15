@@ -23,6 +23,8 @@ class GenderConfirmationVC: UIViewController {
     @IBOutlet weak var btnOthers: UIButton!
     
     
+    var signupReq: SignupReq?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,8 +39,10 @@ class GenderConfirmationVC: UIViewController {
     
 
     @IBAction func continueAction(sender:UIButton){
-          
-          self.push(id: Storyboard.Ids.DateOfBirthViewController, animation: true)
+        self.signupReq?.gender = sender.titleLabel?.text ?? ""
+        let vc = DateOfBirthViewController.initVC(storyBoardName: .user, vc: DateOfBirthViewController.self, viewConrollerID: Storyboard.Ids.DateOfBirthViewController)
+        vc.signupReq = self.signupReq
+        self.push(from: self, ToViewContorller: vc)
           
       }
     

@@ -80,34 +80,13 @@
            
             searchBar.searchTextField.backgroundColor = .white
             searchBar.searchTextField.rightView = image
-//            let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
-//            var imageView = textFieldInsideSearchBar?.leftView as! UIImageView
-//
-//            imageView =  UIImageView(image: UIImage(imageLiteralResourceName: "google"))
-//
-            
             searchBar.searchTextField.rightViewMode = .always
-            
             self.listTableView.register(UINib(nibName: XIB.Names.LogoCell, bundle: .main), forCellReuseIdentifier: XIB.Names.LogoCell)
-            
-         
         }
         
        
         override func viewWillAppear(_ animated: Bool) {
-            
-            
-            
-//                    let searchBar = UISearchBar()
-//                    searchBar.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60)
-//                    searchBar.backgroundColor = .red
-//                    searchBar.placeholder = "Enter your name"
-//                    searchBar.delegate = self
-//                    self.navigationController?.navigationItem.titleView  = searchBar
-//
-            
-            self.navigationController?.navigationBar.isHidden = true
-            
+            self.navigationController?.isNavigationBarHidden = true
         }
         
         
@@ -171,7 +150,7 @@
                 case 0:
                     self.push(id: Storyboard.Ids.CategoryListController, animation: true)
                 case 1:
-                    self.push(id: Storyboard.Ids.ChatTableViewController, animation: true)
+                    self.push(id: Storyboard.Ids.ChatQuestionViewController, animation: true)
                 case 2:
                     self.push(id: Storyboard.Ids.SearchViewController, animation: true)
                 case 3:
@@ -232,6 +211,7 @@
         let RegisterModel = "RegisterModel"
         let LoginModel = "LoginModel"
         let Json4Swift_Base = "Json4Swift_Base"
+        let MobileVerifyModel = "MobileVerifyModel"
         
     }
 

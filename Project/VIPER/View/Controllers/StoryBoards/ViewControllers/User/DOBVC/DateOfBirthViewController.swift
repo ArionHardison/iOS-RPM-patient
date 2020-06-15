@@ -22,13 +22,16 @@ class DateOfBirthViewController: UIViewController {
     
     @IBOutlet weak var txtYear: UITextField!
     
-    
-    
     @IBOutlet weak var btnContinue: UIButton!
+    
+    
+    var signupReq: SignupReq?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("SignupData",self.signupReq)
+        
         buttonBack.addTarget(self, action: #selector(backAction(sender:)), for: .touchUpInside)
         btnContinue.addTarget(self, action: #selector(continueAction(sender:)), for: .touchUpInside)
     }

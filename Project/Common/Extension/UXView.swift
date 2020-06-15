@@ -99,3 +99,15 @@ extension UIView{
         self.layer.cornerRadius = CGFloat(radius)
     }
 }
+
+extension UITextField{
+    var getText: String{
+        return self.text ?? ""
+    }
+}
+
+extension UILabel{
+    var getText: String{
+        return self.text ?? ""
+    }
+}

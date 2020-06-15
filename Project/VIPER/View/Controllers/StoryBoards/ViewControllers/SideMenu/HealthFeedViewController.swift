@@ -35,7 +35,7 @@ extension HealthFeedViewController {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.title = "Articles"
          Common.setFont(to: self.navigationItem.title!, isTitle: true, size: 18)
-         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
          self.navigationController?.navigationBar.isTranslucent = false
          self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.02583951317, green: 0.1718649864, blue: 0.4112361372, alpha: 1)
     }

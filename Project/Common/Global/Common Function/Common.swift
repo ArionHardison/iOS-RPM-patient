@@ -224,3 +224,38 @@ public func withRenderingMode(originalImage: UIImage, imgView: UIImageView, imgT
     imgView.image = tintedImage
     
 }
+
+func showToast(msg : String ) {
+    let window = UIApplication.shared.keyWindow!
+    let toastLabel = PaddingLabel()
+    
+    toastLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.8)
+    toastLabel.textColor = UIColor.white
+    toastLabel.translatesAutoresizingMaskIntoConstraints = false
+    toastLabel.textAlignment = .center;
+    toastLabel.font = UIFont.systemFont(ofSize: 14)
+    toastLabel.text = msg
+    
+    toastLabel.alpha = 1.0
+    toastLabel.numberOfLines = 0
+    toastLabel.lineBreakMode = .byWordWrapping
+    toastLabel.layer.cornerRadius = 10;
+    toastLabel.clipsToBounds  =  true
+    toastLabel.removeFromSuperview()
+    window.addSubview(toastLabel)
+    toastLabel.bringSubview(toFront: window)
+    NSLayoutConstraint.activate([
+        toastLabel.leadingAnchor.constraint(greaterThanOrEqualTo: window.leadingAnchor, constant: 20),
+        toastLabel.trailingAnchor.constraint(lessThanOrEqualTo: window.trailingAnchor,constant: -20),
+        toastLabel.bottomAnchor.constraint(greaterThanOrEqualTo: window.bottomAnchor, constant:  -100),
+        toastLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 30),
+        toastLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 150),
+        toastLabel.centerXAnchor.constraint(equalTo: window.centerXAnchor)
+        
+    ])
+    UIView.animate(withDuration: 8.0, delay: 0.0, options: .curveEaseOut, animations: {
+        toastLabel.alpha = 0.0
+    }, completion: {(isCompleted) in
+        toastLabel.removeFromSuperview()
+    })
+}
