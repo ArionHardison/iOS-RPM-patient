@@ -7,19 +7,22 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class MedicalRecordsViewController: UIViewController {
 
     @IBOutlet weak var listTable: UITableView!
+    
+     var medical : [Medical] = [Medical]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         initialLoads()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
+        self.getMedicalRecords()
     }
 
 }
@@ -48,13 +51,20 @@ extension MedicalRecordsViewController {
 
 extension MedicalRecordsViewController : UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.medical.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = self.listTable.dequeueReusableCell(withIdentifier: XIB.Names.FavDoctorTableViewCell, for: indexPath) as! FavDoctorTableViewCell
+        self.populateData(cell: cell, data: self.medical[indexPath.row])
         return cell
+    }
+    
+    func populateData(cell : FavDoctorTableViewCell , data : Medical){
+        cell.labelName.text = "\(data.hospital?.first_name ?? "") \(data.hospital?.last_name ?? "")"
+        cell.doctorImage.setURLImage(data.hospital?.doctor_profile?.profile_pic ?? "")
+        cell.labelSpeciality.text = data.hospital?.doctor_profile?.speciality?.name ?? ""
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -65,4 +75,29 @@ extension MedicalRecordsViewController : UITableViewDelegate,UITableViewDataSour
         return 80
     }
 
+}
+//Api calls
+extension MedicalRecordsViewController : PresenterOutputProtocol{
+    func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
+        switch String(describing: modelClass) {
+            case model.type.MedicalRecordsModel:
+                let data = dataDict as? MedicalRecordsModel
+                self.medical = data?.medical ?? [Medical]()
+                
+                self.listTable.reloadData()
+                break
+            
+            default: break
+            
+        }
+    }
+    
+    func showError(error: CustomError) {
+        
+    }
+    
+    func getMedicalRecords(){
+        self.presenter?.HITAPI(api: Base.medicalRecords.rawValue, params: nil, methodType: .GET, modelClass: MedicalRecordsModel.self, token: true)
+    }
+    
 }

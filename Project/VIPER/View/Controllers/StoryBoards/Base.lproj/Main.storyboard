@@ -3716,6 +3716,95 @@
             </objects>
             <point key="canvasLocation" x="2889.8550724637685" y="3384.375"/>
         </scene>
+        <!--AlertVC-->
+        <scene sceneID="PJe-sV-cmw">
+            <objects>
+                <viewController storyboardIdentifier="AlertVC" id="HzY-Df-soM" customClass="AlertVC" customModule="Mi_Dokter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pSr-jT-edx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jy6-NP-b6L">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YAW-l2-74J">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.67000000000000004" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rLz-Ay-nV8">
+                                <rect key="frame" x="20" y="373" width="374" height="150"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eO1-dD-GjO" userLabel="closeImage">
+                                        <rect key="frame" x="344" y="10" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="9OW-lt-1Fh"/>
+                                            <constraint firstAttribute="width" constant="20" id="Pze-Zk-IOT"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="eO1-dD-GjO" firstAttribute="top" secondItem="rLz-Ay-nV8" secondAttribute="top" constant="10" id="27o-3h-C6b"/>
+                                    <constraint firstAttribute="trailing" secondItem="eO1-dD-GjO" secondAttribute="trailing" constant="10" id="Of6-VY-gEl"/>
+                                    <constraint firstAttribute="height" constant="150" id="lZJ-Sz-uj8"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="STm-rA-zVC">
+                                <rect key="frame" x="147" y="388" width="120" height="120"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6lY-DM-qVx" customClass="AnimationView" customModule="Lottie">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="traffic"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="6lY-DM-qVx" secondAttribute="bottom" id="EB6-bY-eej"/>
+                                    <constraint firstAttribute="trailing" secondItem="6lY-DM-qVx" secondAttribute="trailing" id="QCa-2g-Jg2"/>
+                                    <constraint firstItem="6lY-DM-qVx" firstAttribute="leading" secondItem="STm-rA-zVC" secondAttribute="leading" id="mO8-IX-wMN"/>
+                                    <constraint firstItem="6lY-DM-qVx" firstAttribute="top" secondItem="STm-rA-zVC" secondAttribute="top" id="qLP-jF-Fim"/>
+                                    <constraint firstAttribute="width" constant="120" id="xWp-m5-asr"/>
+                                    <constraint firstAttribute="height" constant="120" id="xhL-To-lA8"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jy6-NP-b6L" firstAttribute="trailing" secondItem="EGn-sj-JSU" secondAttribute="trailing" id="9WL-wd-vim"/>
+                            <constraint firstItem="STm-rA-zVC" firstAttribute="centerY" secondItem="pSr-jT-edx" secondAttribute="centerY" id="EDm-Zs-yHB"/>
+                            <constraint firstAttribute="bottom" secondItem="jy6-NP-b6L" secondAttribute="bottom" id="Kdu-43-KER"/>
+                            <constraint firstItem="YAW-l2-74J" firstAttribute="leading" secondItem="EGn-sj-JSU" secondAttribute="leading" id="Kgp-ck-Dly"/>
+                            <constraint firstItem="rLz-Ay-nV8" firstAttribute="centerX" secondItem="pSr-jT-edx" secondAttribute="centerX" id="WAw-wO-UrF"/>
+                            <constraint firstItem="EGn-sj-JSU" firstAttribute="trailing" secondItem="rLz-Ay-nV8" secondAttribute="trailing" constant="20" id="ZUm-ik-qer"/>
+                            <constraint firstItem="YAW-l2-74J" firstAttribute="top" secondItem="pSr-jT-edx" secondAttribute="top" id="eIs-Ps-ieA"/>
+                            <constraint firstItem="STm-rA-zVC" firstAttribute="centerX" secondItem="pSr-jT-edx" secondAttribute="centerX" id="eV6-RK-IMo"/>
+                            <constraint firstAttribute="bottom" secondItem="YAW-l2-74J" secondAttribute="bottom" id="g3v-x7-71L"/>
+                            <constraint firstItem="EGn-sj-JSU" firstAttribute="trailing" secondItem="YAW-l2-74J" secondAttribute="trailing" id="iOP-Mx-0n0"/>
+                            <constraint firstItem="jy6-NP-b6L" firstAttribute="leading" secondItem="EGn-sj-JSU" secondAttribute="leading" id="o92-Mc-T72"/>
+                            <constraint firstItem="jy6-NP-b6L" firstAttribute="top" secondItem="pSr-jT-edx" secondAttribute="top" id="twh-ZK-Jii"/>
+                            <constraint firstItem="rLz-Ay-nV8" firstAttribute="leading" secondItem="EGn-sj-JSU" secondAttribute="leading" constant="20" id="uSK-21-eEy"/>
+                            <constraint firstItem="rLz-Ay-nV8" firstAttribute="centerY" secondItem="pSr-jT-edx" secondAttribute="centerY" id="zXo-Xx-nF4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="EGn-sj-JSU"/>
+                    </view>
+                    <connections>
+                        <outlet property="alertCancelView" destination="YAW-l2-74J" id="9Hj-Xm-sJi"/>
+                        <outlet property="alertView" destination="rLz-Ay-nV8" id="3c7-7r-bAc"/>
+                        <outlet property="alertViewHeight" destination="lZJ-Sz-uj8" id="3Zg-Ih-VrF"/>
+                        <outlet property="alertViewLeading" destination="uSK-21-eEy" id="hQl-vx-eVC"/>
+                        <outlet property="alertViewTralling" destination="ZUm-ik-qer" id="Q5Z-ls-eJq"/>
+                        <outlet property="animationView" destination="6lY-DM-qVx" id="FKF-Yg-eji"/>
+                        <outlet property="bgImageView" destination="jy6-NP-b6L" id="hcj-DK-gua"/>
+                        <outlet property="loderView" destination="STm-rA-zVC" id="F3a-6f-dUm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Nq-mr-WzF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2033" y="337"/>
+        </scene>
     </scenes>
     <resources>
         <image name="1" width="241" height="179"/>

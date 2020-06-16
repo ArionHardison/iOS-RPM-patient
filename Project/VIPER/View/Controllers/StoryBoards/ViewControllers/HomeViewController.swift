@@ -59,22 +59,6 @@
         private func initialLoads() {
             self.viewSideMenu.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.sideMenuAction)))
             
-            let email = "demo@demo.com"
-            var login = LoginParameters()
-            login.username = email
-            login.password = "123456"
-            login.client_id = appClientId
-            login.client_secret = appSecretKey
-            login.device_id = deviceId
-            login.device_type = "ios"
-            login.device_token = deviceTokenString
-            self.loader.isHidden = false
-            
-           /* self.presenter?.GETPOST(api: Base.signIn.rawValue, params: login.toLoginParameters(), methodType: .POST, modelClass: LoginModel.self, token: false) */
-            
-            self.presenter?.HITAPI(api: "api/v1/create", params: ["name":"test","salary":"123","age":"23"], methodType: .POST, modelClass: Json4Swift_Base.self, token: false)
-            
-            
             let image =  UIImageView(image: UIImage(imageLiteralResourceName: "google"))
             searchBar.searchTextField.leftViewMode = .never
            
@@ -99,13 +83,6 @@
                 self.viewSideMenu.addPressAnimation()
          }
         
-        
-//       override var prefersStatusBarHidden: Bool
-//        {
-//
-//        return true
-//
-//        }
       
     }
     
@@ -212,7 +189,13 @@
         let LoginModel = "LoginModel"
         let Json4Swift_Base = "Json4Swift_Base"
         let MobileVerifyModel = "MobileVerifyModel"
-        
+        let SignupResponseModel = "SignupResponseModel"
+        let AppointmentModel = "AppointmentModel"
+        let CommonModel = "CommonModel"
+        let CategoryList = "CategoryList"
+        let DoctorsDetailModel = "DoctorsDetailModel"
+        let ArticleModel = "ArticleModel"
+        let MedicalRecordsModel = "MedicalRecordsModel"
     }
 
     

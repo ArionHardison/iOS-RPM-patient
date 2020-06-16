@@ -50,6 +50,7 @@ struct Storyboard {
     let SelectedProblemAreaVC = "SelectedProblemAreaVC"
     let SummaryViewController = "SummaryViewController"
     let ChatViewController = "ChatViewController"
+    let AlertVC = "AlertVC"
     
 }
 

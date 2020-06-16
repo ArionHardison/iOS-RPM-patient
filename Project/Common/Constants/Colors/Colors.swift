@@ -51,6 +51,10 @@ extension UIColor {
         return UIColor(named: "AppBlueColor") ?? UIColor.blue
     }
     
+    static var LightGreen : UIColor{
+        return UIColor(named: "LightGreen") ?? UIColor.clear
+    }
+    
     
     // Primary Color
     static var primary : UIColor {

@@ -18,7 +18,7 @@ class UpcomingTableviewCell: UITableViewCell {
     
     @IBOutlet weak var labelSubtitle: UILabel!
     @IBOutlet weak var buttonCancel: UIButton!
-    @IBOutlet weak var labelStatus: UILabel!
+    @IBOutlet weak var labelStatus: PaddingLabel!
     
     @IBOutlet weak var statusWidth: NSLayoutConstraint!
     override func awakeFromNib() {

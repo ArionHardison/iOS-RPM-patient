@@ -89,6 +89,15 @@
 		107372802497D2150080A5A5 /* UXUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073727F2497D2150080A5A5 /* UXUserDefaults.swift */; };
 		107372822497D7000080A5A5 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107372812497D7000080A5A5 /* EmailViewController.swift */; };
 		107372842497D97C0080A5A5 /* UXString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107372832497D97C0080A5A5 /* UXString.swift */; };
+		107372872498B0FF0080A5A5 /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107372862498B0FF0080A5A5 /* AlertBuilder.swift */; };
+		107372892498B1050080A5A5 /* AlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107372882498B1050080A5A5 /* AlertVC.swift */; };
+		1073728B2498B3AF0080A5A5 /* UXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073728A2498B3AF0080A5A5 /* UXViewController.swift */; };
+		1073728E2498B5370080A5A5 /* DatePickerAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1073728D2498B5370080A5A5 /* DatePickerAlert.xib */; };
+		107372902498B6D80080A5A5 /* DatePickerAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073728F2498B6D80080A5A5 /* DatePickerAlert.swift */; };
+		107372932498DB280080A5A5 /* AppointmentEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107372922498DB280080A5A5 /* AppointmentEntity.swift */; };
+		107372952498EC630080A5A5 /* CommonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107372942498EC630080A5A5 /* CommonModel.swift */; };
+		107372972498F9920080A5A5 /* CategoryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107372962498F9920080A5A5 /* CategoryEntity.swift */; };
+		1073729A249902600080A5A5 /* DoctorsDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10737299249902600080A5A5 /* DoctorsDetailModel.swift */; };
 		108010BA2494A69400C7249D /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108010B92494A69400C7249D /* ReminderViewController.swift */; };
 		108010BE2494C6DE00C7249D /* ReminderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108010BD2494C6DE00C7249D /* ReminderDetailViewController.swift */; };
 		108010C02494DAEE00C7249D /* ServiceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108010BF2494DAEE00C7249D /* ServiceListViewController.swift */; };
@@ -103,6 +112,9 @@
 		10C22C142495240800D43704 /* ChatRightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10C22C132495240800D43704 /* ChatRightCell.xib */; };
 		10C22C162495241E00D43704 /* ChatRightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C22C152495241E00D43704 /* ChatRightCell.swift */; };
 		10C22C182495243300D43704 /* ChatLeftCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10C22C172495243300D43704 /* ChatLeftCell.xib */; };
+		10F53257249909D000394A87 /* UXImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F53256249909D000394A87 /* UXImage.swift */; };
+		10F5325924991C0400394A87 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F5325824991C0400394A87 /* ArticleModel.swift */; };
+		10F5325B2499246C00394A87 /* MedicalRecordsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F5325A2499246C00394A87 /* MedicalRecordsModel.swift */; };
 		1217F1CA2435BC1F0085F924 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1217F1C92435BC1F0085F924 /* User.storyboard */; };
 		122488B42438F7D8005E7689 /* DateOfBirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122488B32438F7D8005E7689 /* DateOfBirthViewController.swift */; };
 		12384B3524600D990057943D /* DoctorDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12384B3424600D990057943D /* DoctorDetailsController.swift */; };
@@ -266,6 +278,15 @@
 		1073727F2497D2150080A5A5 /* UXUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXUserDefaults.swift; sourceTree = "<group>"; };
 		107372812497D7000080A5A5 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 		107372832497D97C0080A5A5 /* UXString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXString.swift; sourceTree = "<group>"; };
+		107372862498B0FF0080A5A5 /* AlertBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
+		107372882498B1050080A5A5 /* AlertVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertVC.swift; sourceTree = "<group>"; };
+		1073728A2498B3AF0080A5A5 /* UXViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXViewController.swift; sourceTree = "<group>"; };
+		1073728D2498B5370080A5A5 /* DatePickerAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerAlert.xib; sourceTree = "<group>"; };
+		1073728F2498B6D80080A5A5 /* DatePickerAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerAlert.swift; sourceTree = "<group>"; };
+		107372922498DB280080A5A5 /* AppointmentEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentEntity.swift; sourceTree = "<group>"; };
+		107372942498EC630080A5A5 /* CommonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonModel.swift; sourceTree = "<group>"; };
+		107372962498F9920080A5A5 /* CategoryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEntity.swift; sourceTree = "<group>"; };
+		10737299249902600080A5A5 /* DoctorsDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorsDetailModel.swift; sourceTree = "<group>"; };
 		108010B92494A69400C7249D /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
 		108010BD2494C6DE00C7249D /* ReminderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDetailViewController.swift; sourceTree = "<group>"; };
 		108010BF2494DAEE00C7249D /* ServiceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceListViewController.swift; sourceTree = "<group>"; };
@@ -280,6 +301,9 @@
 		10C22C132495240800D43704 /* ChatRightCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatRightCell.xib; sourceTree = "<group>"; };
 		10C22C152495241E00D43704 /* ChatRightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRightCell.swift; sourceTree = "<group>"; };
 		10C22C172495243300D43704 /* ChatLeftCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatLeftCell.xib; sourceTree = "<group>"; };
+		10F53256249909D000394A87 /* UXImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXImage.swift; sourceTree = "<group>"; };
+		10F5325824991C0400394A87 /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
+		10F5325A2499246C00394A87 /* MedicalRecordsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalRecordsModel.swift; sourceTree = "<group>"; };
 		1217F1C92435BC1F0085F924 /* User.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		122488B32438F7D8005E7689 /* DateOfBirthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOfBirthViewController.swift; sourceTree = "<group>"; };
 		12384B3424600D990057943D /* DoctorDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorDetailsController.swift; sourceTree = "<group>"; };
@@ -415,6 +439,7 @@
 		084B30DA20B01DAA00B79318 /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				107372852498B0C70080A5A5 /* AlertViews */,
 				104A9F6F249770E900337AB9 /* Helper */,
 				08C0660520B0386F00A8C5F0 /* Readme.md */,
 				084B347C20B02E0D00B79318 /* VIPER */,
@@ -750,12 +775,18 @@
 		084B348320B02E7800B79318 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				10737298249902480080A5A5 /* DoctorsDetails */,
+				107372912498DB0C0080A5A5 /* AppointmentModel */,
 				104A9F6C24975D8500337AB9 /* LoginSignup */,
 				084B34CF20B0424E00B79318 /* Country.swift */,
 				0825A9B62276F12C00DBD50F /* Json4Swift_Base.swift */,
 				0825A9B72276F12C00DBD50F /* Success.swift */,
 				084B34CD20B0422000B79318 /* ErrorLog.swift */,
 				084B348420B02E9400B79318 /* User.swift */,
+				107372942498EC630080A5A5 /* CommonModel.swift */,
+				107372962498F9920080A5A5 /* CategoryEntity.swift */,
+				10F5325824991C0400394A87 /* ArticleModel.swift */,
+				10F5325A2499246C00394A87 /* MedicalRecordsModel.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1072,6 +1103,41 @@
 			path = CountryPicker;
 			sourceTree = "<group>";
 		};
+		107372852498B0C70080A5A5 /* AlertViews */ = {
+			isa = PBXGroup;
+			children = (
+				1073728C2498B5090080A5A5 /* xibs+classes */,
+				107372862498B0FF0080A5A5 /* AlertBuilder.swift */,
+				107372882498B1050080A5A5 /* AlertVC.swift */,
+			);
+			path = AlertViews;
+			sourceTree = "<group>";
+		};
+		1073728C2498B5090080A5A5 /* xibs+classes */ = {
+			isa = PBXGroup;
+			children = (
+				1073728D2498B5370080A5A5 /* DatePickerAlert.xib */,
+				1073728F2498B6D80080A5A5 /* DatePickerAlert.swift */,
+			);
+			path = "xibs+classes";
+			sourceTree = "<group>";
+		};
+		107372912498DB0C0080A5A5 /* AppointmentModel */ = {
+			isa = PBXGroup;
+			children = (
+				107372922498DB280080A5A5 /* AppointmentEntity.swift */,
+			);
+			path = AppointmentModel;
+			sourceTree = "<group>";
+		};
+		10737298249902480080A5A5 /* DoctorsDetails */ = {
+			isa = PBXGroup;
+			children = (
+				10737299249902600080A5A5 /* DoctorsDetailModel.swift */,
+			);
+			path = DoctorsDetails;
+			sourceTree = "<group>";
+		};
 		108010BC2494C6BE00C7249D /* Reminder */ = {
 			isa = PBXGroup;
 			children = (
@@ -1361,6 +1427,8 @@
 				1073727A2497A8020080A5A5 /* UXLabel.swift */,
 				1073727F2497D2150080A5A5 /* UXUserDefaults.swift */,
 				107372832497D97C0080A5A5 /* UXString.swift */,
+				1073728A2498B3AF0080A5A5 /* UXViewController.swift */,
+				10F53256249909D000394A87 /* UXImage.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1499,6 +1567,7 @@
 				779DBC552493F9570055FCB9 /* HealthFeedTableViewCell.xib in Resources */,
 				10C22C182495243300D43704 /* ChatLeftCell.xib in Resources */,
 				779DBC4A2493E7600055FCB9 /* FavDoctorTableViewCell.xib in Resources */,
+				1073728E2498B5370080A5A5 /* DatePickerAlert.xib in Resources */,
 				905383762490D38F009CCEE4 /* PhotosCell.xib in Resources */,
 				7E6AEF542488D4B5005F0899 /* ChatCommentCell.xib in Resources */,
 				08C066F220B039A900A8C5F0 /* countryCodes.json in Resources */,
@@ -1599,11 +1668,13 @@
 				084B346620B02C6A00B79318 /* Colors.swift in Sources */,
 				12AE3EE52451C88800E90872 /* OnlineAvailabeDoctorsController.swift in Sources */,
 				084B343920B029E900B79318 /* ParallaxHeader.swift in Sources */,
+				1073729A249902600080A5A5 /* DoctorsDetailModel.swift in Sources */,
 				084B343E20B02A3800B79318 /* Toast.swift in Sources */,
 				102D39AD2493AC2500C61CC6 /* SearchViewController.swift in Sources */,
 				08C066F720B039C400A8C5F0 /* GMSMapView.swift in Sources */,
 				102D39AB2493A6E300C61CC6 /* ReviewCell.swift in Sources */,
 				084B346920B02C8000B79318 /* AppData.swift in Sources */,
+				107372872498B0FF0080A5A5 /* AlertBuilder.swift in Sources */,
 				08DBC87B20B9F70800AE89E6 /* DatePickerDialog.swift in Sources */,
 				12AE3EF02451D24E00E90872 /* CategoryListController.swift in Sources */,
 				084B344A20B02AD900B79318 /* AVPlayerHelper.swift in Sources */,
@@ -1624,6 +1695,8 @@
 				084B34C920B0318700B79318 /* TextField.swift in Sources */,
 				90526149248FE0B1008CC272 /* UXView.swift in Sources */,
 				084B349620B02F8800B79318 /* File.swift in Sources */,
+				10F5325924991C0400394A87 /* ArticleModel.swift in Sources */,
+				107372892498B1050080A5A5 /* AlertVC.swift in Sources */,
 				12384B3524600D990057943D /* DoctorDetailsController.swift in Sources */,
 				12681EFE2438D5A30072193B /* SigninInViewController.swift in Sources */,
 				084B34BE20B0310800B79318 /* Button.swift in Sources */,
@@ -1639,6 +1712,7 @@
 				107372802497D2150080A5A5 /* UXUserDefaults.swift in Sources */,
 				12681F012438E1840072193B /* NameAndEmailViewController.swift in Sources */,
 				12B6E215244717DB00BE448F /* OnlineDoctorCell.swift in Sources */,
+				107372972498F9920080A5A5 /* CategoryEntity.swift in Sources */,
 				108010C32494E1B700C7249D /* ChatQuestionViewController.swift in Sources */,
 				084B347820B02DD800B79318 /* Common.swift in Sources */,
 				108010C62494EA3900C7249D /* SuggestedCell.swift in Sources */,
@@ -1659,6 +1733,7 @@
 				084B34BB20B030F100B79318 /* Label.swift in Sources */,
 				084B347F20B02E5D00B79318 /* WebService.swift in Sources */,
 				084B349F20B02FD500B79318 /* String.swift in Sources */,
+				1073728B2498B3AF0080A5A5 /* UXViewController.swift in Sources */,
 				084B34A820B0303C00B79318 /* NavigationBar.swift in Sources */,
 				9052614E248FEBBE008CC272 /* ServiceSpecializationCell.swift in Sources */,
 				12B6E2062446E7DF00BE448F /* LogoCell.swift in Sources */,
@@ -1680,7 +1755,9 @@
 				107372842497D97C0080A5A5 /* UXString.swift in Sources */,
 				084B345D20B02C0500B79318 /* Constants.swift in Sources */,
 				084B344120B02A5000B79318 /* Bind.swift in Sources */,
+				107372932498DB280080A5A5 /* AppointmentEntity.swift in Sources */,
 				084B343A20B029E900B79318 /* ParallaxHeaderMode.swift in Sources */,
+				107372902498B6D80080A5A5 /* DatePickerAlert.swift in Sources */,
 				0825A9B92276F12C00DBD50F /* Success.swift in Sources */,
 				084B349C20B02FB900B79318 /* Int.swift in Sources */,
 				12681F042438F1E70072193B /* GenderConfirmationVC.swift in Sources */,
@@ -1688,6 +1765,7 @@
 				084B34C120B0311A00B79318 /* View.swift in Sources */,
 				084B34C820B0318700B79318 /* TextFieldEffects.swift in Sources */,
 				122488B42438F7D8005E7689 /* DateOfBirthViewController.swift in Sources */,
+				10F53257249909D000394A87 /* UXImage.swift in Sources */,
 				084B345320B02B7200B79318 /* ApiList.swift in Sources */,
 				084B34B120B0308F00B79318 /* Application.swift in Sources */,
 				779DBC572493F9570055FCB9 /* HealthFeedDetailsViewController.swift in Sources */,
@@ -1701,6 +1779,8 @@
 				084B348D20B02ED500B79318 /* Interactor.swift in Sources */,
 				084B346320B02C5500B79318 /* Identifiers.swift in Sources */,
 				1073727E2497B6680080A5A5 /* VerifyNumVC.swift in Sources */,
+				10F5325B2499246C00394A87 /* MedicalRecordsModel.swift in Sources */,
+				107372952498EC630080A5A5 /* CommonModel.swift in Sources */,
 				08C066EF20B0399D00A8C5F0 /* CircularTransition.swift in Sources */,
 				084B342D20B0297A00B79318 /* GoogleMapsHelper.swift in Sources */,
 				12B6E21A24471C1300BE448F /* ReminderCell.swift in Sources */,

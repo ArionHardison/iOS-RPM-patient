@@ -46,7 +46,7 @@ extension Webservice : WebServiceProtocol {
       
         if(token) {
             
-            let accessToken = User.main.accessToken ?? ""
+            let accessToken = UserDefaultConfig.Token ?? ""
             headers.updateValue("\(WebConstants.string.bearer) \(accessToken)", forKey: WebConstants.string.Authorization)
         }
         
@@ -59,6 +59,7 @@ extension Webservice : WebServiceProtocol {
             print("**url", url)
             print("**httpMethod", httpMethod!)
             print("**params", params)
+            print("**params", UserDefaultConfig.Token ?? "")
             
             Alamofire.request(url, method: httpMethod!, parameters: params,encoding: JSONEncoding.default, headers: headers).responseJSON{ response in
                 print("response.result",response.result)

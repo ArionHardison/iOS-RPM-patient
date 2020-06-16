@@ -78,34 +78,21 @@ class Router: PresenterToRouterProtocol{
         mainWebservice.interactor = mainInteractor
         presenterObject = view?.presenter
         if retrieveUserData() {
-//            let navigationController = UINavigationController(rootViewController: user.instantiateViewController(withIdentifier: Storyboard.Ids.HomeViewController))
-//            navigationController.isNavigationBarHidden = true
-//            return navigationController
-//
             
             let vc = main.instantiateViewController(withIdentifier: Storyboard.Ids.DrawerController)
-        
-                       let navigationController = UINavigationController(rootViewController: vc)
-                       navigationController.isNavigationBarHidden = true
-                navigationController.modalPresentationCapturesStatusBarAppearance = false
-                       return navigationController
             
-            
-            
+            let navigationController = UINavigationController(rootViewController: Common.setDrawerController())
+            navigationController.isNavigationBarHidden = true
+            navigationController.modalPresentationCapturesStatusBarAppearance = false
+            return navigationController
             
         }else{
-//            let vc = main.instantiateViewController(withIdentifier: Storyboard.Ids.DrawerController)
-//            let navigationController = UINavigationController(rootViewController: vc)
-//            navigationController.isNavigationBarHidden = true
-//            return navigationController
-            
-            
             let navigationController = UINavigationController(rootViewController: user.instantiateViewController(withIdentifier: Storyboard.Ids.SigninInViewController))
-                      navigationController.isNavigationBarHidden = true
-                      return navigationController
-                      
+            navigationController.isNavigationBarHidden = true
+            return navigationController
+            
         }
-      
+        
     }
     
 }

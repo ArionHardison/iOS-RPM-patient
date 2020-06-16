@@ -91,7 +91,7 @@
                                         </constraints>
                                         <state key="normal" image="tray.and.arrow.up.fill" catalog="system"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHs-Tw-n2x">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHs-Tw-n2x">
                                         <rect key="frame" x="73" y="99.5" width="277" height="0.5"/>
                                         <color key="backgroundColor" red="0.72549515959999999" green="0.72548133130000003" blue="0.72549074889999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
@@ -212,7 +212,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="70" id="BaI-i0-B0M"/>
                                                 </constraints>
-                                                <state key="normal" title="Call" image="phone" catalog="system">
+                                                <state key="normal" title="Call">
                                                     <color key="titleColor" red="0.28768402339999999" green="0.5616722703" blue="0.95298331979999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -277,7 +277,16 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="DoctorTypeLbl" destination="0yk-ww-dlQ" id="2dM-sv-xV7"/>
+                <outlet property="ExpncLbl" destination="yXa-hu-IIi" id="3uB-bu-6LL"/>
+                <outlet property="SplistLbl" destination="3KZ-uv-0q2" id="AWX-El-wJj"/>
+                <outlet property="availablityLbl" destination="8LD-gk-nSm" id="Ydv-8X-uvP"/>
+                <outlet property="callBtn" destination="611-wY-lwx" id="fRz-wf-Sgk"/>
+                <outlet property="clinicNameLbl" destination="QZ3-kO-zOd" id="k4p-8L-ZnQ"/>
                 <outlet property="docterImage" destination="j2i-hi-MCn" id="RW2-td-akY"/>
+                <outlet property="docterName" destination="GWO-SO-eIl" id="bkG-3d-Bse"/>
+                <outlet property="feeLbl" destination="iTv-FO-5pj" id="xin-R9-a9s"/>
+                <outlet property="likeCountLbl" destination="mGj-YS-Bls" id="UeP-xf-fcG"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
         </tableViewCell>
@@ -285,7 +294,6 @@
     <resources>
         <image name="doctor" width="64" height="64"/>
         <image name="like" width="12" height="12"/>
-        <image name="phone" catalog="system" width="64" height="56"/>
         <image name="pin" width="32" height="32"/>
         <image name="tray.and.arrow.up.fill" catalog="system" width="64" height="56"/>
     </resources>

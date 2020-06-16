@@ -41,7 +41,6 @@ enum Base : String{
     case signIn = "api/oauth/token"
     case signUp = "/api/user/signup"
     case login = "/oauth/token"
-    case logout = "/api/user/logout"
     case resepwd = "/api/provider/profile/password"
     case distanceMarix = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins="
     case updateLocation = "api/provider/profile/location"
@@ -50,6 +49,14 @@ enum Base : String{
     //loginSingup
     case generateOTP = "/api/patient/otp"
     case verify_otp = "/api/patient/verify_otp"
+    case signup = "api/patient/signup"
+    case logout = "api/patient/logout"
+    case appointment = "/api/patient/appointment"
+    case cancelAppointment = "/api/patient/cancel_appointment"
+    case catagoryList = "/api/patient/doctor_catagory"
+    case addWallet = "/api/patient/add_wallet"
+    case articles = "api/patient/articles"
+    case medicalRecords = "/api/patient/medical_records"
    
     init(fromRawValue: String){
         self = Base(rawValue: fromRawValue) ?? .signUp

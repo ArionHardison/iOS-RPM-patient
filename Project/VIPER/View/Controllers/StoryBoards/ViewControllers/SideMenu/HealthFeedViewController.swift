@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class HealthFeedViewController: UIViewController {
 
     @IBOutlet weak var tableViewHealthFeed: UITableView!
+    
+    var article : [Article] = [Article]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +22,7 @@ class HealthFeedViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
+         self.getArticlesList()
     }
 
 
@@ -62,23 +66,51 @@ extension HealthFeedViewController {
 
 extension HealthFeedViewController : UITableViewDelegate, UITableViewDataSource {
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return self.article.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "HealthFeedTableViewCell") as! HealthFeedTableViewCell
         cell.selectionStyle = .none
-        
+        self.populateCell(cell: cell, data: self.article[indexPath.row])
         return cell
+    }
+    
+    func populateCell(cell : HealthFeedTableViewCell , data : Article){
+        cell.ArticleImage.setURLImage(data.cover_photo ?? "")
+        cell.ArticleTitle.text = data.name ?? ""
+        cell.Articlecontent.text = data.description ?? ""
+        cell.publishedDate.text = dateConvertor(data.created_at ?? "", _input: .date_time, _output: .DMY)
     }
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         self.push(id: Storyboard.Ids.HealthFeedDetailsViewController, animation: true)
     }
+}
+
+
+//Api calls
+extension HealthFeedViewController : PresenterOutputProtocol{
+    func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
+        switch String(describing: modelClass) {
+            case model.type.ArticleModel:
+                let data = dataDict as? ArticleModel
+                self.article = data?.article ?? [Article]()
+                self.tableViewHealthFeed.reloadData()
+                break
+            
+            default: break
+            
+        }
+    }
     
+    func showError(error: CustomError) {
+        
+    }
+    
+    func getArticlesList(){
+        self.presenter?.HITAPI(api: Base.articles.rawValue, params: nil, methodType: .GET, modelClass: ArticleModel.self, token: true)
+    }
     
 }

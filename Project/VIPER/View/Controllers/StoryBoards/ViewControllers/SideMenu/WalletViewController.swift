@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class WalletViewController: UIViewController {
 
@@ -16,19 +17,30 @@ class WalletViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         initialLoads()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
     }
 
+    func setupAction(){
+        self.buttonAddMoney.addTap {
+            self.view.endEditing(true)
+            if self.textFieldAmount.text?.isEmpty ?? false{
+                showToast(msg: "Enter Valid amount to add wallet")
+            }else{
+                self.addMoney(amount: self.textFieldAmount.getText)
+            }
+        }
+    }
 
+    
 }
 
 extension WalletViewController {
     func initialLoads() {
         setupNavigationBar()
+        self.setupAction()
 
     }
     private func setupNavigationBar() {
@@ -39,5 +51,34 @@ extension WalletViewController {
          self.navigationController?.navigationBar.isTranslucent = false
          self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.02583951317, green: 0.1718649864, blue: 0.4112361372, alpha: 1)
 
+    }
+}
+
+
+//Api calls
+extension WalletViewController : PresenterOutputProtocol{
+    func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
+        switch String(describing: modelClass) {
+            case model.type.CommonModel:
+                 let data = dataDict as? CommonModel
+                 showToast(msg: data?.message ?? "")
+                 self.textFieldAmount.text = ""
+                break
+            
+            default: break
+            
+        }
+    }
+    
+    func showError(error: CustomError) {
+        
+    }
+    
+    func addMoney(amount : String){
+        self.presenter?.HITAPI(api: Base.addWallet.rawValue, params: ["amount" : amount], methodType: .POST, modelClass: CommonModel.self, token: true)
+    }
+    
+    func cancelAppointment(id : String){
+        self.presenter?.HITAPI(api: Base.cancelAppointment.rawValue, params: ["id" : id], methodType: .POST, modelClass: CommonModel.self, token: true)
     }
 }

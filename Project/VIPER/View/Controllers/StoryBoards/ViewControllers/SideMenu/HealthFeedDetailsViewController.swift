@@ -7,19 +7,20 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class HealthFeedDetailsViewController: UIViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         initialLoads()
     }
     
 
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
+       
     }
     
 
@@ -40,3 +41,4 @@ extension HealthFeedDetailsViewController {
          self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.02583951317, green: 0.1718649864, blue: 0.4112361372, alpha: 1)
     }
 }
+

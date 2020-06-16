@@ -13,5 +13,7 @@ target 'MiDokter User' do
     pod 'KWDrawerController', '~> 4.1.6'
     pod 'AlamofireObjectMapper'
     pod 'CountryPickerView'
+    pod 'lottie-ios'
+    pod 'PINRemoteImage'
     
 end

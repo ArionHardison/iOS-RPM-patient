@@ -103,9 +103,10 @@ internal func storeInUserDefaults(){
 // Retrieve from UserDefaults
 internal func retrieveUserData()->Bool{
 
-    if let data = UserDefaults.standard.object(forKey: Keys.list.userData) as? Data, let userData = NSKeyedUnarchiver.unarchiveObject(with: data) as? User {
-        
-        User.main = userData
+    Log.i("UserToken \( UserDefaultConfig.Token)")
+    if UserDefaultConfig.Token.isEmpty{
+        return false
+    }else{
         
         return true
     }
@@ -121,7 +122,7 @@ internal func clearUserDefaults(){
     UserDefaults.standard.set(nil, forKey: Keys.list.userData)
     UserDefaults.standard.removeVolatileDomain(forName: Bundle.main.bundleIdentifier!)
     UserDefaults.standard.synchronize()
-    
+    UserDefaultConfig.Token = ""
     print("Clear UserDefaults--", UserDefaults.standard.value(forKey: Keys.list.userData) ?? "Success")
     
 }
@@ -166,7 +167,7 @@ internal func forceLogout(with message : String? = nil) {
     
     clearUserDefaults()
     UIApplication.shared.windows.last?.rootViewController?.popOrDismiss(animation: true)
-    UIApplication.shared.windows.first?.rootViewController = Router.main.instantiateViewController(withIdentifier: Storyboard.Ids.DrawerController)
+    UIApplication.shared.windows.first?.rootViewController = Router.createModule() //Router.main.instantiateViewController(withIdentifier: Storyboard.Ids.DrawerController)
     UIApplication.shared.windows.first?.makeKeyAndVisible()
     
     if message != nil {

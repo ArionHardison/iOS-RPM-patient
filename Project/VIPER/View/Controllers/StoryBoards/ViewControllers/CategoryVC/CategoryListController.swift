@@ -7,28 +7,20 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class CategoryListController: UIViewController {
     
     @IBOutlet weak var categoryListCV: UICollectionView!
     
+      var category : [Category] = [Category]()
     
-    let categoryListArray = ["Womens Health","Skin & Hair","Child Specialist","General Physician","Dental Care","Ear Nose Throat","Ayurvede","Bone & Joints","Sex Specialist","Eye Specialist","Digestive Issues","Mental Wellness","Physiotheraphy","Diabetes Management","Lungs & Breathing","Heart"]
-    
+     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
         registerCell()
         setNav()
-//       guard let collectionView = categoryListCV, let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
-//       flowLayout.minimumInteritemSpacing = 10
-//       flowLayout.minimumLineSpacing = 10
-//       flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-       
-        
-        
         if let layout = categoryListCV?.collectionViewLayout as? UICollectionViewFlowLayout{
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
@@ -41,6 +33,7 @@ class CategoryListController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
+        self.getCatagoryList()
     }
     
     
@@ -76,7 +69,7 @@ extension CategoryListController : UICollectionViewDelegate,UICollectionViewData
         {
         
        
-        return categoryListArray.count
+            return self.category.count
         
         
         }
@@ -85,7 +78,7 @@ extension CategoryListController : UICollectionViewDelegate,UICollectionViewData
         
 
         let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: XIB.Names.CategoryCell, for: indexPath) as! CategoryCell
-        cell.labelCategoryName.text = self.categoryListArray[indexPath.row]
+        cell.labelCategoryName.text = self.category[indexPath.row].name
         if indexPath.row%2 == 0{
             cell.leftstripeview.isHidden = false
         }else{
@@ -107,10 +100,41 @@ extension CategoryListController : UICollectionViewDelegate,UICollectionViewData
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        self.push(id: Storyboard.Ids.DoctorsListController, animation: true)
+        let vc = DoctorsListController.initVC(storyBoardName: .main, vc: DoctorsListController.self, viewConrollerID: "DoctorsListController")
+        vc.catagoryID = self.category[indexPath.row].id ?? 0
+        self.push(from: self, ToViewContorller: vc)
     }
 
 
     
+}
+
+
+//Api calls
+extension CategoryListController : PresenterOutputProtocol{
+    func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
+        switch String(describing: modelClass) {
+            case model.type.CategoryList:
+                
+                let data = dataDict as? CategoryList
+                self.category = data?.category ?? [Category]()
+                self.categoryListCV.reloadData()
+                break
+           
+            default: break
+            
+        }
+    }
+    
+    func showError(error: CustomError) {
+        
+    }
+    
+    func getCatagoryList(){
+        self.presenter?.HITAPI(api: Base.catagoryList.rawValue, params: nil, methodType: .GET, modelClass: CategoryList.self, token: true)
+    }
+    
+    func cancelAppointment(id : String){
+        self.presenter?.HITAPI(api: Base.cancelAppointment.rawValue, params: ["id" : id], methodType: .POST, modelClass: CommonModel.self, token: true)
+    }
 }

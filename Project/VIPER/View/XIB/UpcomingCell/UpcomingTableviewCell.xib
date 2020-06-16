@@ -84,9 +84,9 @@
                             <constraint firstItem="tYM-TM-GCa" firstAttribute="height" secondItem="tCu-qP-Rzz" secondAttribute="height" id="Ovb-41-NH7"/>
                         </constraints>
                     </stackView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5v-4J-2cU">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5v-4J-2cU" customClass="PaddingLabel" customModule="Mi_Dokter" customModuleProvider="target">
                         <rect key="frame" x="239" y="34.5" width="81" height="21"/>
-                        <color key="backgroundColor" red="0.85874974729999998" green="0.95875090360000004" blue="0.84704488519999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.85882352941176465" green="0.95686274509803915" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="0V4-vn-dr6"/>
                             <constraint firstAttribute="width" constant="81" id="7oA-F7-43B"/>

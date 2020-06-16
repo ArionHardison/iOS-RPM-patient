@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class AppointmentViewController: UIViewController {
 
@@ -16,7 +17,12 @@ class AppointmentViewController: UIViewController {
        @IBOutlet private var underLineView: UIView!
        @IBOutlet private var tableViewList : UITableView!
        
-       var isYourTripsSelected = true // Boolean Handle Passbook and Yourtrips list
+       var isYourTripsSelected = true
+    
+      var upcomingAppointment : [Appointments] = [Appointments]()
+      var previousAppointment : [Appointments] = [Appointments]()
+
+    
        private var isFirstBlockSelected = true {
            didSet {
                UIView.animate(withDuration: 0.5) {
@@ -55,6 +61,7 @@ class AppointmentViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
+        self.getAppointment()
     }
    
 
@@ -87,8 +94,11 @@ class AppointmentViewController: UIViewController {
 extension AppointmentViewController : UITableViewDelegate,UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 5
+        if isFirstBlockSelected{
+            return self.upcomingAppointment.count ?? 0
+        }else {
+            return self.previousAppointment.count
+        }
         
     }
     
@@ -96,22 +106,41 @@ extension AppointmentViewController : UITableViewDelegate,UITableViewDataSource
         
         
         let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.UpcomingTableviewCell, for: indexPath) as! UpcomingTableviewCell
+        if isFirstBlockSelected{
+            self.populateData(cell: cell, data: self.upcomingAppointment[indexPath.row])
+        }else {
+            self.populateData(cell: cell, data: self.previousAppointment[indexPath.row])
+        }
         
-        cell.labelDate.text = "28 Oct"
-        cell.labelTime.text = "Sun 7:30 pm"
-        cell.labeldoctorName.text = "Dr.Stephanie"
-        cell.labelSubtitle.text = "Miot Hopital"
+        return cell
+        
+    }
+ 
+    func populateData(cell : UpcomingTableviewCell , data : Appointments){
+        cell.labelDate.text = dateConvertor(data.scheduled_at ?? "", _input: .date_time, _output: .DM)
+        cell.labelTime.text = dateConvertor(data.scheduled_at ?? "", _input: .date_time, _output: .N_hour)
+        cell.labeldoctorName.text = "Dr.\(data.hospital?.first_name ?? "") \(data.hospital?.last_name ?? "")"
+        cell.labelSubtitle.text = "\(data.hospital?.email ?? "")"
         cell.selectionStyle = .none
         cell.buttonCancel.isHidden = !isFirstBlockSelected
         cell.labelStatus.isHidden = isFirstBlockSelected
         cell.statusWidth.constant = isFirstBlockSelected ? 0 : 81
         cell.labelStatus.layer.cornerRadius = 4
-        cell.labelStatus.text = "Consulted"
-     
-        return cell
+        cell.labelStatus.text = data.status ?? ""
+        if data.status ?? "" == "CANCELLED"{
+            cell.labelStatus.backgroundColor = UIColor.red.withAlphaComponent(0.2)
+            cell.labelStatus.textColor = UIColor.red
+        }else{
+            cell.labelStatus.backgroundColor = UIColor.LightGreen
+            cell.labelStatus.textColor = UIColor.AppBlueColor
+        }
         
+        cell.buttonCancel.addTap {
+            self.cancelAppointment(id: data.id?.description ?? "")
+        }
     }
- 
+    
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -121,7 +150,7 @@ extension AppointmentViewController : UITableViewDelegate,UITableViewDataSource
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(id: Storyboard.Ids.UpcomingDetailsController, animation: true)
+//        self.push(id: Storyboard.Ids.UpcomingDetailsController, animation: true)
     }
     
     
@@ -130,4 +159,43 @@ extension AppointmentViewController : UITableViewDelegate,UITableViewDataSource
     }
     
     
+}
+
+
+
+
+//Api calls
+extension AppointmentViewController : PresenterOutputProtocol{
+    func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
+        switch String(describing: modelClass) {
+            case model.type.AppointmentModel:
+                
+               let data = dataDict as? AppointmentModel
+               self.upcomingAppointment = data?.upcomming?.appointments ?? [Appointments]()
+               self.previousAppointment = data?.previous?.appointments ?? [Appointments]()
+               self.reloadTable()
+                break
+            case model.type.CommonModel:
+                if let data = dataDict as? CommonModel{
+                    if data.status ?? false{
+                        self.getAppointment()
+                    }
+                }
+            break
+            default: break
+            
+        }
+    }
+    
+    func showError(error: CustomError) {
+        
+    }
+    
+    func getAppointment(){
+        self.presenter?.HITAPI(api: Base.appointment.rawValue, params: nil, methodType: .GET, modelClass: AppointmentModel.self, token: true)
+    }
+    
+    func cancelAppointment(id : String){
+        self.presenter?.HITAPI(api: Base.cancelAppointment.rawValue, params: ["id" : id], methodType: .POST, modelClass: CommonModel.self, token: true)
+    }
 }
