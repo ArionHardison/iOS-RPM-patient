@@ -14,11 +14,11 @@ class ThankYouViewController: UIViewController {
     @IBOutlet weak var thankYouLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
+    @IBOutlet weak var thanksView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        self.setupAction()
         setTextFont()
         addTargetToImage()
     }
@@ -40,6 +40,13 @@ extension ThankYouViewController {
         Common.setFont(to: thankYouLabel, isTitle: true, size: 18)
         Common.setFont(to: titleLabel)
         Common.setFont(to: subTitleLabel)
+        self.thanksView.makeRoundedCorner()
+    }
+    
+    func setupAction(){
+        self.view.addTap {
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
     
     private func addTargetToImage() {

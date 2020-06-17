@@ -152,7 +152,7 @@ struct Visited_doctors : Mappable {
     var deleted_at : String?
     var status : String?
     var hospital : Hospital?
-    
+    init(){}
     init?(map: Map) {
         
     }

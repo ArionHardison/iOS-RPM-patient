@@ -40,8 +40,8 @@ struct UserDefaultConfig {
     @UserDefault(UserDefaults.key.token, defaultValue: "")
     static var Token : String
     
-    @UserDefault(UserDefaults.key.userID, defaultValue: "")
-    static var UserID : String
+    @UserDefault(UserDefaults.key.patientID, defaultValue: "")
+    static var PatientID : String
     
     @UserDefault(UserDefaults.key.userName, defaultValue: "")
     static var UserName : String
@@ -56,7 +56,7 @@ extension UserDefaults {
         static let appState = "app_state"
         static let fcmToken = "fcm_token"
         static let token = "token"
-        static let userID = "userID"
+        static let patientID = "patientID"
         static let userName = "userName"
         static let unverifyAlerDontShow = "unverifyAlerDontShow"
     }

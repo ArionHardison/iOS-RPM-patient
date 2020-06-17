@@ -14,7 +14,8 @@ class SideBarTableViewController: UITableViewController {
     
     @IBOutlet private var imageViewProfile : UIImageView!
     @IBOutlet private var labelName : UILabel!
-    @IBOutlet private var labelEmail : UILabel!
+    @IBOutlet private var labelProfileCompletion : UILabel!
+    @IBOutlet private var viewPtofileBtn : UIButton!
     @IBOutlet private var viewShadow : UIView!
     @IBOutlet private weak var profileImageCenterContraint : NSLayoutConstraint!
     
@@ -57,6 +58,8 @@ class SideBarTableViewController: UITableViewController {
         UIApplication.shared.isStatusBarHidden = false
     }
     
+   
+    
 }
 
 // MARK:- Methods
@@ -70,37 +73,39 @@ extension SideBarTableViewController {
         self.drawerController?.drawerWidth = Float(self.view.frame.width - fadeWidth)
         self.viewShadow.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.imageViewAction)))
         self.setDesigns()
+        self.setupAction()
+    }
+    
+    func setupAction(){
+        self.viewPtofileBtn.addTap {
+            self.push(to: Storyboard.Ids.ProfileViewController)
+            self.drawerController?.closeSide()
+        }
     }
     
     // MARK:- Set Designs
     
     private func setLayers(){
-        
         self.imageViewProfile.makeRoundedCorner()
-        
     }
     
     
     // MARK:- Set Designs
     
     private func setDesigns () {
-        
         Common.setFont(to: labelName)
-        Common.setFont(to: labelEmail)
+        Common.setFont(to: labelProfileCompletion)
     }
     
     
     //MARK:- SetValues
     
     private func setValues(){
-        
-        Cache.image(forUrl: Common.getImageUrl(for: User.main.picture)) { (image) in
-            DispatchQueue.main.async {
-                self.imageViewProfile.image = image == nil ? #imageLiteral(resourceName: "userPlaceholder") : image
-            }
+        if let profile : ProfileModel = profileDetali{
+            self.labelName.text = "\(profile.patient?.first_name ?? "") \(profile.patient?.last_name ?? "")"
+            self.labelProfileCompletion.text = "Profile Completed : \(profile.profile_complete ?? "")"
+            self.imageViewProfile.setURLImage(profile.patient?.profile?.profile_pic ?? "")
         }
-        self.labelName.text = String.removeNil(User.main.firstName)+" "+String.removeNil(User.main.lastName)
-        self.labelEmail.text = User.main.email
     }
     
     

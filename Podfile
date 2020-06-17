@@ -15,5 +15,6 @@ target 'MiDokter User' do
     pod 'CountryPickerView'
     pod 'lottie-ios'
     pod 'PINRemoteImage'
+    pod 'CLWeeklyCalendarView'
     
 end

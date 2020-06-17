@@ -21,6 +21,7 @@ class WalletViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
+        self.setValues()
     }
 
     func setupAction(){
@@ -34,7 +35,11 @@ class WalletViewController: UIViewController {
         }
     }
 
-    
+    private func setValues(){
+        if let profile : ProfileModel = profileDetali{
+            self.labelAvailableBalanceValue.text = "$ \(profile.patient?.wallet_balance ?? 0) "
+       }
+    }
 }
 
 extension WalletViewController {
@@ -62,7 +67,9 @@ extension WalletViewController : PresenterOutputProtocol{
             case model.type.CommonModel:
                  let data = dataDict as? CommonModel
                  showToast(msg: data?.message ?? "")
+                
                  self.textFieldAmount.text = ""
+                 
                 break
             
             default: break

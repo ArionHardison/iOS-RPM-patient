@@ -20,10 +20,12 @@ class DoctorCell: UITableViewCell {
     @IBOutlet weak var clinicNameLbl : UILabel!
     @IBOutlet weak var feeLbl : UILabel!
     @IBOutlet weak var callBtn : UIButton!
+    @IBOutlet weak var bookingBtn : UIButton!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.docterImage.makeRoundedCorner()
     }
 
 }

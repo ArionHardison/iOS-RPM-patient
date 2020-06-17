@@ -104,6 +104,99 @@
             </connections>
             <point key="canvasLocation" x="2247.826086956522" y="-183.48214285714286"/>
         </view>
+        <view contentMode="scaleToFill" restorationIdentifier="TimePickerAlert" id="wpP-jm-JOn" customClass="TimePickerAlert" customModule="Mi_Dokter" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="290"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" translatesAutoresizingMaskIntoConstraints="NO" id="lpa-Ud-ZB3">
+                    <rect key="frame" x="10" y="50.5" width="414" height="150"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="aqC-dZ-9DI"/>
+                    </constraints>
+                </datePicker>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJL-uk-W0H">
+                    <rect key="frame" x="0.0" y="190" width="414" height="90"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3S-Nj-WjU">
+                            <rect key="frame" x="20" y="40" width="374" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="fjd-A7-5pj"/>
+                            </constraints>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="f3S-Nj-WjU" firstAttribute="leading" secondItem="XJL-uk-W0H" secondAttribute="leading" constant="20" id="K2f-c7-2RV"/>
+                        <constraint firstItem="f3S-Nj-WjU" firstAttribute="top" secondItem="XJL-uk-W0H" secondAttribute="top" constant="40" id="T2d-bG-Uh3"/>
+                        <constraint firstAttribute="trailing" secondItem="f3S-Nj-WjU" secondAttribute="trailing" constant="20" id="lIX-0H-iM9"/>
+                        <constraint firstAttribute="bottom" secondItem="f3S-Nj-WjU" secondAttribute="bottom" constant="10" id="v55-df-sLG"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Your Schedule Time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJ8-MR-zcK">
+                    <rect key="frame" x="10" y="10" width="394" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" name="AppColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="lPE-f9-m1t">
+                    <rect key="frame" x="20" y="230" width="374" height="40"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88M-yP-JXs">
+                            <rect key="frame" x="0.0" y="0.0" width="172" height="40"/>
+                            <color key="backgroundColor" name="AppBlueColor"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="20"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sZ-LB-83R">
+                            <rect key="frame" x="202" y="0.0" width="172" height="40"/>
+                            <color key="backgroundColor" name="AppColor"/>
+                            <state key="normal" title="Done">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="20"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="j5e-qI-RJ1"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="lPE-f9-m1t" firstAttribute="leading" secondItem="WMM-Sr-h6p" secondAttribute="leading" constant="20" id="1rp-9X-Q6o"/>
+                <constraint firstItem="lpa-Ud-ZB3" firstAttribute="top" secondItem="rJ8-MR-zcK" secondAttribute="bottom" constant="20" id="HBq-Lh-cNA"/>
+                <constraint firstItem="lpa-Ud-ZB3" firstAttribute="trailing" secondItem="WMM-Sr-h6p" secondAttribute="trailing" constant="10" id="PQJ-od-vsa"/>
+                <constraint firstItem="XJL-uk-W0H" firstAttribute="leading" secondItem="WMM-Sr-h6p" secondAttribute="leading" id="TDa-at-Lxh"/>
+                <constraint firstAttribute="trailing" secondItem="rJ8-MR-zcK" secondAttribute="trailing" constant="10" id="Z58-Jv-qWr"/>
+                <constraint firstItem="lpa-Ud-ZB3" firstAttribute="leading" secondItem="WMM-Sr-h6p" secondAttribute="leading" constant="10" id="eEE-3M-3fz"/>
+                <constraint firstItem="rJ8-MR-zcK" firstAttribute="top" secondItem="wpP-jm-JOn" secondAttribute="top" constant="10" id="edY-9d-aus"/>
+                <constraint firstAttribute="bottom" secondItem="XJL-uk-W0H" secondAttribute="bottom" constant="10" id="gXu-Qm-Ulc"/>
+                <constraint firstItem="WMM-Sr-h6p" firstAttribute="trailing" secondItem="XJL-uk-W0H" secondAttribute="trailing" id="oeL-nM-LeV"/>
+                <constraint firstItem="rJ8-MR-zcK" firstAttribute="leading" secondItem="wpP-jm-JOn" secondAttribute="leading" constant="10" id="qGx-OP-5bj"/>
+                <constraint firstItem="WMM-Sr-h6p" firstAttribute="bottom" secondItem="lPE-f9-m1t" secondAttribute="bottom" constant="20" id="wwg-Tn-a5k"/>
+                <constraint firstItem="WMM-Sr-h6p" firstAttribute="trailing" secondItem="lPE-f9-m1t" secondAttribute="trailing" constant="20" id="xCX-kd-ed3"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="WMM-Sr-h6p"/>
+            <connections>
+                <outlet property="TitleLbl" destination="rJ8-MR-zcK" id="nsh-7u-nfq"/>
+                <outlet property="cancelBtn" destination="88M-yP-JXs" id="AlH-ND-j7b"/>
+                <outlet property="submitBtn" destination="7sZ-LB-83R" id="G8F-nw-tZn"/>
+                <outlet property="timepicker" destination="lpa-Ud-ZB3" id="nja-n4-e58"/>
+            </connections>
+            <point key="canvasLocation" x="2247.826086956522" y="-183.48214285714286"/>
+        </view>
     </objects>
     <resources>
         <namedColor name="AppBlueColor">

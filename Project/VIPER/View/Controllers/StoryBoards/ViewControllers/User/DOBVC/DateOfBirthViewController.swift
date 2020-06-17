@@ -11,6 +11,7 @@ import ObjectMapper
 
 protocol AlertDelegate {
     func selectedDate(date : String,month : String,year : String,dob : String ,alertVC : UIViewController)
+    func selectedTime(time : String,alertVC : UIViewController)
 }
 
 class DateOfBirthViewController: UIViewController {
@@ -99,6 +100,10 @@ extension DateOfBirthViewController : PresenterOutputProtocol{
 
 
 extension DateOfBirthViewController : AlertDelegate{
+    func selectedTime(time: String, alertVC: UIViewController) {
+        
+    }
+    
     func selectedDate(date: String, month: String, year: String, dob: String, alertVC: UIViewController) {
         self.txtdate.text = date
         self.txtMonth.text = month

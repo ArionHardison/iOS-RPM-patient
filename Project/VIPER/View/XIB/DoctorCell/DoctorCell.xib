@@ -281,6 +281,7 @@
                 <outlet property="ExpncLbl" destination="yXa-hu-IIi" id="3uB-bu-6LL"/>
                 <outlet property="SplistLbl" destination="3KZ-uv-0q2" id="AWX-El-wJj"/>
                 <outlet property="availablityLbl" destination="8LD-gk-nSm" id="Ydv-8X-uvP"/>
+                <outlet property="bookingBtn" destination="KH8-fO-LtN" id="HlW-qp-Ab1"/>
                 <outlet property="callBtn" destination="611-wY-lwx" id="fRz-wf-Sgk"/>
                 <outlet property="clinicNameLbl" destination="QZ3-kO-zOd" id="k4p-8L-ZnQ"/>
                 <outlet property="docterImage" destination="j2i-hi-MCn" id="RW2-td-akY"/>
@@ -293,7 +294,7 @@
     </objects>
     <resources>
         <image name="doctor" width="64" height="64"/>
-        <image name="like" width="12" height="12"/>
+        <image name="like" width="24" height="24"/>
         <image name="pin" width="32" height="32"/>
         <image name="tray.and.arrow.up.fill" catalog="system" width="64" height="56"/>
     </resources>

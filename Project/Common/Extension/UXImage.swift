@@ -51,8 +51,8 @@ extension UIImageView{
     
     func setURLImage(_ url : String){
         if !url.isEmpty{
-            Log.i("LoadImage====>\(baseUrl+url)")
-            self.pin_setImage(from: URL(string: baseUrl+url)!)
+            Log.i("LoadImage====>\(imageURL+url)")
+            self.pin_setImage(from: URL(string: imageURL+url)!)
         }
     }
     

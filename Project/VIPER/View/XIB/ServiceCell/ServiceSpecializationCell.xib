@@ -52,6 +52,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="dotImg" destination="btM-Dd-jwl" id="6RQ-j2-Pt3"/>
                 <outlet property="serviceLbl" destination="nfV-pn-NXK" id="num-EY-Vm3"/>
             </connections>
             <point key="canvasLocation" x="275" y="117"/>

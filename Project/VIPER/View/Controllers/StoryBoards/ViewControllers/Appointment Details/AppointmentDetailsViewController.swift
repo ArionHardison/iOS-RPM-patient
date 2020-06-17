@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class AppointmentDetailsViewController: UITableViewController {
     
@@ -25,12 +26,21 @@ class AppointmentDetailsViewController: UITableViewController {
     @IBOutlet weak var labelShare: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var dislikeButton: UIButton!
+    @IBOutlet weak var SubmitButton: UIButton!
     @IBOutlet weak var consultedText: HoshiTextField!
     @IBOutlet weak var commentsText: UITextView!
+    
+    var visitedDetail : Visited_doctors = Visited_doctors()
+    var likedStatus : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initialLoads()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.setupData()
     }
     
 }
@@ -41,6 +51,8 @@ extension AppointmentDetailsViewController {
     private func initialLoads() {
         setupNavigationBar()
         setTextFonts()
+        self.doctorImg.makeRoundedCorner()
+        self.setupAction()
     }
     
     private func setupNavigationBar() {
@@ -74,42 +86,87 @@ extension AppointmentDetailsViewController {
     }
     
     
-    @objc private func pushToThankYou(sender:UIButton) {
-        sender.addPressAnimation()
-        self.push(id: Storyboard.Ids.ThankYouViewController, animation: true)
-        
+    func setupData(){
+        if let data : Visited_doctors = self.visitedDetail{
+          
+            self.doctorImg.setURLImage(data.hospital?.doctor_profile?.profile_pic ?? "")
+            self.doctorName.text = "\(data.hospital?.first_name ?? "") \(data.hospital?.last_name ?? "")"
+            self.labelCategory.text = "\(data.hospital?.doctor_profile?.speciality?.name ?? "")"
+            self.labelHospitalName.text = "\(data.hospital?.clinic?.name ?? ""), \(data.hospital?.clinic?.address ?? "")"
+            self.labelPatientName.text = "\(data.booking_for ?? "")"
+            self.labelDate.text = dateConvertor(data.scheduled_at ?? "", _input: .date_time, _output: .DMY_Time)
+            self.labelStatusResponse.text = data.status ?? ""
+        }
     }
     
-}
-
-
-//MARK: Tabelview delegates and datasources
-extension AppointmentDetailsViewController {
     
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        switch section {
-        case 3:
-            let footerView: UIView = {
-                let footer = UIView()
-                footer.frame = CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 50)
-                let submitBtn = UIButton()
-                submitBtn.frame = CGRect(x: 15, y: 0, width: footer.frame.size.width - 30, height: footer.frame.size.height)
-                submitBtn.backgroundColor = UIColor.lightBlue
-                submitBtn.setTitle("Submit", for: .normal)
-                submitBtn.addTarget(self, action: #selector(pushToThankYou(sender:)), for: .touchUpInside)
-                Common.setFont(to: submitBtn)
-                footer.addSubview(submitBtn)
-                return footer
-            }()
-            return footerView
-        default:
-            return UIView()
+    func setupAction(){
+        self.likeButton.addTap {
+            self.likeButton.backgroundColor = UIColor.AppBlueColor
+            self.dislikeButton.backgroundColor = UIColor.clear
+            self.likedStatus = "LIKE"
+        }
+        
+        self.dislikeButton.addTap {
+            self.likeButton.backgroundColor = UIColor.clear
+            self.dislikeButton.backgroundColor = UIColor.AppBlueColor
+            self.likedStatus = "DISLIKE"
+        }
+        
+        self.SubmitButton.addTap {
+            if validation(){
+                var comment = FeedBackReq()
+                comment.comments = self.commentsText.text ?? ""
+                comment.experiences = self.likedStatus
+                comment.hospital_id = (self.visitedDetail.hospital?.id ?? 0).description
+                comment.visited_for = self.consultedText.getText
+                self.postFeedBack(feedback: comment)
+            }
+        }
+        
+        func validation() -> Bool{
+            if self.consultedText.getText.isEmpty{
+                showToast(msg: "Enter consultant detail")
+                return false
+            }else if (self.commentsText.text ?? "").isEmpty{
+                showToast(msg: "Please Enter Your Comments")
+                return false
+            }else if self.likedStatus.isEmpty{
+                showToast(msg: "Please Select Like or DisLike option")
+                return false
+            }else{
+                return true
+            }
         }
         
     }
+   
     
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return section == 3 ? 50 : 0
+}
+
+//Api calls
+extension AppointmentDetailsViewController : PresenterOutputProtocol{
+    func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
+        switch String(describing: modelClass) {
+            case model.type.FeedBackModel:
+                let data = dataDict as? FeedBackModel
+                showToast(msg: data?.message ?? "")
+                self.push(id: Storyboard.Ids.ThankYouViewController, animation: true)
+                break
+            
+            default:
+                break
+            
+        }
     }
+    
+    func showError(error: CustomError) {
+        
+    }
+    
+    func postFeedBack(feedback : FeedBackReq){
+        self.presenter?.HITAPI(api: Base.feedback.rawValue, params: convertToDictionary(model: feedback), methodType: .POST, modelClass: FeedBackModel.self, token: true)
+    }
+    
     
 }

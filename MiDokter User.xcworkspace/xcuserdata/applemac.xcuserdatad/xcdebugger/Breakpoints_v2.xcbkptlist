@@ -3,4 +3,70 @@
    uuid = "02DE424D-4EA5-477F-ACE2-88A7B09889AB"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6F1BF85D-CEB9-49C2-9378-E0EC16323846"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project/VIPER/View/Controllers/StoryBoards/ViewControllers/SideMenu/SideBarTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "setupAction()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6F1BF85D-CEB9-49C2-9378-E0EC16323846 - cc23612ec46a61a2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mi_Dokter.SideBarTableViewController.setupAction() -&gt; ()"
+                  moduleName = "Mi Dokter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/applemac/Documents/Shyamala%20office%20projects/MiDokter/midokter_ios_user/Project/VIPER/View/Controllers/StoryBoards/ViewControllers/SideMenu/SideBarTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "41">
+               </Location>
+               <Location
+                  uuid = "6F1BF85D-CEB9-49C2-9378-E0EC16323846 - 55d102db18aa74b6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in Mi_Dokter.SideBarTableViewController.setupAction() -&gt; ()"
+                  moduleName = "Mi Dokter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/applemac/Documents/Shyamala%20office%20projects/MiDokter/midokter_ios_user/Project/VIPER/View/Controllers/StoryBoards/ViewControllers/SideMenu/SideBarTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "26">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DB73821D-FE17-4F52-BAAF-939C22A4A958"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project/VIPER/View/Controllers/StoryBoards/ViewControllers/SideMenu/SideBarTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "setupAction()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

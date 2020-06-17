@@ -9,7 +9,7 @@
     import UIKit
     import Foundation
     import ObjectMapper
-     import KWDrawerController
+    import KWDrawerController
     
     class HomeViewController: UIViewController ,UISearchBarDelegate{
         
@@ -32,24 +32,20 @@
         override func viewDidLoad() {
             super.viewDidLoad()
             self.initialLoads()
-       
-            var dict = [String:Any]()
             
-            // Add a new enter code herekey with a value
-            dict["email"] = "sample@email.com"
-            dict["name"] = "Deepika"
-            print(dict)
-            
-            dictionary["road"] = "Street, No: 12 Ponni nager"
-            dictionary["test"] = "test 1"
-            print("****dictionary",dictionary)
-           
             
             
         }
-     
-       
-              
+        
+        
+        
+        override func viewWillAppear(_ animated: Bool) {
+            self.navigationController?.isNavigationBarHidden = true
+            self.getProfileApi()
+        }
+        
+        
+        
     }
     
     // MARK:- Methods
@@ -61,33 +57,28 @@
             
             let image =  UIImageView(image: UIImage(imageLiteralResourceName: "google"))
             searchBar.searchTextField.leftViewMode = .never
-           
+            
             searchBar.searchTextField.backgroundColor = .white
             searchBar.searchTextField.rightView = image
             searchBar.searchTextField.rightViewMode = .always
             self.listTableView.register(UINib(nibName: XIB.Names.LogoCell, bundle: .main), forCellReuseIdentifier: XIB.Names.LogoCell)
         }
         
-       
-        override func viewWillAppear(_ animated: Bool) {
-            self.navigationController?.isNavigationBarHidden = true
-        }
         
         
-       
         // MARK:- SideMenu Button Action
         
         @IBAction private func sideMenuAction(){
             
-                self.drawerController?.openSide(.left)
-                self.viewSideMenu.addPressAnimation()
-         }
+            self.drawerController?.openSide(.left)
+            self.viewSideMenu.addPressAnimation()
+        }
         
-      
+        
     }
     
     
-   // MARK:- Tableview Delegates
+    // MARK:- Tableview Delegates
     
     
     extension HomeViewController : UITableViewDelegate, UITableViewDataSource
@@ -97,17 +88,17 @@
         }
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
+            
             
             if indexPath.row != titles.count {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.DoctorsListCell, for: indexPath) as! DoctorsListCell
-         
-            cell.imgDoctor.image = UIImage(imageLiteralResourceName: self.imageArray[indexPath.row])
-            cell.labelName.text = titles[indexPath.row]
-            cell.labelSpeciality.text = subTitles[indexPath.row]
-            cell.selectionStyle  = .none
-            return cell
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.DoctorsListCell, for: indexPath) as! DoctorsListCell
+                
+                cell.imgDoctor.image = UIImage(imageLiteralResourceName: self.imageArray[indexPath.row])
+                cell.labelName.text = titles[indexPath.row]
+                cell.labelSpeciality.text = subTitles[indexPath.row]
+                cell.selectionStyle  = .none
+                return cell
                 
             }else
             {
@@ -115,9 +106,9 @@
                 let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.LogoCell, for: indexPath) as! LogoCell
                 cell.selectionStyle  = .none
                 return cell
-
+                
             }
-           
+            
         }
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
@@ -139,7 +130,7 @@
         }
         
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
+            
             if indexPath.row == titles.count{
                 return 250
             }else{
@@ -150,35 +141,41 @@
             
             
         }
-    
+        
         
     }
     
-  
     
-    // MARK:- PostViewProtocol
     
-    extension HomeViewController: PresenterOutputProtocol {
-        
+    
+    
+    
+    
+    //Api calls
+    extension HomeViewController : PresenterOutputProtocol{
         func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
-            print("Called")
-            if String(describing: modelClass) == model.type.Json4Swift_Base {
-                self.loader.isHidden = true
-                self.userDataResponse = dataDict as? Json4Swift_Base
-                print("*********Token", self.userDataResponse?.success?.text)
-                print(self.userDataResponse as Any)
+            switch String(describing: modelClass) {
+                case model.type.ProfileModel:
+                    let data = dataDict as? ProfileModel
+                    UserDefaultConfig.PatientID = (data?.patient?.id ?? 0).description
+                    profileDetali = data ?? ProfileModel()
+                    break
+                
+                default: break
                 
             }
         }
         
         func showError(error: CustomError) {
-            self.loader.isHidden = true
-            print(error)
+            
         }
         
-      
+        func getProfileApi(){
+            self.presenter?.HITAPI(api: Base.profile.rawValue, params: nil, methodType: .GET, modelClass: ProfileModel.self, token: true)
+        }
         
     }
+    
 
     
     struct model {
@@ -197,8 +194,11 @@
         let ArticleModel = "ArticleModel"
         let MedicalRecordsModel = "MedicalRecordsModel"
         let DoctorsListModel = "DoctorsListModel"
+        let ProfileModel = "ProfileModel"
+        let FeedBackModel = "FeedBackModel"
+        let BookingModel = "BookingModel"
     }
-
+    
     
     
     class DoctorsListCell: UITableViewCell {

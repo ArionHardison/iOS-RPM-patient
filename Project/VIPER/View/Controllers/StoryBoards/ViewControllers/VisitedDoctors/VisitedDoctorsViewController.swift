@@ -73,20 +73,22 @@ extension VisitedDoctorsViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func populateCell(cell : VisitedDoctorsCell , data : Visited_doctors){
-        cell.doctorNameLabel.text = data.hospital?.first_name ?? ""
-        cell.hospitalNameLabel.text = data.hospital?.clinic?.name ?? ""
-        cell.dateLabel.text = dateConvertor(data.hospital?.created_at ?? "", _input: .date_time, _output: .DM)
-        cell.timeLabel.text = dateConvertor(data.hospital?.created_at ?? "", _input: .date_time, _output: .N_hour)
+        cell.doctorNameLabel.text = "\(data.hospital?.first_name ?? "") \(data.hospital?.last_name ?? "")"
+        cell.hospitalNameLabel.text = "\(data.hospital?.clinic?.name ?? "") \(data.hospital?.clinic?.address ?? "")"
+        cell.dateLabel.text = dateConvertor(data.scheduled_at ?? "", _input: .date_time, _output: .DM)
+        cell.timeLabel.text = dateConvertor(data.scheduled_at ?? "", _input: .date_time, _output: .N_hour)
         cell.statusLabel.text = data.status ?? ""
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(id: Storyboard.Ids.AppointmentDetailsViewController, animation: true)
+        let vc = AppointmentDetailsViewController.initVC(storyBoardName: .main, vc: AppointmentDetailsViewController.self, viewConrollerID: Storyboard.Ids.AppointmentDetailsViewController)
+        vc.visitedDetail = self.visitedDoctors[indexPath.row]
+        self.push(from: self, ToViewContorller: vc)
         
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 90
     }
     
 }

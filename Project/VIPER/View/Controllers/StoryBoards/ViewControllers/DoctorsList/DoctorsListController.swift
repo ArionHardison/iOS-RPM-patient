@@ -67,7 +67,7 @@ extension DoctorsListController : UITableViewDelegate,UITableViewDataSource{
         cell.SplistLbl.text = detail.speciality?.name ?? ""
         cell.availablityLbl.text = "Available \(detail.hospital?[0].availability ?? "")"
         cell.clinicNameLbl.text = detail.hospital?[0].clinic?.name ?? ""
-        cell.likeCountLbl.text = detail.hospital?[0].feedback_percentage ?? "0"
+        cell.likeCountLbl.text = "\(detail.hospital?[0].feedback_percentage ?? "0") %"
         cell.feeLbl.text = "$ "+(detail.fees ?? 0).description
     }
     
@@ -87,6 +87,12 @@ extension DoctorsListController : UITableViewDelegate,UITableViewDataSource{
                     UIApplication.shared.openURL(url)
                 }
             }
+        }
+        
+        cell.bookingBtn.addTap{
+        let vc = BookingViewController.initVC(storyBoardName: .main, vc: BookingViewController.self, viewConrollerID: Storyboard.Ids.BookingViewController)
+        vc.docProfile = detail
+        self.push(from: self, ToViewContorller: vc)
         }
     }
     

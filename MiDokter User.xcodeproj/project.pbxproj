@@ -85,6 +85,12 @@
 		104A9F6E24975DAC00337AB9 /* AuthReqRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104A9F6D24975DAC00337AB9 /* AuthReqRes.swift */; };
 		104A9F71249770F500337AB9 /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104A9F70249770F500337AB9 /* LogHelper.swift */; };
 		104ED4C72499EC6400555CA8 /* DoctorsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104ED4C62499EC6400555CA8 /* DoctorsListModel.swift */; };
+		105D2156249A27C500475E48 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105D2155249A27C500475E48 /* ProfileModel.swift */; };
+		105D2158249A350200475E48 /* FeedBackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105D2157249A350200475E48 /* FeedBackModel.swift */; };
+		105D215A249A441000475E48 /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105D2159249A441000475E48 /* BookingViewController.swift */; };
+		105D215C249A685C00475E48 /* BookingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105D215B249A685C00475E48 /* BookingModel.swift */; };
+		105D215E249A792C00475E48 /* PatientDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105D215D249A792C00475E48 /* PatientDetailViewController.swift */; };
+		105D2160249A8ABC00475E48 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105D215F249A8ABC00475E48 /* ProfileViewController.swift */; };
 		1073727B2497A8020080A5A5 /* UXLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073727A2497A8020080A5A5 /* UXLabel.swift */; };
 		1073727E2497B6680080A5A5 /* VerifyNumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073727D2497B6680080A5A5 /* VerifyNumVC.swift */; };
 		107372802497D2150080A5A5 /* UXUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073727F2497D2150080A5A5 /* UXUserDefaults.swift */; };
@@ -275,6 +281,12 @@
 		104A9F6D24975DAC00337AB9 /* AuthReqRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthReqRes.swift; sourceTree = "<group>"; };
 		104A9F70249770F500337AB9 /* LogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
 		104ED4C62499EC6400555CA8 /* DoctorsListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorsListModel.swift; sourceTree = "<group>"; };
+		105D2155249A27C500475E48 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		105D2157249A350200475E48 /* FeedBackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackModel.swift; sourceTree = "<group>"; };
+		105D2159249A441000475E48 /* BookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewController.swift; sourceTree = "<group>"; };
+		105D215B249A685C00475E48 /* BookingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingModel.swift; sourceTree = "<group>"; };
+		105D215D249A792C00475E48 /* PatientDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailViewController.swift; sourceTree = "<group>"; };
+		105D215F249A8ABC00475E48 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1073727A2497A8020080A5A5 /* UXLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXLabel.swift; sourceTree = "<group>"; };
 		1073727D2497B6680080A5A5 /* VerifyNumVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyNumVC.swift; sourceTree = "<group>"; };
 		1073727F2497D2150080A5A5 /* UXUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXUserDefaults.swift; sourceTree = "<group>"; };
@@ -790,6 +802,9 @@
 				10F5325824991C0400394A87 /* ArticleModel.swift */,
 				10F5325A2499246C00394A87 /* MedicalRecordsModel.swift */,
 				104ED4C62499EC6400555CA8 /* DoctorsListModel.swift */,
+				105D2155249A27C500475E48 /* ProfileModel.swift */,
+				105D2157249A350200475E48 /* FeedBackModel.swift */,
+				105D215B249A685C00475E48 /* BookingModel.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1201,6 +1216,8 @@
 			children = (
 				12384B3424600D990057943D /* DoctorDetailsController.swift */,
 				108010BF2494DAEE00C7249D /* ServiceListViewController.swift */,
+				105D2159249A441000475E48 /* BookingViewController.swift */,
+				105D215D249A792C00475E48 /* PatientDetailViewController.swift */,
 			);
 			path = DoctorDetailsVC;
 			sourceTree = "<group>";
@@ -1361,6 +1378,7 @@
 				779DBC462493DFCC0055FCB9 /* FavouriteDoctorsListController.swift */,
 				779DBC4D2493EFC20055FCB9 /* MedicalRecordsViewController.swift */,
 				779DBC4F2493F4D60055FCB9 /* WalletViewController.swift */,
+				105D215F249A8ABC00475E48 /* ProfileViewController.swift */,
 			);
 			path = SideMenu;
 			sourceTree = "<group>";
@@ -1697,6 +1715,7 @@
 				084B34CC20B031F400B79318 /* ImageView.swift in Sources */,
 				084B34C920B0318700B79318 /* TextField.swift in Sources */,
 				90526149248FE0B1008CC272 /* UXView.swift in Sources */,
+				105D215A249A441000475E48 /* BookingViewController.swift in Sources */,
 				084B349620B02F8800B79318 /* File.swift in Sources */,
 				10F5325924991C0400394A87 /* ArticleModel.swift in Sources */,
 				107372892498B1050080A5A5 /* AlertVC.swift in Sources */,
@@ -1716,6 +1735,7 @@
 				107372802497D2150080A5A5 /* UXUserDefaults.swift in Sources */,
 				12681F012438E1840072193B /* NameAndEmailViewController.swift in Sources */,
 				12B6E215244717DB00BE448F /* OnlineDoctorCell.swift in Sources */,
+				105D215C249A685C00475E48 /* BookingModel.swift in Sources */,
 				107372972498F9920080A5A5 /* CategoryEntity.swift in Sources */,
 				108010C32494E1B700C7249D /* ChatQuestionViewController.swift in Sources */,
 				084B347820B02DD800B79318 /* Common.swift in Sources */,
@@ -1727,6 +1747,8 @@
 				779DBC4E2493EFC20055FCB9 /* MedicalRecordsViewController.swift in Sources */,
 				108010BE2494C6DE00C7249D /* ReminderDetailViewController.swift in Sources */,
 				084B346020B02C2B00B79318 /* WebConstants.swift in Sources */,
+				105D2156249A27C500475E48 /* ProfileModel.swift in Sources */,
+				105D2158249A350200475E48 /* FeedBackModel.swift in Sources */,
 				12B6E21E2447219E00BE448F /* AppointmentViewController.swift in Sources */,
 				084B349920B02FA100B79318 /* Error.swift in Sources */,
 				7E6AEF4C2488CC48005F0899 /* ChatTableViewController.swift in Sources */,
@@ -1752,6 +1774,7 @@
 				084B34B420B030A800B79318 /* Sequence.swift in Sources */,
 				084B30E420B01DAB00B79318 /* Model.xcdatamodeld in Sources */,
 				779DBC562493F9570055FCB9 /* HealthFeedViewController.swift in Sources */,
+				105D215E249A792C00475E48 /* PatientDetailViewController.swift in Sources */,
 				7E401F252487C2E70021991A /* VisitedDoctorsViewController.swift in Sources */,
 				7E6AEF532488D4B5005F0899 /* ChatCommentCell.swift in Sources */,
 				084B348920B02EAC00B79318 /* Presenter.swift in Sources */,
@@ -1785,6 +1808,7 @@
 				1073727E2497B6680080A5A5 /* VerifyNumVC.swift in Sources */,
 				10F5325B2499246C00394A87 /* MedicalRecordsModel.swift in Sources */,
 				107372952498EC630080A5A5 /* CommonModel.swift in Sources */,
+				105D2160249A8ABC00475E48 /* ProfileViewController.swift in Sources */,
 				08C066EF20B0399D00A8C5F0 /* CircularTransition.swift in Sources */,
 				084B342D20B0297A00B79318 /* GoogleMapsHelper.swift in Sources */,
 				12B6E21A24471C1300BE448F /* ReminderCell.swift in Sources */,

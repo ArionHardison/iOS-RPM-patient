@@ -272,16 +272,11 @@ func dateConvertor(_ date: String, _input: DateTimeFormate, _output: DateTimeFor
 }
 
 enum DateTimeFormate : String{
-    case Y_D_M = "yyyy-MM-dd"
-    case YMD_T_HHSS = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-    case dYDM = "EEE,dd MMM yyyy"
+    case DMY_Time = "dd MMM YYYY, EEE hh:mm a"
     case DMY = "dd MMM YYYY"
     case MY = "MM/YYYY"
     case R_hour = "HH:mm"
     case N_hour = "hh:mm a"
     case date_time = "yyyy-MM-dd HH:mm:ss"
     case DM = "dd MMM"
-    case date__time = "yyyy-MM-dd-HH:mm"
-    case date_N_time = "yyyy-MM-dd hh:mm a"
-    case N_date_time = "dd MMM , hh:mm a"
 }

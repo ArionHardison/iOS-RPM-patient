@@ -47,13 +47,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1B-WO-oLM">
-                                        <rect key="frame" x="235" y="5" width="25" height="25"/>
+                                        <rect key="frame" x="235" y="2.5" width="30" height="30"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="like" translatesAutoresizingMaskIntoConstraints="NO" id="roB-Rj-4gt">
-                                                <rect key="frame" x="2.5" y="2.5" width="20" height="20"/>
+                                                <rect key="frame" x="6" y="6" width="18" height="18"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="20" id="erL-wM-i2j"/>
-                                                    <constraint firstAttribute="height" constant="20" id="mJD-Bc-oRN"/>
+                                                    <constraint firstAttribute="width" constant="18" id="erL-wM-i2j"/>
+                                                    <constraint firstAttribute="height" constant="18" id="mJD-Bc-oRN"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
@@ -61,8 +61,8 @@
                                         <constraints>
                                             <constraint firstItem="roB-Rj-4gt" firstAttribute="centerY" secondItem="L1B-WO-oLM" secondAttribute="centerY" id="Hp4-l0-INy"/>
                                             <constraint firstItem="roB-Rj-4gt" firstAttribute="centerX" secondItem="L1B-WO-oLM" secondAttribute="centerX" id="Onm-3B-3gg"/>
-                                            <constraint firstAttribute="width" constant="25" id="ivN-vB-dpl"/>
-                                            <constraint firstAttribute="height" constant="25" id="yLw-Ou-Be7"/>
+                                            <constraint firstAttribute="width" constant="30" id="ivN-vB-dpl"/>
+                                            <constraint firstAttribute="height" constant="30" id="yLw-Ou-Be7"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fSR-wH-hYH">
@@ -81,7 +81,7 @@
                                     <constraint firstItem="L1B-WO-oLM" firstAttribute="centerY" secondItem="ymF-XF-buI" secondAttribute="centerY" id="W01-Bn-Ovj"/>
                                     <constraint firstItem="3uS-I8-9nl" firstAttribute="leading" secondItem="msm-NO-YRq" secondAttribute="trailing" constant="10" id="YYM-vS-YeT"/>
                                     <constraint firstAttribute="trailing" secondItem="fSR-wH-hYH" secondAttribute="trailing" id="Ybu-F1-7oB"/>
-                                    <constraint firstAttribute="trailing" secondItem="L1B-WO-oLM" secondAttribute="trailing" constant="10" id="cJW-FF-5ci"/>
+                                    <constraint firstAttribute="trailing" secondItem="L1B-WO-oLM" secondAttribute="trailing" constant="5" id="cJW-FF-5ci"/>
                                     <constraint firstItem="3uS-I8-9nl" firstAttribute="centerY" secondItem="ymF-XF-buI" secondAttribute="centerY" id="dEh-KZ-tX8"/>
                                     <constraint firstAttribute="bottom" secondItem="msm-NO-YRq" secondAttribute="bottom" constant="5" id="g9q-wI-rLp"/>
                                     <constraint firstItem="msm-NO-YRq" firstAttribute="top" secondItem="ymF-XF-buI" secondAttribute="top" constant="5" id="hJO-QC-kaE"/>
@@ -178,6 +178,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="like" width="12" height="12"/>
+        <image name="like" width="24" height="24"/>
     </resources>
 </document>

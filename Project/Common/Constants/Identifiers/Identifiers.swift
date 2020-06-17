@@ -51,7 +51,9 @@ struct Storyboard {
     let SummaryViewController = "SummaryViewController"
     let ChatViewController = "ChatViewController"
     let AlertVC = "AlertVC"
-    
+    let BookingViewController = "BookingViewController"
+    let PatientDetailViewController = "PatientDetailViewController"
+    let ProfileViewController = "ProfileViewController"
 }
 
 

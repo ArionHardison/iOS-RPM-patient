@@ -6,6 +6,7 @@ import UIKit
 class ServiceSpecializationCell: UITableViewCell {
 
     @IBOutlet weak var serviceLbl : UILabel!
+    @IBOutlet weak var dotImg : UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
