@@ -63,7 +63,7 @@ extension DoctorsListController : UITableViewDelegate,UITableViewDataSource{
     
     func populateCell(cell : DoctorCell , detail : Doctor_profile){
         cell.docterImage.setURLImage(detail.profile_pic ?? "")
-        cell.docterName.text = detail.hospital?[0].first_name ?? ""
+        cell.docterName.text = "\(detail.hospital?[0].first_name ?? "") \(detail.hospital?[0].last_name ?? "")"
         cell.SplistLbl.text = detail.speciality?.name ?? ""
         cell.availablityLbl.text = "Available \(detail.hospital?[0].availability ?? "")"
         cell.clinicNameLbl.text = detail.hospital?[0].clinic?.name ?? ""
@@ -74,7 +74,9 @@ extension DoctorsListController : UITableViewDelegate,UITableViewDataSource{
     
     func doctorCellAction(cell : DoctorCell  , detail : Doctor_profile){
         cell.docterImage.addTap {
-             self.push(id: Storyboard.Ids.DoctorDetailsController, animation: true)
+            let vc = DoctorDetailsController.initVC(storyBoardName: .main, vc: DoctorDetailsController.self, viewConrollerID:  Storyboard.Ids.DoctorDetailsController)
+            vc.docProfile = detail
+            self.push(from: self, ToViewContorller: vc)
         }
         
         cell.callBtn.addTap {

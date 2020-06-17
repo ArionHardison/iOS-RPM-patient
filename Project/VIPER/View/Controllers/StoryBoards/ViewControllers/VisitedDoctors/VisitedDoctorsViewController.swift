@@ -7,20 +7,25 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class VisitedDoctorsViewController: UIViewController {
     
     @IBOutlet weak var visitedDoctorsTable: UITableView!
     
+    
+    var visitedDoctors : [Visited_doctors] = [Visited_doctors]()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         initialLoads()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
+        self.getVisitedhDoctorList()
     }
     
     
@@ -54,7 +59,7 @@ extension VisitedDoctorsViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.visitedDoctors.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,8 +67,17 @@ extension VisitedDoctorsViewController: UITableViewDelegate, UITableViewDataSour
             return UITableViewCell()
         }
         cell.customizeStatusColor(indexPath: indexPath)
+        self.populateCell(cell: cell, data: self.visitedDoctors[indexPath.row])
         cell.selectionStyle = .none
         return cell
+    }
+    
+    func populateCell(cell : VisitedDoctorsCell , data : Visited_doctors){
+        cell.doctorNameLabel.text = data.hospital?.first_name ?? ""
+        cell.hospitalNameLabel.text = data.hospital?.clinic?.name ?? ""
+        cell.dateLabel.text = dateConvertor(data.hospital?.created_at ?? "", _input: .date_time, _output: .DM)
+        cell.timeLabel.text = dateConvertor(data.hospital?.created_at ?? "", _input: .date_time, _output: .N_hour)
+        cell.statusLabel.text = data.status ?? ""
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -73,6 +87,33 @@ extension VisitedDoctorsViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+}
+
+
+
+//Api calls
+extension VisitedDoctorsViewController : PresenterOutputProtocol{
+    func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
+        switch String(describing: modelClass) {
+            case model.type.DoctorsListModel:
+                let data = dataDict as? DoctorsListModel
+                self.visitedDoctors = data?.visited_doctors ?? [Visited_doctors]()
+                self.visitedDoctorsTable.reloadData()
+                break
+            
+            default: break
+            
+        }
+    }
+    
+    func showError(error: CustomError) {
+        
+    }
+    
+    func getVisitedhDoctorList(){
+        self.presenter?.HITAPI(api: Base.searchDoctors.rawValue, params: nil, methodType: .GET, modelClass: DoctorsListModel.self, token: true)
     }
     
 }

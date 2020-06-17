@@ -196,6 +196,7 @@
         let DoctorsDetailModel = "DoctorsDetailModel"
         let ArticleModel = "ArticleModel"
         let MedicalRecordsModel = "MedicalRecordsModel"
+        let DoctorsListModel = "DoctorsListModel"
     }
 
     

@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class FavouriteDoctorsListController: UIViewController {
 
     @IBOutlet var listTable : UITableView!
+    
+    var favouriteDoctors : [Favourite_Doctors] = [Favourite_Doctors]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +24,7 @@ class FavouriteDoctorsListController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
+        self.getFavDoctorList()
     }
     
     
@@ -53,13 +57,20 @@ extension FavouriteDoctorsListController {
 extension FavouriteDoctorsListController : UITableViewDelegate,UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.favouriteDoctors.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = self.listTable.dequeueReusableCell(withIdentifier: XIB.Names.FavDoctorTableViewCell, for: indexPath) as! FavDoctorTableViewCell
+        self.populateCell(cell: cell, data: self.favouriteDoctors[indexPath.row])
         return cell
+    }
+    
+    func populateCell(cell : FavDoctorTableViewCell , data : Favourite_Doctors){
+        cell.doctorImage.setURLImage(data.hospital?.doctor_profile?.profile_pic ?? "")
+        cell.labelName.text = data.hospital?.first_name ?? ""
+        cell.labelSpeciality.text = data.hospital?.doctor_profile?.speciality?.name ?? ""
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -71,3 +82,29 @@ extension FavouriteDoctorsListController : UITableViewDelegate,UITableViewDataSo
     }
 }
  
+
+
+//Api calls
+extension FavouriteDoctorsListController : PresenterOutputProtocol{
+    func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
+        switch String(describing: modelClass) {
+            case model.type.DoctorsListModel:
+                let data = dataDict as? DoctorsListModel
+                self.favouriteDoctors = data?.favourite_Doctors ?? [Favourite_Doctors]()
+                self.listTable.reloadData()
+                break
+            
+            default: break
+            
+        }
+    }
+    
+    func showError(error: CustomError) {
+        
+    }
+    
+    func getFavDoctorList(){
+        self.presenter?.HITAPI(api: Base.searchDoctors.rawValue, params: nil, methodType: .GET, modelClass: DoctorsListModel.self, token: true)
+    }
+    
+}

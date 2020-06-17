@@ -96,6 +96,10 @@ struct Doctor_profile : Mappable {
     var speciality : Speciality?
     var hospital : [Hospital]?
     
+    init() {
+        
+    }
+    
     init?(map: Map) {
         
     }

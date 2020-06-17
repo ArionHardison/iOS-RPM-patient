@@ -84,6 +84,7 @@
 		102D39B22493B4DC00C61CC6 /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 102D39B12493B4DC00C61CC6 /* SearchCell.xib */; };
 		104A9F6E24975DAC00337AB9 /* AuthReqRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104A9F6D24975DAC00337AB9 /* AuthReqRes.swift */; };
 		104A9F71249770F500337AB9 /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104A9F70249770F500337AB9 /* LogHelper.swift */; };
+		104ED4C72499EC6400555CA8 /* DoctorsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104ED4C62499EC6400555CA8 /* DoctorsListModel.swift */; };
 		1073727B2497A8020080A5A5 /* UXLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073727A2497A8020080A5A5 /* UXLabel.swift */; };
 		1073727E2497B6680080A5A5 /* VerifyNumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073727D2497B6680080A5A5 /* VerifyNumVC.swift */; };
 		107372802497D2150080A5A5 /* UXUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073727F2497D2150080A5A5 /* UXUserDefaults.swift */; };
@@ -273,6 +274,7 @@
 		102D39B12493B4DC00C61CC6 /* SearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
 		104A9F6D24975DAC00337AB9 /* AuthReqRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthReqRes.swift; sourceTree = "<group>"; };
 		104A9F70249770F500337AB9 /* LogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
+		104ED4C62499EC6400555CA8 /* DoctorsListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorsListModel.swift; sourceTree = "<group>"; };
 		1073727A2497A8020080A5A5 /* UXLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXLabel.swift; sourceTree = "<group>"; };
 		1073727D2497B6680080A5A5 /* VerifyNumVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyNumVC.swift; sourceTree = "<group>"; };
 		1073727F2497D2150080A5A5 /* UXUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXUserDefaults.swift; sourceTree = "<group>"; };
@@ -787,6 +789,7 @@
 				107372962498F9920080A5A5 /* CategoryEntity.swift */,
 				10F5325824991C0400394A87 /* ArticleModel.swift */,
 				10F5325A2499246C00394A87 /* MedicalRecordsModel.swift */,
+				104ED4C62499EC6400555CA8 /* DoctorsListModel.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1697,6 +1700,7 @@
 				084B349620B02F8800B79318 /* File.swift in Sources */,
 				10F5325924991C0400394A87 /* ArticleModel.swift in Sources */,
 				107372892498B1050080A5A5 /* AlertVC.swift in Sources */,
+				104ED4C72499EC6400555CA8 /* DoctorsListModel.swift in Sources */,
 				12384B3524600D990057943D /* DoctorDetailsController.swift in Sources */,
 				12681EFE2438D5A30072193B /* SigninInViewController.swift in Sources */,
 				084B34BE20B0310800B79318 /* Button.swift in Sources */,

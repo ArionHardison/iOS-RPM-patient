@@ -47,6 +47,8 @@ class DoctorDetailsController: UIViewController {
     var serviceList : [String] = ["Vaccination/Immunization","Adolescent Medicine","New Born Care","Infant & Child nutrition"]
     var specializationList : [String] = ["Pediatrician","General Physician","Vaccination/Immunization","Adolescent Medicine","New Born Care","Infant & Child nutrition"]
     
+    var docProfile : Doctor_profile = Doctor_profile()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,12 +59,24 @@ class DoctorDetailsController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
+        self.populateData()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.specilizationTVHeight.constant = self.specilizationTV.contentSize.height + 10
         self.serviceTVHeight.constant = self.servicesTV.contentSize.height + 10
+    }
+    
+    
+    func populateData(){
+        if let detail : Hospital = self.docProfile.hospital?[0]{
+            self.labelDoctorName.text = "\(detail.first_name ?? "") \(detail.last_name ?? "")"
+            self.imgDoctor.setURLImage(detail.doctor_profile?.profile_pic ?? "")
+            self.labelQualification.text = "\(self.docProfile.speciality?.name ?? "")"
+            self.labelPercentage.text = "\(detail.feedback_percentage ?? "") %"
+            
+        }
     }
     
 }

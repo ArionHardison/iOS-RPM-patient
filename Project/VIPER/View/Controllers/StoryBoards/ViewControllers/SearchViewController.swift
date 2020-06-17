@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class SearchViewController: UIViewController {
     
@@ -14,33 +15,25 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchResult : UITableView!
     @IBOutlet weak var searchCountLbl : UILabel!
     
-    var searchArray : [SearchDoc] = [SearchDoc]()
+   var searchDoctors : [Search_doctors] = [Search_doctors]()
     
-    func setupDemoData(){
-        self.searchArray.append(SearchDoc(name: "Dr.Alvin", degree: "MBBS, MS", specialist: "General Physician"))
-        self.searchArray.append(SearchDoc(name: "Dr.Richard", degree: "MBBS, MS", specialist: "Opthalmologist"))
-        self.searchArray.append(SearchDoc(name: "Dr.Glen Stwacy", degree: "MBBS, MRCP (UK)", specialist: "General Physician"))
-        self.searchArray.append(SearchDoc(name: "Dr.Alvin", degree: "MBBS, MS", specialist: "General Physician"))
-        self.searchArray.append(SearchDoc(name: "Dr.Alvin", degree: "MBBS, MS", specialist: "General Physician"))
-        self.searchResult.reloadData()
-    }
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initailSetup()
-        self.setupDemoData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.isNavigationBarHidden = false
+        self.getSearchDoctorList()
     }
     
     func initailSetup(){
         self.setupTableViewCell()
         self.setupNavigation()
         Common.setFont(to: self.searchCountLbl)
-        self.setSeatchCountLbl()
     }
     
     func setupNavigation(){
@@ -72,14 +65,17 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.searchArray.count
+        
+        self.setSeatchCountLbl(resultCount: self.searchDoctors.count)
+        return self.searchDoctors.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.SearchCell) as! SearchCell
-        if let search : SearchDoc  = self.searchArray[indexPath.row]{
-            cell.docNameLbl.text = search.name
-            cell.docDegreeLbl.text = search.degree
-            cell.docSpecialtLbl.text = search.specialist
+        if let search : Search_doctors  = self.searchDoctors[indexPath.row]{
+            cell.docNameLbl.text = search.first_name
+          //  cell.docDegreeLbl.text = search.degree
+            cell.docSpecialtLbl.text = search.doctor_profile?.speciality?.name ?? ""
+            cell.docImage.setURLImage(search.doctor_profile?.profile_pic ?? "")
         }
         self.SearchCellAction(cell: cell)
         return cell
@@ -107,8 +103,29 @@ extension SearchViewController : UITableViewDelegate,UITableViewDataSource{
 }
 
 
-struct SearchDoc {
-    var name : String = ""
-    var degree : String = ""
-    var specialist : String = ""
+
+//Api calls
+extension SearchViewController : PresenterOutputProtocol{
+    func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
+        switch String(describing: modelClass) {
+            case model.type.DoctorsListModel:
+                let data = dataDict as? DoctorsListModel
+                self.searchDoctors = data?.search_doctors ?? [Search_doctors]()
+                self.searchResult.reloadData()
+                break
+            
+            default: break
+            
+        }
+    }
+    
+    func showError(error: CustomError) {
+        
+    }
+    
+    func getSearchDoctorList(){
+        self.presenter?.HITAPI(api: Base.searchDoctors.rawValue, params: nil, methodType: .GET, modelClass: DoctorsListModel.self, token: true)
+    }
+    
 }
+
