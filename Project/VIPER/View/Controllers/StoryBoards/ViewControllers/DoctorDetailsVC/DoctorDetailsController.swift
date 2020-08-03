@@ -81,7 +81,7 @@ class DoctorDetailsController: UIViewController {
             self.labelQualification.text = "\(self.docProfile.speciality?.name ?? "")"
             self.labelPercentage.text = "\(detail.feedback_percentage ?? "") %"
             self.speciality.append(self.docProfile.speciality?.name ?? "")
-            self.imgLocationPreview.pin_setImage(from: URL(string: detail.clinic?.static_map ?? "")!)
+         //   self.imgLocationPreview.pin_setImage(from: URL(string: detail.clinic?.static_map ?? "")!)
             self.labelClinicName.text = detail.clinic?.name ?? ""
             self.labelLocationValue.text = detail.clinic?.address ?? ""
             if (detail.is_favourite ?? "") == "false"{

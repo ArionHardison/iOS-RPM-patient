@@ -13,8 +13,12 @@ struct Category : Mappable {
     var id : Int?
     var name : String?
     var image : String?
+    var offer_fees : String?
+    var fees : String?
     var status : Int?
-    
+    init() {
+        
+    }
     init?(map: Map) {
         
     }
@@ -25,6 +29,8 @@ struct Category : Mappable {
         name <- map["name"]
         image <- map["image"]
         status <- map["status"]
+        fees <- map["fees"]
+        offer_fees <- map["offer_fees"]
     }
     
 }

@@ -103,8 +103,7 @@ internal func storeInUserDefaults(){
 // Retrieve from UserDefaults
 internal func retrieveUserData()->Bool{
 
-    Log.i("UserToken \( UserDefaultConfig.Token)")
-    if UserDefaultConfig.Token.isEmpty{
+     if UserDefaultConfig.Token.isEmpty{
         return false
     }else{
         
@@ -169,7 +168,9 @@ internal func forceLogout(with message : String? = nil) {
     UIApplication.shared.windows.last?.rootViewController?.popOrDismiss(animation: true)
     UIApplication.shared.windows.first?.rootViewController = Router.createModule() //Router.main.instantiateViewController(withIdentifier: Storyboard.Ids.DrawerController)
     UIApplication.shared.windows.first?.makeKeyAndVisible()
-    
+    UserDefaultConfig.Token = ""
+    UserDefaultConfig.UserName = ""
+    UserDefaultConfig.PatientID = ""
     if message != nil {
         UIApplication.shared.windows.last?.rootViewController?.view.makeToast(message, duration: 2, position: .center, title: nil, image: nil, style: ToastStyle(), completion: nil)
     }

@@ -59,7 +59,7 @@ extension Webservice : WebServiceProtocol {
             print("**url", url)
             print("**httpMethod", httpMethod!)
             print("**params", params)
-            print("**params", UserDefaultConfig.Token ?? "")
+            print("**token", UserDefaultConfig.Token ?? "")
             
             Alamofire.request(url, method: httpMethod!, parameters: params,encoding: JSONEncoding.default, headers: headers).responseJSON{ response in
                 print("response.result",response.result)

@@ -197,6 +197,7 @@
         let ProfileModel = "ProfileModel"
         let FeedBackModel = "FeedBackModel"
         let BookingModel = "BookingModel"
+        let PromoCodeEntity = "PromoCodeEntity"
     }
     
     

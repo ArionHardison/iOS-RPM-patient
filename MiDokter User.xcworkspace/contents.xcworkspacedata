@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/abservetech/Documents/ShyamalaT/Practice/Midoktar/midokter_ios_user/Project/VIPER/View/XIB/ServiceCell/ReviewCell.swift">
-   </FileRef>
-   <FileRef
       location = "group:MiDokter User.xcodeproj">
    </FileRef>
    <FileRef

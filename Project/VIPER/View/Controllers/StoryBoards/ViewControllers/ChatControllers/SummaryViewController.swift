@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class SummaryViewController: UIViewController {
     
@@ -25,28 +26,47 @@ class SummaryViewController: UIViewController {
     @IBOutlet weak var chatoutLbl : UILabel!
     @IBOutlet weak var userCollection : UICollectionView!
     @IBOutlet weak var bottomView : UIView!
+    @IBOutlet weak var strickView : UIView!
     
+    
+    var selectedCategory : Category = Category()
+    var doctors : DoctorsDetailModel = DoctorsDetailModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initialsetup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.getDoctorsList(id: selectedCategory.id?.description ?? "")
+    }
+    
+    
     func initialsetup(){
         self.setupAction()
         self.setupFont()
+        self.setupCollectionViewCell()
         self.navigationController?.isNavigationBarHidden = true
         
         
         bottomView.clipsToBounds = true
         bottomView.layer.cornerRadius = 20
         bottomView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        self.setSeatchCountLbl(price: 10)
+       
     }
     
     func setupAction(){
         self.backBtn.addTap {
             self.navigationController?.popViewController(animated: true)
+        }
+        
+        self.applyBtn.addTap {
+            guard let promo : String = self.promoCode.getText, promo.isEmpty != true else {
+                showToast(msg: "Enter PromoCode")
+                return
+            }
+            self.applyPromo(id: (self.doctors.specialities?.id ?? 0).description, promocode: self.promoCode.getText)
         }
     }
     
@@ -66,14 +86,14 @@ class SummaryViewController: UIViewController {
         Common.setFont(to: promoCode, isTitle: false, size: 18)
     }
     
-    func setSeatchCountLbl(price : Int = 0){
+    func setSeatchCountLbl(price : Int = 0,offer : Int){
         let attrs1 = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15), NSAttributedString.Key.foregroundColor : UIColor.black]
         
         let attrs2 = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15), NSAttributedString.Key.foregroundColor : UIColor.AppBlueColor]
         
         let attributedString1 = NSMutableAttributedString(string:" $ \(price) ", attributes:attrs1)
         
-        let attributedString2 = NSMutableAttributedString(string:"(30% off)", attributes:attrs2)
+        let attributedString2 = NSMutableAttributedString(string:"(\(offer) off)", attributes:attrs2)
         
         attributedString1.append(attributedString2)
         self.orginalPrieLbl.attributedText = attributedString1
@@ -84,4 +104,97 @@ class SummaryViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
+}
+
+
+extension SummaryViewController : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
+        return self.doctors.specialities?.doctor_profile?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        
+        let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: XIB.Names.PhotosCell, for: indexPath) as! PhotosCell
+        cell.photoImage.setURLImage(self.doctors.specialities?.doctor_profile?[indexPath.row].profile_pic ?? "")
+        cell.photoImage.makeRoundedCorner()
+        return cell
+        
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: Double(80), height: 80)
+        
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func setupCollectionViewCell(){
+        self.userCollection.delegate = self
+        self.userCollection.dataSource = self
+        self.userCollection.registerCell(withId: XIB.Names.PhotosCell)
+    }
+    
+    
+    
+}
+
+
+
+//Api calls
+extension SummaryViewController : PresenterOutputProtocol{
+    func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
+        switch String(describing: modelClass) {
+            case model.type.DoctorsDetailModel:
+                
+                let data = dataDict as? DoctorsDetailModel
+                self.doctors = data!
+                self.setupData()
+                break
+            case model.type.PromoCodeEntity:
+                let data = dataDict as? PromoCodeEntity
+                self.updatePromoDetail(data: data!)
+            break
+            default: break
+            
+        }
+    }
+    
+    func setupData(){
+        self.userCollection.reloadData()
+        if self.doctors.specialities?.offer_fees != "0.00"{
+            self.offerPriceLbl.text = currency + (self.doctors.specialities?.offer_fees ?? "") ?? ""
+            self.orginalPrieLbl.text = currency + (self.doctors.specialities?.fees ?? "") ?? ""
+            self.orginalPrieLbl.isHidden = false
+        }else{
+            self.offerPriceLbl.text = currency + (self.doctors.specialities?.fees ?? "") ?? ""
+            self.orginalPrieLbl.isHidden = true
+            self.strickView.isHidden = true
+        }
+    }
+    
+    func updatePromoDetail(data : PromoCodeEntity){
+        showToast(msg: data.message ?? "")
+        self.offerPriceLbl.text = currency + (data.final_fees ?? 0).description ?? ""
+        self.setSeatchCountLbl(price: Int(self.doctors.specialities?.fees ?? "") ?? 0, offer: data.promo_discount ?? 0)
+    }
+    
+    func showError(error: CustomError) {
+        
+    }
+    
+    func getDoctorsList(id : String){
+        self.presenter?.HITAPI(api: Base.catagoryList.rawValue + "/\(id ?? "")", params: nil, methodType: .GET, modelClass: DoctorsDetailModel.self, token: true)
+    }
+    
+    func applyPromo(id : String,promocode : String){
+        self.presenter?.HITAPI(api: Base.chatPromo.rawValue, params: ["id" : id, "promocode" : promocode], methodType: .POST, modelClass: PromoCodeEntity.self, token: true)
+    }
+    
+  
 }

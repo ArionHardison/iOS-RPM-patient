@@ -12,7 +12,7 @@ import ObjectMapper
 
 struct DoctorsDetailModel : Mappable {
     var specialities : Specialities?
-    
+    init(){}
     init?(map: Map) {
         
     }
@@ -289,7 +289,9 @@ struct Specialities : Mappable {
     var image : String?
     var status : Int?
     var doctor_profile : [Doctor_profile]?
-    
+    var offer_fees : String?
+    var fees : String?
+    var discount : String?
     init?(map: Map) {
         
     }
@@ -301,6 +303,9 @@ struct Specialities : Mappable {
         image <- map["image"]
         status <- map["status"]
         doctor_profile <- map["doctor_profile"]
+        discount <- map["discount"]
+        fees <- map["fees"]
+        offer_fees <- map["offer_fees"]
     }
     
 }
@@ -330,6 +335,27 @@ struct Timing : Mappable {
         created_at <- map["created_at"]
         updated_at <- map["updated_at"]
         deleted_at <- map["deleted_at"]
+    }
+    
+}
+
+
+struct PromoCodeEntity : Mappable {
+    var status : Int?
+    var message : String?
+    var promo_discount : Int?
+    var final_fees : Int?
+    
+    init?(map: Map) {
+        
+    }
+    
+    mutating func mapping(map: Map) {
+        
+        status <- map["status"]
+        message <- map["message"]
+        promo_discount <- map["promo_discount"]
+        final_fees <- map["final_fees"]
     }
     
 }

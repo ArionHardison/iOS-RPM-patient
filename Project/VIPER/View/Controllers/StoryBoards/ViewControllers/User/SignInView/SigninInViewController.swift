@@ -147,3 +147,4 @@ extension SigninInViewController : PresenterOutputProtocol{
         self.presenter?.HITAPI(api: Base.generateOTP.rawValue, params: ["mobile":"\(mobileNum)"], methodType: .POST, modelClass: MobileVerifyModel.self, token: false)
     }
 }
+

@@ -8,7 +8,7 @@
 
 import UIKit
 
-let AppName = "DentoDora"
+let AppName = "MiDokter User"
 var deviceTokenString = Constants.string.noDevice
 var deviceId = Constants.string.noDevice
 var deviceType : DeviceType = .ios
@@ -19,5 +19,6 @@ let defaultMapLocation = LocationCoordinate(latitude: 13.009245, longitude: 80.2
 let baseUrl = "http://67.205.186.53/" //"http://blabla.deliveryventure.com/"
 let imageURL = "http://67.205.186.53/storage/"
 let country_code = "IN"
+let currency = "$ "
 let mobileNumDigit : Int = 10
 var profileDetali : ProfileModel = ProfileModel()

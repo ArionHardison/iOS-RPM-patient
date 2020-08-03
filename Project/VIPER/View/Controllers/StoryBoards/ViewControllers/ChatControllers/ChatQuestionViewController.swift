@@ -1,4 +1,4 @@
-//
+////
 //  ChatQuestionViewController.swift
 //  MiDokter User
 //
@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class ChatQuestionViewController: UIViewController {
     
@@ -18,7 +19,8 @@ class ChatQuestionViewController: UIViewController {
     @IBOutlet weak var symptomsTxt : UITextView!
     @IBOutlet weak var submitBtn : UIButton!
     
-    var suggestiondata : [demoSuggestion] = [demoSuggestion]()
+    var category : [Category] = [Category]()
+    var AllAategory : [Category] = [Category]()
     var selectedindex : Int  = 0
     
     override func viewDidLoad() {
@@ -26,18 +28,13 @@ class ChatQuestionViewController: UIViewController {
         self.initailSetup()
     }
     
-    func demoData(){
-        self.suggestiondata.append(demoSuggestion(title: "Pediatrics", original: "$ 20", offer: "$ 10"))
-        self.suggestiondata.append(demoSuggestion(title: "General Physician", original: "$ 15", offer: "$ 18"))
-        self.suggestiondata.append(demoSuggestion(title: "Ear, Nose, Throat", original: "$ 12", offer: "$ 10"))
-        self.suggestiondata.append(demoSuggestion(title: "Pediatrics", original: "$ 20", offer: "$ 10"))
-    }
     
     func initailSetup(){
         self.setupNavigation()
         self.setupAction()
         self.setupTableViewCell()
         self.setupFont()
+        self.getCatagoryList()
     }
     
     func setupNavigation(){
@@ -55,19 +52,21 @@ class ChatQuestionViewController: UIViewController {
     
     func setupAction(){
         self.submitBtn.addTap {
-            self.push(id: Storyboard.Ids.SummaryViewController, animation: true)
+            let vc = SummaryViewController.initVC(storyBoardName: .main, vc: SummaryViewController.self, viewConrollerID: Storyboard.Ids.SummaryViewController)
+            vc.selectedCategory = self.category[self.selectedindex]
+            self.push(from: self, ToViewContorller: vc)
         }
     }
-
+    
 }
 
 extension ChatQuestionViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.suggestiondata.count
+        return  self.category.count + 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.SuggestedCell) as! SuggestedCell
-        if indexPath.row == suggestiondata.count-1{
+        if indexPath.row ==  self.category.count{
             cell.allSplistView.isHidden = false
         }else{
             cell.allSplistView.isHidden = true
@@ -89,11 +88,12 @@ extension ChatQuestionViewController : UITableViewDelegate,UITableViewDataSource
             cell.priceLbl.textColor = UIColor.black
             cell.offerPriceView.backgroundColor = UIColor.black
         }
-        
-        if let data : demoSuggestion = self.suggestiondata[indexPath.row]{
-            cell.titleLbl.text = data.title
-            cell.offerPriceLbl.text = data.original
-            cell.priceLbl.text = data.offer
+        if indexPath.row <= self.category.count-1{
+        if let data : Category = self.category[indexPath.row]{
+            cell.titleLbl.text = data.name
+            cell.offerPriceLbl.text = data.offer_fees
+            cell.priceLbl.text = data.fees
+        }
         }
         
         return cell
@@ -101,21 +101,71 @@ extension ChatQuestionViewController : UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == suggestiondata.count-1{
-            self.present(id: Storyboard.Ids.SelectedProblemAreaVC, animation: true)
+        if indexPath.row ==  self.category.count{
+            let vc = SelectedProblemAreaVC.initVC(storyBoardName: .main, vc: SelectedProblemAreaVC.self, viewConrollerID: Storyboard.Ids.SelectedProblemAreaVC)
+            vc.category = self.AllAategory
+            
+            vc.selectedCategory = {(category) in
+                self.category.remove(at: 2)
+                self.selectedindex = 2
+                self.category.append(category)
+                
+                self.suggestionList.reloadData()
+            }
+            
+            self.present(vc: vc)
         }else{
             self.selectedindex = indexPath.row
             self.suggestionList.reloadData()
         }
-    
+        
     }
     
     func setupTableViewCell(){
         self.suggestionList.registerCell(withId: XIB.Names.SuggestedCell)
-        self.demoData()
+        
     }
     
 }
+
+
+//Api calls
+extension ChatQuestionViewController : PresenterOutputProtocol{
+    func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
+        switch String(describing: modelClass) {
+            case model.type.CategoryList:
+                
+                let data = dataDict as? CategoryList
+                if data?.category?.count ?? 0 > 3{
+                    self.category.append((data?.category?[0])!)
+                    self.category.append((data?.category?[1])!)
+                    self.category.append((data?.category?[2])!)
+                }else{
+                    self.category = data?.category ?? [Category]()
+                }
+                self.AllAategory = data?.category ?? [Category]()
+                self.suggestionList.reloadData()
+                break
+            
+            default: break
+            
+        }
+    }
+    
+    func showError(error: CustomError) {
+        
+    }
+    
+    func getCatagoryList(){
+        self.presenter?.HITAPI(api: Base.catagoryList.rawValue, params: nil, methodType: .GET, modelClass: CategoryList.self, token: true)
+    }
+    
+    func cancelAppointment(id : String){
+        self.presenter?.HITAPI(api: Base.cancelAppointment.rawValue, params: ["id" : id], methodType: .POST, modelClass: CommonModel.self, token: true)
+    }
+}
+
+
 
 
 struct demoSuggestion {

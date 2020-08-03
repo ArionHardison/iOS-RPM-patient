@@ -14,7 +14,9 @@ class SelectedProblemAreaVC: UIViewController {
     @IBOutlet weak var selectionTomView : UIView!
     @IBOutlet weak var problemsList : UICollectionView!
 
-    var suggestiondata : [demoSuggestion] = [demoSuggestion]()
+    var category : [Category] = [Category]()
+    
+    var selectedCategory : ((Category)->())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,16 +52,16 @@ class SelectedProblemAreaVC: UIViewController {
 extension SelectedProblemAreaVC : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-         return suggestiondata.count
+         return category.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         
         let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: XIB.Names.ProblemCell, for: indexPath) as! ProblemCell
-        cell.problemsLbl.text = self.suggestiondata[indexPath.row].title
-        cell.orginalPrizeLbl.text = self.suggestiondata[indexPath.row].original
-        cell.offerPrizeLbl.text = self.suggestiondata[indexPath.row].offer
+        cell.problemsLbl.text = self.category[indexPath.row].name
+        cell.orginalPrizeLbl.text = self.category[indexPath.row].fees
+        cell.offerPrizeLbl.text = self.category[indexPath.row].offer_fees
         
         return cell
         
@@ -77,26 +79,15 @@ extension SelectedProblemAreaVC : UICollectionViewDelegate,UICollectionViewDataS
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        self.selectedCategory?(self.category[indexPath.row])
         self.dismiss(animated: true, completion: nil)
     }
 
     func setupCollectionViewCell(){
         
         self.problemsList.registerCell(withId: XIB.Names.ProblemCell)
-        self.demoData()
     }
     
-    func demoData(){
-        self.suggestiondata.append(demoSuggestion(title: "Pediatrics", original: "$ 20", offer: "$ 10"))
-        self.suggestiondata.append(demoSuggestion(title: "General Physician", original: "$ 15", offer: "$ 18"))
-        self.suggestiondata.append(demoSuggestion(title: "Ear, Nose, Throat", original: "$ 12", offer: "$ 10"))
-        self.suggestiondata.append(demoSuggestion(title: "Ear, Nose, Throat", original: "$ 20", offer: "$ 10"))
-        self.suggestiondata.append(demoSuggestion(title: "Pediatrics", original: "$ 20", offer: "$ 10"))
-        self.suggestiondata.append(demoSuggestion(title: "Pediatrics", original: "$ 20", offer: "$ 10"))
-        self.suggestiondata.append(demoSuggestion(title: "Pediatrics", original: "$ 20", offer: "$ 10"))
-        self.suggestiondata.append(demoSuggestion(title: "Pediatrics", original: "$ 20", offer: "$ 10"))
-        self.suggestiondata.append(demoSuggestion(title: "Pediatrics", original: "$ 20", offer: "$ 10"))
-    }
+
     
 }

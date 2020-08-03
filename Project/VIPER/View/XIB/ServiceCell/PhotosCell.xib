@@ -22,6 +22,9 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="EwR-vk-QJN">
                                 <rect key="frame" x="5" y="5" width="90" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="EwR-vk-QJN" secondAttribute="height" multiplier="1:1" id="TvO-qt-Rfb"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -43,6 +46,9 @@
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="99" height="100"/>
+            <connections>
+                <outlet property="photoImage" destination="EwR-vk-QJN" id="ZKv-X4-pdM"/>
+            </connections>
             <point key="canvasLocation" x="148.55072463768118" y="101.11607142857143"/>
         </collectionViewCell>
     </objects>
