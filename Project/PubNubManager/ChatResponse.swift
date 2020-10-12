@@ -51,3 +51,16 @@ class Key : CodingKey, JSONSerializable {
     
 }
 
+struct MessageDetails:JSONSerializable {
+    var message: String?
+    var provider_id: String?
+    var senderId: String?
+    var type: String?
+    var time: String?
+    var user_id: String?
+}
+
+enum SenderType: String,Codable {
+    case User = "user"
+    case Provider = "provider"
+}

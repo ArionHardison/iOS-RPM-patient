@@ -198,6 +198,7 @@
         let FeedBackModel = "FeedBackModel"
         let BookingModel = "BookingModel"
         let PromoCodeEntity = "PromoCodeEntity"
+        let ChatHistoryEntity = "ChatHistoryEntity"
     }
     
     

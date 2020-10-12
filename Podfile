@@ -16,5 +16,6 @@ target 'MiDokter User' do
     pod 'lottie-ios'
     pod 'PINRemoteImage'
     pod 'CLWeeklyCalendarView'
+    pod 'PubNub', '~> 4'
     
 end

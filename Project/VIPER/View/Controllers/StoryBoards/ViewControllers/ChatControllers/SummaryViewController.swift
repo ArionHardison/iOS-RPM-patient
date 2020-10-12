@@ -31,6 +31,8 @@ class SummaryViewController: UIViewController {
     
     var selectedCategory : Category = Category()
     var doctors : DoctorsDetailModel = DoctorsDetailModel()
+    var proceedAmount : String = "0"
+    var message : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +61,10 @@ class SummaryViewController: UIViewController {
     func setupAction(){
         self.backBtn.addTap {
             self.navigationController?.popViewController(animated: true)
+        }
+        
+        self.proceedTPayBtn.addTap {
+            self.proceedToPay(id: (self.doctors.specialities?.id ?? 0).description, message: self.message, Amount: self.proceedAmount, promo_id: "1", speciality_id:  (self.doctors.specialities?.id ?? 0).description)
         }
         
         self.applyBtn.addTap {
@@ -168,10 +174,12 @@ extension SummaryViewController : PresenterOutputProtocol{
     func setupData(){
         self.userCollection.reloadData()
         if self.doctors.specialities?.offer_fees != "0.00"{
+            self.proceedAmount = (self.doctors.specialities?.offer_fees ?? "") ?? ""
             self.offerPriceLbl.text = currency + (self.doctors.specialities?.offer_fees ?? "") ?? ""
             self.orginalPrieLbl.text = currency + (self.doctors.specialities?.fees ?? "") ?? ""
             self.orginalPrieLbl.isHidden = false
         }else{
+            self.proceedAmount = (self.doctors.specialities?.fees ?? "") ?? ""
             self.offerPriceLbl.text = currency + (self.doctors.specialities?.fees ?? "") ?? ""
             self.orginalPrieLbl.isHidden = true
             self.strickView.isHidden = true
@@ -196,5 +204,8 @@ extension SummaryViewController : PresenterOutputProtocol{
         self.presenter?.HITAPI(api: Base.chatPromo.rawValue, params: ["id" : id, "promocode" : promocode], methodType: .POST, modelClass: PromoCodeEntity.self, token: true)
     }
     
+    func proceedToPay(id : String,message : String,Amount:String,promo_id : String,speciality_id : String){
+        self.presenter?.HITAPI(api: Base.proceedToPay.rawValue, params: ["id" : id, "message" : message,"Amount":Amount,"pay_for":"CHAT","promo_id":promo_id,"speciality_id" : speciality_id,"payment_mode":"CARD","use_wallet":"FALSE"], methodType: .POST, modelClass: PromoCodeEntity.self, token: true)
+    }
   
 }

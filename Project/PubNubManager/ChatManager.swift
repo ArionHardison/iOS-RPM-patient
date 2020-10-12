@@ -9,8 +9,8 @@
 import Foundation
 import PubNub
 
-fileprivate let publishKey = "pub-c-723b1e19-17d8-4fbb-9f1b-af817915a1a3"
-fileprivate let subscribeKey = "sub-c-97af66c0-7090-11e9-89f1-56e8a30b5f0e"
+fileprivate let publishKey = "pub-c-b07e3612-dbd2-4e0c-9394-c5d7430c9606"
+fileprivate let subscribeKey = "sub-c-6b66e3cc-25eb-11e8-97e5-2e7e45341bc1"
 
 protocol ChatProtocol:class {
     func getMessageList(message:[MessageDetails])
@@ -59,10 +59,10 @@ class ChatManager : PubNub, PNObjectEventListener {
         }
     }
     
-    func sentMessage(message:String,user_id : Int, timestamp : String) {
+    func sentMessage(message:String,senderId : Int, timestamp : String,provider_id : String) {
         guard let currentChannel = channel else { return  }
         let userDic = ["Metadata":"user"]
-        let sendMsgDic = ["type":"user","message":"\(message)","userid" :user_id , "timestamp" : "\(timestamp)"] as [String : Any]
+        let sendMsgDic = ["type":"text","message":"\(message)","senderId" :senderId.description,"user_id":senderId.description,"provider_id":provider_id.description , "time" : "\(timestamp)"] as [String : Any]
         ChatManager.shared.publish(sendMsgDic, toChannel: currentChannel, storeInHistory: true, withMetadata: userDic) { (responseStatus) in
             //print("mesaage status \(responseStatus)")
             self.getCurrentRoomChatHistory()

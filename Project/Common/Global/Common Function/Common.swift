@@ -225,11 +225,11 @@ public func withRenderingMode(originalImage: UIImage, imgView: UIImageView, imgT
     
 }
 
-func showToast(msg : String ) {
+func showToast(msg : String , bgcolor : UIColor = UIColor.gray) {
     let window = UIApplication.shared.keyWindow!
     let toastLabel = PaddingLabel()
     
-    toastLabel.backgroundColor = UIColor.gray.withAlphaComponent(0.8)
+    toastLabel.backgroundColor = bgcolor.withAlphaComponent(0.8)
     toastLabel.textColor = UIColor.white
     toastLabel.translatesAutoresizingMaskIntoConstraints = false
     toastLabel.textAlignment = .center;
@@ -278,5 +278,6 @@ enum DateTimeFormate : String{
     case R_hour = "HH:mm"
     case N_hour = "hh:mm a"
     case date_time = "yyyy-MM-dd HH:mm:ss"
+    case date_time_Z = "yyyy-MM-dd HH:mm:ss z"
     case DM = "dd MMM"
 }

@@ -85,6 +85,11 @@
 		104A9F6E24975DAC00337AB9 /* AuthReqRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104A9F6D24975DAC00337AB9 /* AuthReqRes.swift */; };
 		104A9F71249770F500337AB9 /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104A9F70249770F500337AB9 /* LogHelper.swift */; };
 		104ED4C72499EC6400555CA8 /* DoctorsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104ED4C62499EC6400555CA8 /* DoctorsListModel.swift */; };
+		10529FD2251DEC1A00262EF4 /* ChatHistoryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10529FD1251DEC1A00262EF4 /* ChatHistoryEntity.swift */; };
+		10529FDE251E002500262EF4 /* ChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10529FDD251E002500262EF4 /* ChatManager.swift */; };
+		10529FE0251E002E00262EF4 /* ChatEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10529FDF251E002E00262EF4 /* ChatEntity.swift */; };
+		10529FE2251E003A00262EF4 /* ChatResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10529FE1251E003900262EF4 /* ChatResponse.swift */; };
+		10529FEB251E083E00262EF4 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10529FEA251E083D00262EF4 /* ChatViewController.swift */; };
 		105D2156249A27C500475E48 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105D2155249A27C500475E48 /* ProfileModel.swift */; };
 		105D2158249A350200475E48 /* FeedBackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105D2157249A350200475E48 /* FeedBackModel.swift */; };
 		105D215A249A441000475E48 /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105D2159249A441000475E48 /* BookingViewController.swift */; };
@@ -115,7 +120,6 @@
 		10C22C0B2494F9DC00D43704 /* ProblemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C22C0A2494F9DC00D43704 /* ProblemCell.swift */; };
 		10C22C0D2494F9F600D43704 /* ProblemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10C22C0C2494F9F600D43704 /* ProblemCell.xib */; };
 		10C22C0F24950F6800D43704 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C22C0E24950F6800D43704 /* SummaryViewController.swift */; };
-		10C22C112495194600D43704 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C22C102495194600D43704 /* ChatViewController.swift */; };
 		10C22C142495240800D43704 /* ChatRightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10C22C132495240800D43704 /* ChatRightCell.xib */; };
 		10C22C162495241E00D43704 /* ChatRightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C22C152495241E00D43704 /* ChatRightCell.swift */; };
 		10C22C182495243300D43704 /* ChatLeftCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10C22C172495243300D43704 /* ChatLeftCell.xib */; };
@@ -281,6 +285,11 @@
 		104A9F6D24975DAC00337AB9 /* AuthReqRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthReqRes.swift; sourceTree = "<group>"; };
 		104A9F70249770F500337AB9 /* LogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
 		104ED4C62499EC6400555CA8 /* DoctorsListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorsListModel.swift; sourceTree = "<group>"; };
+		10529FD1251DEC1A00262EF4 /* ChatHistoryEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatHistoryEntity.swift; sourceTree = "<group>"; };
+		10529FDD251E002500262EF4 /* ChatManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatManager.swift; sourceTree = "<group>"; };
+		10529FDF251E002E00262EF4 /* ChatEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatEntity.swift; sourceTree = "<group>"; };
+		10529FE1251E003900262EF4 /* ChatResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatResponse.swift; sourceTree = "<group>"; };
+		10529FEA251E083D00262EF4 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = Project/VIPER/View/Controllers/StoryBoards/ViewControllers/ChatViewController.swift; sourceTree = SOURCE_ROOT; };
 		105D2155249A27C500475E48 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		105D2157249A350200475E48 /* FeedBackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackModel.swift; sourceTree = "<group>"; };
 		105D2159249A441000475E48 /* BookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewController.swift; sourceTree = "<group>"; };
@@ -311,7 +320,6 @@
 		10C22C0A2494F9DC00D43704 /* ProblemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemCell.swift; sourceTree = "<group>"; };
 		10C22C0C2494F9F600D43704 /* ProblemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProblemCell.xib; sourceTree = "<group>"; };
 		10C22C0E24950F6800D43704 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
-		10C22C102495194600D43704 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		10C22C132495240800D43704 /* ChatRightCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatRightCell.xib; sourceTree = "<group>"; };
 		10C22C152495241E00D43704 /* ChatRightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRightCell.swift; sourceTree = "<group>"; };
 		10C22C172495243300D43704 /* ChatLeftCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatLeftCell.xib; sourceTree = "<group>"; };
@@ -423,7 +431,6 @@
 				12681EFC2438D37F0072193B /* User */,
 				088E4E9D20ECDE6900EEEF22 /* HomeViewController.swift */,
 				102D39AC2493AC2500C61CC6 /* SearchViewController.swift */,
-				10C22C102495194600D43704 /* ChatViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -453,6 +460,7 @@
 		084B30DA20B01DAA00B79318 /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				10529FDC251E001500262EF4 /* PubNubManager */,
 				107372852498B0C70080A5A5 /* AlertViews */,
 				104A9F6F249770E900337AB9 /* Helper */,
 				08C0660520B0386F00A8C5F0 /* Readme.md */,
@@ -804,6 +812,7 @@
 				104ED4C62499EC6400555CA8 /* DoctorsListModel.swift */,
 				105D2155249A27C500475E48 /* ProfileModel.swift */,
 				105D2157249A350200475E48 /* FeedBackModel.swift */,
+				10529FD1251DEC1A00262EF4 /* ChatHistoryEntity.swift */,
 				105D215B249A685C00475E48 /* BookingModel.swift */,
 			);
 			path = Entities;
@@ -1114,6 +1123,16 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		10529FDC251E001500262EF4 /* PubNubManager */ = {
+			isa = PBXGroup;
+			children = (
+				10529FDD251E002500262EF4 /* ChatManager.swift */,
+				10529FDF251E002E00262EF4 /* ChatEntity.swift */,
+				10529FE1251E003900262EF4 /* ChatResponse.swift */,
+			);
+			path = PubNubManager;
+			sourceTree = "<group>";
+		};
 		107372762497982C0080A5A5 /* CountryPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -1168,6 +1187,7 @@
 		108010C12494E17800C7249D /* ChatControllers */ = {
 			isa = PBXGroup;
 			children = (
+				10529FEA251E083D00262EF4 /* ChatViewController.swift */,
 				108010C22494E1B700C7249D /* ChatQuestionViewController.swift */,
 				108010C92494F48600C7249D /* SelectedProblemAreaVC.swift */,
 				10C22C0E24950F6800D43704 /* SummaryViewController.swift */,
@@ -1682,6 +1702,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10529FE2251E003A00262EF4 /* ChatResponse.swift in Sources */,
 				084B344420B02A8E00B79318 /* Cache.swift in Sources */,
 				7E401F2C2487E2340021991A /* AppointmentDetailsViewController.swift in Sources */,
 				90FAE992248FEEC60025787A /* UXTableView.swift in Sources */,
@@ -1705,6 +1726,7 @@
 				084B348220B02E7300B79318 /* Router.swift in Sources */,
 				107372822497D7000080A5A5 /* EmailViewController.swift in Sources */,
 				084B34AE20B0306600B79318 /* ViewExtension.swift in Sources */,
+				10529FD2251DEC1A00262EF4 /* ChatHistoryEntity.swift in Sources */,
 				108010CA2494F48600C7249D /* SelectedProblemAreaVC.swift in Sources */,
 				084B34C720B0318700B79318 /* HoshiTextField.swift in Sources */,
 				08C066F620B039C400A8C5F0 /* GooglePlacesHelper.swift in Sources */,
@@ -1720,6 +1742,7 @@
 				10F5325924991C0400394A87 /* ArticleModel.swift in Sources */,
 				107372892498B1050080A5A5 /* AlertVC.swift in Sources */,
 				104ED4C72499EC6400555CA8 /* DoctorsListModel.swift in Sources */,
+				10529FDE251E002500262EF4 /* ChatManager.swift in Sources */,
 				12384B3524600D990057943D /* DoctorDetailsController.swift in Sources */,
 				12681EFE2438D5A30072193B /* SigninInViewController.swift in Sources */,
 				084B34BE20B0310800B79318 /* Button.swift in Sources */,
@@ -1733,6 +1756,7 @@
 				084B343B20B029E900B79318 /* UIAplication+RLT.swift in Sources */,
 				084B34CE20B0422000B79318 /* ErrorLog.swift in Sources */,
 				107372802497D2150080A5A5 /* UXUserDefaults.swift in Sources */,
+				10529FEB251E083E00262EF4 /* ChatViewController.swift in Sources */,
 				12681F012438E1840072193B /* NameAndEmailViewController.swift in Sources */,
 				12B6E215244717DB00BE448F /* OnlineDoctorCell.swift in Sources */,
 				105D215C249A685C00475E48 /* BookingModel.swift in Sources */,
@@ -1742,6 +1766,7 @@
 				108010C62494EA3900C7249D /* SuggestedCell.swift in Sources */,
 				084B34D020B0424E00B79318 /* Country.swift in Sources */,
 				779DBC582493F9570055FCB9 /* HealthFeedTableViewCell.swift in Sources */,
+				10529FE0251E002E00262EF4 /* ChatEntity.swift in Sources */,
 				12B6E20B2447010B00BE448F /* UpcomingTableviewCell.swift in Sources */,
 				084B34A520B0302100B79318 /* ViewController.swift in Sources */,
 				779DBC4E2493EFC20055FCB9 /* MedicalRecordsViewController.swift in Sources */,
@@ -1764,7 +1789,6 @@
 				9052614E248FEBBE008CC272 /* ServiceSpecializationCell.swift in Sources */,
 				12B6E2062446E7DF00BE448F /* LogoCell.swift in Sources */,
 				108010BA2494A69400C7249D /* ReminderViewController.swift in Sources */,
-				10C22C112495194600D43704 /* ChatViewController.swift in Sources */,
 				1293C5642453370000FEC1C9 /* DoctorsListController.swift in Sources */,
 				102D39B02493B4CB00C61CC6 /* SearchCell.swift in Sources */,
 				779DBC4B2493E7600055FCB9 /* FavDoctorTableViewCell.swift in Sources */,

@@ -83,6 +83,7 @@ struct XIB {
     let SuggestedCell = "SuggestedCell"
     let ProblemCell = "ProblemCell"
     let ChatRightCell = "ChatRightCell"
+    let ChatLeftCell = "ChatLeftCell"
     
     
 }

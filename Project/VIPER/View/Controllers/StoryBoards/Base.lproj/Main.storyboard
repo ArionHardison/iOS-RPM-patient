@@ -544,13 +544,20 @@
                                                                     <constraint firstAttribute="width" constant="30" id="zdF-UK-Vzh"/>
                                                                 </constraints>
                                                             </imageView>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ich-yb-URH">
+                                                                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
+                                                            <constraint firstItem="ich-yb-URH" firstAttribute="leading" secondItem="Ced-mZ-abB" secondAttribute="leading" id="6cC-cI-jFq"/>
                                                             <constraint firstItem="sgq-n8-VZ8" firstAttribute="centerX" secondItem="Ced-mZ-abB" secondAttribute="centerX" id="WKo-Rd-Ohr"/>
+                                                            <constraint firstAttribute="bottom" secondItem="ich-yb-URH" secondAttribute="bottom" id="Zol-5x-80X"/>
                                                             <constraint firstAttribute="height" constant="48" id="fYj-lv-9EH"/>
+                                                            <constraint firstAttribute="trailing" secondItem="ich-yb-URH" secondAttribute="trailing" id="kHg-1d-y1y"/>
                                                             <constraint firstItem="sgq-n8-VZ8" firstAttribute="centerY" secondItem="Ced-mZ-abB" secondAttribute="centerY" id="qTP-Jk-MOV"/>
                                                             <constraint firstAttribute="width" constant="48" id="tZH-6u-Xsk"/>
+                                                            <constraint firstItem="ich-yb-URH" firstAttribute="top" secondItem="Ced-mZ-abB" secondAttribute="top" id="v6s-hu-tWm"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="borderLineWidth">
@@ -640,6 +647,7 @@
                         <outlet property="docuploadView" destination="Ced-mZ-abB" id="LaZ-KP-d4B"/>
                         <outlet property="imageuploadView" destination="WOz-1q-7Qn" id="Ehs-aX-veN"/>
                         <outlet property="infoLbl" destination="Gaa-im-Wod" id="q7S-jb-WqE"/>
+                        <outlet property="messageSendBtn" destination="ich-yb-URH" id="GL4-zj-gMW"/>
                         <outlet property="msgTxt" destination="rVU-S0-DqY" id="wX4-T1-zqk"/>
                     </connections>
                 </viewController>

@@ -36,6 +36,9 @@ PODS:
     - PINRemoteImage/Core
   - PopupDialog (0.7.1):
     - DynamicBlurView (~> 2.0)
+  - PubNub (4.15.4):
+    - PubNub/Core (= 4.15.4)
+  - PubNub/Core (4.15.4)
 
 DEPENDENCIES:
   - Alamofire
@@ -49,6 +52,7 @@ DEPENDENCIES:
   - lottie-ios
   - PINRemoteImage
   - PopupDialog (~> 0.7)
+  - PubNub (~> 4)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -68,6 +72,7 @@ SPEC REPOS:
     - PINCache
     - PINOperation
     - PINRemoteImage
+    - PubNub
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
@@ -85,7 +90,8 @@ SPEC CHECKSUMS:
   PINOperation: 24b774353ca248fcf87d67b2d61eef42087c125a
   PINRemoteImage: e2b89e19fb6e77ffc099f9d9f3b3fe1745e3f9f9
   PopupDialog: 39598b7d41719f5c025b4b70e62728bae7734fef
+  PubNub: 0028862c42e5adafd2bf7cc8c062731c055da6e2
 
-PODFILE CHECKSUM: fc7668e92086b8b88f97d946a539e7678d1111e5
+PODFILE CHECKSUM: 377b0e54ba705feecdd0b2fc7e19dcd9e1a36b4e
 
 COCOAPODS: 1.9.1

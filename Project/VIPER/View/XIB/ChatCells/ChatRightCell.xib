@@ -44,13 +44,13 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v7P-ga-rVR">
-                        <rect key="frame" x="20" y="5" width="389" height="100"/>
+                        <rect key="frame" x="22.5" y="5" width="386.5" height="100"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VYf-g4-Vxq">
-                                <rect key="frame" x="5" y="5" width="379" height="90"/>
+                                <rect key="frame" x="5" y="5" width="376.5" height="90"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVW-YH-m7M">
-                                        <rect key="frame" x="0.0" y="0.0" width="379" height="90"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="376.5" height="90"/>
                                         <string key="text">LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -72,7 +72,7 @@
                     <constraint firstAttribute="trailing" secondItem="v7P-ga-rVR" secondAttribute="trailing" constant="5" id="5gu-9Q-YOb"/>
                     <constraint firstAttribute="bottom" secondItem="Hj0-S6-mDF" secondAttribute="bottom" constant="5" id="E4k-QD-Wnl"/>
                     <constraint firstItem="Hj0-S6-mDF" firstAttribute="top" secondItem="v7P-ga-rVR" secondAttribute="bottom" id="F8s-xI-ykX"/>
-                    <constraint firstItem="v7P-ga-rVR" firstAttribute="leading" secondItem="OvK-Va-NTH" secondAttribute="leading" constant="20" id="LE6-o0-HeA"/>
+                    <constraint firstItem="v7P-ga-rVR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OvK-Va-NTH" secondAttribute="leading" constant="20" id="LE6-o0-HeA"/>
                     <constraint firstItem="Hj0-S6-mDF" firstAttribute="leading" secondItem="OvK-Va-NTH" secondAttribute="leading" constant="20" id="TH3-RD-y75"/>
                     <constraint firstAttribute="trailing" secondItem="Hj0-S6-mDF" secondAttribute="trailing" constant="5" id="dhN-Fj-mrp"/>
                     <constraint firstItem="v7P-ga-rVR" firstAttribute="top" secondItem="OvK-Va-NTH" secondAttribute="top" constant="5" id="wIr-XR-VtR"/>

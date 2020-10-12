@@ -54,6 +54,7 @@ class ChatQuestionViewController: UIViewController {
         self.submitBtn.addTap {
             let vc = SummaryViewController.initVC(storyBoardName: .main, vc: SummaryViewController.self, viewConrollerID: Storyboard.Ids.SummaryViewController)
             vc.selectedCategory = self.category[self.selectedindex]
+            vc.message = self.symptomsTxt.text ?? ""
             self.push(from: self, ToViewContorller: vc)
         }
     }
@@ -118,7 +119,7 @@ extension ChatQuestionViewController : UITableViewDelegate,UITableViewDataSource
             self.selectedindex = indexPath.row
             self.suggestionList.reloadData()
         }
-        
+   //     self.submitBtn.setCorneredElevation(shadow: <#T##Int#>, corner: <#T##Int#>, color: <#T##UIColor#>)
     }
     
     func setupTableViewCell(){
