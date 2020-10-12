@@ -49,7 +49,7 @@ class ChatViewController: UIViewController {
 }
 
 
-extension ChatViewController : UITableViewDelegate,UITableViewDataSource{
+extension ChatMessageViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.msg.count
     }
