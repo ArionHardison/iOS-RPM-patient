@@ -8,6 +8,7 @@
 
 import UIKit
 import ObjectMapper
+import IQKeyboardManagerSwift
 
 protocol AlertDelegate {
     func selectedDate(date : String,month : String,year : String,dob : String ,alertVC : UIViewController)
@@ -38,7 +39,7 @@ class DateOfBirthViewController: UIViewController {
         super.viewDidLoad()
         
         self.setupAction()
-        
+        IQKeyboardManager.shared.enable = true
         buttonBack.addTarget(self, action: #selector(backAction(sender:)), for: .touchUpInside)
         btnContinue.addTarget(self, action: #selector(continueAction(sender:)), for: .touchUpInside)
     }

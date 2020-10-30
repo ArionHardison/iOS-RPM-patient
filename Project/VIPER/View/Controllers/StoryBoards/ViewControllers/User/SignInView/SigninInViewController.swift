@@ -9,6 +9,7 @@
 import UIKit
 import CountryPickerView
 import ObjectMapper
+import IQKeyboardManagerSwift
 
 class SigninInViewController: UIViewController {
 
@@ -29,6 +30,8 @@ class SigninInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initialLoads()
+        IQKeyboardManager.shared.enable = true
+       // txtMobileNumber.
     }
 
 //    @IBAction func continueAction(sender:UIButton){

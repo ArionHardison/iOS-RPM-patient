@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         application.statusBarStyle = .lightContent
+        IQKeyboardManager.shared.enable = true
         self.registerPush(forApp: application)
         return true
     }

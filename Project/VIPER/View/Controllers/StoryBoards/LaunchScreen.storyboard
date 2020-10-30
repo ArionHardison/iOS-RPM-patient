@@ -20,7 +20,7 @@
                                 <rect key="frame" x="67.5" y="233.5" width="240" height="200"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.12505114079999999" green="0.18319103119999999" blue="0.356880486" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="wDn-lK-Fpf" firstAttribute="width" secondItem="mdC-IL-fGJ" secondAttribute="width" multiplier="0.64" id="9z0-p4-rKK"/>
                             <constraint firstItem="wDn-lK-Fpf" firstAttribute="centerX" secondItem="mdC-IL-fGJ" secondAttribute="centerX" id="PGs-4N-2gm"/>
@@ -36,6 +36,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Logo" width="1373" height="1572"/>
+        <image name="Logo" width="1024" height="1024"/>
     </resources>
 </document>
