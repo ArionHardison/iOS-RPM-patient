@@ -22,6 +22,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initailSetup()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,6 +33,7 @@ class SearchViewController: UIViewController {
     
     func initailSetup(){
         self.setupTableViewCell()
+        self.searchBar.delegate = self
         self.setupNavigation()
         Common.setFont(to: self.searchCountLbl)
     }
@@ -73,23 +75,35 @@ extension SearchViewController : UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.SearchCell) as! SearchCell
         if let search : Search_doctors  = self.searchDoctors[indexPath.row]{
             cell.docNameLbl.text = search.first_name
-          //  cell.docDegreeLbl.text = search.degree
+            cell.docDegreeLbl.text = search.doctor_profile?.certification ?? ""
             cell.docSpecialtLbl.text = search.doctor_profile?.speciality?.name ?? ""
             cell.docImage.setURLImage(search.doctor_profile?.profile_pic ?? "")
         }
-        self.SearchCellAction(cell: cell)
+//        self.SearchCellAction(cell: cell)
         return cell
         
     }
     
-    func SearchCellAction(cell : SearchCell){
+    func SearchCellAction(cell : SearchCell,indexPathForID:String?){
         cell.contentView.addTap {
+//            doctorId = cell.
             self.push(id: Storyboard.Ids.DoctorDetailsController, animation: true)
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let search : Search_doctors  = self.searchDoctors[indexPath.row]
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.DoctorDetailsController) as! DoctorDetailsController
+        vc.docProfile = search.doctor_profile ?? Doctor_profile()
+        vc.isFromSearchDoctor = true
+        vc.searchDoctor = search
+        doctorId = "\(search.id ?? 0)"
+        serviceID = "\(search.services_id ?? "0")"
+        self.navigationController?.pushViewController(vc, animated: true)
         
+        
+//        self.push(id: Storyboard.Ids.DoctorDetailsController, animation: true)
+
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -111,7 +125,10 @@ extension SearchViewController : PresenterOutputProtocol{
             case model.type.DoctorsListModel:
                 let data = dataDict as? DoctorsListModel
                 self.searchDoctors = data?.search_doctors ?? [Search_doctors]()
-                self.searchResult.reloadData()
+                DispatchQueue.main.async {
+                    self.searchResult.reloadInMainThread()
+                }
+                
                 break
             
             default: break
@@ -129,3 +146,21 @@ extension SearchViewController : PresenterOutputProtocol{
     
 }
 
+
+
+// #MARK:- Search Functionality
+
+
+extension SearchViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if !searchText.isEmpty{
+
+              self.presenter?.HITAPI(api: Base.searchDoctors.rawValue + "?search=\(searchText)", params: nil, methodType: .GET, modelClass: DoctorsListModel.self, token: true)
+            
+        }
+        
+    }
+
+    
+}

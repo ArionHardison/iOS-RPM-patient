@@ -18,10 +18,10 @@ struct DoctorsDetailModel : Mappable {
     }
     
     mutating func mapping(map: Map) {
-        
+
         specialities <- map["Specialities"]
     }
-    
+
 }
 
 
@@ -42,13 +42,13 @@ struct Clinic : Mappable {
     var deleted_at : String?
     var static_map : String?
     var clinic_photo : [String]?
-    
+
     init?(map: Map) {
-        
+
     }
-    
+
     mutating func mapping(map: Map) {
-        
+
         id <- map["id"]
         name <- map["name"]
         email <- map["email"]
@@ -66,7 +66,7 @@ struct Clinic : Mappable {
         static_map <- map["static_map"]
         clinic_photo <- map["clinic_photo"]
     }
-    
+
 }
 
 
@@ -101,11 +101,11 @@ struct Doctor_profile : Mappable {
     }
     
     init?(map: Map) {
-        
+
     }
-    
+
     mutating func mapping(map: Map) {
-        
+
         id <- map["id"]
         doctor_id <- map["doctor_id"]
         gender <- map["gender"]
@@ -131,7 +131,7 @@ struct Doctor_profile : Mappable {
         speciality <- map["speciality"]
         hospital <- map["hospital"]
     }
-    
+
 }
 
 struct Doctor_service : Mappable {
@@ -139,19 +139,19 @@ struct Doctor_service : Mappable {
     var hospital_id : Int?
     var service_id : Int?
     var service : Service?
-    
+
     init?(map: Map) {
-        
+
     }
-    
+
     mutating func mapping(map: Map) {
-        
+
         id <- map["id"]
         hospital_id <- map["hospital_id"]
         service_id <- map["service_id"]
         service <- map["service"]
     }
-    
+
 }
 
 struct Feedback : Mappable {
@@ -191,7 +191,7 @@ struct Hospital : Mappable {
     var mobile : String?
     var country_code : String?
     var email : String?
-    var otp : Int?
+    var otp : String?
     var gender : String?
     var tax_id : String?
     var medical_id : String?
@@ -201,16 +201,20 @@ struct Hospital : Mappable {
     var specialities_name : String?
     var is_administrative : Int?
     var is_doctor : Int?
-    var added_by : String?
+    var added_by : Int?
     var is_staff : Int?
     var is_receptionist : Int?
     var role : Int?
     var email_verified : Int?
     var email_token : String?
     var email_verified_at : String?
+    var subscribe_from : String?
+    var subscribe_to : String?
+    var subscribe_limit : String?
     var created_at : String?
     var updated_at : String?
     var deleted_at : String?
+    var status : String?
     var feedback_percentage : String?
     var availability : String?
     var is_favourite : String?
@@ -219,13 +223,13 @@ struct Hospital : Mappable {
     var doctor_profile : Doctor_profile?
     var timing : [Timing]?
     var doctor_service : [Doctor_service]?
-    
+
     init?(map: Map) {
-        
+
     }
-    
+
     mutating func mapping(map: Map) {
-        
+
         id <- map["id"]
         first_name <- map["first_name"]
         last_name <- map["last_name"]
@@ -249,9 +253,13 @@ struct Hospital : Mappable {
         email_verified <- map["email_verified"]
         email_token <- map["email_token"]
         email_verified_at <- map["email_verified_at"]
+        subscribe_from <- map["subscribe_from"]
+        subscribe_to <- map["subscribe_to"]
+        subscribe_limit <- map["subscribe_limit"]
         created_at <- map["created_at"]
         updated_at <- map["updated_at"]
         deleted_at <- map["deleted_at"]
+        status <- map["status"]
         feedback_percentage <- map["feedback_percentage"]
         availability <- map["availability"]
         is_favourite <- map["is_favourite"]
@@ -261,7 +269,7 @@ struct Hospital : Mappable {
         timing <- map["timing"]
         doctor_service <- map["doctor_service"]
     }
-    
+
 }
 
 struct Service : Mappable {
@@ -288,26 +296,27 @@ struct Specialities : Mappable {
     var name : String?
     var image : String?
     var status : Int?
-    var doctor_profile : [Doctor_profile]?
-    var offer_fees : String?
-    var fees : String?
     var discount : String?
+    var fees : String?
+    var offer_fees : String?
+    var doctor_profile : [Doctor_profile]?
+
     init?(map: Map) {
-        
+
     }
-    
+
     mutating func mapping(map: Map) {
-        
+
         id <- map["id"]
         name <- map["name"]
         image <- map["image"]
         status <- map["status"]
-        doctor_profile <- map["doctor_profile"]
         discount <- map["discount"]
         fees <- map["fees"]
         offer_fees <- map["offer_fees"]
+        doctor_profile <- map["doctor_profile"]
     }
-    
+
 }
 
 
@@ -317,26 +326,28 @@ struct Timing : Mappable {
     var start_time : String?
     var end_time : String?
     var day : String?
+    var date_value : String?
     var created_at : String?
     var updated_at : String?
     var deleted_at : String?
-    init(){}
+
     init?(map: Map) {
-        
+
     }
-    
+
     mutating func mapping(map: Map) {
-        
+
         id <- map["id"]
         doctor_id <- map["doctor_id"]
         start_time <- map["start_time"]
         end_time <- map["end_time"]
         day <- map["day"]
+        date_value <- map["date_value"]
         created_at <- map["created_at"]
         updated_at <- map["updated_at"]
         deleted_at <- map["deleted_at"]
     }
-    
+
 }
 
 

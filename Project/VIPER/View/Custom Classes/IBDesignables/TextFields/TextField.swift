@@ -15,12 +15,6 @@ class TextField: UITextField {
 
     //MARK:- PlaceHolder Color
     
-    @IBInspectable
-    var placeHolderColor : UIColor = .black {
-        didSet{
-            self.attributedPlaceholder = NSAttributedString(string: String.removeNil(self.placeholder), attributes: [.foregroundColor : placeHolderColor])
-        }
-    }
     
     
     

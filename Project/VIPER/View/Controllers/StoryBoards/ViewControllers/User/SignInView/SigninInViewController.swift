@@ -23,7 +23,8 @@ class SigninInViewController: UIViewController {
     @IBOutlet weak var labelGoogle: UILabel!
     @IBOutlet weak var labelTermsAndConditions: UILabel!
     @IBOutlet weak var countryCode : CountryPickerView!
-   
+    @IBOutlet weak var appleView: UIView!
+    
     
     private var mobileVerifyData: MobileVerifyModel?
     

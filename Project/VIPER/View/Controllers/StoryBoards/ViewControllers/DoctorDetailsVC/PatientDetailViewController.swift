@@ -8,6 +8,7 @@
 
 import UIKit
 import ObjectMapper
+import IQKeyboardManagerSwift
 
 class PatientDetailViewController: UIViewController {
 
@@ -15,7 +16,9 @@ class PatientDetailViewController: UIViewController {
     @IBOutlet weak var doctorImg : UIImageView!
     @IBOutlet weak var doctorNameLbl : UILabel!
     @IBOutlet weak var clinicDetailLbl : UILabel!
-    
+    @IBOutlet weak var scrollInnerView : UIView!
+    @IBOutlet weak var scrollView : UIScrollView!
+
     @IBOutlet weak var patientDetailLbl : UILabel!
     @IBOutlet weak var bookingforTitleLbl : UILabel!
     @IBOutlet weak var dateandtimeTitleLbl : UILabel!
@@ -30,8 +33,10 @@ class PatientDetailViewController: UIViewController {
 
     
     var docProfile : Doctor_profile = Doctor_profile()
+    var searchDoctor : Search_doctors = Search_doctors()
+    var isfromSearch : Bool = false
     var bookingreq : BookingReq = BookingReq()
-    
+    var isFollowup : Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initialLoad()
@@ -46,6 +51,9 @@ class PatientDetailViewController: UIViewController {
         self.setupAction()
         self.populateData()
         self.setupFont()
+         IQKeyboardManager.shared.enable = false
+        self.scrollView.addSubview(self.scrollInnerView)
+        self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.scrollInnerView.frame.height)
     }
     
     func setupNavigation(){
@@ -64,23 +72,43 @@ class PatientDetailViewController: UIViewController {
         self.confirmBtn.addTap {
             if self.validation(){
                 self.bookingreq.consult_time = "5"
-                self.bookingreq.appointment_type = "ONLINE"
+                self.bookingreq.appointment_type = "OFFLINE"
                 self.bookingreq.description = "Patient Testing Purpose"
+                self.bookingreq.doctor_id = doctorId
+                
+                self.bookingreq.booking_for =  self.isFollowup ? "follow_up" : "consultation"
+              self.bookingreq.selectedPatient = UserDefaultConfig.PatientID
+                self.bookingreq.service_id = serviceID
+//                self.bookingreq.scheduled_at = self.bookingreq.scheduled_at
+
                 self.bookingApointment(booking : self.bookingreq)
+
             }
         }
     }
     
     func populateData(){
+        if isfromSearch {
         self.dateandtimeLbl.text = dateConvertor(self.bookingreq.scheduled_at, _input: .date_time, _output: .DMY_Time)
         self.bookingforLbl.text = self.bookingreq.booking_for.capitalized
-        if let detail : Hospital = self.docProfile.hospital?[0]{
-            self.bookingreq.doctor_id = ( self.docProfile.id ?? 0 ).description
-            self.doctorNameLbl.text = "\(detail.first_name ?? "") \(detail.last_name ?? "")"
-            self.doctorImg.pin_setImage(from: URL(string: imageURL+"\(self.docProfile.profile_pic ?? "")")!)
+//        if let detail : Hospital = self.docProfile.hospital?[0]{
+            self.bookingreq.doctor_id = ( self.searchDoctor.id ?? 0 ).description
+        self.doctorNameLbl.text = "\(self.searchDoctor.first_name ?? "")  \(self.searchDoctor.last_name ?? "")"
+        self.doctorImg.pin_setImage(from: URL(string: imageURL+"\(self.searchDoctor.doctor_profile?.profile_pic ?? "")")!)
             self.doctorImg.makeRoundedCorner()
-            self.clinicDetailLbl.text = "\(detail.clinic?.name ?? "") \(detail.clinic?.address ?? "")"
-        }
+        self.clinicDetailLbl.text = "\(self.searchDoctor.clinic?.name ?? "") \(self.searchDoctor.clinic?.address ?? "")"
+//        }
+        } else {
+                self.dateandtimeLbl.text = dateConvertor(self.bookingreq.scheduled_at, _input: .date_time, _output: .DMY_Time)
+                self.bookingforLbl.text = self.bookingreq.booking_for.capitalized
+        //        if let detail : Hospital = self.docProfile.hospital?[0]{
+                    self.bookingreq.doctor_id = ( self.docProfile.id ?? 0 ).description
+            self.doctorNameLbl.text = "\(self.docProfile.hospital?.first?.first_name ?? "")  \(self.docProfile.hospital?.first?.last_name ?? "")"
+            self.doctorImg.pin_setImage(from: URL(string: imageURL+"\(self.docProfile.profile_pic ?? "")")!)
+                    self.doctorImg.makeRoundedCorner()
+            self.clinicDetailLbl.text = "\(self.docProfile.hospital?.first?.clinic?.name ?? "") \(self.docProfile.hospital?.first?.clinic?.address ?? "")"
+        //        }
+                }
     }
     
     func validation() -> Bool{
@@ -105,7 +133,7 @@ extension PatientDetailViewController : PresenterOutputProtocol{
             case model.type.BookingModel:
                 let data = dataDict as? BookingModel
                
-                if data?.status ?? false{
+                if Bool(data?.success ?? "false") ?? false{
                     showToast(msg: "Appointment booking successfully")
                     self.navigationController?.popToRootViewController(animated: true)
                 }
@@ -124,6 +152,33 @@ extension PatientDetailViewController : PresenterOutputProtocol{
     
     func bookingApointment(booking : BookingReq){
         self.presenter?.HITAPI(api: Base.booking.rawValue, params: convertToDictionary(model: booking), methodType: .POST, modelClass: BookingModel.self, token: true)
+    }
+    
+}
+
+
+extension PatientDetailViewController : UITextFieldDelegate{
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        IQKeyboardManager.shared.enable = true
+
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+       // Try to find next responder
+       if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+          nextField.becomeFirstResponder()
+       } else {
+          // Not found, so remove keyboard.
+          textField.resignFirstResponder()
+       }
+       // Do not add a line break
+       return false
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return true
     }
     
 }

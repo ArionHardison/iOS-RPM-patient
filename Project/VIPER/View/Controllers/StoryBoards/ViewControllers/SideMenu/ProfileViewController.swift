@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 enum ProfileViewOption{
     case personal
@@ -63,6 +64,8 @@ class ProfileViewController: UIViewController {
         self.setupNavigation()
         self.setupAction()
         self.setValues()
+        IQKeyboardManager.shared.enable = false
+        self.dobTXT.delegate = self
     }
     
     func setupNavigation(){
@@ -70,6 +73,10 @@ class ProfileViewController: UIViewController {
         self.navigationItem.title = "Your Profile"
         self.viewOption(option: .personal)
       }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        IQKeyboardManager.shared.enable = true
+    }
     
     func setupAction(){
         self.personalBtn.addTap {
@@ -147,4 +154,30 @@ class ProfileViewController: UIViewController {
         }
     }
     
+}
+
+
+extension ProfileViewController : UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == dobTXT{
+            PickerManager.shared.showDatePicker(selectedDate: textField.text, completionHandler: { date in
+                textField.text = date
+                
+            })
+            
+        }
+        return true
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+       // Try to find next responder
+       if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+          nextField.becomeFirstResponder()
+       } else {
+          // Not found, so remove keyboard.
+          textField.resignFirstResponder()
+       }
+       // Do not add a line break
+       return false
+    }
 }

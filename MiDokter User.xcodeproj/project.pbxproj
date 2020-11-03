@@ -170,6 +170,7 @@
 		7E6AEF502488D0F6005F0899 /* SuggestedSpecialityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E6AEF4E2488D0F6005F0899 /* SuggestedSpecialityCell.xib */; };
 		7E6AEF532488D4B5005F0899 /* ChatCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6AEF512488D4B5005F0899 /* ChatCommentCell.swift */; };
 		7E6AEF542488D4B5005F0899 /* ChatCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E6AEF522488D4B5005F0899 /* ChatCommentCell.xib */; };
+		85C76852254D81F9002827B9 /* PickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C76851254D81F9002827B9 /* PickerManager.swift */; };
 		90526149248FE0B1008CC272 /* UXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90526148248FE0B1008CC272 /* UXView.swift */; };
 		9052614C248FEB93008CC272 /* ServiceSpecializationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9052614B248FEB93008CC272 /* ServiceSpecializationCell.xib */; };
 		9052614E248FEBBE008CC272 /* ServiceSpecializationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9052614D248FEBBE008CC272 /* ServiceSpecializationCell.swift */; };
@@ -374,6 +375,7 @@
 		7E6AEF4E2488D0F6005F0899 /* SuggestedSpecialityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestedSpecialityCell.xib; sourceTree = "<group>"; };
 		7E6AEF512488D4B5005F0899 /* ChatCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCommentCell.swift; sourceTree = "<group>"; };
 		7E6AEF522488D4B5005F0899 /* ChatCommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatCommentCell.xib; sourceTree = "<group>"; };
+		85C76851254D81F9002827B9 /* PickerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerManager.swift; sourceTree = "<group>"; };
 		90526148248FE0B1008CC272 /* UXView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UXView.swift; sourceTree = "<group>"; };
 		9052614B248FEB93008CC272 /* ServiceSpecializationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceSpecializationCell.xib; sourceTree = "<group>"; };
 		9052614D248FEBBE008CC272 /* ServiceSpecializationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSpecializationCell.swift; sourceTree = "<group>"; };
@@ -502,6 +504,7 @@
 		084B342420B028E800B79318 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				85C76851254D81F9002827B9 /* PickerManager.swift */,
 				90526147248FE086008CC272 /* Extension */,
 				08C066F920B03A6900A8C5F0 /* Circular Transition */,
 				08C066F820B03A5100A8C5F0 /* Country Selection */,
@@ -1803,6 +1806,7 @@
 				7E6AEF532488D4B5005F0899 /* ChatCommentCell.swift in Sources */,
 				084B348920B02EAC00B79318 /* Presenter.swift in Sources */,
 				1293C5682453376000FEC1C9 /* DoctorCell.swift in Sources */,
+				85C76852254D81F9002827B9 /* PickerManager.swift in Sources */,
 				107372842497D97C0080A5A5 /* UXString.swift in Sources */,
 				084B345D20B02C0500B79318 /* Constants.swift in Sources */,
 				084B344120B02A5000B79318 /* Bind.swift in Sources */,
@@ -2008,9 +2012,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1;
+				CURRENT_PROJECT_VERSION = 1.3;
 				DEVELOPMENT_TEAM = Q4N6XWX7K3;
 				INFOPLIST_FILE = "$(SRCROOT)/Project/Common/Plist Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2018,7 +2023,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Telehealth.user;
 				PRODUCT_NAME = TeleHealth;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -2028,9 +2033,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1;
+				CURRENT_PROJECT_VERSION = 1.3;
 				DEVELOPMENT_TEAM = Q4N6XWX7K3;
 				INFOPLIST_FILE = "$(SRCROOT)/Project/Common/Plist Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2038,7 +2044,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Telehealth.user;
 				PRODUCT_NAME = TeleHealth;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

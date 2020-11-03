@@ -13,7 +13,7 @@ import ObjectMapper
 
 
 struct BookingModel : Mappable {
-    var status : Bool?
+    var success : String?
     var appointment : Appointment?
     
     init?(map: Map) {
@@ -22,7 +22,7 @@ struct BookingModel : Mappable {
     
     mutating func mapping(map: Map) {
         
-        status <- map["status"]
+        success <- map["success"]
         appointment <- map["appointment"]
     }
     
@@ -73,4 +73,7 @@ struct BookingReq : Codable {
     var consult_time : String = ""
     var appointment_type : String = ""
     var description : String = ""
+    var selectedPatient : String = ""
+    var service_id : String = ""
+
 }

@@ -76,6 +76,7 @@ extension DoctorsListController : UITableViewDelegate,UITableViewDataSource{
         cell.docterImage.addTap {
             let vc = DoctorDetailsController.initVC(storyBoardName: .main, vc: DoctorDetailsController.self, viewConrollerID:  Storyboard.Ids.DoctorDetailsController)
             vc.docProfile = detail
+            vc.isFromSearchDoctor = false
             self.push(from: self, ToViewContorller: vc)
         }
         
@@ -92,6 +93,7 @@ extension DoctorsListController : UITableViewDelegate,UITableViewDataSource{
         cell.bookingBtn.addTap{
         let vc = BookingViewController.initVC(storyBoardName: .main, vc: BookingViewController.self, viewConrollerID: Storyboard.Ids.BookingViewController)
         vc.docProfile = detail
+         vc.isFromSearch = false
         self.push(from: self, ToViewContorller: vc)
         }
     }

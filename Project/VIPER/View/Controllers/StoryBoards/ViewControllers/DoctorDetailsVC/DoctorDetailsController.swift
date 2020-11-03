@@ -43,14 +43,15 @@ class DoctorDetailsController: UIViewController {
     @IBOutlet weak var photosCV: UICollectionView!
     @IBOutlet weak var labelReviews: UILabel!
     @IBOutlet weak var reviewsCV: UICollectionView!
-    @IBOutlet weak var specilizationTVHeight: NSLayoutConstraint!
-    @IBOutlet weak var serviceTVHeight: NSLayoutConstraint!
-    @IBOutlet weak var timingHeight: NSLayoutConstraint!
-    
+//    @IBOutlet weak var specilizationTVHeight: NSLayoutConstraint!
+//    @IBOutlet weak var serviceTVHeight: NSLayoutConstraint!
+//    @IBOutlet weak var timingHeight: NSLayoutConstraint!
+//
     //inital static Data
     
-    var docProfile : Doctor_profile = Doctor_profile()
-    
+    var searchDoctor = Search_doctors()
+    var docProfile = Doctor_profile()
+    var isFromSearchDoctor:Bool = true
     var speciality : [String] = [String]()
     
     override func viewDidLoad() {
@@ -67,14 +68,16 @@ class DoctorDetailsController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.specilizationTVHeight.constant = self.specilizationTV.contentSize.height + 10
-        self.serviceTVHeight.constant = self.servicesTV.contentSize.height + 10
-        self.timingHeight.constant = self.timingTableView.contentSize.height + 10
+//        self.specilizationTVHeight.constant = self.specilizationTV.contentSize.height + 10
+//        self.serviceTVHeight.constant = self.servicesTV.contentSize.height + 10
+//        self.timingHeight.constant = self.timingTableView.contentSize.height + 10
     }
     
     
     func populateData(){
-        if let detail : Hospital = self.docProfile.hospital?[0]{
+        
+        if !isFromSearchDoctor {
+            let detail : Hospital = (self.docProfile.hospital?[0])!
             self.labelDoctorName.text = "\(detail.first_name ?? "") \(detail.last_name ?? "")"
             self.imgDoctor.setURLImage(detail.doctor_profile?.profile_pic ?? "")
              self.imgDoctor.makeRoundedCorner()
@@ -89,9 +92,28 @@ class DoctorDetailsController: UIViewController {
             }else{
                 self.btnFavourite.setImage(UIImage(named: "love_red"), for: .normal)
             }
-            self.servicesTV.reloadData()
-            self.specilizationTV.reloadData()
-        }
+        }else{
+              
+                self.labelDoctorName.text = "\(self.searchDoctor.first_name ?? "")" + " " + "\(self.searchDoctor.last_name ?? "")"
+                self.imgDoctor.setURLImage(self.searchDoctor.doctor_profile?.profile_pic ?? "")
+                     self.imgDoctor.makeRoundedCorner()
+                self.labelQualification.text = "\(self.searchDoctor.doctor_profile?.certification ?? "")"
+        //        self.labelPercentage.text = "\(self.docProfile.feedback?.first.) %"
+                self.speciality.append(self.searchDoctor.doctor_profile?.speciality?.name ?? "")
+                 //   self.imgLocationPreview.pin_setImage(from: URL(string: detail.clinic?.static_map ?? "")!)
+                self.labelClinicName.text = self.searchDoctor.clinic?.name ?? ""
+                self.labelLocationValue.text = self.searchDoctor.clinic?.address ?? ""
+                if (self.searchDoctor.is_favourite ?? "") == "false"{
+                        self.btnFavourite.setImage(UIImage(named: "love"), for: .normal)
+                    }else{
+                        self.btnFavourite.setImage(UIImage(named: "love_red"), for: .normal)
+                    }
+                }
+            self.servicesTV.reloadInMainThread()
+            self.specilizationTV.reloadInMainThread()
+            self.timingTableView.reloadInMainThread()
+            
+        
     }
     
     
@@ -103,6 +125,7 @@ class DoctorDetailsController: UIViewController {
         self.bookBtn.addTap {
             let vc = BookingViewController.initVC(storyBoardName: .main, vc: BookingViewController.self, viewConrollerID: Storyboard.Ids.BookingViewController)
             vc.docProfile = self.docProfile
+            
             self.push(from: self, ToViewContorller: vc)
             
         }
@@ -138,36 +161,37 @@ extension DoctorDetailsController{
 extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.servicesTV{
-            if (self.docProfile.hospital?[0].doctor_service?.count ?? 0) > 4{
-                return 4
+            if isFromSearchDoctor{
+                return self.searchDoctor.doctor_service?.count ?? 0
             }else{
-                return self.docProfile.hospital?[0].doctor_service?.count ?? 0
+                return self.docProfile.hospital?.first?.doctor_service?.count ?? 0
             }
+            
+            
         }else if tableView == self.specilizationTV{
-            if self.speciality.count > 4{
-                return 4
-
-            }else{
                 return self.speciality.count
-            }
-             return 0
         }else if tableView == self.timingTableView{
-           
-            return (self.docProfile.hospital?[0].timing?.count ?? 0)
+            if isFromSearchDoctor{
+                self.searchDoctor.timing?.count ?? 0
+            }else{
+                return (self.docProfile.hospital?.first?.timing?.count ?? 0)
+            }
         }
         else{
             return 0
         }
+        return 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if isFromSearchDoctor{
         let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.ServiceSpecializationCell) as! ServiceSpecializationCell
         
         if tableView == self.servicesTV{
-            cell.serviceLbl.text = self.docProfile.hospital?[0].doctor_service?[indexPath.row].service?.name ?? ""
+            cell.serviceLbl.text = self.searchDoctor.doctor_service?[indexPath.row].service?.name ?? ""
         }else if tableView == self.specilizationTV{
             cell.serviceLbl.text = self.speciality[indexPath.row]
         }else if tableView == self.timingTableView{
-            if let timing : Timing = self.docProfile.hospital?[0].timing?[indexPath.row] ?? Timing(){
+            if let timing : Timing = self.searchDoctor.timing?[indexPath.row]{
                 cell.dotImg.isHidden = true
                 self.setSeatchCountLbl(label: cell.serviceLbl, day: timing.day ?? "", timing: "\(String(describing: timing.start_time ?? "")) \(String(describing: timing.end_time ?? ""))")
             }
@@ -176,6 +200,24 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
         self.viewDidLayoutSubviews()
         self.view.layoutIfNeeded()
         return cell
+        } else{
+        let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.ServiceSpecializationCell) as! ServiceSpecializationCell
+        
+        if tableView == self.servicesTV{
+            cell.serviceLbl.text = self.docProfile.hospital?.first?.doctor_service?[indexPath.row].service?.name ?? ""
+        }else if tableView == self.specilizationTV{
+            cell.serviceLbl.text = self.speciality[indexPath.row]
+        }else if tableView == self.timingTableView{
+            if let timing : Timing = self.docProfile.hospital?.first?.timing?[indexPath.row]{
+                cell.dotImg.isHidden = true
+                self.setSeatchCountLbl(label: cell.serviceLbl, day: timing.day ?? "", timing: "\(String(describing: timing.start_time ?? "")) \(String(describing: timing.end_time ?? ""))")
+            }
+        }
+        
+        self.viewDidLayoutSubviews()
+        self.view.layoutIfNeeded()
+        return cell
+        }
         
     }
     
@@ -194,8 +236,9 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if isFromSearchDoctor {
         if tableView == self.servicesTV{
-            if (self.docProfile.hospital?[0].doctor_service?.count ?? 0) > 4{
+            if (self.searchDoctor.doctor_service?.count ?? 0) > 4{
                 return 40
             }else{
                 return 0
@@ -209,7 +252,26 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
             }
           
         }
-         return 0
+         
+    }else{
+        if tableView == self.servicesTV{
+            if (self.docProfile.hospital?.first?.doctor_service?.count ?? 0) > 4{
+                return 40
+            }else{
+                return 0
+            }
+        }else if tableView == self.specilizationTV{
+            
+            if speciality.count > 4{
+                return 40
+            }else{
+                return 0
+            }
+          
+        }
+         
+    }
+        return 0
     }
     
     func setupTableViewCell(){
@@ -250,12 +312,21 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
 
 extension DoctorDetailsController : UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if isFromSearchDoctor{
         if collectionView == self.photosCV{
             return  10
         }else if collectionView == self.reviewsCV{
-            return  self.docProfile.hospital?[0].feedback?.count ?? 0
+            return  self.searchDoctor.feedback?.count ?? 0
         }
         return  0
+        }else{
+        if collectionView == self.photosCV{
+            return  10
+        }else if collectionView == self.reviewsCV{
+            return  self.docProfile.hospital?.first?.feedback?.count ?? 0
+        }
+        return  0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -264,7 +335,11 @@ extension DoctorDetailsController : UICollectionViewDelegate , UICollectionViewD
             return photoCell
         }else if collectionView == self.reviewsCV{
             let reviewCell = collectionView.dequeueReusableCell(withReuseIdentifier: XIB.Names.ReviewCell, for: indexPath) as! ReviewCell
-            self.populateFeedBackData(cell: reviewCell, feedback: self.docProfile.hospital?[0].feedback?[indexPath.row] ?? Feedback())
+            if isFromSearchDoctor{
+            self.populateFeedBackData(cell: reviewCell, feedback: self.searchDoctor.feedback?[indexPath.row] ?? Feedback())
+            } else{
+                self.populateFeedBackData(cell: reviewCell, feedback: self.docProfile.hospital?.first?.feedback?[indexPath.row] ?? Feedback())
+            }
             return reviewCell
         }
         
@@ -312,10 +387,18 @@ extension DoctorDetailsController : PresenterOutputProtocol{
                 let data = dataDict as? CommonModel
                 if (data?.message ?? "") == "Favourite Doctor Added"{
                     self.btnFavourite.setImage(UIImage(named: "love_red"), for: .normal)
-                    self.docProfile.hospital?[0].is_favourite = "true"
+                    if isFromSearchDoctor{
+                    self.searchDoctor.is_favourite = "true"
+                    }else{
+                        self.docProfile.hospital?[0].is_favourite = "true"
+                    }
                 }else{
                     self.btnFavourite.setImage(UIImage(named: "love"), for: .normal)
-                    self.docProfile.hospital?[0].is_favourite = "false"
+                                        if isFromSearchDoctor{
+                    self.searchDoctor.is_favourite = "false"
+                    }else{
+                        self.docProfile.hospital?[0].is_favourite = "false"
+                    }
                 }
                 break
             

@@ -86,6 +86,8 @@ struct Search_doctors : Mappable {
     var timing : [Timing]?
     var doctor_service : [Doctor_service]?
     
+    init() {}
+    
     init?(map: Map) {
         
     }

@@ -20,13 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+        IQKeyboardManager.shared.enable = true
+
         setGoogleMapKey()
         setLocalization(language: Language.english)
         let navigationController = Router.createModule()
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         application.statusBarStyle = .lightContent
-        IQKeyboardManager.shared.enable = true
         self.registerPush(forApp: application)
         return true
     }

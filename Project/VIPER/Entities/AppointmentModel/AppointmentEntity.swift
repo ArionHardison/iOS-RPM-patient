@@ -147,19 +147,23 @@ struct Speciality : Mappable {
     var name : String?
     var image : String?
     var status : Int?
-    
+    var discount : String?
+    var fees : String?
+
     init?(map: Map) {
-        
+
     }
-    
+
     mutating func mapping(map: Map) {
-        
+
         id <- map["id"]
         name <- map["name"]
         image <- map["image"]
         status <- map["status"]
+        discount <- map["discount"]
+        fees <- map["fees"]
     }
-    
+
 }
 
 struct Upcomming : Mappable {

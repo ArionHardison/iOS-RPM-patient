@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MWd-3z-WAQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MWd-3z-WAQ">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +10,7 @@
         <!--Signin In View Controller-->
         <scene sceneID="EQM-Wz-NJN">
             <objects>
-                <viewController storyboardIdentifier="SigninInViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CFC-YU-iU6" customClass="SigninInViewController" customModule="Mi_Dokter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SigninInViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CFC-YU-iU6" customClass="SigninInViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k7W-0d-k7T">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,23 +31,23 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="Tn5-Gn-oeE">
-                                        <rect key="frame" x="40" y="45" width="334" height="95"/>
+                                        <rect key="frame" x="40" y="45" width="334" height="50"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="qku-1s-4rE">
-                                                <rect key="frame" x="0.0" y="0.0" width="334" height="38.666666666666664"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vmf-eW-0Wu">
-                                                        <rect key="frame" x="0.0" y="0.0" width="154.66666666666666" height="38.666666666666664"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="154.66666666666666" height="50"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook" translatesAutoresizingMaskIntoConstraints="NO" id="ez5-mm-KHZ">
-                                                                <rect key="frame" x="10" y="6.6666666666666288" width="25" height="25"/>
+                                                                <rect key="frame" x="10" y="12.666666666666629" width="25" height="25"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="25" id="O6r-ER-rse"/>
                                                                     <constraint firstAttribute="height" constant="25" id="SEp-Px-dXD"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="facebook" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKP-cV-8zH">
-                                                                <rect key="frame" x="50" y="8.3333333333333712" width="63.666666666666657" height="22"/>
+                                                                <rect key="frame" x="50" y="14" width="63.666666666666657" height="22"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="22" id="VAb-nh-xBR"/>
                                                                 </constraints>
@@ -71,17 +70,17 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Egi-r1-grk">
-                                                        <rect key="frame" x="179.66666666666663" y="0.0" width="154.33333333333337" height="38.666666666666664"/>
+                                                        <rect key="frame" x="179.66666666666663" y="0.0" width="154.33333333333337" height="50"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="google" translatesAutoresizingMaskIntoConstraints="NO" id="dt0-se-DVm">
-                                                                <rect key="frame" x="18" y="6.6666666666666288" width="25" height="25"/>
+                                                                <rect key="frame" x="18" y="12.666666666666629" width="25" height="25"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="25" id="1Z7-7T-zVL"/>
                                                                     <constraint firstAttribute="width" constant="25" id="6k8-28-O6t"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzy-JT-zXg">
-                                                                <rect key="frame" x="60.000000000000028" y="8.3333333333333712" width="49.333333333333343" height="22"/>
+                                                                <rect key="frame" x="60.000000000000028" y="14" width="49.333333333333343" height="22"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="22" id="Syd-S2-tnV"/>
                                                                 </constraints>
@@ -109,7 +108,7 @@
                                                 </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lXE-ud-9pw">
-                                                <rect key="frame" x="0.0" y="56.666666666666629" width="334" height="38.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="34" width="334" height="16"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -121,9 +120,14 @@
                                         <constraints>
                                             <constraint firstItem="lXE-ud-9pw" firstAttribute="height" secondItem="qku-1s-4rE" secondAttribute="height" id="glq-TH-gGB"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="subviews">
+                                                <exclude reference="lXE-ud-9pw"/>
+                                            </mask>
+                                        </variation>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By continuing , you agree to Terms &amp; Conditions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAD-G6-VuL">
-                                        <rect key="frame" x="42.333333333333343" y="155" width="329.33333333333326" height="22"/>
+                                        <rect key="frame" x="42.333333333333343" y="110" width="329.33333333333326" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="S6s-i5-Wao"/>
                                         </constraints>
@@ -141,7 +145,7 @@
                                     <constraint firstItem="kAD-G6-VuL" firstAttribute="top" secondItem="Tn5-Gn-oeE" secondAttribute="bottom" constant="15" id="Rrz-9d-eHc"/>
                                     <constraint firstItem="Tn5-Gn-oeE" firstAttribute="centerX" secondItem="0ks-Yq-CWP" secondAttribute="centerX" id="UDm-mG-r7p"/>
                                     <constraint firstAttribute="trailing" secondItem="m0W-K6-8Fy" secondAttribute="trailing" constant="8" id="ciC-4o-4Ow"/>
-                                    <constraint firstItem="Tn5-Gn-oeE" firstAttribute="height" secondItem="0ks-Yq-CWP" secondAttribute="height" multiplier="0.475" id="j27-NF-Vzv"/>
+                                    <constraint firstItem="Tn5-Gn-oeE" firstAttribute="height" secondItem="0ks-Yq-CWP" secondAttribute="height" multiplier="0.25" id="j27-NF-Vzv"/>
                                     <constraint firstItem="m0W-K6-8Fy" firstAttribute="top" secondItem="0ks-Yq-CWP" secondAttribute="top" constant="8" id="lDu-Ja-aBi"/>
                                     <constraint firstItem="m0W-K6-8Fy" firstAttribute="leading" secondItem="0ks-Yq-CWP" secondAttribute="leading" constant="8" id="t5g-Tv-tgn"/>
                                 </constraints>
@@ -243,6 +247,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="c2d-RR-fMK"/>
                     <connections>
+                        <outlet property="appleView" destination="lXE-ud-9pw" id="q57-Ms-Vbw"/>
                         <outlet property="buttonContinue" destination="K0j-wC-LqN" id="qvV-IW-yEW"/>
                         <outlet property="buttonTrouble" destination="rBQ-m5-VqA" id="sRI-Xg-y4s"/>
                         <outlet property="countryCode" destination="KPF-wc-cEx" id="PhG-O2-9Nn"/>
@@ -261,7 +266,7 @@
         <!--Name And Email View Controller-->
         <scene sceneID="FqC-Vz-N05">
             <objects>
-                <viewController storyboardIdentifier="NameAndEmailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="E0d-zr-eR2" customClass="NameAndEmailViewController" customModule="Mi_Dokter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NameAndEmailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="E0d-zr-eR2" customClass="NameAndEmailViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fdh-4Q-eiR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -315,6 +320,11 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                                <color key="value" red="0.99999326470000005" green="0.99999350310000001" blue="0.99999183420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sF9-Zc-BaF">
                                                         <rect key="frame" x="0.0" y="39.333333333333371" width="336" height="1"/>
@@ -343,6 +353,11 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eRH-wx-Rzm">
                                                         <rect key="frame" x="0.0" y="39.333333333333314" width="336" height="1"/>
@@ -457,7 +472,7 @@
         <!--Gender ConfirmationVC-->
         <scene sceneID="wv9-LS-Ibg">
             <objects>
-                <viewController storyboardIdentifier="GenderConfirmationVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2cH-t2-zzb" customClass="GenderConfirmationVC" customModule="Mi_Dokter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GenderConfirmationVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2cH-t2-zzb" customClass="GenderConfirmationVC" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JnK-jG-eCU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -613,7 +628,7 @@
         <!--Date Of Birth View Controller-->
         <scene sceneID="bV4-9L-ghb">
             <objects>
-                <viewController storyboardIdentifier="DateOfBirthViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nTw-3h-4Dk" customClass="DateOfBirthViewController" customModule="Mi_Dokter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DateOfBirthViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nTw-3h-4Dk" customClass="DateOfBirthViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w6Y-F6-MmI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -793,7 +808,7 @@
         <!--Verify NumVC-->
         <scene sceneID="sWk-ex-0q7">
             <objects>
-                <viewController storyboardIdentifier="VerifyNumVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GNj-BU-Cgt" customClass="VerifyNumVC" customModule="Mi_Dokter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VerifyNumVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GNj-BU-Cgt" customClass="VerifyNumVC" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BXz-o3-xhi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -962,7 +977,7 @@
         <!--Email View Controller-->
         <scene sceneID="bFk-sa-zcH">
             <objects>
-                <viewController storyboardIdentifier="EmailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jeP-ZI-wxQ" customClass="EmailViewController" customModule="Mi_Dokter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EmailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jeP-ZI-wxQ" customClass="EmailViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bsK-qD-Nug">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1016,6 +1031,11 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                                <color key="value" red="0.99999326470000005" green="0.99999350310000001" blue="0.99999183420000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XiF-Ao-w1e">
                                                         <rect key="frame" x="0.0" y="46" width="336" height="1"/>
@@ -1102,8 +1122,8 @@
     </scenes>
     <resources>
         <image name="Chevron" width="32" height="32"/>
-        <image name="Logo" width="1373" height="1572"/>
-        <image name="checkmark.square.fill" catalog="system" width="64" height="56"/>
+        <image name="Logo" width="1024" height="1024"/>
+        <image name="checkmark.square.fill" catalog="system" width="128" height="114"/>
         <image name="facebook" width="32" height="32"/>
         <image name="google" width="32" height="32"/>
     </resources>
