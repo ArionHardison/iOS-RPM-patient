@@ -11,8 +11,8 @@ import ObjectMapper
 
 struct LoginReq : Codable{
     var device_type : String = "iOS"
-    var device_token  : String = ""
-    var device_id  : String? = ""
+    var device_token  : String = deviceTokenString
+    var device_id  : String? = UUID().uuidString
     var client_id : Int = appClientId
     var client_secret : String = appSecretKey
     var grant_type : String = "otp"

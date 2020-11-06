@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class UpcomingDetailsController: UITableViewController {
     
@@ -28,16 +29,85 @@ class UpcomingDetailsController: UITableViewController {
     @IBOutlet weak var labelDate: UILabel!
     
     @IBOutlet weak var buttonCancel: UIButton!
+    @IBOutlet weak var videoCallButton: UIButton!
     
+    var appointment = Appointments()
+    var isFromUpcomming:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-      
+        self.initalLoads()
         
         
     }
     
 
    
+}
+
+extension UpcomingDetailsController {
+    
+    private func initalLoads(){
+        self.labelDate.text = dateConvertor(self.appointment.scheduled_at ?? "", _input: .date_time, _output: .DM)
+        self.labelPatientName.text = (self.appointment.hospital?.first_name ?? "") + (self.appointment.hospital?.last_name ?? "")
+        self.labelHospitalName.text = self.appointment.hospital?.clinic?.name ?? ""
+        self.doctorName.text = self.appointment.hospital?.clinic?.name ?? ""
+        self.labelDesignation.text = self.appointment.hospital?.doctor_profile?.speciality?.name ?? ""
+        self.doctorImg.setImage(with: self.appointment.hospital?.doctor_profile?.profile_pic, placeHolder: #imageLiteral(resourceName: "1"))
+        self.buttonCancel.addTarget(self, action: #selector(cancelAppointment(sender:)), for: .touchUpInside)
+        self.videoCallButton.addTarget(self, action: #selector(videoCallAction(sender:)), for: .touchUpInside)
+        self.videoCallButton.isHidden = !isFromUpcomming
+        self.buttonCancel.isHidden = !isFromUpcomming
+    }
+    
+    
+    
+   @IBAction func cancelAppointment(sender:UIButton){
+    self.presenter?.HITAPI(api: Base.cancelAppointment.rawValue, params: ["id" : self.appointment.id ?? 0], methodType: .POST, modelClass: CommonModel.self, token: true)
+    }
+    
+    
+    @IBAction private func videoCallAction(sender:UIButton){
+        if #available(iOS 13.0, *) {
+         let twilioVideoController = self.storyboard?.instantiateViewController(identifier: "audioVideoCallCaontroller") as! audioVideoCallCaontroller
+            twilioVideoController.modalPresentationStyle = .fullScreen
+            self.present(twilioVideoController, animated: true, completion: {
+                twilioVideoController.video = 1
+                twilioVideoController.receiverId = "\(self.appointment.hospital?.id ?? 0 )"
+                twilioVideoController.receiverName = (self.appointment.hospital?.clinic?.name ?? "")
+                twilioVideoController.isCallType = .makeCall
+                twilioVideoController.handleCall(roomId: "12345", receiverId: "\(self.appointment.hospital?.id  ?? 0 )",isVideo : 1)
+                               })
+                           } else {
+                             // Fallback on earlier versions
+                           }
+
+        
+    }
+    
+    
+}
+
+
+
+extension UpcomingDetailsController : PresenterOutputProtocol {
+    func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
+        switch String(describing: modelClass) {
+        case model.type.AppointmentModel:
+            
+           let data = dataDict as? AppointmentModel
+           self.navigationController?.popViewController(animated: true)
+            break
+        default:
+            break
+        }
+       
+    }
+    
+    func showError(error: CustomError) {
+        
+    }
+    
+    
 }

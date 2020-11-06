@@ -43,6 +43,9 @@ struct Appointment : Mappable {
     var created_at : String?
     var id : Int?
     
+    init() {
+    }
+    
     init?(map: Map) {
         
     }

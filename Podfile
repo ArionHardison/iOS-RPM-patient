@@ -17,5 +17,7 @@ target 'MiDokter User' do
     pod 'PINRemoteImage'
     pod 'CLWeeklyCalendarView'
     pod 'PubNub', '~> 4'
+    pod 'TwilioVoice', '~> 5.5.0'            #//, '~> 2.0.0'
+    pod 'TwilioVideo', '~> 2.10'
     
 end

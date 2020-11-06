@@ -24,3 +24,5 @@ let mobileNumDigit : Int = 10
 var profileDetali : ProfileModel = ProfileModel()
 var doctorId = "0"
 var serviceID = "0"
+var GlobalsenderId = String()
+var GlobalreciveId = String()

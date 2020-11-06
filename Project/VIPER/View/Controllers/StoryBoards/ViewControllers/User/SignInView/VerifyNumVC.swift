@@ -144,6 +144,19 @@ extension VerifyNumVC : PresenterOutputProtocol{
     }
     
     func LoginApi(mobileNum : LoginReq){
-        self.presenter?.HITAPI(api: Base.verify_otp.rawValue, params: convertToDictionary(model: mobileNum), methodType: .POST, modelClass: MobileVerifyModel.self, token: false)
+     
+        var params = [String:Any]()
+        params.updateValue(self.mobileVerifyData?.mobileNum ?? "", forKey: "mobile")
+        params.updateValue(self.mobileVerifyData?.otp?.description ?? "", forKey: "otp")
+        params.updateValue("ios", forKey: "device_type")
+        params.updateValue(deviceTokenString, forKey: "device_token")
+        params.updateValue(UUID().uuidString, forKey: "device_id")
+        params.updateValue(appClientId, forKey: "client_id")
+        params.updateValue(appSecretKey, forKey: "client_secret")
+        params.updateValue("otp", forKey: "grant_type")
+        
+        
+        
+        self.presenter?.HITAPI(api: Base.verify_otp.rawValue, params: params, methodType: .POST, modelClass: MobileVerifyModel.self, token: false)
     }
 }

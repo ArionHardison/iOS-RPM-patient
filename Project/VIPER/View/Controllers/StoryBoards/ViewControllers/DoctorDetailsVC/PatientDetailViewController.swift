@@ -31,7 +31,7 @@ class PatientDetailViewController: UIViewController {
     
     @IBOutlet weak var confirmBtn : UIButton!
 
-    
+    var categoryId : Int = 0
     var docProfile : Doctor_profile = Doctor_profile()
     var searchDoctor : Search_doctors = Search_doctors()
     var isfromSearch : Bool = false
@@ -71,15 +71,27 @@ class PatientDetailViewController: UIViewController {
      func setupAction(){
         self.confirmBtn.addTap {
             if self.validation(){
+                if !self.isfromSearch{
                 self.bookingreq.consult_time = "5"
-                self.bookingreq.appointment_type = "OFFLINE"
+                self.bookingreq.appointment_type = "ONLINE"
                 self.bookingreq.description = "Patient Testing Purpose"
-                self.bookingreq.doctor_id = doctorId
+                    self.bookingreq.doctor_id = "\(self.docProfile.id ?? 0)"
                 
                 self.bookingreq.booking_for =  self.isFollowup ? "follow_up" : "consultation"
-              self.bookingreq.selectedPatient = UserDefaultConfig.PatientID
-                self.bookingreq.service_id = serviceID
-//                self.bookingreq.scheduled_at = self.bookingreq.scheduled_at
+                self.bookingreq.selectedPatient = UserDefaultConfig.PatientID
+//                 self.bookingreq.service_id = "\(self.categoryId)"
+                self.bookingreq.scheduled_at = self.bookingreq.scheduled_at
+                }else{
+                    self.bookingreq.consult_time = "5"
+                    self.bookingreq.appointment_type = "ONLINE"
+                    self.bookingreq.description = "Patient Testing Purpose"
+                    self.bookingreq.doctor_id = "\(self.searchDoctor.id ?? 0)"
+                    
+                    self.bookingreq.booking_for =  self.isFollowup ? "follow_up" : "consultation"
+                    self.bookingreq.selectedPatient = UserDefaultConfig.PatientID
+//                     self.bookingreq.service_id = "\(self.categoryId)"
+                    self.bookingreq.scheduled_at = self.bookingreq.scheduled_at
+                    }
 
                 self.bookingApointment(booking : self.bookingreq)
 
@@ -151,6 +163,9 @@ extension PatientDetailViewController : PresenterOutputProtocol{
     }
     
     func bookingApointment(booking : BookingReq){
+        
+        
+        
         self.presenter?.HITAPI(api: Base.booking.rawValue, params: convertToDictionary(model: booking), methodType: .POST, modelClass: BookingModel.self, token: true)
     }
     

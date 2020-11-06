@@ -31,6 +31,7 @@ class BookingViewController: UIViewController {
     var isFromSearch : Bool = false
     var scheduleDate = Date()
     var scheduleDateString : String = String()
+    var categoryId : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,8 +150,10 @@ extension BookingViewController : AlertDelegate{
     
     func selectedTime(time: String, alertVC: UIViewController) {
         self.bookingreq.scheduled_at = "\(self.scheduleDateString) \(time)"
+        self.bookingreq.service_id = "\(self.categoryId)"
         let vc = PatientDetailViewController.initVC(storyBoardName: .main, vc: PatientDetailViewController.self, viewConrollerID: Storyboard.Ids.PatientDetailViewController)
         vc.bookingreq = self.bookingreq
+        vc.categoryId = self.categoryId
         vc.searchDoctor = self.searchDoctor
         vc.docProfile = self.docProfile
         vc.isfromSearch = self.isFromSearch

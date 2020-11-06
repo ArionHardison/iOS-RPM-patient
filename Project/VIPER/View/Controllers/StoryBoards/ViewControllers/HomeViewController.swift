@@ -34,7 +34,6 @@
             self.initialLoads()
             
             
-            
         }
         
         
@@ -199,6 +198,7 @@
         let BookingModel = "BookingModel"
         let PromoCodeEntity = "PromoCodeEntity"
         let ChatHistoryEntity = "ChatHistoryEntity"
+        let TwilioAccess = "TwilioAccess"
     }
     
     

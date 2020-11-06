@@ -65,6 +65,8 @@ enum Base : String{
     case chatPromo = "/api/patient/chat/promocode"
     case proceedToPay = "/api/patient/payment"
     case chatHistory = "/api/patient/chat/history"
+    case twilioMakeCall = "/api/patient/video/call/token"
+    case twilioCancelCall = "/api/patient//video/cancel"
    
     init(fromRawValue: String){
         self = Base(rawValue: fromRawValue) ?? .signUp

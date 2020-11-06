@@ -43,9 +43,9 @@ class DoctorDetailsController: UIViewController {
     @IBOutlet weak var photosCV: UICollectionView!
     @IBOutlet weak var labelReviews: UILabel!
     @IBOutlet weak var reviewsCV: UICollectionView!
-//    @IBOutlet weak var specilizationTVHeight: NSLayoutConstraint!
-//    @IBOutlet weak var serviceTVHeight: NSLayoutConstraint!
-//    @IBOutlet weak var timingHeight: NSLayoutConstraint!
+    @IBOutlet weak var specilizationTVHeight: NSLayoutConstraint!
+    @IBOutlet weak var serviceTVHeight: NSLayoutConstraint!
+    @IBOutlet weak var timingHeight: NSLayoutConstraint!
 //
     //inital static Data
     
@@ -53,6 +53,7 @@ class DoctorDetailsController: UIViewController {
     var docProfile = Doctor_profile()
     var isFromSearchDoctor:Bool = true
     var speciality : [String] = [String]()
+    var categoryID : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,9 +69,9 @@ class DoctorDetailsController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-//        self.specilizationTVHeight.constant = self.specilizationTV.contentSize.height + 10
-//        self.serviceTVHeight.constant = self.servicesTV.contentSize.height + 10
-//        self.timingHeight.constant = self.timingTableView.contentSize.height + 10
+        self.specilizationTVHeight.constant = self.specilizationTV.contentSize.height + 10
+        self.serviceTVHeight.constant = self.servicesTV.contentSize.height + 10
+        self.timingHeight.constant = self.timingTableView.contentSize.height + 10
     }
     
     
@@ -125,7 +126,9 @@ class DoctorDetailsController: UIViewController {
         self.bookBtn.addTap {
             let vc = BookingViewController.initVC(storyBoardName: .main, vc: BookingViewController.self, viewConrollerID: Storyboard.Ids.BookingViewController)
             vc.docProfile = self.docProfile
-            
+            vc.searchDoctor = self.searchDoctor
+            vc.isFromSearch = self.isFromSearchDoctor
+            vc.categoryId = self.categoryID
             self.push(from: self, ToViewContorller: vc)
             
         }

@@ -50,6 +50,9 @@ struct Appointments : Mappable {
     var status : String?
     var hospital : Hospital?
     
+    init() {
+    }
+    
     init?(map: Map) {
         
     }

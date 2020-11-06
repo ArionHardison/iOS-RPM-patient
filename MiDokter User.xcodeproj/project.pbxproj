@@ -170,6 +170,11 @@
 		7E6AEF502488D0F6005F0899 /* SuggestedSpecialityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E6AEF4E2488D0F6005F0899 /* SuggestedSpecialityCell.xib */; };
 		7E6AEF532488D4B5005F0899 /* ChatCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6AEF512488D4B5005F0899 /* ChatCommentCell.swift */; };
 		7E6AEF542488D4B5005F0899 /* ChatCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E6AEF522488D4B5005F0899 /* ChatCommentCell.xib */; };
+		8526FFD425516A8600E672B9 /* TwilioViewController+CallKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8526FFD025516A8500E672B9 /* TwilioViewController+CallKit.swift */; };
+		8526FFD525516A8600E672B9 /* CallDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8526FFD125516A8500E672B9 /* CallDuration.swift */; };
+		8526FFD625516A8600E672B9 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8526FFD225516A8500E672B9 /* Settings.swift */; };
+		8526FFD725516A8600E672B9 /* audioVideoCallCaontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8526FFD325516A8500E672B9 /* audioVideoCallCaontroller.swift */; };
+		8579C71C2551A03300F5B572 /* PushHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8579C71B2551A03300F5B572 /* PushHelper.swift */; };
 		85C76852254D81F9002827B9 /* PickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C76851254D81F9002827B9 /* PickerManager.swift */; };
 		90526149248FE0B1008CC272 /* UXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90526148248FE0B1008CC272 /* UXView.swift */; };
 		9052614C248FEB93008CC272 /* ServiceSpecializationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9052614B248FEB93008CC272 /* ServiceSpecializationCell.xib */; };
@@ -375,6 +380,12 @@
 		7E6AEF4E2488D0F6005F0899 /* SuggestedSpecialityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestedSpecialityCell.xib; sourceTree = "<group>"; };
 		7E6AEF512488D4B5005F0899 /* ChatCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCommentCell.swift; sourceTree = "<group>"; };
 		7E6AEF522488D4B5005F0899 /* ChatCommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatCommentCell.xib; sourceTree = "<group>"; };
+		8526FFD025516A8500E672B9 /* TwilioViewController+CallKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TwilioViewController+CallKit.swift"; sourceTree = "<group>"; };
+		8526FFD125516A8500E672B9 /* CallDuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallDuration.swift; sourceTree = "<group>"; };
+		8526FFD225516A8500E672B9 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		8526FFD325516A8500E672B9 /* audioVideoCallCaontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = audioVideoCallCaontroller.swift; sourceTree = "<group>"; };
+		8579C71B2551A03300F5B572 /* PushHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushHelper.swift; sourceTree = "<group>"; };
+		8579C7D22551B50900F5B572 /* TeleHealth.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeleHealth.entitlements; sourceTree = "<group>"; };
 		85C76851254D81F9002827B9 /* PickerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerManager.swift; sourceTree = "<group>"; };
 		90526148248FE0B1008CC272 /* UXView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UXView.swift; sourceTree = "<group>"; };
 		9052614B248FEB93008CC272 /* ServiceSpecializationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceSpecializationCell.xib; sourceTree = "<group>"; };
@@ -415,6 +426,10 @@
 		08487FA620B5E94100D4DEE4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8526FFD325516A8500E672B9 /* audioVideoCallCaontroller.swift */,
+				8526FFD125516A8500E672B9 /* CallDuration.swift */,
+				8526FFD225516A8500E672B9 /* Settings.swift */,
+				8526FFD025516A8500E672B9 /* TwilioViewController+CallKit.swift */,
 				107372762497982C0080A5A5 /* CountryPicker */,
 				108010C12494E17800C7249D /* ChatControllers */,
 				108010BC2494C6BE00C7249D /* Reminder */,
@@ -440,6 +455,7 @@
 		084B30CF20B01DAA00B79318 = {
 			isa = PBXGroup;
 			children = (
+				8579C7D22551B50900F5B572 /* TeleHealth.entitlements */,
 				084B30DA20B01DAA00B79318 /* Project */,
 				084B30F220B01DAC00B79318 /* GoheavyTests */,
 				084B30FD20B01DAD00B79318 /* GoheavyUITests */,
@@ -504,6 +520,7 @@
 		084B342420B028E800B79318 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				8579C71B2551A03300F5B572 /* PushHelper.swift */,
 				85C76851254D81F9002827B9 /* PickerManager.swift */,
 				90526147248FE086008CC272 /* Extension */,
 				08C066F920B03A6900A8C5F0 /* Circular Transition */,
@@ -1722,6 +1739,7 @@
 				107372872498B0FF0080A5A5 /* AlertBuilder.swift in Sources */,
 				08DBC87B20B9F70800AE89E6 /* DatePickerDialog.swift in Sources */,
 				12AE3EF02451D24E00E90872 /* CategoryListController.swift in Sources */,
+				8526FFD425516A8600E672B9 /* TwilioViewController+CallKit.swift in Sources */,
 				084B344A20B02AD900B79318 /* AVPlayerHelper.swift in Sources */,
 				12AE3EEC2451CFDC00E90872 /* CategoryCell.swift in Sources */,
 				084B343720B029E900B79318 /* UIView+Blur.swift in Sources */,
@@ -1746,6 +1764,7 @@
 				107372892498B1050080A5A5 /* AlertVC.swift in Sources */,
 				104ED4C72499EC6400555CA8 /* DoctorsListModel.swift in Sources */,
 				10529FDE251E002500262EF4 /* ChatManager.swift in Sources */,
+				8526FFD625516A8600E672B9 /* Settings.swift in Sources */,
 				12384B3524600D990057943D /* DoctorDetailsController.swift in Sources */,
 				12681EFE2438D5A30072193B /* SigninInViewController.swift in Sources */,
 				084B34BE20B0310800B79318 /* Button.swift in Sources */,
@@ -1762,6 +1781,7 @@
 				10529FEB251E083E00262EF4 /* ChatViewController.swift in Sources */,
 				12681F012438E1840072193B /* NameAndEmailViewController.swift in Sources */,
 				12B6E215244717DB00BE448F /* OnlineDoctorCell.swift in Sources */,
+				8526FFD725516A8600E672B9 /* audioVideoCallCaontroller.swift in Sources */,
 				105D215C249A685C00475E48 /* BookingModel.swift in Sources */,
 				107372972498F9920080A5A5 /* CategoryEntity.swift in Sources */,
 				108010C32494E1B700C7249D /* ChatQuestionViewController.swift in Sources */,
@@ -1771,6 +1791,7 @@
 				779DBC582493F9570055FCB9 /* HealthFeedTableViewCell.swift in Sources */,
 				10529FE0251E002E00262EF4 /* ChatEntity.swift in Sources */,
 				12B6E20B2447010B00BE448F /* UpcomingTableviewCell.swift in Sources */,
+				8526FFD525516A8600E672B9 /* CallDuration.swift in Sources */,
 				084B34A520B0302100B79318 /* ViewController.swift in Sources */,
 				779DBC4E2493EFC20055FCB9 /* MedicalRecordsViewController.swift in Sources */,
 				108010BE2494C6DE00C7249D /* ReminderDetailViewController.swift in Sources */,
@@ -1784,6 +1805,7 @@
 				084B345620B02B9200B79318 /* JsonSerializing.swift in Sources */,
 				088E4E9E20ECDE6900EEEF22 /* HomeViewController.swift in Sources */,
 				084B30DC20B01DAA00B79318 /* AppDelegate.swift in Sources */,
+				8579C71C2551A03300F5B572 /* PushHelper.swift in Sources */,
 				084B34BB20B030F100B79318 /* Label.swift in Sources */,
 				084B347F20B02E5D00B79318 /* WebService.swift in Sources */,
 				084B349F20B02FD500B79318 /* String.swift in Sources */,
@@ -2011,8 +2033,9 @@
 			baseConfigurationReference = 59F233EFBA148FC7C60E4316 /* Pods-MiDokter User.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TeleHealth.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3;
+				CURRENT_PROJECT_VERSION = 1.6;
 				DEVELOPMENT_TEAM = Q4N6XWX7K3;
 				INFOPLIST_FILE = "$(SRCROOT)/Project/Common/Plist Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -2032,8 +2055,9 @@
 			baseConfigurationReference = 7DAC76FEE954B62A8C7B85CD /* Pods-MiDokter User.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TeleHealth.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3;
+				CURRENT_PROJECT_VERSION = 1.6;
 				DEVELOPMENT_TEAM = Q4N6XWX7K3;
 				INFOPLIST_FILE = "$(SRCROOT)/Project/Common/Plist Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

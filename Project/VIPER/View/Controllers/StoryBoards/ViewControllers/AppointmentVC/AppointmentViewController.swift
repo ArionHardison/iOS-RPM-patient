@@ -85,7 +85,7 @@ class AppointmentViewController: UIViewController {
            DispatchQueue.main.async {
                self.loader.isHidden = true
                //self.checkEmptyView()
-               self.tableViewList.reloadData()
+               self.tableViewList.reloadInMainThread()
            }
        }
     
@@ -150,7 +150,17 @@ extension AppointmentViewController : UITableViewDelegate,UITableViewDataSource
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.UpcomingDetailsController) as! UpcomingDetailsController
+      
+//            vc.buttonCancel.isHidden = false
+            vc.appointment = self.upcomingAppointment[indexPath.row]
+            vc.isFromUpcomming = isFirstBlockSelected
+        self.navigationController?.pushViewController(vc, animated: true)
+            
+    
 //        self.push(id: Storyboard.Ids.UpcomingDetailsController, animation: true)
+        
     }
     
     
