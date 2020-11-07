@@ -343,7 +343,7 @@ extension audioVideoCallCaontroller {
            self.videoClick.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(flipCameraAction)))
            self.speakerClick.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(loudspeaker)))
            self.audioClick.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(muteVoiceAction)))
-           
+            self.localAudioTrack?.isEnabled = true
            if isCallType == .receiveCall {
                self.incomingavPlayerHelper = AVPlayerHelper()
                self.incomingavPlayerHelper?.play(file: "incoming.aiff")
@@ -407,7 +407,7 @@ extension audioVideoCallCaontroller {
              self.SetOurLocalVideo()
              
           }else{
-             self.videoClick.image = #imageLiteral(resourceName: "video-camera")
+             self.videoClick.image = #imageLiteral(resourceName: "videoOn")
              self.videoClick.tintColor = .white
              self.videoClick.isUserInteractionEnabled = false
         }
@@ -452,7 +452,7 @@ extension audioVideoCallCaontroller {
                     self.audioClick.image = #imageLiteral(resourceName: "audioOff")
                    
                } else {
-                    self.audioClick.image = #imageLiteral(resourceName: "audioOff")
+                    self.audioClick.image = #imageLiteral(resourceName: "audioOn")
               }
            }
        }
@@ -604,10 +604,10 @@ extension audioVideoCallCaontroller : TVIRoomDelegate {
         networkTimer()
         self.avPlayerHelper = AVPlayerHelper()
         if self.isCallType == .makeCall {
-         avPlayerHelper?.playThrough(speaker: .none)
-         self.loudspeaker()
+         avPlayerHelper?.playThrough(speaker: .speaker)
+//         self.loudspeaker()
          self.avPlayerHelper?.play(file: "RingOutgoing.aiff")
-         avPlayerHelper?.playThrough(speaker: .none)
+         avPlayerHelper?.playThrough(speaker: .speaker)
         }else{
          self.loudspeaker()
         }
