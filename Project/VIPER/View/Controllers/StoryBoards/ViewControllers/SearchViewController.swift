@@ -95,8 +95,8 @@ extension SearchViewController : UITableViewDelegate,UITableViewDataSource{
         let search : Search_doctors  = self.searchDoctors[indexPath.row]
         let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.DoctorDetailsController) as! DoctorDetailsController
         vc.docProfile = search.doctor_profile ?? Doctor_profile()
-        vc.isFromSearchDoctor = true
         vc.searchDoctor = search
+        vc.isFromSearchDoctor = true
         doctorId = "\(search.id ?? 0)"
         serviceID = "\(search.services_id ?? "0")"
         self.navigationController?.pushViewController(vc, animated: true)

@@ -167,3 +167,52 @@ struct Profile : Mappable {
     }
     
 }
+
+
+struct Remainder : Mappable {
+    var status : Int?
+    var reminder : [Reminder]?
+    
+    init() {
+    }
+
+    init?(map: Map) {
+
+    }
+
+    mutating func mapping(map: Map) {
+
+        status <- map["status"]
+        reminder <- map["reminder"]
+    }
+
+}
+
+struct Reminder : Mappable {
+    var id : Int?
+    var patient_id : Int?
+    var name : String?
+    var date : String?
+    var time : String?
+    var alarm : Int?
+    var notify_me : Int?
+
+    init() {
+    }
+    
+    init?(map: Map) {
+
+    }
+
+    mutating func mapping(map: Map) {
+
+        id <- map["id"]
+        patient_id <- map["patient_id"]
+        name <- map["name"]
+        date <- map["date"]
+        time <- map["time"]
+        alarm <- map["alarm"]
+        notify_me <- map["notify_me"]
+    }
+
+}

@@ -140,8 +140,8 @@ class audioVideoCallCaontroller: UIViewController {
                 
                 
             }else if isCallType == callType.receiveCall {
-//                self.startTimer()
-              
+                self.startTimer()
+                handleCall()
                 self.centerEndCallBtn.isHidden = false
                 self.EndCallBtn.isHidden = true
                 self.acceptCallBtn.isHidden = true
@@ -170,7 +170,6 @@ class audioVideoCallCaontroller: UIViewController {
                             }
                         }
                      }
-                handleCall()
                 self.nameLbl.text = self.receiverName
                 self.nameLbl.font = UIFont.boldSystemFont(ofSize: 28)
             }
@@ -207,7 +206,9 @@ class audioVideoCallCaontroller: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+//        self.makeTwilioCall(roomId: <#T##String#>, receiverId: <#T##String#>)
         initialLoad()
+        
     }
     
     @objc func CallEnd(){
@@ -333,6 +334,8 @@ extension audioVideoCallCaontroller {
        }
     
     private func initialLoad(){
+            UIDevice.current.isProximityMonitoringEnabled = false
+            UIApplication.shared.isIdleTimerDisabled = true
            [self.EndCallBtn,self.centerEndCallBtn,self.acceptCallBtn,self.speakerClick,self.videoClick,self.audioClick].forEach { (view) in
                view.isUserInteractionEnabled = true
            }
@@ -343,7 +346,7 @@ extension audioVideoCallCaontroller {
            self.videoClick.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(flipCameraAction)))
            self.speakerClick.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(loudspeaker)))
            self.audioClick.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(muteVoiceAction)))
-            self.localAudioTrack?.isEnabled = true
+           
            if isCallType == .receiveCall {
                self.incomingavPlayerHelper = AVPlayerHelper()
                self.incomingavPlayerHelper?.play(file: "incoming.aiff")
@@ -371,6 +374,7 @@ extension audioVideoCallCaontroller {
                 self.videoClick.tintColor = .white
                 self.videoClick.isUserInteractionEnabled = false
            }
+        
         
        }
     
@@ -407,7 +411,7 @@ extension audioVideoCallCaontroller {
              self.SetOurLocalVideo()
              
           }else{
-             self.videoClick.image = #imageLiteral(resourceName: "videoOn")
+             self.videoClick.image = #imageLiteral(resourceName: "video-camera")
              self.videoClick.tintColor = .white
              self.videoClick.isUserInteractionEnabled = false
         }
@@ -445,16 +449,16 @@ extension audioVideoCallCaontroller {
        
        @IBAction func muteVoiceAction(){
            if (self.localAudioTrack != nil) {
-               self.localAudioTrack?.isEnabled = !(self.localAudioTrack?.isEnabled)!
-               
-               // Update the button title
-               if (self.localAudioTrack?.isEnabled == true) {
-                    self.audioClick.image = #imageLiteral(resourceName: "audioOff")
-                   
-               } else {
-                    self.audioClick.image = #imageLiteral(resourceName: "audioOn")
-              }
+            self.localAudioTrack?.isEnabled = !(self.localAudioTrack?.isEnabled)!
+            
+            // Update the button title
+            if (self.localAudioTrack?.isEnabled == true) {
+                 self.audioClick.image = #imageLiteral(resourceName: "audioOn")
+                
+            } else {
+                 self.audioClick.image = #imageLiteral(resourceName: "audioOff")
            }
+        }
        }
        
     @IBAction func flipCameraAction(){
@@ -485,7 +489,7 @@ extension audioVideoCallCaontroller {
         
         let isSpeakerON =  avPlayerHelper?.changeAudioOutput() ?? true
         print(isSpeakerON)
-        self.speakerClick.image = isSpeakerON ? #imageLiteral(resourceName: "muteSpeakernew") : #imageLiteral(resourceName: "newspeaker")
+        self.speakerClick.image = isSpeakerON ? #imageLiteral(resourceName: "newspeaker") : #imageLiteral(resourceName: "muteSpeakernew")
                
     }
     
@@ -495,25 +499,27 @@ extension audioVideoCallCaontroller {
     //  *********************  makecall *******************
     
     
-        func makeTwilioCall(roomId : String,receiverId :String) {
-            DispatchQueue.main.async {
-                let baseUrl = self.isCallType == callType.receiveCall ? Base.twilioMakeCall.rawValue : Base.twilioMakeCall.rawValue
-                var url = String()
-                if self.isCallType != .makeCall {
-                    url = "\(baseUrl)?room_id=\(self.senderId)_video_\(UserDefaultConfig.PatientID)"
-                    self.newRoomID = "\(receiverId)_video_\(UserDefaultConfig.PatientID)"
+    func makeTwilioCall(roomId : String,receiverId :String) {
+        DispatchQueue.main.async {
+            let baseUrl = self.isCallType == callType.receiveCall ? Base.twilioMakeCall.rawValue : Base.twilioMakeCall.rawValue
+            var url = String()
+            if self.isCallType != .makeCall {
+                url = "\(baseUrl)?room_id=\(self.senderId)_video_\(UserDefaultConfig.PatientID)"
+                self.newRoomID = "\(receiverId)_video_\(UserDefaultConfig.PatientID)"
 
-                }else {
-                    url =  "\(baseUrl)?room_id=\(receiverId)_video_\(UserDefaultConfig.PatientID)"
-                    self.newRoomID = "\(receiverId)_video_\(UserDefaultConfig.PatientID)"
+            }else {
+                url =  "\(baseUrl)?room_id=\(receiverId)_video_\(UserDefaultConfig.PatientID)"
+                self.newRoomID = "\(receiverId)_video_\(UserDefaultConfig.PatientID)"
 
-                }
-                self.presenter?.HITAPI(api: url, params:nil, methodType: .GET, modelClass: TwilioAccess.self, token: true)
-    //            self.presenter?.get(api: .Callprocess, url: url ?? "")
             }
-            
-
+            self.presenter?.HITAPI(api: url, params:nil, methodType: .GET, modelClass: TwilioAccess.self, token: true)
+//            self.presenter?.get(api: .Callprocess, url: url ?? "")
         }
+        
+
+    }
+    
+    
     
     
     private func callVideoMethod(accessToken: String){
@@ -605,7 +611,7 @@ extension audioVideoCallCaontroller : TVIRoomDelegate {
         self.avPlayerHelper = AVPlayerHelper()
         if self.isCallType == .makeCall {
          avPlayerHelper?.playThrough(speaker: .speaker)
-//         self.loudspeaker()
+         self.loudspeaker()
          self.avPlayerHelper?.play(file: "RingOutgoing.aiff")
          avPlayerHelper?.playThrough(speaker: .speaker)
         }else{
@@ -1032,27 +1038,32 @@ extension audioVideoCallCaontroller : TVIVideoViewDelegate {
 
 
 extension audioVideoCallCaontroller : PresenterOutputProtocol {
-    func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
+    func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any){
         switch String(describing: modelClass) {
-            case model.type.TwilioAccess:
-             guard let data = dataDict as? TwilioAccess else { return }
-             self.accessToken = data.accessToken
-              if isCallType == .receiveCall {
-                 self.isServerCallType = .receiveCall
-                         
-                 performRoomConnect(roomName: self.newRoomID) { (success) in
-                 print("sucsess")
-                 }
-             }else {
-                 self.uuid = UUID()
-                 self.isServerCallType = .makeCall
-                 performStartCallAction(uuid: uuid!, roomName: self.newRoomID)
-             }
+         
+            
+                    case model.type.TwilioAccess:
+                    guard let data = dataDict as? TwilioAccess else { return }
+                    self.accessToken = data.accessToken
+                    if self.isCallType == .receiveCall {
+                       self.isServerCallType = .receiveCall
+                               
+                        self.performRoomConnect(roomName: self.newRoomID) { (success) in
+                       print("sucsess")
+                       }
+                   }else {
+                       self.uuid = UUID()
+                       self.isServerCallType = .makeCall
+                    self.performStartCallAction(uuid: self.uuid!, roomName: self.newRoomID)
+                   }
+      
+           
              break
             default: break
-            
         }
-    }
+}
+            
+
     
     func showError(error: CustomError) {
         

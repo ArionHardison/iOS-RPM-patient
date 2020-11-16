@@ -29,7 +29,7 @@ class UpcomingDetailsController: UITableViewController {
     @IBOutlet weak var labelDate: UILabel!
     
     @IBOutlet weak var buttonCancel: UIButton!
-    @IBOutlet weak var videoCallButton: UIButton!
+//    @IBOutlet weak var videoCallButton: UIButton!
     
     var appointment = Appointments()
     var isFromUpcomming:Bool = false
@@ -56,8 +56,8 @@ extension UpcomingDetailsController {
         self.labelDesignation.text = self.appointment.hospital?.doctor_profile?.speciality?.name ?? ""
         self.doctorImg.setImage(with: self.appointment.hospital?.doctor_profile?.profile_pic, placeHolder: #imageLiteral(resourceName: "1"))
         self.buttonCancel.addTarget(self, action: #selector(cancelAppointment(sender:)), for: .touchUpInside)
-        self.videoCallButton.addTarget(self, action: #selector(videoCallAction(sender:)), for: .touchUpInside)
-        self.videoCallButton.isHidden = !isFromUpcomming
+//        self.videoCallButton.addTarget(self, action: #selector(videoCallAction(sender:)), for: .touchUpInside)
+//        self.videoCallButton.isHidden = !isFromUpcomming
         self.buttonCancel.isHidden = !isFromUpcomming
     }
     

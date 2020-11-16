@@ -21,7 +21,10 @@ class DoctorDetailsController: UIViewController {
     @IBOutlet weak var labelQualification: UILabel!
     @IBOutlet weak var labelPercentage: UILabel!
     @IBOutlet weak var labelExp: UILabel!
+    @IBOutlet weak var verifiedImg: UIImageView!
     @IBOutlet weak var labelVerified: UILabel!
+    @IBOutlet weak var labelConsultationfee: UILabel!
+
     @IBOutlet weak var labelAvailability: UILabel!
     @IBOutlet weak var labelMonday: UILabel!
     @IBOutlet weak var labelTue: UILabel!
@@ -44,8 +47,14 @@ class DoctorDetailsController: UIViewController {
     @IBOutlet weak var labelReviews: UILabel!
     @IBOutlet weak var reviewsCV: UICollectionView!
     @IBOutlet weak var specilizationTVHeight: NSLayoutConstraint!
+    @IBOutlet weak var specilizationVHeight: NSLayoutConstraint!
+
     @IBOutlet weak var serviceTVHeight: NSLayoutConstraint!
+    @IBOutlet weak var serviceVHeight: NSLayoutConstraint!
     @IBOutlet weak var timingHeight: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var innerScrolllView: UIView!
+
 //
     //inital static Data
     
@@ -59,7 +68,7 @@ class DoctorDetailsController: UIViewController {
         super.viewDidLoad()
         //View Setup
         self.initialLoads()
-    
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,11 +76,13 @@ class DoctorDetailsController: UIViewController {
         self.populateData()
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.specilizationTVHeight.constant = self.specilizationTV.contentSize.height + 10
-        self.serviceTVHeight.constant = self.servicesTV.contentSize.height + 10
-        self.timingHeight.constant = self.timingTableView.contentSize.height + 10
+        print("Hello")
     }
     
     
@@ -86,30 +97,45 @@ class DoctorDetailsController: UIViewController {
             self.labelPercentage.text = "\(detail.feedback_percentage ?? "") %"
             self.speciality.append(self.docProfile.speciality?.name ?? "")
          //   self.imgLocationPreview.pin_setImage(from: URL(string: detail.clinic?.static_map ?? "")!)
-            self.labelClinicName.text = detail.clinic?.name ?? ""
-            self.labelLocationValue.text = detail.clinic?.address ?? ""
+            self.labelClinicName.text = detail.clinic?.name ?? "".capitalized
+            self.labelLocationValue.text = detail.clinic?.address ?? "".capitalized
             if (detail.is_favourite ?? "") == "false"{
                 self.btnFavourite.setImage(UIImage(named: "love"), for: .normal)
             }else{
                 self.btnFavourite.setImage(UIImage(named: "love_red"), for: .normal)
             }
         }else{
+            
+            let car = self.searchDoctor.timing?.count == 0 ? 0 : 70
+            let cr = 30 * (self.searchDoctor.timing?.count)! + 1
+            let cr2 = 30 * (self.searchDoctor.timing?.count)! + car
+            
+            self.serviceTVHeight.constant = CGFloat(cr)
+            self.serviceVHeight.constant = CGFloat(cr2)
+
+            let specialityFloat1 = 40 * 1
+            let specialityFloat2 = (40 * 1) + 70
+
+            self.specilizationTVHeight.constant = CGFloat(specialityFloat1)
+            self.specilizationVHeight.constant = CGFloat(specialityFloat2)
+//            self.categoryID = self.searchDoctor.doctor_profile.
               
                 self.labelDoctorName.text = "\(self.searchDoctor.first_name ?? "")" + " " + "\(self.searchDoctor.last_name ?? "")"
                 self.imgDoctor.setURLImage(self.searchDoctor.doctor_profile?.profile_pic ?? "")
                      self.imgDoctor.makeRoundedCorner()
-                self.labelQualification.text = "\(self.searchDoctor.doctor_profile?.certification ?? "")"
+                self.labelQualification.text = "\(self.searchDoctor.doctor_profile?.certification ?? "")".capitalized
         //        self.labelPercentage.text = "\(self.docProfile.feedback?.first.) %"
-                self.speciality.append(self.searchDoctor.doctor_profile?.speciality?.name ?? "")
+                self.speciality.append((self.searchDoctor.doctor_profile?.speciality?.name ?? "").capitalized)
                  //   self.imgLocationPreview.pin_setImage(from: URL(string: detail.clinic?.static_map ?? "")!)
-                self.labelClinicName.text = self.searchDoctor.clinic?.name ?? ""
-                self.labelLocationValue.text = self.searchDoctor.clinic?.address ?? ""
+            self.labelClinicName.text = self.searchDoctor.clinic?.name ?? "".capitalized
+                self.labelLocationValue.text = self.searchDoctor.clinic?.address ?? "".capitalized
                 if (self.searchDoctor.is_favourite ?? "") == "false"{
                         self.btnFavourite.setImage(UIImage(named: "love"), for: .normal)
                     }else{
                         self.btnFavourite.setImage(UIImage(named: "love_red"), for: .normal)
                     }
                 }
+            
             self.servicesTV.reloadInMainThread()
             self.specilizationTV.reloadInMainThread()
             self.timingTableView.reloadInMainThread()
@@ -125,11 +151,11 @@ class DoctorDetailsController: UIViewController {
         
         self.bookBtn.addTap {
             let vc = BookingViewController.initVC(storyBoardName: .main, vc: BookingViewController.self, viewConrollerID: Storyboard.Ids.BookingViewController)
-            vc.docProfile = self.docProfile
-            vc.searchDoctor = self.searchDoctor
-            vc.isFromSearch = self.isFromSearchDoctor
-            vc.categoryId = self.categoryID
-            self.push(from: self, ToViewContorller: vc)
+                     vc.docProfile = self.docProfile
+                     vc.searchDoctor = self.searchDoctor
+                     vc.isFromSearch = self.isFromSearchDoctor
+                     vc.categoryId = self.categoryID
+                     self.push(from: self, ToViewContorller: vc)
             
         }
     }
@@ -175,7 +201,7 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
                 return self.speciality.count
         }else if tableView == self.timingTableView{
             if isFromSearchDoctor{
-                self.searchDoctor.timing?.count ?? 0
+                return self.searchDoctor.timing?.count ?? 0
             }else{
                 return (self.docProfile.hospital?.first?.timing?.count ?? 0)
             }
@@ -183,8 +209,9 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
         else{
             return 0
         }
-        return 0
     }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if isFromSearchDoctor{
         let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.ServiceSpecializationCell) as! ServiceSpecializationCell
@@ -196,7 +223,7 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
         }else if tableView == self.timingTableView{
             if let timing : Timing = self.searchDoctor.timing?[indexPath.row]{
                 cell.dotImg.isHidden = true
-                self.setSeatchCountLbl(label: cell.serviceLbl, day: timing.day ?? "", timing: "\(String(describing: timing.start_time ?? "")) \(String(describing: timing.end_time ?? ""))")
+                self.setSeatchCountLbl(label: cell.serviceLbl, day: "\(timing.day ?? "") - " , timing: "\(timing.start_time ?? "") : \(timing.end_time ?? "")")
             }
         }
         
@@ -208,12 +235,15 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
         
         if tableView == self.servicesTV{
             cell.serviceLbl.text = self.docProfile.hospital?.first?.doctor_service?[indexPath.row].service?.name ?? ""
+//            cell.lblLeadConstraints.constant = 10
+
         }else if tableView == self.specilizationTV{
             cell.serviceLbl.text = self.speciality[indexPath.row]
         }else if tableView == self.timingTableView{
             if let timing : Timing = self.docProfile.hospital?.first?.timing?[indexPath.row]{
                 cell.dotImg.isHidden = true
-                self.setSeatchCountLbl(label: cell.serviceLbl, day: timing.day ?? "", timing: "\(String(describing: timing.start_time ?? "")) \(String(describing: timing.end_time ?? ""))")
+//                cell.lblLeadConstraints.constant = -10
+                self.setSeatchCountLbl(label: cell.serviceLbl, day: "\(timing.day ?? "") -" , timing: "\(timing.start_time ?? "") : \(timing.end_time ?? "")")
             }
         }
         
@@ -227,7 +257,7 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40
     }
-    
+//
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = createViewAllButtion()
         footerView.addTap {
@@ -418,4 +448,9 @@ extension DoctorDetailsController : PresenterOutputProtocol{
         self.presenter?.HITAPI(api: Base.fav.rawValue, params: ["patient_id" : patient_id , "doctor_id" : doctor_id], methodType: .POST, modelClass: CommonModel.self, token: true)
     }
     
+}
+extension NSLayoutConstraint {
+    func constraintWithMultiplier(_ multiplier: CGFloat) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: self.firstItem!, attribute: self.firstAttribute, relatedBy: self.relation, toItem: self.secondItem, attribute: self.secondAttribute, multiplier: multiplier, constant: self.constant)
+    }
 }

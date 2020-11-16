@@ -199,6 +199,7 @@
         let PromoCodeEntity = "PromoCodeEntity"
         let ChatHistoryEntity = "ChatHistoryEntity"
         let TwilioAccess = "TwilioAccess"
+        let Remainder = "Remainder"
     }
     
     

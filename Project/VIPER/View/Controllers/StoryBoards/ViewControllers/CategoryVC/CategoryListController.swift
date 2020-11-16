@@ -24,7 +24,7 @@ class CategoryListController: UIViewController {
         if let layout = categoryListCV?.collectionViewLayout as? UICollectionViewFlowLayout{
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         let size = CGSize(width:(categoryListCV.bounds.width-30)/2, height: 175)
         layout.itemSize = size
         }

@@ -71,7 +71,7 @@ extension OnlineAvailabeDoctorsController : UITableViewDelegate,UITableViewDataS
                 let vc = ChatViewController.initVC(storyBoardName: .main, vc: ChatViewController.self, viewConrollerID: Storyboard.Ids.ChatViewController)
                 vc.chats = self.chatData?.chats?[indexPath.row]
                 self.navigationController?.pushViewController(vc, animated: true)
-                self.navigationController?.pushViewController(vc, animated: true)
+//                self.navigationController?.pushViewController(vc, animated: true)
             }else if data.chat_request?.status == "COMPLETED"{
                 showToast(msg: "activity!!, Chat time expired, Request again",bgcolor: .red)
             }else if data.chat_request?.status == "CANCELLED"{

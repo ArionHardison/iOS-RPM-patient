@@ -13,7 +13,7 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (2.7.0):
     - GoogleMaps/Base (= 2.7.0)
-  - IQKeyboardManagerSwift (6.0.4)
+  - IQKeyboardManagerSwift (6.5.6)
   - KWDrawerController (4.1.6):
     - KWDrawerController/Core (= 4.1.6)
   - KWDrawerController/Core (4.1.6)
@@ -39,6 +39,7 @@ PODS:
   - PubNub (4.15.4):
     - PubNub/Core (= 4.15.4)
   - PubNub/Core (4.15.4)
+  - SKCountryPicker (1.2.9)
   - TwilioVideo (2.12.0)
   - TwilioVoice (5.5.1)
 
@@ -55,6 +56,7 @@ DEPENDENCIES:
   - PINRemoteImage
   - PopupDialog (~> 0.7)
   - PubNub (~> 4)
+  - SKCountryPicker
   - TwilioVideo (~> 2.10)
   - TwilioVoice (~> 5.5.0)
 
@@ -64,19 +66,20 @@ SPEC REPOS:
     - AlamofireObjectMapper
     - DynamicBlurView
     - GoogleMaps
-    - GooglePlaces
-    - IQKeyboardManagerSwift
     - KWDrawerController
     - ObjectMapper
     - PopupDialog
   trunk:
     - CLWeeklyCalendarView
     - CountryPickerView
+    - GooglePlaces
+    - IQKeyboardManagerSwift
     - lottie-ios
     - PINCache
     - PINOperation
     - PINRemoteImage
     - PubNub
+    - SKCountryPicker
     - TwilioVideo
     - TwilioVoice
 
@@ -88,7 +91,7 @@ SPEC CHECKSUMS:
   DynamicBlurView: aa6db4defc6e537eb86fc5e58dd3991666178399
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
-  IQKeyboardManagerSwift: 36dbe324b4f9793f5f41ba5227f3e7c76dfefd50
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   KWDrawerController: bf8fc10ddc596ddbfdabda401357a99dba04a1c8
   lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
@@ -97,9 +100,10 @@ SPEC CHECKSUMS:
   PINRemoteImage: f1295b29f8c5e640e25335a1b2bd9d805171bd01
   PopupDialog: 39598b7d41719f5c025b4b70e62728bae7734fef
   PubNub: 0028862c42e5adafd2bf7cc8c062731c055da6e2
+  SKCountryPicker: 7ad1e7dfb482cfb26855e33c2d70dbf1eaf218fe
   TwilioVideo: 057061e4302e4b2862b0ac6cf69a3321e7c29b19
   TwilioVoice: c440f2c964d3b0eba946c30c9f1018d8e5d82af9
 
-PODFILE CHECKSUM: 32a9be2711c16599005b2f37c056e42f19bbce2c
+PODFILE CHECKSUM: 735e9f30ad5a2d5d11373159c26c25890990cba3
 
 COCOAPODS: 1.10.0

@@ -20,6 +20,7 @@
 import UIKit
 import CoreData
 import GoogleMaps
+import GooglePlaces
 import IQKeyboardManagerSwift
 import UserNotifications
 import PushKit
@@ -52,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.registerPush(forApp: application)
         self.registerPush(forApp: application)
         self.pushRegister()
+        GMSPlacesClient.provideAPIKey(googleMapKey)
         return true
     }
 

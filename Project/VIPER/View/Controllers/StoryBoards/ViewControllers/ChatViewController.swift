@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class ChatViewController: UIViewController {
 
@@ -29,6 +30,8 @@ class ChatViewController: UIViewController {
         ChatManager.shared.getCurrentRoomChatHistory()
         ChatManager.shared.delegate = self
         self.initailSetup()
+//        IQKeyboardManager.shared.enable = false
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,10 +66,12 @@ class ChatViewController: UIViewController {
                 showToast(msg: "Messge should not be empty")
             }else{
             ChatManager.shared.sentMessage(message: self.msgTxt.text ?? "", senderId: Int(UserDefaultConfig.PatientID ?? "0") ?? 0, timestamp: Date().description, provider_id: (self.chats?.hospital?.id ?? 0).description)
-                
+//                ChatManager.shared.sentMessage(message: self.msgTxt.text ?? "", senderId: (self.chats?.hospital?.id ?? 0), timestamp: Date().description, provider_id: (UserDefaultConfig.PatientID).description)
+//                ChatManager.shared.sendFile(with: <#T##PNSendFileRequest#>, completion: <#T##PNSendFileCompletionBlock?##PNSendFileCompletionBlock?##(PNSendFileStatus) -> Void#>)
                
             }
         }
+        
     }
 
 }
@@ -76,8 +81,15 @@ extension ChatViewController:ChatProtocol {
     func getMessageList(message: [MessageDetails]) {
         print("ChatMsgList",message)
         self.messageDataSource = message
-        chatListTable.reloadData()
+        chatListTable.reloadInMainThread()
+        self.scrollToBottom()
          self.msgTxt.text = ""
+    }
+    func scrollToBottom(){
+        DispatchQueue.main.async {
+            let indexPath = IndexPath(row: (self.messageDataSource?.count ?? 0)-1, section: 0)
+            self.chatListTable.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
     }
 }
 
@@ -88,6 +100,7 @@ extension ChatViewController : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let data : MessageDetails = self.messageDataSource?[indexPath.row]{
+            
             if data.senderId == UserDefaultConfig.PatientID{
                 let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.ChatRightCell) as! ChatRightCell
                 cell.msgLbl.text = self.messageDataSource?[indexPath.row].message ?? ""

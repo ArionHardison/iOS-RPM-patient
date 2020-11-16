@@ -160,9 +160,16 @@ extension SideBarTableViewController {
             case(0,6):
             self.push(to: Storyboard.Ids.HealthFeedViewController)
             self.drawerController?.closeSide()
+            
+        case(0,7):
+            self.push(to: Storyboard.Ids.RelativeManagementViewController)
+            self.drawerController?.closeSide()
+            
+                
 
         case (0,self.sideBarList.count-1):
-            self.logout()
+            self.push(to: Storyboard.Ids.SettingsViewController)
+            self.drawerController?.closeSide()
             
         default:
             break

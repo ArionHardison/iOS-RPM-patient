@@ -49,6 +49,34 @@ func showAlert(message : String?, okHandler : (()->Void)?, fromView : UIViewCont
     
 }
 
+func showAlert(message : String?, btnHandler : ((Int)->Void)?, fromView : UIViewController){
+    
+    /* let alert = UIAlertController(title: AppName,
+     message: message,
+     preferredStyle: .alert)
+     let okAction = UIAlertAction(title: Constants.string.OK, style: .default, handler: okHandler)
+     
+     let cancelAction = UIAlertAction(title: Constants.string.Cancel, style: .destructive, handler: nil)
+     
+     alert.addAction(okAction)
+     alert.addAction(cancelAction)
+     alert.view.tintColor = .primary */
+    
+    let alert = PopupDialog(title: message, message: nil)
+    let firstButton =  PopupDialogButton(title: Constants.string.Yes.localize(), action: {
+        btnHandler?(1)
+        alert.dismiss()
+    })
+    let secondButton =  PopupDialogButton(title: Constants.string.No.localize(), action: {
+        btnHandler?(2)
+        alert.dismiss()
+    })
+    alert.transitionStyle = .zoomIn
+    alert.addButton(firstButton)
+    alert.addButton(secondButton)
+    fromView.present(alert, animated: true, completion: nil)
+    
+}
 
 
 //MARK:- ShowLoader

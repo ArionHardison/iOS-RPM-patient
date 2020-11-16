@@ -43,11 +43,11 @@ class ChatQuestionViewController: UIViewController {
     }
     
     func setupFont(){
-        Common.setFont(to: self.chatwithDotTitleLbl, isTitle: true, size: 24)
-        Common.setFont(to: self.chooseSpecialityLbl, isTitle: true, size: 18)
-        Common.setFont(to: self.symptomsLbl, isTitle: false, size: 16)
-        Common.setFont(to: self.symptomsTxt, isTitle: false, size: 17)
-        Common.setFont(to: self.submitBtn, isTitle: true, size: 20)
+//        Common.setFont(to: self.chatwithDotTitleLbl, isTitle: true, size: 24)
+//        Common.setFont(to: self.chooseSpecialityLbl, isTitle: true, size: 18)
+//        Common.setFont(to: self.symptomsLbl, isTitle: false, size: 16)
+//        Common.setFont(to: self.symptomsTxt, isTitle: false, size: 17)
+//        Common.setFont(to: self.submitBtn, isTitle: true, size: 20)
     }
     
     func setupAction(){
@@ -80,14 +80,18 @@ extension ChatQuestionViewController : UITableViewDelegate,UITableViewDataSource
             cell.priceLbl.textColor = UIColor.AppBlueColor
             cell.offerPriceView.backgroundColor = UIColor.AppBlueColor
             cell.suggetionView.setCorneredElevation(shadow: 1, corner: 10, color: UIColor.AppBlueColor)
+            cell.allSplistView.setCorneredElevation(shadow: 0, corner: 10, color: UIColor(named: "GreyTextcolor")!)
+
         }else{
             
-            cell.suggetionView.setCorneredElevation(shadow: 1, corner: 10, color: UIColor.gray)
-            cell.suggetionView.borderColor = UIColor.black
-            cell.titleLbl.textColor = UIColor.black
-            cell.offerPriceLbl.textColor = UIColor.black
-            cell.priceLbl.textColor = UIColor.black
-            cell.offerPriceView.backgroundColor = UIColor.black
+            cell.suggetionView.setCorneredElevation(shadow: 1, corner: 10, color: UIColor(named: "GreyTextcolor")!)
+            cell.allSplistView.setCorneredElevation(shadow: 0, corner: 10, color: UIColor(named: "GreyTextcolor")!)
+
+            cell.suggetionView.borderColor = UIColor(named: "GreyTextcolor")! //UIColor.black
+            cell.titleLbl.textColor = UIColor(named: "GreyTextcolor")!//UIColor.black
+            cell.offerPriceLbl.textColor = UIColor(named: "GreyTextcolor")! //UIColor.black
+            cell.priceLbl.textColor = UIColor(named: "GreyTextcolor")! //UIColor.black
+            cell.offerPriceView.backgroundColor = UIColor(named: "GreyTextcolor")! //UIColor.black
         }
         if indexPath.row <= self.category.count-1{
         if let data : Category = self.category[indexPath.row]{
@@ -99,6 +103,10 @@ extension ChatQuestionViewController : UITableViewDelegate,UITableViewDataSource
         
         return cell
         
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

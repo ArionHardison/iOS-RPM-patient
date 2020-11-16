@@ -17,7 +17,7 @@ class DoctorsListController: UIViewController {
     
     var doctorProfile : [Doctor_profile] = [Doctor_profile]()
     
-    var catagoryID : Int  = 0
+    var catagoryID : Int  = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,18 +57,21 @@ extension DoctorsListController : UITableViewDelegate,UITableViewDataSource{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.DoctorCell, for: indexPath) as! DoctorCell
         self.doctorCellAction(cell: cell, detail: self.doctorProfile[indexPath.row])
-        self.populateCell(cell: cell, detail: self.doctorProfile[indexPath.row])
+        if self.doctorProfile[indexPath.row].hospital?.count != 0  {
+            self.populateCell(cell: cell, detail: self.doctorProfile[indexPath.row])
+
+        }
         return cell
     }
     
     func populateCell(cell : DoctorCell , detail : Doctor_profile){
         cell.docterImage.setURLImage(detail.profile_pic ?? "")
-        cell.docterName.text = "\(detail.hospital?.first?.first_name ?? "") \(detail.hospital?.first?.last_name ?? "")"
+        cell.docterName.text = "\(detail.hospital?[0].first_name ?? "") \(detail.hospital?[0].last_name ?? "")"
         cell.SplistLbl.text = detail.speciality?.name ?? ""
-        cell.availablityLbl.text = "Available \(detail.hospital?.first?.availability ?? "")"
-        cell.clinicNameLbl.text = detail.hospital?.first?.clinic?.name ?? ""
-        cell.likeCountLbl.text = "\(detail.hospital?.first?.feedback_percentage ?? "0") %"
-        cell.feeLbl.text = "$ "+(detail.fees ?? 0).description
+//        cell.availablityLbl.text = "Available \(detail.hospital?[0].availability ?? "")"
+        cell.clinicNameLbl.text = "\(detail.hospital?[0].clinic?.name ?? ""),\(detail.hospital?[0].clinic?.address ?? "")"
+        cell.likeCountLbl.text = "\(detail.hospital?[0].feedback_percentage ?? "0") %"
+        cell.feeLbl.text = "$"+"\(detail.fees ?? 0)"
     }
     
     
@@ -76,7 +79,6 @@ extension DoctorsListController : UITableViewDelegate,UITableViewDataSource{
         cell.docterImage.addTap {
             let vc = DoctorDetailsController.initVC(storyBoardName: .main, vc: DoctorDetailsController.self, viewConrollerID:  Storyboard.Ids.DoctorDetailsController)
             vc.docProfile = detail
-            vc.categoryID = self.catagoryID
             vc.isFromSearchDoctor = false
             self.push(from: self, ToViewContorller: vc)
         }
@@ -95,7 +97,6 @@ extension DoctorsListController : UITableViewDelegate,UITableViewDataSource{
         let vc = BookingViewController.initVC(storyBoardName: .main, vc: BookingViewController.self, viewConrollerID: Storyboard.Ids.BookingViewController)
         vc.docProfile = detail
          vc.isFromSearch = false
-            vc.categoryId = self.catagoryID
         self.push(from: self, ToViewContorller: vc)
         }
     }
@@ -103,12 +104,9 @@ extension DoctorsListController : UITableViewDelegate,UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 160
     }
-    
-
-    
-    
+        
 }
 
 

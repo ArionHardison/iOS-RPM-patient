@@ -19,5 +19,6 @@ target 'MiDokter User' do
     pod 'PubNub', '~> 4'
     pod 'TwilioVoice', '~> 5.5.0'            #//, '~> 2.0.0'
     pod 'TwilioVideo', '~> 2.10'
+    pod 'SKCountryPicker'
     
 end

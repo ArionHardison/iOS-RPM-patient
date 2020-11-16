@@ -54,6 +54,9 @@ struct Storyboard {
     let BookingViewController = "BookingViewController"
     let PatientDetailViewController = "PatientDetailViewController"
     let ProfileViewController = "ProfileViewController"
+    let RelativeManagementViewController = "RelativeManagementViewController"
+    let RelativeDetailViewController = "RelativeDetailViewController"
+    let SettingsViewController = "SettingsViewController"
 }
 
 
@@ -84,6 +87,7 @@ struct XIB {
     let ProblemCell = "ProblemCell"
     let ChatRightCell = "ChatRightCell"
     let ChatLeftCell = "ChatLeftCell"
+    let RelativesTableViewCell = "RelativesTableViewCell"
     
     
 }

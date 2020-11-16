@@ -52,8 +52,8 @@ class PatientDetailViewController: UIViewController {
         self.populateData()
         self.setupFont()
          IQKeyboardManager.shared.enable = false
-        self.scrollView.addSubview(self.scrollInnerView)
-        self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.scrollInnerView.frame.height)
+//        self.scrollView.addSubview(self.scrollInnerView)
+//        self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.scrollInnerView.frame.height)
     }
     
     func setupNavigation(){
@@ -107,7 +107,7 @@ class PatientDetailViewController: UIViewController {
             self.bookingreq.doctor_id = ( self.searchDoctor.id ?? 0 ).description
         self.doctorNameLbl.text = "\(self.searchDoctor.first_name ?? "")  \(self.searchDoctor.last_name ?? "")"
         self.doctorImg.pin_setImage(from: URL(string: imageURL+"\(self.searchDoctor.doctor_profile?.profile_pic ?? "")")!)
-            self.doctorImg.makeRoundedCorner()
+       //     self.doctorImg.makeRoundedCorner()
         self.clinicDetailLbl.text = "\(self.searchDoctor.clinic?.name ?? "") \(self.searchDoctor.clinic?.address ?? "")"
 //        }
         } else {
@@ -117,7 +117,7 @@ class PatientDetailViewController: UIViewController {
                     self.bookingreq.doctor_id = ( self.docProfile.id ?? 0 ).description
             self.doctorNameLbl.text = "\(self.docProfile.hospital?.first?.first_name ?? "")  \(self.docProfile.hospital?.first?.last_name ?? "")"
             self.doctorImg.pin_setImage(from: URL(string: imageURL+"\(self.docProfile.profile_pic ?? "")")!)
-                    self.doctorImg.makeRoundedCorner()
+//                    self.doctorImg.makeRoundedCorner()
             self.clinicDetailLbl.text = "\(self.docProfile.hospital?.first?.clinic?.name ?? "") \(self.docProfile.hospital?.first?.clinic?.address ?? "")"
         //        }
                 }
@@ -159,13 +159,10 @@ extension PatientDetailViewController : PresenterOutputProtocol{
     }
     
     func showError(error: CustomError) {
-        
+        showToast(msg: error.localizedDescription)
     }
     
     func bookingApointment(booking : BookingReq){
-        
-        
-        
         self.presenter?.HITAPI(api: Base.booking.rawValue, params: convertToDictionary(model: booking), methodType: .POST, modelClass: BookingModel.self, token: true)
     }
     

@@ -22,10 +22,30 @@ class DoctorCell: UITableViewCell {
     @IBOutlet weak var callBtn : UIButton!
     @IBOutlet weak var bookingBtn : UIButton!
     
+    @IBOutlet weak var callImage : UIImageView!
+    @IBOutlet weak var bookImage : UIImageView!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.docterImage.makeRoundedCorner()
     }
 
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.callImage.image = self.callImage.image?.withRenderingMode(.alwaysTemplate)
+        self.callImage.tintColor = .AppBlueColor
+        
+        self.bookImage.image = self.bookImage.image?.withRenderingMode(.alwaysTemplate)
+        self.bookImage.tintColor = UIColor(named: "AquaBlue")
+    
+        [self.callBtn,bookingBtn].forEach { (btn) in
+            
+            btn?.cornerRadius = 5.0
+            btn?.borderColor = .AppBlueColor
+            btn?.borderLineWidth = 0.5
+        }
+    }
 }

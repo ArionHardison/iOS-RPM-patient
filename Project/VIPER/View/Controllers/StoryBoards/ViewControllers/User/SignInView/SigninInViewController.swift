@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import CountryPickerView
 import ObjectMapper
 import IQKeyboardManagerSwift
+import SKCountryPicker
 
 class SigninInViewController: UIViewController {
 
@@ -22,7 +22,10 @@ class SigninInViewController: UIViewController {
     @IBOutlet weak var labelFB: UILabel!
     @IBOutlet weak var labelGoogle: UILabel!
     @IBOutlet weak var labelTermsAndConditions: UILabel!
-    @IBOutlet weak var countryCode : CountryPickerView!
+    @IBOutlet weak var countryCode : UIView!
+    @IBOutlet weak var mobileView : UIView!
+    @IBOutlet weak var countryImg : UIImageView!
+    @IBOutlet weak var countryCodeLbl : UILabel!
     @IBOutlet weak var appleView: UIView!
     
     
@@ -48,23 +51,36 @@ class SigninInViewController: UIViewController {
         return .lightContent
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+    }
+    
+    
     
     func initialLoads(){
         self.setupAction()
         self.setupTextDelegate()
         self.setupCountryPicker()
+        
+        self.mobileView.cornerRadius = 5.0
+        
     }
     
     func setupAction(){
         self.buttonContinue.addTap {
             self.view.endEditing(true)
+            
+//            self.setupCountryPicker()
             if self.txtMobileNumber.getText.isEmpty || self.txtMobileNumber.getText.count < mobileNumDigit{
                 showToast(msg: "Enter Valid MobileNumber")
             }else{
-                var countrycode : String = self.countryCode.countryDetailsLabel.getText
-                if countrycode.contains("+"){
-                    countrycode = countrycode.replacingOccurrences(of: "+", with: "")
-                }
+//                var countrycode : String = self.countryCode.countryDetailsLabel.getText
+                var countrycode : String = self.countryCodeLbl.text ?? "" // self.countryCode.countryDetailsLabel.getText
+
+//                if countrycode.contains("+"){
+//                    countrycode = countrycode.replacingOccurrences(of: "+", with: "")
+//                }
                 self.verifyNumber(mobileNum: "\(countrycode)\(self.txtMobileNumber.getText)")
              }
         }
@@ -73,20 +89,28 @@ class SigninInViewController: UIViewController {
 }
 
 
-extension SigninInViewController :  CountryPickerViewDataSource {
-  
-    
+extension SigninInViewController{
+
+
     func setupCountryPicker(){
-        countryCode.dataSource = self
-        countryCode.showCountryCodeInView = false
-        countryCode.showPhoneCodeInView = true
-        countryCode.textColor = UIColor.black
-        
-        self.countryCode.setCountryByPhoneCode(country_code)
-    }
+        self.countryCode.addTap {
+            
+            CountryPickerWithSectionViewController.presentController(on: self) { (country) in
+
+                self.countryCodeLbl.text = country.dialingCode
+                self.countryImg.image = country.flag
+
+            }
+        }
+        guard let country = CountryManager.shared.currentCountry else {
+             return
+         }
+
+        self.countryCodeLbl.text = country.dialingCode
+        self.countryImg.image = country.flag
    
 }
-
+}
 
 extension SigninInViewController : UITextFieldDelegate{
     func setupTextDelegate(){
@@ -126,10 +150,10 @@ extension SigninInViewController : PresenterOutputProtocol{
         switch String(describing: modelClass) {
             case model.type.MobileVerifyModel:
                 self.mobileVerifyData = dataDict as? MobileVerifyModel
-                var countrycode : String = self.countryCode.countryDetailsLabel.getText
-                if countrycode.contains("+"){
-                    countrycode = countrycode.replacingOccurrences(of: "+", with: "")
-                }
+                var countrycode : String = self.countryCodeLbl.text ?? "" //self.countryCode.countryDetailsLabel.getText
+//                if countrycode.contains("+"){
+//                    countrycode = countrycode.replacingOccurrences(of: "+", with: "")
+//                }
                 self.mobileVerifyData?.mobileNum = "\(countrycode)\(self.txtMobileNumber.getText)"
                 showToast(msg: self.mobileVerifyData?.message ?? "")
                 
