@@ -14,14 +14,36 @@ class CategoryCell: UICollectionViewCell {
     
     @IBOutlet weak var labelCategoryName: UILabel!
     @IBOutlet weak var leftstripeview: UIView!
+    @IBOutlet weak var rightstripeview: UIView!
     
+    @IBOutlet weak var topLbl: UILabel!
+    @IBOutlet weak var leftLbl: UILabel!
+    @IBOutlet weak var rightLbl: UILabel!
+    @IBOutlet weak var bottomLbl: UILabel!
+
+    
+    
+    var LeftborderSet = false {
+        
+        didSet{
+            
+            
+//            self.topLbl.isHidden = LeftborderSet
+//            self.leftLbl.isHidden = LeftborderSet
+//            self.rightLbl.isHidden = !LeftborderSet
+//            self.bottomLbl.isHidden = !LeftborderSet
+//            self.leftstripeview.isHidden = LeftborderSet
+//            self.rightstripeview.isHidden = !LeftborderSet
+        }
+    }
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
         categoryImg.makeRoundedCorner()
-        Common.setFont(to: labelCategoryName, isTitle: false, size: 15)
+        Common.setFont(to: labelCategoryName, isTitle: false, size: 12)
     }
 
 }

@@ -14,6 +14,9 @@ class WalletViewController: UIViewController {
     @IBOutlet weak var labelAvailableBalanceValue: UILabel!
     @IBOutlet weak var textFieldAmount: HoshiTextField!
     @IBOutlet weak var buttonAddMoney: UIButton!
+    @IBOutlet weak var topView: UIView!
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,9 +51,16 @@ extension WalletViewController {
         self.setupAction()
 
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        self.topView.roundCorners(corners: [.bottomLeft,.bottomRight], radius: 15.0)
+    }
+    
     private func setupNavigationBar() {
          self.navigationController?.isNavigationBarHidden = false
-        self.navigationItem.title = "Wallent"
+        self.navigationItem.title = "Wallet"
          Common.setFont(to: self.navigationItem.title!, isTitle: true, size: 18)
          self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
          self.navigationController?.navigationBar.isTranslucent = false

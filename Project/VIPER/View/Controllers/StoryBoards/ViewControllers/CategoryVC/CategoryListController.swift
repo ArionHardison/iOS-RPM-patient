@@ -24,7 +24,7 @@ class CategoryListController: UIViewController {
         if let layout = categoryListCV?.collectionViewLayout as? UICollectionViewFlowLayout{
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         let size = CGSize(width:(categoryListCV.bounds.width-30)/2, height: 175)
         layout.itemSize = size
         }
@@ -79,11 +79,14 @@ extension CategoryListController : UICollectionViewDelegate,UICollectionViewData
 
         let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: XIB.Names.CategoryCell, for: indexPath) as! CategoryCell
         cell.labelCategoryName.text = self.category[indexPath.row].name
-        if indexPath.row%2 == 0{
-            cell.leftstripeview.isHidden = false
-        }else{
-            cell.leftstripeview.isHidden = true
-        }
+//        if indexPath.row % 2 == 0{
+//            cell.LeftborderSet = true
+////            cell.leftstripeview.isHidden = false
+//        }else{
+//            cell.LeftborderSet = false
+//
+////            cell.leftstripeview.isHidden = true
+//        }
         return cell
         
     }
@@ -94,7 +97,7 @@ extension CategoryListController : UICollectionViewDelegate,UICollectionViewData
         let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
         let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
         let size:CGFloat = (collectionView.frame.size.width - space) / 2.0
-        return CGSize(width: size, height: size - 35)
+        return CGSize(width: size, height: size - 60)
         
        }
     

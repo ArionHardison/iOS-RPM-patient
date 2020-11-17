@@ -143,13 +143,7 @@
         
         
     }
-    
-    
-    
-    
-    
-    
-    
+
     //Api calls
     extension HomeViewController : PresenterOutputProtocol{
         func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {

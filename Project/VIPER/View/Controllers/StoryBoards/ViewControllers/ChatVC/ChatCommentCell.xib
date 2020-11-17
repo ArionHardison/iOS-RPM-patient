@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCommentCell" rowHeight="92" id="KGk-i7-Jjw" customClass="ChatCommentCell" customModule="Mi_Dokter" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCommentCell" rowHeight="92" id="5EO-2x-QAh" customClass="ChatCommentCell" customModule="TeleHealth" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="92"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5EO-2x-QAh" id="6mA-ee-0lr">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="92"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let us know your symptoms or health problems" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hes-Ig-4t3">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let us know your symptoms or health problems" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJR-Vn-47g">
                         <rect key="frame" x="20" y="10" width="280" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="25" id="OKM-dV-3tU"/>
+                            <constraint firstAttribute="height" constant="25" id="s41-Mj-sSb"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Comment here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AmL-er-ifR">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Comment here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RZd-yo-0f7">
                         <rect key="frame" x="20" y="45" width="280" height="37"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="textColor" systemColor="labelColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         <userDefinedRuntimeAttributes>
@@ -37,27 +38,35 @@
                                 <real key="value" value="1"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                <color key="value" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="value" systemColor="labelColor"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </textView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="Hes-Ig-4t3" secondAttribute="trailing" constant="20" id="1Pd-2g-hSV"/>
-                    <constraint firstItem="AmL-er-ifR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="79d-94-NSx"/>
-                    <constraint firstItem="AmL-er-ifR" firstAttribute="top" secondItem="Hes-Ig-4t3" secondAttribute="bottom" constant="10" id="F5s-Zy-5wm"/>
-                    <constraint firstItem="Hes-Ig-4t3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Las-If-EPe"/>
-                    <constraint firstItem="Hes-Ig-4t3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="RVY-lk-I5s"/>
-                    <constraint firstAttribute="bottom" secondItem="AmL-er-ifR" secondAttribute="bottom" constant="10" id="fVo-lQ-m42"/>
-                    <constraint firstAttribute="trailing" secondItem="AmL-er-ifR" secondAttribute="trailing" constant="20" id="qhe-PV-715"/>
+                    <constraint firstItem="iJR-Vn-47g" firstAttribute="leading" secondItem="6mA-ee-0lr" secondAttribute="leading" constant="20" id="FH6-a9-Rxs"/>
+                    <constraint firstAttribute="trailing" secondItem="RZd-yo-0f7" secondAttribute="trailing" constant="20" id="HjH-35-MKN"/>
+                    <constraint firstItem="iJR-Vn-47g" firstAttribute="top" secondItem="6mA-ee-0lr" secondAttribute="top" constant="10" id="eAy-jh-upG"/>
+                    <constraint firstItem="RZd-yo-0f7" firstAttribute="top" secondItem="iJR-Vn-47g" secondAttribute="bottom" constant="10" id="fE4-qf-l58"/>
+                    <constraint firstItem="RZd-yo-0f7" firstAttribute="leading" secondItem="6mA-ee-0lr" secondAttribute="leading" constant="20" id="nXj-2I-wcK"/>
+                    <constraint firstAttribute="bottom" secondItem="RZd-yo-0f7" secondAttribute="bottom" constant="10" id="nmR-vZ-ZaT"/>
+                    <constraint firstAttribute="trailing" secondItem="iJR-Vn-47g" secondAttribute="trailing" constant="20" id="uaJ-0z-LWM"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <viewLayoutGuide key="safeArea" id="JQ7-vO-KYr"/>
             <connections>
-                <outlet property="commentsView" destination="AmL-er-ifR" id="oAF-uh-5ff"/>
-                <outlet property="descriptionLabel" destination="Hes-Ig-4t3" id="KIl-t1-VOg"/>
+                <outlet property="commentsView" destination="RZd-yo-0f7" id="umY-rV-K27"/>
+                <outlet property="descriptionLabel" destination="iJR-Vn-47g" id="xkv-y0-eGQ"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="113.83928571428571"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

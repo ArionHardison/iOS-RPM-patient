@@ -25,10 +25,12 @@ class DoctorCell: UITableViewCell {
     @IBOutlet weak var callImage : UIImageView!
     @IBOutlet weak var bookImage : UIImageView!
 
-    
+    @IBOutlet weak var likedView : UIView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.docterImage.makeRoundedCorner()
+        self.likedView.addShadow(color: .black, opacity: 0.1, offset: CGSize(width: 1.0, height: 1.0), radius: 0.5, rasterize: false, maskToBounds: false)
     }
 
     

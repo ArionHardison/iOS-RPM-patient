@@ -68,7 +68,7 @@ extension DoctorsListController : UITableViewDelegate,UITableViewDataSource{
         cell.docterImage.setURLImage(detail.profile_pic ?? "")
         cell.docterName.text = "\(detail.hospital?[0].first_name ?? "") \(detail.hospital?[0].last_name ?? "")"
         cell.SplistLbl.text = detail.speciality?.name ?? ""
-//        cell.availablityLbl.text = "Available \(detail.hospital?[0].availability ?? "")"
+        cell.availablityLbl.text = "Available \(detail.hospital?[0].availability ?? "Available Today")"
         cell.clinicNameLbl.text = "\(detail.hospital?[0].clinic?.name ?? ""),\(detail.hospital?[0].clinic?.address ?? "")"
         cell.likeCountLbl.text = "\(detail.hospital?[0].feedback_percentage ?? "0") %"
         cell.feeLbl.text = "$"+"\(detail.fees ?? 0)"
@@ -104,7 +104,7 @@ extension DoctorsListController : UITableViewDelegate,UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 160
+        return 170
     }
         
 }

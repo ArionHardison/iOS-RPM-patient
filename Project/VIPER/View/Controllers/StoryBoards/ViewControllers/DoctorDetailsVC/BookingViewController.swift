@@ -39,12 +39,13 @@ class BookingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initialLoad()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.registerCell()
-
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     func initialLoad()  {

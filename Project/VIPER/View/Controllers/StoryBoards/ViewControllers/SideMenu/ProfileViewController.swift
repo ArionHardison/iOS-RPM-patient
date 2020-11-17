@@ -262,25 +262,25 @@ extension ProfileViewController{
         [self.alcoholYesBtn,self.smokeYesBtn].forEach { (btn) in
             btn?.imageView?.image = btn?.imageView?.image?.withRenderingMode(.alwaysTemplate)
             btn?.imageView?.tintColor = .AppBlueColor
-            if #available(iOS 14.0, *) {
-                btn?.menu = UIMenu(title: "Choose", options: .displayInline, children: [
-                    
-                    UIAction(title: Constants.string.Yes.localize(), image: selectedImg, handler: { (action) in
-                        
-                        btn?.setImage(selectedImg, for: .normal)
-                        
-                        
-                    }),
-                    
-                    UIAction(title: Constants.string.No.localize(), image: unselectedImg, handler: { (action) in
-                        
-                        btn?.setImage(unselectedImg, for: .normal)
-
-                    })
-                ])
-                btn?.showsMenuAsPrimaryAction = true
-
-            } else {
+//            if #available(iOS 14.0, *) {
+//                btn?.menu = UIMenu(title: "Choose", options: .displayInline, children: [
+//
+//                    UIAction(title: Constants.string.Yes.localize(), image: selectedImg, handler: { (action) in
+//
+//                        btn?.setImage(selectedImg, for: .normal)
+//
+//
+//                    }),
+//
+//                    UIAction(title: Constants.string.No.localize(), image: unselectedImg, handler: { (action) in
+//
+//                        btn?.setImage(unselectedImg, for: .normal)
+//
+//                    })
+//                ])
+//                btn?.showsMenuAsPrimaryAction = true
+//
+//            } else {
                 
                 btn?.addTap {
                     showAlert(message: btn?.tag == 101 ? "Do you have the habit of consuming alcohol?" : "Do you have the habit of smoking?", btnHandler: { (value) in
@@ -298,7 +298,7 @@ extension ProfileViewController{
                     
                 }
 
-            }
+//            }
 
                 
         }

@@ -197,10 +197,10 @@ class audioVideoCallCaontroller: UIViewController {
     NotificationCenter.default.addObserver(self, selector: #selector(CallEnd), name: Notification.Name("CALLEND"), object: nil)
        setnav()
        setCornerRadius()
-        if video == 1 {
+//        if video == 1 {
              self.profileImage.isHidden = true
              SetOurLocalVideo()
-         }
+//         }
       
 
     }
