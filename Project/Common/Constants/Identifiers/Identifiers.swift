@@ -88,6 +88,7 @@ struct XIB {
     let ChatRightCell = "ChatRightCell"
     let ChatLeftCell = "ChatLeftCell"
     let RelativesTableViewCell = "RelativesTableViewCell"
+    let AddAllergyTableViewCell = "AddAllergyTableViewCell"
     
     
 }

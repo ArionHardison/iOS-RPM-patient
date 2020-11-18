@@ -143,7 +143,7 @@ class PushHelper {
             UIApplication.topViewController()?.present(videoCallViewController, animated: true, completion:
               {
                  videoCallViewController.isCallType = .receiveCall
-                videoCallViewController.handleCall()
+//                videoCallViewController.handleCall()
                 })
            }
         }

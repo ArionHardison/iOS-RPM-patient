@@ -267,7 +267,7 @@ extension AppDelegate {
         let callUpdate = CXCallUpdate()
         callUpdate.remoteHandle = callHandle
         callUpdate.supportsDTMF = false
-        callUpdate.supportsHolding = true
+        callUpdate.supportsHolding = false
         callUpdate.supportsGrouping = false
         callUpdate.supportsUngrouping = false
         callUpdate.hasVideo = hasVideo

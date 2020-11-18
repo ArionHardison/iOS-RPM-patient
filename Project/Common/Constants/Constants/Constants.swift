@@ -48,6 +48,7 @@ struct Constants {
     let cannotMakeCallAtThisMoment = "Cannot make call at this moment"
     let couldnotOpenEmailAttheMoment = "Could not open Email at the moment."
     let areYouSureWantToLogout = "Are you want to logout?"
+    let addanallerygy = "Add an allergy"
 
 
 }

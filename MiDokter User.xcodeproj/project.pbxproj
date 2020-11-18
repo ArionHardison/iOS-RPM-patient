@@ -174,6 +174,8 @@
 		8526FFD525516A8600E672B9 /* CallDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8526FFD125516A8500E672B9 /* CallDuration.swift */; };
 		8526FFD625516A8600E672B9 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8526FFD225516A8500E672B9 /* Settings.swift */; };
 		8526FFD725516A8600E672B9 /* audioVideoCallCaontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8526FFD325516A8500E672B9 /* audioVideoCallCaontroller.swift */; };
+		853F13F1256401A500BB20A8 /* AddAllergyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853F13EF256401A500BB20A8 /* AddAllergyTableViewCell.swift */; };
+		853F13F2256401A500BB20A8 /* AddAllergyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 853F13F0256401A500BB20A8 /* AddAllergyTableViewCell.xib */; };
 		85537DB9255D8977006C061C /* TimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85537DB7255D8977006C061C /* TimeCell.xib */; };
 		85537DBA255D8977006C061C /* TimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85537DB8255D8977006C061C /* TimeCell.swift */; };
 		85537DD0255D9277006C061C /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85537DBE255D9272006C061C /* Montserrat-ExtraLight.ttf */; };
@@ -409,6 +411,8 @@
 		8526FFD125516A8500E672B9 /* CallDuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallDuration.swift; sourceTree = "<group>"; };
 		8526FFD225516A8500E672B9 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		8526FFD325516A8500E672B9 /* audioVideoCallCaontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = audioVideoCallCaontroller.swift; sourceTree = "<group>"; };
+		853F13EF256401A500BB20A8 /* AddAllergyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAllergyTableViewCell.swift; sourceTree = "<group>"; };
+		853F13F0256401A500BB20A8 /* AddAllergyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAllergyTableViewCell.xib; sourceTree = "<group>"; };
 		85537DB7255D8977006C061C /* TimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeCell.xib; sourceTree = "<group>"; };
 		85537DB8255D8977006C061C /* TimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeCell.swift; sourceTree = "<group>"; };
 		85537DBE255D9272006C061C /* Montserrat-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLight.ttf"; sourceTree = "<group>"; };
@@ -959,6 +963,8 @@
 				0871DEBB20B966E600EA80DC /* Homepage SubViews */,
 				85B6D9CF255A83B9005997A5 /* RelativesTableViewCell.swift */,
 				85B6D9D0255A83B9005997A5 /* RelativesTableViewCell.xib */,
+				853F13EF256401A500BB20A8 /* AddAllergyTableViewCell.swift */,
+				853F13F0256401A500BB20A8 /* AddAllergyTableViewCell.xib */,
 			);
 			path = XIB;
 			sourceTree = "<group>";
@@ -1691,6 +1697,7 @@
 			files = (
 				12B6E20C2447010B00BE448F /* UpcomingTableviewCell.xib in Resources */,
 				7E401F292487CD860021991A /* VisitedDoctorsCell.xib in Resources */,
+				853F13F2256401A500BB20A8 /* AddAllergyTableViewCell.xib in Resources */,
 				85537DDE255D9277006C061C /* Montserrat-Regular.ttf in Resources */,
 				85537DE0255D9277006C061C /* Montserrat-Italic.ttf in Resources */,
 				905383782490E253009CCEE4 /* ReviewCell.xib in Resources */,
@@ -1861,6 +1868,7 @@
 				107372892498B1050080A5A5 /* AlertVC.swift in Sources */,
 				104ED4C72499EC6400555CA8 /* DoctorsListModel.swift in Sources */,
 				10529FDE251E002500262EF4 /* ChatManager.swift in Sources */,
+				853F13F1256401A500BB20A8 /* AddAllergyTableViewCell.swift in Sources */,
 				8526FFD625516A8600E672B9 /* Settings.swift in Sources */,
 				12384B3524600D990057943D /* DoctorDetailsController.swift in Sources */,
 				12681EFE2438D5A30072193B /* SigninInViewController.swift in Sources */,
@@ -2135,7 +2143,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TeleHealth.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.3;
+				CURRENT_PROJECT_VERSION = 2.4;
 				DEVELOPMENT_TEAM = Q4N6XWX7K3;
 				INFOPLIST_FILE = "$(SRCROOT)/Project/Common/Plist Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -2158,7 +2166,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TeleHealth.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.3;
+				CURRENT_PROJECT_VERSION = 2.4;
 				DEVELOPMENT_TEAM = Q4N6XWX7K3;
 				INFOPLIST_FILE = "$(SRCROOT)/Project/Common/Plist Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
