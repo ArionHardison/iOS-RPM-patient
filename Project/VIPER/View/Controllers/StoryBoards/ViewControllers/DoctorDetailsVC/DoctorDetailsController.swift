@@ -335,8 +335,13 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
             }else{
                 return 0
             }
+        }else if tableView == self.timingTableView{
+                
+                return UITableViewAutomaticDimension
+              
+            }
           
-        }
+       
          
     }else{
             if isfromFavourite{
@@ -355,6 +360,11 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
                     }
                   
                 }
+                else if tableView == self.timingTableView{
+                        
+                        return UITableViewAutomaticDimension
+                      
+                    }
                  
             }else {
         if tableView == self.servicesTV{
@@ -372,6 +382,11 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
             }
           
         }
+        else if tableView == self.timingTableView{
+                
+                return UITableViewAutomaticDimension
+              
+            }
          
     }
         }
@@ -388,21 +403,23 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
     func createViewAllButtion() -> UIView{
         let customView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
         customView.backgroundColor = .clear
-        let viewLabel = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40))
+        let viewLabel = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 30))
 
-        Common.setFont(to: viewLabel,isTitle : true)
+        
+        Common.setFontWithType(to: viewLabel, size: 12, type: .regular)
+        //Common.setFont(to: viewLabel,isTitle : true)
         viewLabel.text = "View all >"
         viewLabel.textAlignment = .center
-        viewLabel.textColor = UIColor.appColor
+        viewLabel.textColor = UIColor(named: "AppBlueColor")
         customView.addSubview(viewLabel)
         return customView
     }
     
     
     func setSeatchCountLbl(label : UILabel,day : String , timing : String){
-        let attrs1 = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15), NSAttributedString.Key.foregroundColor : UIColor.red.withAlphaComponent(0.8)]
+        let attrs1 = [NSAttributedString.Key.font : UIFont.init(name: FontCustom.regular.rawValue, size: 14), NSAttributedString.Key.foregroundColor : UIColor.red.withAlphaComponent(0.8)]
         
-        let attrs2 = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15), NSAttributedString.Key.foregroundColor : UIColor.black]
+        let attrs2 = [NSAttributedString.Key.font : UIFont.init(name: FontCustom.regular.rawValue, size: 14), NSAttributedString.Key.foregroundColor : UIColor(named: "TextBlackColor")]
         
         let attributedString1 = NSMutableAttributedString(string: "\(day) ", attributes:attrs1)
         

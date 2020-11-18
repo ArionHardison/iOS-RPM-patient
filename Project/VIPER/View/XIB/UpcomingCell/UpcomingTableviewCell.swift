@@ -19,11 +19,23 @@ class UpcomingTableviewCell: UITableViewCell {
     @IBOutlet weak var labelSubtitle: UILabel!
     @IBOutlet weak var buttonCancel: UIButton!
     @IBOutlet weak var labelStatus: PaddingLabel!
-    
+    @IBOutlet weak var dateView: UIView!
+
     @IBOutlet weak var statusWidth: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.dateView.roundCorners(corners: [.topRight,.bottomRight], radius: 6)
+        self.labelStatus.roundCorners(corners: [.bottomLeft,.topLeft], radius: 2)
+        self.dateView.borderLineWidth = 1.0
+        
+        
     }
 
    

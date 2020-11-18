@@ -18,7 +18,8 @@ class UpcomingDetailsController: UITableViewController {
     @IBOutlet weak var labelDesignation: UILabel!
     @IBOutlet weak var locationImg: UIImageView!
     @IBOutlet weak var labelHospitalName: UILabel!
-    
+    @IBOutlet weak var labelCategory: UILabel!
+
     @IBOutlet weak var labelBookefor: UILabel!
     
     
@@ -27,7 +28,9 @@ class UpcomingDetailsController: UITableViewController {
     @IBOutlet weak var labelSchedule: UILabel!
     
     @IBOutlet weak var labelDate: UILabel!
-    
+    @IBOutlet weak var labelStatus: UILabel!
+    @IBOutlet weak var labelStatusType: UILabel!
+
     @IBOutlet weak var buttonCancel: UIButton!
 //    @IBOutlet weak var videoCallButton: UIButton!
     
@@ -38,10 +41,26 @@ class UpcomingDetailsController: UITableViewController {
         super.viewDidLoad()
 
         self.initalLoads()
+        self.setTextFonts()
         
         
     }
     
+    private func setTextFonts() {
+        
+        Common.setFontWithType(to: doctorName, size: 18, type: .meduim)
+        Common.setFontWithType(to: labelDesignation, size: 10, type: .regular)
+        Common.setFontWithType(to: labelHospitalName, size: 12, type: .light)
+        Common.setFontWithType(to: labelBookefor, size: 16, type: .meduim)
+        Common.setFontWithType(to: labelPatientName, size: 14, type: .meduim)
+        Common.setFontWithType(to: labelSchedule, size: 16, type: .meduim)
+        Common.setFontWithType(to: labelDate, size: 14, type: .meduim)
+        Common.setFontWithType(to: buttonCancel, size: 14, type: .meduim)
+        Common.setFontWithType(to: labelCategory, size: 14, type: .light)
+
+
+//        Common.setFontWithType(to: labelStatus, size: 16, type: .meduim)
+    }
 
    
 }
@@ -49,16 +68,18 @@ class UpcomingDetailsController: UITableViewController {
 extension UpcomingDetailsController {
     
     private func initalLoads(){
+        
+        self.doctorName.text = "\(self.appointment.hospital?.first_name ?? "") \(self.appointment.hospital?.last_name ?? "")".capitalized
+        self.labelHospitalName.text = "\(self.appointment.hospital?.clinic?.name ?? ""), \(self.appointment.hospital?.clinic?.address ?? "")".capitalized
         self.labelDate.text = dateConvertor(self.appointment.scheduled_at ?? "", _input: .date_time, _output: .DM)
-        self.labelPatientName.text = (self.appointment.hospital?.first_name ?? "") + (self.appointment.hospital?.last_name ?? "")
-        self.labelHospitalName.text = self.appointment.hospital?.clinic?.name ?? ""
-        self.doctorName.text = self.appointment.hospital?.clinic?.name ?? ""
-        self.labelDesignation.text = self.appointment.hospital?.doctor_profile?.speciality?.name ?? ""
+        self.labelPatientName.text = (self.appointment.hospital?.first_name ?? "").capitalized + (self.appointment.hospital?.last_name ?? "").capitalized
+//        self.doctorName.text = self.appointment.hospital?.clinic?.name ?? "".capitalized
+        self.labelDesignation.text = self.appointment.hospital?.doctor_profile?.speciality?.name ?? "".uppercased()
         self.doctorImg.setImage(with: self.appointment.hospital?.doctor_profile?.profile_pic, placeHolder: #imageLiteral(resourceName: "1"))
         self.buttonCancel.addTarget(self, action: #selector(cancelAppointment(sender:)), for: .touchUpInside)
 //        self.videoCallButton.addTarget(self, action: #selector(videoCallAction(sender:)), for: .touchUpInside)
 //        self.videoCallButton.isHidden = !isFromUpcomming
-        self.buttonCancel.isHidden = !isFromUpcomming
+        self.buttonCancel.isHidden = isFromUpcomming
     }
     
     

@@ -27,7 +27,7 @@ class AppointmentViewController: UIViewController {
            didSet {
                UIView.animate(withDuration: 0.5) {
                    self.underLineView.frame.origin.x = self.isFirstBlockSelected ? 0 : (self.view.bounds.width/2)
-                   self.underLineView.backgroundColor = .primary
+                self.underLineView.backgroundColor = UIColor(named: "AppBlueColor")
                }
            }
        }
@@ -52,7 +52,11 @@ class AppointmentViewController: UIViewController {
         
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.title = "Appointments"
-        Common.setFont(to: self.navigationItem.title!, isTitle: true, size: 18)
+        Common.setFontWithType(to: self.navigationItem.title!, size: 18, type: .regular)
+        Common.setFontWithType(to: self.upCommingBtn, size: 18, type: .regular)
+        Common.setFontWithType(to: self.pastBtn, size: 18, type: .regular)
+
+//        Common.setFont(to: self.navigationItem.title!, isTitle: true, size: 18)
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.02583951317, green: 0.1718649864, blue: 0.4112361372, alpha: 1)
@@ -120,21 +124,23 @@ extension AppointmentViewController : UITableViewDelegate,UITableViewDataSource
         cell.labelDate.text = dateConvertor(data.scheduled_at ?? "", _input: .date_time, _output: .DM)
         cell.labelTime.text = dateConvertor(data.scheduled_at ?? "", _input: .date_time, _output: .N_hour)
         cell.labeldoctorName.text = "Dr.\(data.hospital?.first_name ?? "") \(data.hospital?.last_name ?? "")"
-        cell.labelSubtitle.text = "\(data.hospital?.email ?? "")"
+        cell.labelSubtitle.text = "\(data.hospital?.clinic?.name ?? ""),\(data.hospital?.clinic?.address ?? "")"  //"\(data.hospital?.email ?? "")"
         cell.selectionStyle = .none
-        cell.buttonCancel.isHidden = !isFirstBlockSelected
-        cell.labelStatus.isHidden = isFirstBlockSelected
-        cell.statusWidth.constant = isFirstBlockSelected ? 0 : 81
-        cell.labelStatus.layer.cornerRadius = 4
-        cell.labelStatus.text = data.status ?? ""
-        if data.status ?? "" == "CANCELLED"{
-            cell.labelStatus.backgroundColor = UIColor.red.withAlphaComponent(0.2)
-            cell.labelStatus.textColor = UIColor.red
-        }else{
-            cell.labelStatus.backgroundColor = UIColor.LightGreen
-            cell.labelStatus.textColor = UIColor.AppBlueColor
-        }
         
+        let value = isFirstBlockSelected ? 1 : 0
+        cell.buttonCancel.isHidden = value == 1 ? false : true
+        cell.labelStatus.isHidden = value == 0 ? false : true
+//        cell.statusWidth.constant = isFirstBlockSelected ? 0 : 81
+//        cell.labelStatus.layer.cornerRadius = 4
+        if data.status ?? "" == "CANCELLED"{
+            cell.labelStatus.backgroundColor = UIColor(named: "CustomRedColor") //UIColor.red.withAlphaComponent(0.2)
+            cell.labelStatus.textColor = UIColor.red.withAlphaComponent(0.8) //UIColor(named: "")
+        }else{
+            cell.labelStatus.backgroundColor = UIColor(named: "LightGreen") //UIColor.LightGreen
+            cell.labelStatus.textColor = UIColor(named: "ConfirmedGreenColor") //UIColor.AppBlueColor
+        }
+        cell.labelStatus.text = data.status ?? "".uppercased()
+
         cell.buttonCancel.addTap {
             self.cancelAppointment(id: data.id?.description ?? "")
         }
@@ -150,19 +156,25 @@ extension AppointmentViewController : UITableViewDelegate,UITableViewDataSource
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         DispatchQueue.main.async {
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.UpcomingDetailsController) as! UpcomingDetailsController
+            
             if self.isFirstBlockSelected{
-    //            vc.buttonCancel.isHidden = false
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.UpcomingDetailsController) as! UpcomingDetailsController
                 vc.appointment = self.upcomingAppointment[indexPath.row]
+                self.navigationController?.pushViewController(vc, animated: true)
             }else{
-                vc.appointment = self.previousAppointment[indexPath.row]
+                
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.AppointmentDetailsViewController) as! AppointmentDetailsViewController
+                vc.visitedDetail = Visited_doctors(JSON: self.previousAppointment[indexPath.row].toJSON())!
+                self.navigationController?.pushViewController(vc, animated: true)
             }
-            vc.isFromUpcomming = self.isFirstBlockSelected
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+            
 
+        }
+    
+            
+    
+//        self.push(id: Storyboard.Ids.UpcomingDetailsController, animation: true)
         
     }
     

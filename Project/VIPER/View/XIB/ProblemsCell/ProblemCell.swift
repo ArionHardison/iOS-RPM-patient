@@ -19,13 +19,18 @@ class ProblemCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         superview?.awakeFromNib()
-        self.problemsBGView.setCorneredElevation(shadow: 1, corner: 10, color: UIColor.gray)
+
         self.setupFont()
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.problemsBGView.setCorneredElevation(shadow: 0, corner: 10, color: UIColor.clear)
+        self.problemsImg.cornerRadius = self.problemsImg.frame.height/2
     }
     
     func setupFont(){
-        Common.setFont(to: self.problemsLbl, isTitle: false, size: 18)
-        Common.setFont(to: self.orginalPrizeLbl, isTitle: false, size: 15)
-        Common.setFont(to: self.offerPrizeLbl, isTitle: false, size: 18)
+//        Common.setFont(to: self.problemsLbl, isTitle: false, size: 18)
+//        Common.setFont(to: self.orginalPrizeLbl, isTitle: false, size: 15)
+//        Common.setFont(to: self.offerPrizeLbl, isTitle: false, size: 18)
     }
 }

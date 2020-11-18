@@ -97,7 +97,26 @@ class Common {
         
         let customSize = size > 0 ? size : (isTitle ? 16 : 14)
         let font = UIFont(name: isTitle ? FontCustom.bold.rawValue : FontCustom.meduim.rawValue, size: customSize)
+
+        switch (field.self) {
+        case is UITextField:
+            (field as? UITextField)?.font = font
+        case is UILabel:
+            (field as? UILabel)?.font = font
+        case is UIButton:
+            (field as? UIButton)?.titleLabel?.font = font
+        case is UITextView:
+            (field as? UITextView)?.font = font
+        default:
+            break
+        }
+    }
+    
+    class func setFontWithType(to field :Any, size : CGFloat = 0, type fontType:FontCustom = .meduim) {
         
+        let customSize = size > 0 ? size : 14
+        let font = UIFont(name: fontType.rawValue, size: customSize)
+
         switch (field.self) {
         case is UITextField:
             (field as? UITextField)?.font = font

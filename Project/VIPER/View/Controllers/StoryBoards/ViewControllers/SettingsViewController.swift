@@ -14,8 +14,6 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var ReminderSwitch: UISwitch!
     @IBOutlet weak var logOutButton: UIButton!
-    @IBOutlet weak var aboutView: UIView!
-    @IBOutlet weak var aboutButton: UIButton!
     
     var isSwitchON : Bool = false
     
@@ -23,11 +21,19 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         self.initalLoads()
         self.setUpNavigation()
+        self.addAction()
+        
+        
         // Do any additional setup after loading the view.
     }
     
 
-    
+    func addAction() {
+        
+        self.aboutLabel.addTap {
+            self.privacyPolicyAction()
+        }
+    }
 
 }
 
@@ -38,10 +44,8 @@ extension SettingsViewController {
         self.showReminderLabel.text = "Show Reminder Notification"
         self.aboutLabel.text = "About TeleHealth"
         self.rateLabel.text = "Rate Us On AppStore"
-        self.aboutButton.setTitle("About TeleHealth", for: .normal)
         self.ReminderSwitch.addTarget(self, action: #selector(reminderAction(sender:)), for: .valueChanged)
         self.logOutButton.addTarget(self, action: #selector(logoutAction(sender:)), for: .touchUpInside)
-        self.aboutButton.addTarget(self, action: #selector(privacyPolicyAction), for: .touchUpInside)
         
         
     }
@@ -64,7 +68,7 @@ extension SettingsViewController {
     }
     
     
-    @objc private func privacyPolicyAction(){
+    private func privacyPolicyAction(){
         
         let url = URL(string: aboutUrl)!
         if UIApplication.shared.canOpenURL(url) {

@@ -19,8 +19,8 @@ class ChatQuestionViewController: UIViewController {
     @IBOutlet weak var symptomsTxt : UITextView!
     @IBOutlet weak var submitBtn : UIButton!
     
-    var category : [Category]?
-    var AllAategory : [Category]?
+    var category : [Category] = [Category]()
+    var AllAategory : [Category] = [Category]()
     var selectedindex : Int  = 0
     
     override func viewDidLoad() {
@@ -54,7 +54,7 @@ class ChatQuestionViewController: UIViewController {
     func setupAction(){
         self.submitBtn.addTap {
             let vc = SummaryViewController.initVC(storyBoardName: .main, vc: SummaryViewController.self, viewConrollerID: Storyboard.Ids.SummaryViewController)
-            vc.selectedCategory = self.category?[self.selectedindex] ?? Category()
+            vc.selectedCategory = self.category[self.selectedindex]
             vc.message = self.symptomsTxt.text ?? ""
             self.push(from: self, ToViewContorller: vc)
         }
@@ -64,11 +64,11 @@ class ChatQuestionViewController: UIViewController {
 
 extension ChatQuestionViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  (self.category?.count ?? 0) + 1
+        return  (self.category.count ?? 0) + 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.SuggestedCell) as! SuggestedCell
-        if indexPath.row ==  self.category?.count{
+        if indexPath.row ==  self.category.count ?? 0{
             cell.allSplistView.isHidden = false
         }else{
             cell.allSplistView.isHidden = true
@@ -94,12 +94,11 @@ extension ChatQuestionViewController : UITableViewDelegate,UITableViewDataSource
             cell.priceLbl.textColor = UIColor(named: "GreyTextcolor")! //UIColor.black
             cell.offerPriceView.backgroundColor = UIColor(named: "GreyTextcolor")! //UIColor.black
         }
-        if indexPath.row <= (self.category?.count ?? 0)-1{
-        if let data : Category = self.category?[indexPath.row]{
+        if indexPath.row <= (self.category.count )-1{
+            let data : Category = self.category[indexPath.row]
             cell.titleLbl.text = data.name ?? ""
             cell.offerPriceLbl.text = data.offer_fees ?? ""
             cell.priceLbl.text = data.fees ?? ""
-        }
         }
         
         return cell
@@ -111,14 +110,14 @@ extension ChatQuestionViewController : UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row ==  self.category?.count ?? 0{
+        if indexPath.row ==  self.category.count {
             let vc = SelectedProblemAreaVC.initVC(storyBoardName: .main, vc: SelectedProblemAreaVC.self, viewConrollerID: Storyboard.Ids.SelectedProblemAreaVC)
-            vc.category = self.AllAategory ?? []
+            vc.category = self.AllAategory
             
             vc.selectedCategory = {(category) in
-                self.category?.remove(at: 2)
+                self.category.remove(at: 2)
                 self.selectedindex = 2
-                self.category?.append(category)
+                self.category.append(category)
                 
                 self.suggestionList.reloadData()
             }
@@ -146,15 +145,15 @@ extension ChatQuestionViewController : PresenterOutputProtocol{
             case model.type.CategoryList:
                 
                 let data = dataDict as? CategoryList
-                if data?.category?.count ?? 0 > 3{
-                    self.category?.append((data?.category?[0])!)
-                    self.category?.append((data?.category?[1])!)
-                    self.category?.append((data?.category?[2])!)
+                if (data?.category?.count ?? 0) > 3{
+                    self.category.append((data?.category?[0]) ?? Category())
+                    self.category.append((data?.category?[1]) ?? Category())
+                    self.category.append((data?.category?[2]) ?? Category())
                 }else{
                     self.category = data?.category ?? [Category]()
                 }
                 self.AllAategory = data?.category ?? [Category]()
-                self.suggestionList.reloadData()
+                self.suggestionList.reloadInMainThread()
                 break
             
             default: break
