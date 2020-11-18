@@ -12,6 +12,9 @@ import ObjectMapper
 class HealthFeedViewController: UIViewController {
 
     @IBOutlet weak var tableViewHealthFeed: UITableView!
+    @IBOutlet weak var noArticleView: UIView!
+    @IBOutlet weak var noArticleImageView: UIImageView!
+    @IBOutlet weak var noArticleLabel: UILabel!
     
     var article : [Article] = [Article]()
     
@@ -42,6 +45,9 @@ extension HealthFeedViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
          self.navigationController?.navigationBar.isTranslucent = false
          self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.02583951317, green: 0.1718649864, blue: 0.4112361372, alpha: 1)
+        self.noArticleLabel.text = "No Articles Available Currently"
+        self.noArticleView.isHidden = true
+        self.tableViewHealthFeed.isHidden = false
     }
 
     func registerCell(){
@@ -97,6 +103,13 @@ extension HealthFeedViewController : PresenterOutputProtocol{
             case model.type.ArticleModel:
                 let data = dataDict as? ArticleModel
                 self.article = data?.article ?? [Article]()
+                if self.article.count > 0{
+                    self.noArticleView.isHidden = true
+                    self.tableViewHealthFeed.isHidden = false
+                }else{
+                    self.noArticleView.isHidden = false
+                    self.tableViewHealthFeed.isHidden = true
+                }
                 self.tableViewHealthFeed.reloadData()
                 break
             

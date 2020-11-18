@@ -30,7 +30,7 @@ class AppointmentDetailsViewController: UITableViewController {
     @IBOutlet weak var consultedText: HoshiTextField!
     @IBOutlet weak var commentsText: UITextView!
     
-    var visitedDetail : Visited_doctors = Visited_doctors()
+    var visitedDetail : Visited_doctors?
     var likedStatus : String = ""
     
     override func viewDidLoad() {
@@ -118,7 +118,7 @@ extension AppointmentDetailsViewController {
                 var comment = FeedBackReq()
                 comment.comments = self.commentsText.text ?? ""
                 comment.experiences = self.likedStatus
-                comment.hospital_id = (self.visitedDetail.hospital?.id ?? 0).description
+                comment.hospital_id = (self.visitedDetail?.hospital?.id ?? 0).description
                 comment.visited_for = self.consultedText.getText
                 self.postFeedBack(feedback: comment)
             }

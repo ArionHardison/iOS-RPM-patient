@@ -8,17 +8,20 @@
 
 import UIKit
 import ObjectMapper
+import IQKeyboardManagerSwift
 
 class CategoryListController: UIViewController {
     
     @IBOutlet weak var categoryListCV: UICollectionView!
+    @IBOutlet weak var doctorSearchBar: UISearchBar!
     
       var category : [Category] = [Category]()
     
      
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        IQKeyboardManager.shared.enable = true
+        self.doctorSearchBar.delegate = self
         registerCell()
         setNav()
         if let layout = categoryListCV?.collectionViewLayout as? UICollectionViewFlowLayout{
@@ -79,6 +82,9 @@ extension CategoryListController : UICollectionViewDelegate,UICollectionViewData
 
         let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: XIB.Names.CategoryCell, for: indexPath) as! CategoryCell
         cell.labelCategoryName.text = self.category[indexPath.row].name
+        let imageurl = self.category[indexPath.row].image ?? ""
+        print(imageurl)
+        cell.categoryImg.setURLImage(imageurl)
 //        if indexPath.row % 2 == 0{
 //            cell.LeftborderSet = true
 ////            cell.leftstripeview.isHidden = false
@@ -140,4 +146,15 @@ extension CategoryListController : PresenterOutputProtocol{
     func cancelAppointment(id : String){
         self.presenter?.HITAPI(api: Base.cancelAppointment.rawValue, params: ["id" : id], methodType: .POST, modelClass: CommonModel.self, token: true)
     }
+}
+
+
+extension CategoryListController : UISearchBarDelegate {
+    
+   func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
+          print("end searching --> Close Keyboard")
+          self.doctorSearchBar.endEditing(true)
+      }
+    
+    
 }

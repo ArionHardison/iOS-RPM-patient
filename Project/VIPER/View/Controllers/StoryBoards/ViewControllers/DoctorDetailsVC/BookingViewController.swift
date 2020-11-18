@@ -30,6 +30,8 @@ class BookingViewController: UIViewController {
     var docProfile : Doctor_profile = Doctor_profile()
     var bookingreq : BookingReq = BookingReq()
     var isFromSearch : Bool = false
+    var isfromFavourite : Bool = false
+    var favouriteDoctor : Favourite_Doctors?
     var scheduleDate = Date()
     var scheduleDateString : String = String()
     var categoryId : Int = 0
@@ -167,6 +169,14 @@ class BookingViewController: UIViewController {
     func populateData(){
 //        if let detail : Hospital = self.docProfile.hospital?[0]{
         if !isFromSearch{
+            if isfromFavourite{
+                let detail : Hospital = (self.favouriteDoctor?.hospital)!
+                self.bookingreq.doctor_id = ( self.favouriteDoctor?.hospital?.doctor_profile?.id ?? 0 ).description
+                self.doctorNameLbl.text = "\(detail.first_name ?? "") \(detail.last_name ?? "")"
+                self.doctorImg.setURLImage("\(detail.doctor_profile?.profile_pic ?? "")" )
+                self.splstLbl.text = "\(self.docProfile.speciality?.name ?? "")"
+                self.addressLbl.text = "\(detail.clinic?.name ?? "") \(detail.clinic?.address ?? "")"
+            }else{
             let detail : Hospital = (self.docProfile.hospital?[0])!
                 self.bookingreq.doctor_id = ( self.docProfile.id ?? 0 ).description
             self.doctorNameLbl.text = "\(detail.first_name ?? "") \(detail.last_name ?? "")"
@@ -177,7 +187,8 @@ class BookingViewController: UIViewController {
              //   self.doctorImg.makeRoundedCorner()
             self.splstLbl.text = "\(self.docProfile.speciality?.name ?? "")" //"\(detail.doctor_profile?.speciality?.name ?? "")"
                 self.addressLbl.text = "\(detail.clinic?.name ?? "") \(detail.clinic?.address ?? "")"
-        }else{
+            }
+            }else{
             self.bookingreq.doctor_id = ( self.searchDoctor.id ?? 0 ).description
               self.doctorNameLbl.text = "\(self.searchDoctor.first_name ?? "") \(self.searchDoctor.last_name ?? "")"
               self.doctorImg.pin_setImage(from: URL(string: imageURL+"\(self.searchDoctor.doctor_profile?.profile_pic ?? "")")!)

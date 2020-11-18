@@ -110,9 +110,13 @@ class TimePickerAlert : UIView {
     override func initView(view : UIView , vc : UIViewController) -> UIView {
         self.alertVC = vc
         self.setupView(view: view)
+        self.submitBtn.setCorneredElevation(shadow: 7, corner: 7, color: .clear)
+        self.cancelBtn.setCorneredElevation(shadow: 7, corner: 7, color: .clear)
+
         self.submitBtn.setCorneredElevation()
+
         if schduleDate.interval(ofComponent: .day, fromDate: Date()) == 0{
-//            self.timepicker.minimumDate = Date()
+            self.timepicker.minimumDate = Date()
         }
         
         self.setupAction()
@@ -155,7 +159,7 @@ class TimePickerAlert : UIView {
         let height =  self.frame.height < 150.0 ? 150 : self.frame.height
         self.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: height)
         self.transform = CGAffineTransform(translationX: 0, y: 0)
-        
+        self.timepicker.tintColor = UIColor(named: "GreyTextcolor")
         self.backgroundColor = .white
         
         self.setCorneredElevation()

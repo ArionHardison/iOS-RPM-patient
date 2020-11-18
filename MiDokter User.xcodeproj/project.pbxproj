@@ -196,6 +196,7 @@
 		85537DDF255D9277006C061C /* Montserrat-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85537DCD255D9276006C061C /* Montserrat-MediumItalic.ttf */; };
 		85537DE0255D9277006C061C /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85537DCE255D9277006C061C /* Montserrat-Italic.ttf */; };
 		85537DE1255D9277006C061C /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85537DCF255D9277006C061C /* Montserrat-Medium.ttf */; };
+		85540294256535E0003972F5 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85540293256535DF003972F5 /* KeyboardManager.swift */; };
 		8574167E255AB249002D1F1F /* RelativeManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8574167D255AB249002D1F1F /* RelativeManagementViewController.swift */; };
 		857416B1255ACDBD002D1F1F /* RelativeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857416B0255ACDBD002D1F1F /* RelativeDetailViewController.swift */; };
 		857416B6255AE12F002D1F1F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857416B5255AE12F002D1F1F /* SettingsViewController.swift */; };
@@ -433,6 +434,7 @@
 		85537DCD255D9276006C061C /* Montserrat-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-MediumItalic.ttf"; sourceTree = "<group>"; };
 		85537DCE255D9277006C061C /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		85537DCF255D9277006C061C /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		85540293256535DF003972F5 /* KeyboardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		8574167D255AB249002D1F1F /* RelativeManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeManagementViewController.swift; sourceTree = "<group>"; };
 		857416B0255ACDBD002D1F1F /* RelativeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeDetailViewController.swift; sourceTree = "<group>"; };
 		857416B5255AE12F002D1F1F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -577,6 +579,7 @@
 		084B342420B028E800B79318 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				85540293256535DF003972F5 /* KeyboardManager.swift */,
 				8579C71B2551A03300F5B572 /* PushHelper.swift */,
 				85C76851254D81F9002827B9 /* PickerManager.swift */,
 				90526147248FE086008CC272 /* Extension */,
@@ -1895,6 +1898,7 @@
 				108010C62494EA3900C7249D /* SuggestedCell.swift in Sources */,
 				084B34D020B0424E00B79318 /* Country.swift in Sources */,
 				779DBC582493F9570055FCB9 /* HealthFeedTableViewCell.swift in Sources */,
+				85540294256535E0003972F5 /* KeyboardManager.swift in Sources */,
 				10529FE0251E002E00262EF4 /* ChatEntity.swift in Sources */,
 				12B6E20B2447010B00BE448F /* UpcomingTableviewCell.swift in Sources */,
 				8526FFD525516A8600E672B9 /* CallDuration.swift in Sources */,

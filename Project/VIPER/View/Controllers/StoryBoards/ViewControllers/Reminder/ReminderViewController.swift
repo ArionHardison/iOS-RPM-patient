@@ -14,6 +14,8 @@ class ReminderViewController: UIViewController {
     @IBOutlet weak var reminderList : UITableView!
     @IBOutlet weak var addreminderImg : UIImageView!
     @IBOutlet weak var addreminderLbl : UILabel!
+    @IBOutlet weak var noDataView: UIView!
+    @IBOutlet weak var noDataLabel: UILabel!
 
     var remainder : [Reminder]?
     
@@ -33,6 +35,9 @@ class ReminderViewController: UIViewController {
         self.setupNavigation()
         self.setupAction()
         Common.setFont(to: self.addreminderLbl)
+        self.reminderList.isHidden = false
+        self.noDataView.isHidden = true
+        self.noDataLabel.text = "No Remainders"
         self.presenter?.HITAPI(api: Base.remainderApi.rawValue, params: nil, methodType: .GET, modelClass: Remainder.self, token: true)
         
        
@@ -40,7 +45,9 @@ class ReminderViewController: UIViewController {
     
     func setupAction(){
         self.addreminderImg.addTap{
-             self.push(id: Storyboard.Ids.ReminderDetailViewController, animation: true)
+                   let reminderVc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.ReminderDetailViewController) as! ReminderDetailViewController
+               reminderVc.isNewReminder = true
+               self.navigationController?.pushViewController(reminderVc, animated: true)
         }
     }
     
@@ -53,7 +60,9 @@ class ReminderViewController: UIViewController {
     }
     
     @objc func addReminderAction() {
-        self.push(id: Storyboard.Ids.ReminderDetailViewController, animation: true)
+            let reminderVc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.ReminderDetailViewController) as! ReminderDetailViewController
+        reminderVc.isNewReminder = true
+        self.navigationController?.pushViewController(reminderVc, animated: true)
     }
     
     
@@ -69,19 +78,17 @@ extension ReminderViewController : UITableViewDelegate,UITableViewDataSource{
         cell.labelFirstChar.text = self.remainder?[indexPath.row].name?.substring(toIndex: 1)
         cell.labelReason.text = self.remainder?[indexPath.row].name
         
-        self.SearchCellAction(cell: cell)
+//        self.SearchCellAction(cell: cell)
         return cell
         
     }
-    
-    func SearchCellAction(cell : ReminderCell){
-        cell.contentView.addTap {
-            self.push(id: Storyboard.Ids.ReminderDetailViewController, animation: true)
-        }
-    }
+
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let reminderVc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.ReminderDetailViewController) as! ReminderDetailViewController
+        reminderVc.remainder = self.remainder?[indexPath.row]
+        reminderVc.isNewReminder = false
+        self.navigationController?.pushViewController(reminderVc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -101,6 +108,13 @@ extension ReminderViewController : PresenterOutputProtocol {
             case model.type.Remainder:
                 guard let data = dataDict as? Remainder else {return}
                 self.remainder = data.reminder ?? []
+                if self.remainder?.count ?? 0 > 0{
+                    self.reminderList.isHidden = false
+                    self.noDataView.isHidden = true
+                }else{
+                    self.reminderList.isHidden = true
+                    self.noDataView.isHidden = false
+                }
                 self.reminderList.reloadInMainThread()
              break
             default: break
@@ -109,7 +123,7 @@ extension ReminderViewController : PresenterOutputProtocol {
     }
     
     func showError(error: CustomError) {
-        
+        showToast(msg: error.localizedDescription)
     }
     
     

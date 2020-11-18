@@ -60,6 +60,8 @@ class DoctorDetailsController: UIViewController {
     
     var searchDoctor = Search_doctors()
     var docProfile = Doctor_profile()
+    var favouriteDoctor : Favourite_Doctors?
+    var isfromFavourite : Bool = false
     var isFromSearchDoctor:Bool = true
     var speciality : [String] = [String]()
     var categoryID : Int = 0
@@ -89,6 +91,23 @@ class DoctorDetailsController: UIViewController {
     func populateData(){
         
         if !isFromSearchDoctor {
+            if isfromFavourite {
+               let detail : Hospital = (self.favouriteDoctor?.hospital)!
+               self.labelDoctorName.text = "\(detail.first_name ?? "") \(detail.last_name ?? "")"
+               self.imgDoctor.setURLImage(detail.doctor_profile?.profile_pic ?? "")
+                self.imgDoctor.makeRoundedCorner()
+               self.labelQualification.text = "\(self.docProfile.speciality?.name ?? "")"
+               self.labelPercentage.text = "\(detail.feedback_percentage ?? "") %"
+                self.speciality.append(self.favouriteDoctor?.hospital?.doctor_profile?.speciality?.name ?? "")
+            //   self.imgLocationPreview.pin_setImage(from: URL(string: detail.clinic?.static_map ?? "")!)
+               self.labelClinicName.text = detail.clinic?.name ?? "".capitalized
+               self.labelLocationValue.text = detail.clinic?.address ?? "".capitalized
+               if (detail.is_favourite ?? "") == "false"{
+                   self.btnFavourite.setImage(UIImage(named: "love"), for: .normal)
+               }else{
+                   self.btnFavourite.setImage(UIImage(named: "love_red"), for: .normal)
+               }
+    }else{
             let detail : Hospital = (self.docProfile.hospital?[0])!
             self.labelDoctorName.text = "\(detail.first_name ?? "") \(detail.last_name ?? "")"
             self.imgDoctor.setURLImage(detail.doctor_profile?.profile_pic ?? "")
@@ -103,6 +122,7 @@ class DoctorDetailsController: UIViewController {
                 self.btnFavourite.setImage(UIImage(named: "love"), for: .normal)
             }else{
                 self.btnFavourite.setImage(UIImage(named: "love_red"), for: .normal)
+            }
             }
         }else{
             
@@ -154,6 +174,8 @@ class DoctorDetailsController: UIViewController {
                      vc.docProfile = self.docProfile
                      vc.searchDoctor = self.searchDoctor
                      vc.isFromSearch = self.isFromSearchDoctor
+                     vc.isfromFavourite = self.isfromFavourite
+                     vc.favouriteDoctor = self.favouriteDoctor
                      vc.categoryId = self.categoryID
                      self.push(from: self, ToViewContorller: vc)
             
@@ -193,7 +215,11 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
             if isFromSearchDoctor{
                 return self.searchDoctor.doctor_service?.count ?? 0
             }else{
+                if isfromFavourite{
+                    return self.favouriteDoctor?.hospital?.doctor_service?.count ?? 0
+                }else{
                 return self.docProfile.hospital?.first?.doctor_service?.count ?? 0
+                }
             }
             
             
@@ -203,7 +229,11 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
             if isFromSearchDoctor{
                 return self.searchDoctor.timing?.count ?? 0
             }else{
+                if isfromFavourite{
+                    return (self.favouriteDoctor?.hospital?.timing?.count ?? 0)
+                }else{
                 return (self.docProfile.hospital?.first?.timing?.count ?? 0)
+                }
             }
         }
         else{
@@ -231,6 +261,27 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
         self.view.layoutIfNeeded()
         return cell
         } else{
+            if isfromFavourite{
+                    let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.ServiceSpecializationCell) as! ServiceSpecializationCell
+                    
+                    if tableView == self.servicesTV{
+                        cell.serviceLbl.text = self.favouriteDoctor?.hospital?.doctor_service?[indexPath.row].service?.name ?? ""
+            //            cell.lblLeadConstraints.constant = 10
+
+                    }else if tableView == self.specilizationTV{
+                        cell.serviceLbl.text = self.speciality[indexPath.row]
+                    }else if tableView == self.timingTableView{
+                        if let timing : Timing = self.favouriteDoctor?.hospital?.timing?[indexPath.row]{
+                            cell.dotImg.isHidden = true
+            //                cell.lblLeadConstraints.constant = -10
+                            self.setSeatchCountLbl(label: cell.serviceLbl, day: "\(timing.day ?? "") -" , timing: "\(timing.start_time ?? "") : \(timing.end_time ?? "")")
+                        }
+                    }
+                    
+                    self.viewDidLayoutSubviews()
+                    self.view.layoutIfNeeded()
+                    return cell
+            }else{
         let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.ServiceSpecializationCell) as! ServiceSpecializationCell
         
         if tableView == self.servicesTV{
@@ -250,6 +301,7 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
         self.viewDidLayoutSubviews()
         self.view.layoutIfNeeded()
         return cell
+        }
         }
         
     }
@@ -287,6 +339,24 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
         }
          
     }else{
+            if isfromFavourite{
+                if tableView == self.servicesTV{
+                    if (self.favouriteDoctor?.hospital?.doctor_service?.count ?? 0) > 4{
+                        return 40
+                    }else{
+                        return 0
+                    }
+                }else if tableView == self.specilizationTV{
+                    
+                    if speciality.count > 4{
+                        return 40
+                    }else{
+                        return 0
+                    }
+                  
+                }
+                 
+            }else {
         if tableView == self.servicesTV{
             if (self.docProfile.hospital?.first?.doctor_service?.count ?? 0) > 4{
                 return 40
@@ -304,6 +374,7 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
         }
          
     }
+        }
         return 0
     }
     

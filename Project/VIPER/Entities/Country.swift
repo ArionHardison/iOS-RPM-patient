@@ -107,3 +107,20 @@ struct DeleteModel : Mappable {
     }
     
 }
+
+
+struct RemainderSuccess : Mappable {
+    var status : Int?
+    var reminder : Reminder?
+
+    init?(map: Map) {
+
+    }
+
+    mutating func mapping(map: Map) {
+
+        status <- map["status"]
+        reminder <- map["reminder"]
+    }
+
+}

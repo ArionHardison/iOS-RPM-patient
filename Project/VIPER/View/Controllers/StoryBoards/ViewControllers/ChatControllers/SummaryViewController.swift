@@ -68,7 +68,7 @@ class SummaryViewController: UIViewController {
         }
         
         self.applyBtn.addTap {
-            guard let promo : String = self.promoCode.getText, promo.isEmpty != true else {
+            guard let promo : String = self.promoCode.text, promo.isEmpty != true else {
                 showToast(msg: "Enter PromoCode")
                 return
             }

@@ -15,7 +15,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchResult : UITableView!
     @IBOutlet weak var searchCountLbl : UILabel!
     
-   var searchDoctors : [Search_doctors] = [Search_doctors]()
+   var searchDoctors : [Search_doctors]?
     
    
     
@@ -68,12 +68,12 @@ class SearchViewController: UIViewController {
 extension SearchViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        self.setSeatchCountLbl(resultCount: self.searchDoctors.count)
-        return self.searchDoctors.count
+        self.setSeatchCountLbl(resultCount: self.searchDoctors?.count ?? 0)
+        return self.searchDoctors?.count ?? 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.SearchCell) as! SearchCell
-        if let search : Search_doctors  = self.searchDoctors[indexPath.row]{
+        if let search : Search_doctors  = self.searchDoctors?[indexPath.row]{
             cell.docNameLbl.text = search.first_name
             cell.docDegreeLbl.text = search.doctor_profile?.certification ?? ""
             cell.docSpecialtLbl.text = search.doctor_profile?.speciality?.name ?? ""
@@ -92,7 +92,7 @@ extension SearchViewController : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let search : Search_doctors  = self.searchDoctors[indexPath.row]
+        let search : Search_doctors  = self.searchDoctors?[indexPath.row] ?? Search_doctors()
         let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.DoctorDetailsController) as! DoctorDetailsController
         vc.docProfile = search.doctor_profile ?? Doctor_profile()
         vc.searchDoctor = search

@@ -21,8 +21,9 @@ let imageURL = "https://telehealthmanager.net/storage/"
 let country_code = "IN"
 let currency = "$ "
 let mobileNumDigit : Int = 10
-var profileDetali : ProfileModel = ProfileModel()
+var profileDetali : ProfileModel?
 var doctorId = "0"
 var serviceID = "0"
 var GlobalsenderId = String()
 var GlobalreciveId = String()
+let aboutUrl = "https://telehealthmanager.net/"

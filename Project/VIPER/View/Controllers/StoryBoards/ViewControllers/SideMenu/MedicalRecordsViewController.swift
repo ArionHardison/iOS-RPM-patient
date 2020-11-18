@@ -12,6 +12,9 @@ import ObjectMapper
 class MedicalRecordsViewController: UIViewController {
 
     @IBOutlet weak var listTable: UITableView!
+    @IBOutlet weak var noDataView: UIView!
+    @IBOutlet weak var noDataLabel: UILabel!
+    @IBOutlet weak var downloadMedicalView: UIView!
     
      var medical : [Medical] = [Medical]()
     
@@ -40,6 +43,7 @@ extension MedicalRecordsViewController {
          self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
          self.navigationController?.navigationBar.isTranslucent = false
          self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.02583951317, green: 0.1718649864, blue: 0.4112361372, alpha: 1)
+        self.noDataLabel.text = "No Medical Records Found"
     }
 
     func registerCell(){
@@ -83,7 +87,15 @@ extension MedicalRecordsViewController : PresenterOutputProtocol{
             case model.type.MedicalRecordsModel:
                 let data = dataDict as? MedicalRecordsModel
                 self.medical = data?.medical ?? [Medical]()
-                
+                if self.medical.count > 0 {
+                    self.downloadMedicalView.isHidden = false
+                    self.listTable.isHidden = false
+                    self.noDataView.isHidden = true
+                }else{
+                    self.downloadMedicalView.isHidden = true
+                    self.listTable.isHidden = true
+                    self.noDataView.isHidden = false
+                }
                 self.listTable.reloadData()
                 break
             

@@ -26,7 +26,7 @@
         
         var titles = ["Find Doctors","Chat","Search Doctors","Visited Doctors"]
         var subTitles = ["Specialities","Ask Question on health related","Base on Hospitals","See you visited doctors"]
-        var imageArray = ["Group 9","Group 9","Group 9","Group 9"]
+        var imageArray = ["finddoctors","Group 9","searchdoctors","visitedDoctors"]
         
         
         override func viewDidLoad() {
@@ -194,6 +194,7 @@
         let ChatHistoryEntity = "ChatHistoryEntity"
         let TwilioAccess = "TwilioAccess"
         let Remainder = "Remainder"
+        let RemainderSuccess = "RemainderSuccess"
     }
     
     

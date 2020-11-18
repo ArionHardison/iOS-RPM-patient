@@ -74,7 +74,13 @@ extension FavouriteDoctorsListController : UITableViewDelegate,UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(id: Storyboard.Ids.DoctorDetailsController, animation: true)
+            
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.DoctorDetailsController) as! DoctorDetailsController
+        vc.isFromSearchDoctor = false
+        vc.isfromFavourite = true
+        vc.favouriteDoctor = self.favouriteDoctors[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
+//        self.push(id: Storyboard.Ids.DoctorDetailsController, animation: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

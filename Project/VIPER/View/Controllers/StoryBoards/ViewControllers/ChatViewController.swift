@@ -19,6 +19,7 @@ class ChatViewController: UIViewController {
     @IBOutlet weak var imageuploadView : UIView!
     @IBOutlet weak var infoLbl : UILabel!
     @IBOutlet weak var messageSendBtn : UIButton!
+    @IBOutlet var chatView: UIView!
     
     
     
@@ -30,7 +31,8 @@ class ChatViewController: UIViewController {
         ChatManager.shared.getCurrentRoomChatHistory()
         ChatManager.shared.delegate = self
         self.initailSetup()
-//        IQKeyboardManager.shared.enable = false
+        IQKeyboardManager.shared.enable = false
+        KeyboardManager.shared.keyBoardShowHide(view: self.chatView)
         
     }
     
@@ -42,6 +44,7 @@ class ChatViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         ChatManager.shared.leftFromChatRoom()
+        IQKeyboardManager.shared.enable = true
     }
     
     func initailSetup(){

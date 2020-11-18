@@ -150,18 +150,19 @@ extension AppointmentViewController : UITableViewDelegate,UITableViewDataSource
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         DispatchQueue.main.async {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.UpcomingDetailsController) as! UpcomingDetailsController
-          
+            if self.isFirstBlockSelected{
     //            vc.buttonCancel.isHidden = false
                 vc.appointment = self.upcomingAppointment[indexPath.row]
+            }else{
+                vc.appointment = self.previousAppointment[indexPath.row]
+            }
             vc.isFromUpcomming = self.isFirstBlockSelected
             self.navigationController?.pushViewController(vc, animated: true)
         }
-    
-            
-    
-//        self.push(id: Storyboard.Ids.UpcomingDetailsController, animation: true)
+
         
     }
     

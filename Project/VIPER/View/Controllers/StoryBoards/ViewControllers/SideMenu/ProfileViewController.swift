@@ -69,6 +69,7 @@ class ProfileViewController: UIViewController {
     var dlat : Double?
     var dlon : Double?
     var dAddress = String()
+    var updateProfile = UIImage()
     private var googlePlacesHelper : GooglePlacesHelper?
     
     override func viewDidLoad() {
@@ -82,6 +83,11 @@ class ProfileViewController: UIViewController {
         self.setValues()
         IQKeyboardManager.shared.enable = false
         self.dobTXT.delegate = self
+        let tap = UITapGestureRecognizer(target: self, action: #selector(updateImage))
+        self.profileImage.isUserInteractionEnabled = true
+        self.profileImage.addGestureRecognizer(tap)
+        
+        
 
     }
     
@@ -101,10 +107,28 @@ class ProfileViewController: UIViewController {
             self.bloodgroupTxt.text = "\(profile.patient?.profile?.blood_group ?? "")"
             self.dobTXT.text = "\(profile.patient?.profile?.dob ?? "")"
             self.locationTxt.text = "\(profile.patient?.profile?.address ?? "")"
+            self.maritalStateTxt.text = profile.patient?.profile?.merital_status ?? ""
+            self.weightTxt.text = profile.patient?.profile?.weight ?? ""
+            self.heightTxt.text = profile.patient?.profile?.height ?? ""
+            self.emergencyTxt.text = profile.patient?.profile?.emergency_contact ?? ""
+            self.allergiesTxt.text = profile.patient?.profile?.allergies ?? ""
+            self.currentMedicnTxt.text = profile.patient?.profile?.current_medications ?? ""
+            self.pastMedicnTxt.text = profile.patient?.profile?.past_medications ?? ""
+            self.chronicTxt.text = profile.patient?.profile?.chronic_diseases ?? ""
+            self.injuriesTxt.text = profile.patient?.profile?.injuries ?? ""
+            self.surgeriesTxt.text = profile.patient?.profile?.surgeries ?? ""
+            self.isSmoking = profile.patient?.profile?.smoking == "false" ? false : true
+            self.isAlchol = profile.patient?.profile?.alcohol == "false" ? false : true
+            self.activityTxt.text = profile.patient?.profile?.activity ?? ""
+            self.foodPreferenceTxt.text = profile.patient?.profile?.food ?? ""
+            self.occupationTxt.text = profile.patient?.profile?.occupation ?? ""
+            self.alcoholYesBtn.setImage(!isAlchol ? #imageLiteral(resourceName: "Ellipse 162") : #imageLiteral(resourceName: "RadioON"), for: .normal)
+            self.smokeYesBtn.setImage(!isSmoking ? #imageLiteral(resourceName: "RadioOFF") : #imageLiteral(resourceName: "RadioON"), for: .normal)
+            
         }
     }
     
-    private func updateValues(){
+   @objc private func updateValues(){
         guard  let name = self.nameTxt.text , !name.isEmpty  else {
             showToast(msg: "Enter Name")
             return
@@ -162,6 +186,8 @@ class ProfileViewController: UIViewController {
             showToast(msg: "Enter Allergies")
             return
         }
+        var imageData = [String:Data]()
+        imageData.updateValue(self.profileImage.image?.pngRepresentationData ?? Data(), forKey: "profile_pic")
         
         var params = [String:Any]()
         params.updateValue(firstName, forKey: "first_name")
@@ -182,12 +208,14 @@ class ProfileViewController: UIViewController {
         params.updateValue(chronicTxt.text ?? "", forKey: "chronic_diseases")
         params.updateValue(injuriesTxt.text ?? "", forKey: "injuries")
         params.updateValue(surgeriesTxt.text ?? "", forKey: "surgeries")
-        params.updateValue(isSmoking, forKey: "smoking")
+        params.updateValue(isSmoking ? "YES" : "NO", forKey: "smoking")
         params.updateValue(isAlchol ? "YES" : "NO", forKey: "alcohol")
         params.updateValue(activityTxt.text ?? "", forKey: "activity")
         params.updateValue(foodPreferenceTxt.text ?? "", forKey: "food")
         params.updateValue(occupationTxt.text ?? "", forKey: "occupation")
-        self.presenter?.HITAPI(api: Base.profile.rawValue, params: params, methodType: .POST, modelClass: ProfileModel.self  , token: true)
+        print("Profile Update",params)
+        self.presenter?.IMAGEPOST(api: Base.profile.rawValue, params: params, methodType: .POST, imgData: imageData, imgName: "profile_pic", modelClass: ProfileModel.self, token: true)
+        
     }
     
 }
@@ -247,6 +275,7 @@ extension ProfileViewController{
     @IBAction private func doneAction (sender : UIBarButtonItem){
         
         ///Functionality
+        self.updateValues()
     }
     
     func setupAction(){
@@ -262,25 +291,25 @@ extension ProfileViewController{
         [self.alcoholYesBtn,self.smokeYesBtn].forEach { (btn) in
             btn?.imageView?.image = btn?.imageView?.image?.withRenderingMode(.alwaysTemplate)
             btn?.imageView?.tintColor = .AppBlueColor
-//            if #available(iOS 14.0, *) {
-//                btn?.menu = UIMenu(title: "Choose", options: .displayInline, children: [
-//
-//                    UIAction(title: Constants.string.Yes.localize(), image: selectedImg, handler: { (action) in
-//
-//                        btn?.setImage(selectedImg, for: .normal)
-//
-//
-//                    }),
-//
-//                    UIAction(title: Constants.string.No.localize(), image: unselectedImg, handler: { (action) in
-//
-//                        btn?.setImage(unselectedImg, for: .normal)
-//
-//                    })
-//                ])
-//                btn?.showsMenuAsPrimaryAction = true
-//
-//            } else {
+            if #available(iOS 14.0, *) {
+                btn?.menu = UIMenu(title: "Choose", options: .displayInline, children: [
+
+                    UIAction(title: Constants.string.Yes.localize(), image: selectedImg, handler: { (action) in
+
+                        btn?.setImage(selectedImg, for: .normal)
+
+
+                    }),
+
+                    UIAction(title: Constants.string.No.localize(), image: unselectedImg, handler: { (action) in
+
+                        btn?.setImage(unselectedImg, for: .normal)
+
+                    })
+                ])
+                btn?.showsMenuAsPrimaryAction = true
+
+            } else {
                 
                 btn?.addTap {
                     showAlert(message: btn?.tag == 101 ? "Do you have the habit of consuming alcohol?" : "Do you have the habit of smoking?", btnHandler: { (value) in
@@ -298,12 +327,22 @@ extension ProfileViewController{
                     
                 }
 
-//            }
+            }
 
                 
         }
 
     }
+    
+    
+    @objc private func updateImage(){
+        self.showImage { (image) in
+            self.updateProfile = image!
+            self.profileImage.image = self.updateProfile
+        }
+    }
+    
+    
     
     @IBAction private func segmentAction (sender : UISegmentedControl){
         
@@ -346,6 +385,7 @@ extension ProfileViewController : PresenterOutputProtocol {
                 let data = dataDict as? ProfileModel
                 UserDefaultConfig.PatientID = (data?.patient?.id ?? 0).description
                 profileDetali = data ?? ProfileModel()
+//                self.setValues()
                 break
             
             default: break
@@ -359,3 +399,19 @@ extension ProfileViewController : PresenterOutputProtocol {
     
         
 }
+
+
+extension UIImage {
+
+    var pngRepresentationData: Data? {
+        return UIImagePNGRepresentation(self)
+    }
+
+    var jpegRepresentationData: Data? {
+        return UIImageJPEGRepresentation(self, 1.0)
+    }
+}
+
+
+
+

@@ -19,8 +19,8 @@ class ChatQuestionViewController: UIViewController {
     @IBOutlet weak var symptomsTxt : UITextView!
     @IBOutlet weak var submitBtn : UIButton!
     
-    var category : [Category] = [Category]()
-    var AllAategory : [Category] = [Category]()
+    var category : [Category]?
+    var AllAategory : [Category]?
     var selectedindex : Int  = 0
     
     override func viewDidLoad() {
@@ -30,6 +30,7 @@ class ChatQuestionViewController: UIViewController {
     
     
     func initailSetup(){
+        self.symptomsTxt.delegate = self
         self.setupNavigation()
         self.setupAction()
         self.setupTableViewCell()
@@ -53,7 +54,7 @@ class ChatQuestionViewController: UIViewController {
     func setupAction(){
         self.submitBtn.addTap {
             let vc = SummaryViewController.initVC(storyBoardName: .main, vc: SummaryViewController.self, viewConrollerID: Storyboard.Ids.SummaryViewController)
-            vc.selectedCategory = self.category[self.selectedindex]
+            vc.selectedCategory = self.category?[self.selectedindex] ?? Category()
             vc.message = self.symptomsTxt.text ?? ""
             self.push(from: self, ToViewContorller: vc)
         }
@@ -63,11 +64,11 @@ class ChatQuestionViewController: UIViewController {
 
 extension ChatQuestionViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  self.category.count + 1
+        return  (self.category?.count ?? 0) + 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.SuggestedCell) as! SuggestedCell
-        if indexPath.row ==  self.category.count{
+        if indexPath.row ==  self.category?.count{
             cell.allSplistView.isHidden = false
         }else{
             cell.allSplistView.isHidden = true
@@ -93,11 +94,11 @@ extension ChatQuestionViewController : UITableViewDelegate,UITableViewDataSource
             cell.priceLbl.textColor = UIColor(named: "GreyTextcolor")! //UIColor.black
             cell.offerPriceView.backgroundColor = UIColor(named: "GreyTextcolor")! //UIColor.black
         }
-        if indexPath.row <= self.category.count-1{
-        if let data : Category = self.category[indexPath.row]{
-            cell.titleLbl.text = data.name
-            cell.offerPriceLbl.text = data.offer_fees
-            cell.priceLbl.text = data.fees
+        if indexPath.row <= (self.category?.count ?? 0)-1{
+        if let data : Category = self.category?[indexPath.row]{
+            cell.titleLbl.text = data.name ?? ""
+            cell.offerPriceLbl.text = data.offer_fees ?? ""
+            cell.priceLbl.text = data.fees ?? ""
         }
         }
         
@@ -110,14 +111,14 @@ extension ChatQuestionViewController : UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row ==  self.category.count{
+        if indexPath.row ==  self.category?.count ?? 0{
             let vc = SelectedProblemAreaVC.initVC(storyBoardName: .main, vc: SelectedProblemAreaVC.self, viewConrollerID: Storyboard.Ids.SelectedProblemAreaVC)
-            vc.category = self.AllAategory
+            vc.category = self.AllAategory ?? []
             
             vc.selectedCategory = {(category) in
-                self.category.remove(at: 2)
+                self.category?.remove(at: 2)
                 self.selectedindex = 2
-                self.category.append(category)
+                self.category?.append(category)
                 
                 self.suggestionList.reloadData()
             }
@@ -146,9 +147,9 @@ extension ChatQuestionViewController : PresenterOutputProtocol{
                 
                 let data = dataDict as? CategoryList
                 if data?.category?.count ?? 0 > 3{
-                    self.category.append((data?.category?[0])!)
-                    self.category.append((data?.category?[1])!)
-                    self.category.append((data?.category?[2])!)
+                    self.category?.append((data?.category?[0])!)
+                    self.category?.append((data?.category?[1])!)
+                    self.category?.append((data?.category?[2])!)
                 }else{
                     self.category = data?.category ?? [Category]()
                 }
@@ -175,6 +176,15 @@ extension ChatQuestionViewController : PresenterOutputProtocol{
 }
 
 
+
+
+extension ChatQuestionViewController : UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.text = ""
+    }
+    
+}
 
 
 struct demoSuggestion {
