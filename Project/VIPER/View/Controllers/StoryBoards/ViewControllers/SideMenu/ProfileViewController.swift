@@ -98,7 +98,7 @@ class ProfileViewController: UIViewController {
     }
     
     private func setValues(){
-        if let profile : ProfileModel = profileDetali{
+         let profile : ProfileModel = profileDetali
             self.nameTxt.text = "\(profile.patient?.first_name ?? "") \(profile.patient?.last_name ?? "")"
             self.emailidTxt.text = "\(profile.patient?.email ?? "")"
             self.contantNumTxt.text = "\(profile.patient?.phone ?? "")"
@@ -124,8 +124,6 @@ class ProfileViewController: UIViewController {
             self.occupationTxt.text = profile.patient?.profile?.occupation ?? ""
             self.alcoholYesBtn.setImage(!isAlchol ? #imageLiteral(resourceName: "Ellipse 162") : #imageLiteral(resourceName: "RadioON"), for: .normal)
             self.smokeYesBtn.setImage(!isSmoking ? #imageLiteral(resourceName: "RadioOFF") : #imageLiteral(resourceName: "RadioON"), for: .normal)
-            
-        }
     }
     
    @objc private func updateValues(){

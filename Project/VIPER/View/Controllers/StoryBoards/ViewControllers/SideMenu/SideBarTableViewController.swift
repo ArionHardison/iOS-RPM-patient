@@ -101,12 +101,12 @@ extension SideBarTableViewController {
     //MARK:- SetValues
     
     private func setValues(){
-        if let profile : ProfileModel = profileDetali{
-            self.labelName.text = "\(profile.patient?.first_name ?? "") \(profile.patient?.last_name ?? "")"
-            self.labelProfileCompletion.text = "Profile Completed : \(profile.profile_complete ?? "")"
-            self.imageViewProfile.setURLImage(profile.patient?.profile?.profile_pic ?? "")
-        }
-    }
+        let profile : ProfileModel = profileDetali
+           self.labelName.text = "\(profile.patient?.first_name ?? "") \(profile.patient?.last_name ?? "")"
+           self.labelProfileCompletion.text = "Profile Completed : \(profile.profile_complete ?? "")"
+           self.imageViewProfile.setURLImage(profile.patient?.profile?.profile_pic ?? "")
+       
+   }
     
     
     
@@ -165,7 +165,9 @@ extension SideBarTableViewController {
             self.push(to: Storyboard.Ids.RelativeManagementViewController)
             self.drawerController?.closeSide()
             
-                
+        case(0,8):
+            self.push(to: Storyboard.Ids.FAQViewController)
+            self.drawerController?.closeSide()
 
         case (0,self.sideBarList.count-1):
             self.push(to: Storyboard.Ids.SettingsViewController)

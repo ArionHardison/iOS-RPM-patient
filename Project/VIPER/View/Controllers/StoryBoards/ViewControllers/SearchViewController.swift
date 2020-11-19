@@ -15,7 +15,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchResult : UITableView!
     @IBOutlet weak var searchCountLbl : UILabel!
     
-   var searchDoctors : [Search_doctors]?
+   var searchDoctors : [Search_doctors] = [Search_doctors]()
     
    
     
@@ -35,7 +35,7 @@ class SearchViewController: UIViewController {
         self.setupTableViewCell()
         self.searchBar.delegate = self
         self.setupNavigation()
-        Common.setFont(to: self.searchCountLbl)
+        Common.setFontWithType(to: self.searchCountLbl, size: 14, type: .regular)
     }
     
     func setupNavigation(){
@@ -49,9 +49,9 @@ class SearchViewController: UIViewController {
     // MARK:- set Multiple color for single lable
     
     func setSeatchCountLbl(resultCount : Int = 0){
-        let attrs1 = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15), NSAttributedString.Key.foregroundColor : UIColor.black]
+        let attrs1 = [NSAttributedString.Key.font : UIFont.init(name: FontCustom.regular.rawValue, size: 14), NSAttributedString.Key.foregroundColor : UIColor(named: "TextBlackColor")]
         
-        let attrs2 = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15), NSAttributedString.Key.foregroundColor : UIColor.appColor]
+        let attrs2 = [NSAttributedString.Key.font : UIFont.init(name: FontCustom.regular.rawValue, size: 14), NSAttributedString.Key.foregroundColor : UIColor(named: "AppBlueColor")]
         
         let attributedString1 = NSMutableAttributedString(string:"Search results for Miot ", attributes:attrs1)
         
@@ -68,17 +68,17 @@ class SearchViewController: UIViewController {
 extension SearchViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        self.setSeatchCountLbl(resultCount: self.searchDoctors?.count ?? 0)
-        return self.searchDoctors?.count ?? 0
+        self.setSeatchCountLbl(resultCount: self.searchDoctors.count)
+        return self.searchDoctors.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.SearchCell) as! SearchCell
-        if let search : Search_doctors  = self.searchDoctors?[indexPath.row]{
-            cell.docNameLbl.text = search.first_name
-            cell.docDegreeLbl.text = search.doctor_profile?.certification ?? ""
-            cell.docSpecialtLbl.text = search.doctor_profile?.speciality?.name ?? ""
+         let search : Search_doctors  = self.searchDoctors[indexPath.row]
+        cell.docNameLbl.text = search.first_name?.capitalized
+        cell.docDegreeLbl.text = search.doctor_profile?.certification ?? "".uppercased()
+        cell.docSpecialtLbl.text = search.doctor_profile?.speciality?.name ?? "".capitalized
             cell.docImage.setURLImage(search.doctor_profile?.profile_pic ?? "")
-        }
+        
 //        self.SearchCellAction(cell: cell)
         return cell
         
@@ -92,7 +92,7 @@ extension SearchViewController : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let search : Search_doctors  = self.searchDoctors?[indexPath.row] ?? Search_doctors()
+        let search : Search_doctors  = self.searchDoctors[indexPath.row]
         let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.DoctorDetailsController) as! DoctorDetailsController
         vc.docProfile = search.doctor_profile ?? Doctor_profile()
         vc.searchDoctor = search
@@ -107,7 +107,8 @@ extension SearchViewController : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 80
+        
     }
     
     func setupTableViewCell(){

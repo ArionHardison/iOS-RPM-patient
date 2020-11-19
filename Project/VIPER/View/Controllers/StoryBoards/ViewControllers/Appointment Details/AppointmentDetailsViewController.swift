@@ -30,7 +30,7 @@ class AppointmentDetailsViewController: UITableViewController {
     @IBOutlet weak var consultedText: HoshiTextField!
     @IBOutlet weak var commentsText: UITextView!
     
-    var visitedDetail : Visited_doctors?
+    var visitedDetail : Visited_doctors = Visited_doctors()
     var likedStatus : String = ""
     
     override func viewDidLoad() {
@@ -61,42 +61,45 @@ extension AppointmentDetailsViewController {
     }
     
     private func setTextFonts() {
-        Common.setFont(to: doctorName,isTitle: true,size: 22)
-        Common.setFont(to: labelDesignation,isTitle: false,size: 16)
-        Common.setFont(to: labelHospitalName,isTitle: false,size: 16)
-        Common.setFont(to: labelBookefor,isTitle: false,size: 18)
-        Common.setFont(to: labelPatientName,isTitle: true,size: 18)
-        Common.setFont(to: labelSchedule,isTitle: false,size: 18)
-        Common.setFont(to: labelDate,isTitle: true,size: 18)
-        Common.setFont(to: labelCategory,isTitle: false,size: 16)
-        Common.setFont(to: labelStatus,isTitle: true,size: 18)
-        Common.setFont(to: labelStatusResponse,isTitle: false,size: 18)
-        Common.setFont(to: labelShare,isTitle: false,size: 20)
-        Common.setFont(to: likeButton,isTitle: true,size: 18)
-        Common.setFont(to: dislikeButton,isTitle: true,size: 18)
-        Common.setFont(to: consultedText,isTitle: true,size: 18)
-        Common.setFont(to: commentsText,isTitle: true,size: 18)
         
+        Common.setFontWithType(to: doctorName, size: 18, type: .meduim)
+        
+        Common.setFontWithType(to: labelDesignation, size: 14, type: .regular)
+        Common.setFontWithType(to: labelHospitalName, size: 12, type: .light)
+        Common.setFontWithType(to: labelBookefor, size: 16, type: .meduim)
+        Common.setFontWithType(to: labelPatientName, size: 14, type: .meduim)
+        Common.setFontWithType(to: labelSchedule, size: 16, type: .meduim)
+        Common.setFontWithType(to: labelDate, size: 14, type: .meduim)
+        Common.setFontWithType(to: labelCategory, size: 10, type: .light)
+        Common.setFontWithType(to: labelStatus, size: 16, type: .meduim)
+        Common.setFontWithType(to: labelStatusResponse, size: 14, type: .meduim)
+        Common.setFontWithType(to: labelShare, size: 14, type: .regular)
+        Common.setFontWithType(to: likeButton, size: 18, type: .regular)
+        Common.setFontWithType(to: dislikeButton, size: 18, type: .regular)
+        Common.setFontWithType(to: consultedText, size: 16, type: .regular)
+        Common.setFontWithType(to: commentsText, size: 16, type: .regular)
+        Common.setFontWithType(to: SubmitButton, size: 16, type: .meduim)
+
         self.likeButton.layer.cornerRadius = self.likeButton.frame.width / 2
         self.dislikeButton.layer.cornerRadius = self.dislikeButton.frame.width / 2
-        self.likeButton.layer.borderColor = UIColor.appColor.cgColor
-        self.dislikeButton.layer.borderColor = UIColor.appColor.cgColor
-        self.likeButton.layer.borderWidth = 1
-        self.dislikeButton.layer.borderWidth = 1
+        self.likeButton.layer.borderColor = UIColor(named: "TextForegroundColor")?.cgColor
+        self.dislikeButton.layer.borderColor = UIColor(named: "TextForegroundColor")?.cgColor
+        self.likeButton.layer.borderWidth = 0.6
+        self.dislikeButton.layer.borderWidth = 0.6
     }
     
     
     func setupData(){
-        if let data : Visited_doctors = self.visitedDetail{
+         let data : Visited_doctors = self.visitedDetail
           
             self.doctorImg.setURLImage(data.hospital?.doctor_profile?.profile_pic ?? "")
-            self.doctorName.text = "\(data.hospital?.first_name ?? "") \(data.hospital?.last_name ?? "")"
-            self.labelCategory.text = "\(data.hospital?.doctor_profile?.speciality?.name ?? "")"
-            self.labelHospitalName.text = "\(data.hospital?.clinic?.name ?? ""), \(data.hospital?.clinic?.address ?? "")"
+        self.doctorName.text = "\(data.hospital?.first_name ?? "") \(data.hospital?.last_name ?? "")".capitalized
+        self.labelCategory.text = "\(data.hospital?.doctor_profile?.speciality?.name ?? "")".uppercased()
+        self.labelHospitalName.text = "\(data.hospital?.clinic?.name ?? ""), \(data.hospital?.clinic?.address ?? "")".capitalized
             self.labelPatientName.text = "\(data.booking_for ?? "")"
             self.labelDate.text = dateConvertor(data.scheduled_at ?? "", _input: .date_time, _output: .DMY_Time)
             self.labelStatusResponse.text = data.status ?? ""
-        }
+        
     }
     
     
@@ -118,7 +121,7 @@ extension AppointmentDetailsViewController {
                 var comment = FeedBackReq()
                 comment.comments = self.commentsText.text ?? ""
                 comment.experiences = self.likedStatus
-                comment.hospital_id = (self.visitedDetail?.hospital?.id ?? 0).description
+                comment.hospital_id = (self.visitedDetail.hospital?.id ?? 0).description
                 comment.visited_for = self.consultedText.getText
                 self.postFeedBack(feedback: comment)
             }

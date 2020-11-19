@@ -71,7 +71,7 @@ extension UpcomingDetailsController {
         
         self.doctorName.text = "\(self.appointment.hospital?.first_name ?? "") \(self.appointment.hospital?.last_name ?? "")".capitalized
         self.labelHospitalName.text = "\(self.appointment.hospital?.clinic?.name ?? ""), \(self.appointment.hospital?.clinic?.address ?? "")".capitalized
-        self.labelDate.text = dateConvertor(self.appointment.scheduled_at ?? "", _input: .date_time, _output: .DM)
+        self.labelDate.text = dateConvertor(self.appointment.scheduled_at ?? "", _input: .date_time, _output: .DMY_Time)
         self.labelPatientName.text = (self.appointment.hospital?.first_name ?? "").capitalized + (self.appointment.hospital?.last_name ?? "").capitalized
 //        self.doctorName.text = self.appointment.hospital?.clinic?.name ?? "".capitalized
         self.labelDesignation.text = self.appointment.hospital?.doctor_profile?.speciality?.name ?? "".uppercased()

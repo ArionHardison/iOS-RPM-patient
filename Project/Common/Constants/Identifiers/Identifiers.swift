@@ -57,6 +57,7 @@ struct Storyboard {
     let RelativeManagementViewController = "RelativeManagementViewController"
     let RelativeDetailViewController = "RelativeDetailViewController"
     let SettingsViewController = "SettingsViewController"
+    let FAQViewController = "FAQViewController"
 }
 
 

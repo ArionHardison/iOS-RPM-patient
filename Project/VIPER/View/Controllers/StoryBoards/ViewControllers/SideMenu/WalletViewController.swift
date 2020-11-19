@@ -39,9 +39,9 @@ class WalletViewController: UIViewController {
     }
 
     private func setValues(){
-        if let profile : ProfileModel = profileDetali{
+       let profile : ProfileModel = profileDetali
             self.labelAvailableBalanceValue.text = "$ \(profile.patient?.wallet_balance ?? 0) "
-       }
+       
     }
 }
 

@@ -101,7 +101,12 @@ extension DoctorsListController : UITableViewDelegate,UITableViewDataSource{
         }
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = DoctorDetailsController.initVC(storyBoardName: .main, vc: DoctorDetailsController.self, viewConrollerID:  Storyboard.Ids.DoctorDetailsController)
+        vc.docProfile = self.doctorProfile[indexPath.row]
+        vc.isFromSearchDoctor = false
+        self.push(from: self, ToViewContorller: vc)
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 170

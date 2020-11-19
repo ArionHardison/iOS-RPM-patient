@@ -129,7 +129,7 @@ extension RelativeDetailViewController {
     }
     
     private func setValues(){
-        if let profile : ProfileModel = profileDetali{
+       let profile : ProfileModel = profileDetali
             self.nameTxt.text = "\(profile.patient?.first_name ?? "") \(profile.patient?.last_name ?? "")"
             self.emailidTxt.text = "\(profile.patient?.email ?? "")"
             self.contantNumTxt.text = "\(profile.patient?.phone ?? "")"
@@ -138,7 +138,7 @@ extension RelativeDetailViewController {
             self.bloodgroupTxt.text = "\(profile.patient?.profile?.blood_group ?? "")"
             self.dobTXT.text = "\(profile.patient?.profile?.dob ?? "")"
             self.locationTxt.text = "\(profile.patient?.profile?.address ?? "")"
-        }
+        
     }
 }
 
