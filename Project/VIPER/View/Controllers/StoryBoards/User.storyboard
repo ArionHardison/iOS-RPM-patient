@@ -988,6 +988,7 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
+                                        <exclude reference="i26-eh-80t"/>
                                         <exclude reference="xhw-CB-L0y"/>
                                     </mask>
                                 </variation>
@@ -1012,6 +1013,11 @@
                             <constraint firstItem="s8M-5i-idN" firstAttribute="trailing" secondItem="8P6-Ui-QzU" secondAttribute="trailing" id="y2q-n8-vfl"/>
                             <constraint firstItem="s8M-5i-idN" firstAttribute="top" secondItem="I8e-JJ-RAb" secondAttribute="bottom" id="zgX-gc-fHK"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="s8M-5i-idN"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="8CJ-Xg-1r0"/>
                     <connections>

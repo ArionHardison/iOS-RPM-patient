@@ -58,6 +58,9 @@ struct Storyboard {
     let RelativeDetailViewController = "RelativeDetailViewController"
     let SettingsViewController = "SettingsViewController"
     let FAQViewController = "FAQViewController"
+    let FilterViewController = "FilterViewController"
+    let AddCardViewController = "AddCardViewController"
+    let CardsListViewController = "CardsListViewController"
 }
 
 
@@ -90,6 +93,7 @@ struct XIB {
     let ChatLeftCell = "ChatLeftCell"
     let RelativesTableViewCell = "RelativesTableViewCell"
     let AddAllergyTableViewCell = "AddAllergyTableViewCell"
+    let CardsTableViewCell = "CardsTableViewCell"
     
     
 }

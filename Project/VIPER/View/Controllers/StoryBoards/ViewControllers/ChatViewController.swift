@@ -85,7 +85,9 @@ extension ChatViewController:ChatProtocol {
         print("ChatMsgList",message)
         self.messageDataSource = message
         chatListTable.reloadInMainThread()
+        if message.count > 0{
         self.scrollToBottom()
+        }
          self.msgTxt.text = ""
     }
     func scrollToBottom(){

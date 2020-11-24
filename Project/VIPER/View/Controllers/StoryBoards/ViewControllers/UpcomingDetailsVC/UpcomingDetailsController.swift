@@ -32,7 +32,7 @@ class UpcomingDetailsController: UITableViewController {
     @IBOutlet weak var labelStatusType: UILabel!
 
     @IBOutlet weak var buttonCancel: UIButton!
-//    @IBOutlet weak var videoCallButton: UIButton!
+    @IBOutlet weak var videoCallButton: UIButton!
     
     var appointment = Appointments()
     var isFromUpcomming:Bool = false
@@ -77,7 +77,7 @@ extension UpcomingDetailsController {
         self.labelDesignation.text = self.appointment.hospital?.doctor_profile?.speciality?.name ?? "".uppercased()
         self.doctorImg.setImage(with: self.appointment.hospital?.doctor_profile?.profile_pic, placeHolder: #imageLiteral(resourceName: "1"))
         self.buttonCancel.addTarget(self, action: #selector(cancelAppointment(sender:)), for: .touchUpInside)
-//        self.videoCallButton.addTarget(self, action: #selector(videoCallAction(sender:)), for: .touchUpInside)
+        self.videoCallButton.addTarget(self, action: #selector(videoCallAction(sender:)), for: .touchUpInside)
 //        self.videoCallButton.isHidden = !isFromUpcomming
         self.buttonCancel.isHidden = isFromUpcomming
     }
@@ -95,10 +95,10 @@ extension UpcomingDetailsController {
             twilioVideoController.modalPresentationStyle = .fullScreen
             self.present(twilioVideoController, animated: true, completion: {
                 twilioVideoController.video = 1
-                twilioVideoController.receiverId = "\(self.appointment.hospital?.id ?? 0 )"
-                twilioVideoController.receiverName = (self.appointment.hospital?.clinic?.name ?? "")
+                twilioVideoController.senderId = "\(self.appointment.doctor_id ?? 0 )"
+                twilioVideoController.receiverName = (self.appointment.hospital?.first_name ?? "")
                 twilioVideoController.isCallType = .makeCall
-                twilioVideoController.handleCall(roomId: "12345", receiverId: "\(self.appointment.hospital?.id  ?? 0 )",isVideo : 1)
+                twilioVideoController.handleCall(roomId: "12345", receiverId: "\(self.appointment.doctor_id ?? 0 )",isVideo : 1)
                                })
                            } else {
                              // Fallback on earlier versions

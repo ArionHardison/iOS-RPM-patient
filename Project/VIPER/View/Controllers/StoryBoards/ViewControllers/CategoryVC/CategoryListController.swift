@@ -26,9 +26,9 @@ class CategoryListController: UIViewController {
         setNav()
         if let layout = categoryListCV?.collectionViewLayout as? UICollectionViewFlowLayout{
         layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
-        let size = CGSize(width:(categoryListCV.bounds.width-30)/2, height: 175)
+            layout.minimumInteritemSpacing = 0
+            layout.sectionInset = UIEdgeInsets(top: 0, left: 7, bottom: 0, right: 0)
+        let size = CGSize(width:categoryListCV.bounds.width/2, height: 175)
         layout.itemSize = size
         }
     }
@@ -82,9 +82,8 @@ extension CategoryListController : UICollectionViewDelegate,UICollectionViewData
 
         let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: XIB.Names.CategoryCell, for: indexPath) as! CategoryCell
         cell.labelCategoryName.text = self.category[indexPath.row].name
-        let imageurl = self.category[indexPath.row].image ?? ""
-        print(imageurl)
-        cell.categoryImg.setURLImage(imageurl)
+        print(self.category[indexPath.row].image ?? "")
+        cell.categoryImg.setURLImage(self.category[indexPath.row].image ?? "")
 //        if indexPath.row % 2 == 0{
 //            cell.LeftborderSet = true
 ////            cell.leftstripeview.isHidden = false
@@ -102,7 +101,7 @@ extension CategoryListController : UICollectionViewDelegate,UICollectionViewData
 
         let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
         let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
-        let size:CGFloat = (collectionView.frame.size.width - space) / 2.0
+        let size:CGFloat = (collectionView.frame.size.width - space) / 2
         return CGSize(width: size, height: size - 60)
         
        }
@@ -150,6 +149,12 @@ extension CategoryListController : PresenterOutputProtocol{
 
 
 extension CategoryListController : UISearchBarDelegate {
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        self.push(id: Storyboard.Ids.SearchViewController, animation: true)
+        return false
+    }
+    
     
    func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
           print("end searching --> Close Keyboard")

@@ -71,6 +71,10 @@ class ProfileViewController: UIViewController {
     var dAddress = String()
     var updateProfile = UIImage()
     private var googlePlacesHelper : GooglePlacesHelper?
+    var allergies = [String]()
+    private lazy var loader : UIView = {
+        return createActivityIndicator(UIScreen.main.focusedView ?? self.view)
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +90,7 @@ class ProfileViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(updateImage))
         self.profileImage.isUserInteractionEnabled = true
         self.profileImage.addGestureRecognizer(tap)
-        
+        self.allergiesTxt.delegate = self
         
 
     }
@@ -213,6 +217,7 @@ class ProfileViewController: UIViewController {
         params.updateValue(occupationTxt.text ?? "", forKey: "occupation")
         print("Profile Update",params)
         self.presenter?.IMAGEPOST(api: Base.profile.rawValue, params: params, methodType: .POST, imgData: imageData, imgName: "profile_pic", modelClass: ProfileModel.self, token: true)
+    self.loader.isHidden = false
         
     }
     
@@ -243,6 +248,20 @@ extension ProfileViewController : UITextFieldDelegate {
                   self.dlon = place.coordinate.longitude
               })
               return false
+          }else if textField == self.allergiesTxt {
+//            self.present(id: "AllergyViewController", animation: true)
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "AllergyViewController") as! AllergyViewController
+            vc.onClickDone = { content in
+                self.allergies = content
+                print(self.allergies)
+                textField.text = self.allergies.joined(separator: ",")
+                vc.dismiss(animated: true, completion: nil)
+                
+                
+            }
+            self.present(vc, animated: true, completion: nil)
+            
+            return false
           }
           return true
       }
@@ -383,6 +402,8 @@ extension ProfileViewController : PresenterOutputProtocol {
                 let data = dataDict as? ProfileModel
                 UserDefaultConfig.PatientID = (data?.patient?.id ?? 0).description
                 profileDetali = data ?? ProfileModel()
+                self.loader.isHideInMainThread(true)
+                showToast(msg: "Profile Updated Sucessfully")
 //                self.setValues()
                 break
             
@@ -409,7 +430,6 @@ extension UIImage {
         return UIImageJPEGRepresentation(self, 1.0)
     }
 }
-
 
 
 

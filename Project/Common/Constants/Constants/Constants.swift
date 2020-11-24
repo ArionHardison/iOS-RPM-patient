@@ -49,6 +49,10 @@ struct Constants {
     let couldnotOpenEmailAttheMoment = "Could not open Email at the moment."
     let areYouSureWantToLogout = "Are you want to logout?"
     let addanallerygy = "Add an allergy"
+    let apply = "Apply"
+    let addCardPayments = "Add card for payments"
+    let paymentMethods = "Payment Methods"
+    let yourCards = "Your Cards"
 
 
 }

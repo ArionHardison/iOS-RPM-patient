@@ -111,22 +111,24 @@ extension AppointmentViewController : UITableViewDelegate,UITableViewDataSource
         
         let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.UpcomingTableviewCell, for: indexPath) as! UpcomingTableviewCell
         if isFirstBlockSelected{
-            self.populateData(cell: cell, data: self.upcomingAppointment[indexPath.row])
+            self.populateData(cell: cell, data: self.upcomingAppointment[indexPath.row],index: indexPath.row)
         }else {
-            self.populateData(cell: cell, data: self.previousAppointment[indexPath.row])
+            self.populateData(cell: cell, data: self.previousAppointment[indexPath.row],index: indexPath.row)
         }
+        
         
         return cell
         
     }
  
-    func populateData(cell : UpcomingTableviewCell , data : Appointments){
+    func populateData(cell : UpcomingTableviewCell , data : Appointments,index:Int){
         cell.labelDate.text = dateConvertor(data.scheduled_at ?? "", _input: .date_time, _output: .DM)
         cell.labelTime.text = dateConvertor(data.scheduled_at ?? "", _input: .date_time, _output: .N_hour)
         cell.labeldoctorName.text = "Dr.\(data.hospital?.first_name ?? "") \(data.hospital?.last_name ?? "")"
         cell.labelSubtitle.text = "\(data.hospital?.clinic?.name ?? ""),\(data.hospital?.clinic?.address ?? "")"  //"\(data.hospital?.email ?? "")"
         cell.selectionStyle = .none
-        
+        cell.makeVideoCallButton.tag = index
+        cell.makeVideoCallButton.addTarget(self, action: #selector(callAction(sender:)), for: .touchUpInside)
         let value = isFirstBlockSelected ? 1 : 0
         cell.buttonCancel.isHidden = value == 1 ? false : true
         cell.labelStatus.isHidden = value == 0 ? false : true
@@ -146,6 +148,23 @@ extension AppointmentViewController : UITableViewDelegate,UITableViewDataSource
         }
     }
     
+    @IBAction private func callAction(sender:UIButton){
+        if #available(iOS 13.0, *) {
+         let twilioVideoController = self.storyboard?.instantiateViewController(identifier: "audioVideoCallCaontroller") as! audioVideoCallCaontroller
+            twilioVideoController.modalPresentationStyle = .fullScreen
+            self.present(twilioVideoController, animated: true, completion: {
+                twilioVideoController.video = 1
+                twilioVideoController.senderId = "\(self.previousAppointment[sender.tag].doctor_id ?? 0 )"
+                twilioVideoController.receiverName = (self.previousAppointment[sender.tag].hospital?.first_name ?? "") + (self.previousAppointment[sender.tag].hospital?.first_name ?? "")
+                twilioVideoController.isCallType = .makeCall
+                twilioVideoController.handleCall(roomId: "12345", receiverId: "\(self.previousAppointment[sender.tag].doctor_id ?? 0)",isVideo : 1)
+                               })
+                           } else {
+                             // Fallback on earlier versions
+                           }
+
+        
+    }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

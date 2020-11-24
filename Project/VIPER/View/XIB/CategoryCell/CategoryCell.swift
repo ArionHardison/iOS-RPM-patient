@@ -42,8 +42,17 @@ class CategoryCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        categoryImg.makeRoundedCorner()
         Common.setFont(to: labelCategoryName, isTitle: false, size: 12)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.contentView.borderLineWidth = 1
+        self.contentView.borderColor = UIColor(named: "TextBlackColor")!
+
+        categoryImg.cornerRadius = self.categoryImg.frame.height/2
+
     }
 
 }

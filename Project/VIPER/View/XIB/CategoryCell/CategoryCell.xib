@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -69,11 +69,14 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doctor" translatesAutoresizingMaskIntoConstraints="NO" id="0Qm-32-XYY">
-                                        <rect key="frame" x="48" y="18" width="64" height="64"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doctor" translatesAutoresizingMaskIntoConstraints="NO" id="0Qm-32-XYY">
+                                        <rect key="frame" x="51" y="18" width="58.5" height="58.5"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Surgery" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="p6l-23-lNg">
-                                        <rect key="frame" x="5" y="90" width="150" height="26"/>
+                                        <rect key="frame" x="5" y="84.5" width="150" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="fgX-HQ-ADu"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" name="GreyTextcolor"/>
                                         <nil key="highlightedColor"/>
@@ -81,13 +84,15 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="0Qm-32-XYY" firstAttribute="centerY" secondItem="qng-EO-0N1" secondAttribute="centerY" constant="-15" id="6kr-cE-uEw"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="p6l-23-lNg" secondAttribute="bottom" constant="5" id="2pr-bv-SHg"/>
                                     <constraint firstItem="oDP-eV-rg7" firstAttribute="top" secondItem="CAr-iG-8aL" secondAttribute="bottom" id="EuX-gQ-hqc"/>
-                                    <constraint firstItem="p6l-23-lNg" firstAttribute="top" secondItem="0Qm-32-XYY" secondAttribute="bottom" constant="8" id="MGR-WA-qA7"/>
+                                    <constraint firstItem="p6l-23-lNg" firstAttribute="top" secondItem="0Qm-32-XYY" secondAttribute="bottom" constant="8" id="FLR-OB-ULM"/>
                                     <constraint firstItem="p6l-23-lNg" firstAttribute="width" secondItem="qng-EO-0N1" secondAttribute="width" multiplier="0.9375" id="NWS-ko-9Ed"/>
-                                    <constraint firstItem="p6l-23-lNg" firstAttribute="height" secondItem="qng-EO-0N1" secondAttribute="height" multiplier="0.2" id="Qu9-2x-hB8"/>
+                                    <constraint firstItem="0Qm-32-XYY" firstAttribute="top" secondItem="qng-EO-0N1" secondAttribute="top" constant="18" id="TMB-8e-JKS"/>
                                     <constraint firstItem="ymQ-7V-H1v" firstAttribute="top" secondItem="CAr-iG-8aL" secondAttribute="bottom" id="m1i-Hb-6BA"/>
-                                    <constraint firstItem="0Qm-32-XYY" firstAttribute="centerX" secondItem="qng-EO-0N1" secondAttribute="centerX" id="s1a-ua-p60"/>
+                                    <constraint firstItem="0Qm-32-XYY" firstAttribute="height" secondItem="qng-EO-0N1" secondAttribute="height" multiplier="0.45" id="m9h-sF-vFX"/>
+                                    <constraint firstItem="0Qm-32-XYY" firstAttribute="centerX" secondItem="qng-EO-0N1" secondAttribute="centerX" id="mIK-D8-3Lk"/>
+                                    <constraint firstItem="0Qm-32-XYY" firstAttribute="width" secondItem="qng-EO-0N1" secondAttribute="height" multiplier="0.45" id="uTF-bC-H3Z"/>
                                     <constraint firstItem="p6l-23-lNg" firstAttribute="centerX" secondItem="qng-EO-0N1" secondAttribute="centerX" id="zfA-mG-fMM"/>
                                 </constraints>
                                 <variation key="default">

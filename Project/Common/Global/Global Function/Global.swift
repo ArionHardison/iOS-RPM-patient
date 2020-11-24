@@ -119,14 +119,14 @@ internal func createActivityIndicator(_ uiView : UIView)->UIView{
 
 
 
-internal func storeInUserDefaults(){
-    
-    let data = NSKeyedArchiver.archivedData(withRootObject: User.main)
-    UserDefaults.standard.set(data, forKey: Keys.list.userData)
-    UserDefaults.standard.synchronize()
-    
-    print("Store in UserDefaults--", UserDefaults.standard.value(forKey: Keys.list.userData) ?? "Failed")
-}
+//internal func storeInUserDefaults(){
+//
+//    let data = NSKeyedArchiver.archivedData(withRootObject: User.main)
+//    UserDefaults.standard.set(data, forKey: Keys.list.userData)
+//    UserDefaults.standard.synchronize()
+//
+//    print("Store in UserDefaults--", UserDefaults.standard.value(forKey: Keys.list.userData) ?? "Failed")
+//}
 
 // Retrieve from UserDefaults
 internal func retrieveUserData()->Bool{
@@ -143,16 +143,16 @@ internal func retrieveUserData()->Bool{
 }
 
 // Clear UserDefaults
-internal func clearUserDefaults(){
-    
-    User.main = initializeUserData()  // Clear local User Data
-    UserDefaults.standard.set(nil, forKey: Keys.list.userData)
-    UserDefaults.standard.removeVolatileDomain(forName: Bundle.main.bundleIdentifier!)
-    UserDefaults.standard.synchronize()
-    UserDefaultConfig.Token = ""
-    print("Clear UserDefaults--", UserDefaults.standard.value(forKey: Keys.list.userData) ?? "Success")
-    
-}
+//internal func clearUserDefaults(){
+//
+//    User.main = initializeUserData()  // Clear local User Data
+//    UserDefaults.standard.set(nil, forKey: Keys.list.userData)
+//    UserDefaults.standard.removeVolatileDomain(forName: Bundle.main.bundleIdentifier!)
+//    UserDefaults.standard.synchronize()
+//    UserDefaultConfig.Token = ""
+//    print("Clear UserDefaults--", UserDefaults.standard.value(forKey: Keys.list.userData) ?? "Success")
+//
+//}
 
 func toastSuccess(_ view:UIView,message:NSString,smallFont:Bool,isPhoneX:Bool, color:UIColor){
     var labelView = UIView()
@@ -192,7 +192,7 @@ func toastSuccess(_ view:UIView,message:NSString,smallFont:Bool,isPhoneX:Bool, c
 
 internal func forceLogout(with message : String? = nil) {
     
-    clearUserDefaults()
+//    clearUserDefaults()
     UIApplication.shared.windows.last?.rootViewController?.popOrDismiss(animation: true)
     UIApplication.shared.windows.first?.rootViewController = Router.createModule() //Router.main.instantiateViewController(withIdentifier: Storyboard.Ids.DrawerController)
     UIApplication.shared.windows.first?.makeKeyAndVisible()
@@ -207,10 +207,10 @@ internal func forceLogout(with message : String? = nil) {
 
 // Initialize User
 
-internal func initializeUserData()->User
-{
-    return User()
-}
+//internal func initializeUserData()->User
+//{
+//    return User()
+//}
 
 
 func setLocalization(language : Language){

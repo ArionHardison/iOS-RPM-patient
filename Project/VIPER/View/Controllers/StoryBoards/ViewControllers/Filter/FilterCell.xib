@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterCell" id="NIV-gt-mO6" customClass="FilterCell" customModule="TeleHealth" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NIV-gt-mO6" id="E3A-fT-AmP">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GNs-8H-DX9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="pe2-pB-2Oa">
+                                <rect key="frame" x="10" y="14" width="17.5" height="15.5"/>
+                                <color key="tintColor" name="TextBlackColor"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTf-F7-9n8">
+                                <rect key="frame" x="42.5" y="5" width="267.5" height="34"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                                <color key="textColor" name="TextBlackColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pe2-pB-2Oa" firstAttribute="height" secondItem="GNs-8H-DX9" secondAttribute="height" multiplier="0.4" id="4S6-QR-aOu"/>
+                            <constraint firstAttribute="bottom" secondItem="jTf-F7-9n8" secondAttribute="bottom" constant="5" id="GjP-dj-VDW"/>
+                            <constraint firstItem="pe2-pB-2Oa" firstAttribute="centerY" secondItem="GNs-8H-DX9" secondAttribute="centerY" id="RRo-t2-QI8"/>
+                            <constraint firstAttribute="trailing" secondItem="jTf-F7-9n8" secondAttribute="trailing" constant="10" id="XSS-6m-YaI"/>
+                            <constraint firstItem="pe2-pB-2Oa" firstAttribute="leading" secondItem="GNs-8H-DX9" secondAttribute="leading" constant="10" id="Ycw-Rs-hWQ"/>
+                            <constraint firstItem="jTf-F7-9n8" firstAttribute="top" secondItem="GNs-8H-DX9" secondAttribute="top" constant="5" id="bZN-zp-a77"/>
+                            <constraint firstItem="jTf-F7-9n8" firstAttribute="leading" secondItem="pe2-pB-2Oa" secondAttribute="trailing" constant="15" id="eXg-qP-odk"/>
+                            <constraint firstItem="pe2-pB-2Oa" firstAttribute="width" secondItem="GNs-8H-DX9" secondAttribute="height" multiplier="0.4" id="jWU-ZN-qyp"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="GNs-8H-DX9" firstAttribute="leading" secondItem="E3A-fT-AmP" secondAttribute="leading" id="7lm-Sd-84N"/>
+                    <constraint firstAttribute="bottom" secondItem="GNs-8H-DX9" secondAttribute="bottom" id="A6C-rg-S9B"/>
+                    <constraint firstItem="GNs-8H-DX9" firstAttribute="top" secondItem="E3A-fT-AmP" secondAttribute="top" id="Wgm-ex-XbR"/>
+                    <constraint firstAttribute="trailing" secondItem="GNs-8H-DX9" secondAttribute="trailing" id="rQ0-E3-LSn"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="K97-OX-Wll"/>
+            <connections>
+                <outlet property="selectImg" destination="pe2-pB-2Oa" id="GHh-4l-cdj"/>
+                <outlet property="titleLbl" destination="jTf-F7-9n8" id="SAr-fX-oeP"/>
+            </connections>
+            <point key="canvasLocation" x="102.89855072463769" y="43.526785714285715"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="square" catalog="system" width="128" height="114"/>
+        <namedColor name="TextBlackColor">
+            <color red="0.21568627450980393" green="0.21568627450980393" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

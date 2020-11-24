@@ -20,5 +20,7 @@ target 'MiDokter User' do
     pod 'TwilioVoice', '~> 5.5.0'            #//, '~> 2.0.0'
     pod 'TwilioVideo', '~> 2.10'
     pod 'SKCountryPicker'
+    pod 'Stripe'
+    pod 'CreditCardForm'
     
 end

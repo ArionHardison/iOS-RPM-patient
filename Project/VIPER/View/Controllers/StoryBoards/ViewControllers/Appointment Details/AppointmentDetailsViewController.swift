@@ -31,6 +31,8 @@ class AppointmentDetailsViewController: UITableViewController {
     @IBOutlet weak var commentsText: UITextView!
     
     var visitedDetail : Visited_doctors = Visited_doctors()
+    var updatedVisitedDetail : Appointments = Appointments()
+    var isFromVisited : Bool = false
     var likedStatus : String = ""
     
     override func viewDidLoad() {
@@ -90,6 +92,7 @@ extension AppointmentDetailsViewController {
     
     
     func setupData(){
+        if !isFromVisited{
          let data : Visited_doctors = self.visitedDetail
           
             self.doctorImg.setURLImage(data.hospital?.doctor_profile?.profile_pic ?? "")
@@ -99,6 +102,16 @@ extension AppointmentDetailsViewController {
             self.labelPatientName.text = "\(data.booking_for ?? "")"
             self.labelDate.text = dateConvertor(data.scheduled_at ?? "", _input: .date_time, _output: .DMY_Time)
             self.labelStatusResponse.text = data.status ?? ""
+        }else{
+            let data : Appointments = self.updatedVisitedDetail
+            self.doctorImg.setURLImage(data.hospital?.doctor_profile?.profile_pic ?? "")
+        self.doctorName.text = "\(data.hospital?.first_name ?? "") \(data.hospital?.last_name ?? "")".capitalized
+        self.labelCategory.text = "\(data.hospital?.doctor_profile?.speciality?.name ?? "")".uppercased()
+        self.labelHospitalName.text = "\(data.hospital?.clinic?.name ?? ""), \(data.hospital?.clinic?.address ?? "")".capitalized
+        self.labelPatientName.text = "\(data.booking_for ?? "")"
+        self.labelDate.text = dateConvertor(data.scheduled_at ?? "", _input: .date_time, _output: .DMY_Time)
+        self.labelStatusResponse.text = data.status ?? ""
+        }
         
     }
     
@@ -123,15 +136,14 @@ extension AppointmentDetailsViewController {
                 comment.experiences = self.likedStatus
                 comment.hospital_id = (self.visitedDetail.hospital?.id ?? 0).description
                 comment.visited_for = self.consultedText.getText
+                comment.rating = "5"
+                comment.title = "Rating Review"
                 self.postFeedBack(feedback: comment)
             }
         }
         
         func validation() -> Bool{
-            if self.consultedText.getText.isEmpty{
-                showToast(msg: "Enter consultant detail")
-                return false
-            }else if (self.commentsText.text ?? "").isEmpty{
+             if (self.commentsText.text ?? "").isEmpty{
                 showToast(msg: "Please Enter Your Comments")
                 return false
             }else if self.likedStatus.isEmpty{
@@ -144,6 +156,8 @@ extension AppointmentDetailsViewController {
         
     }
    
+    
+    
     
 }
 

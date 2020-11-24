@@ -20,7 +20,8 @@ class UpcomingTableviewCell: UITableViewCell {
     @IBOutlet weak var buttonCancel: UIButton!
     @IBOutlet weak var labelStatus: PaddingLabel!
     @IBOutlet weak var dateView: UIView!
-
+    @IBOutlet weak var makeVideoCallButton: UIButton!
+    
     @IBOutlet weak var statusWidth: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()

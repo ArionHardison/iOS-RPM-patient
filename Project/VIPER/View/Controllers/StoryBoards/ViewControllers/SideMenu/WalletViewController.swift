@@ -33,7 +33,9 @@ class WalletViewController: UIViewController {
             if self.textFieldAmount.text?.isEmpty ?? false{
                 showToast(msg: "Enter Valid amount to add wallet")
             }else{
-                self.addMoney(amount: self.textFieldAmount.getText)
+                let vc = self.storyboard?.instantiateViewController(withIdentifier:Storyboard.Ids.CardsListViewController) as! CardsListViewController
+                vc.amount = self.textFieldAmount.getText
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         }
     }

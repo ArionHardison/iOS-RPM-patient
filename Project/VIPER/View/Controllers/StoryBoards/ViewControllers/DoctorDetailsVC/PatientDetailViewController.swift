@@ -79,7 +79,7 @@ class PatientDetailViewController: UIViewController {
                 
                 self.bookingreq.booking_for =  self.isFollowup ? "follow_up" : "consultation"
                 self.bookingreq.selectedPatient = UserDefaultConfig.PatientID
-//                 self.bookingreq.service_id = "\(self.categoryId)"
+                 self.bookingreq.service_id = "\(self.categoryId)"
                 self.bookingreq.scheduled_at = self.bookingreq.scheduled_at
                 }else{
                     self.bookingreq.consult_time = "5"
@@ -89,7 +89,7 @@ class PatientDetailViewController: UIViewController {
                     
                     self.bookingreq.booking_for =  self.isFollowup ? "follow_up" : "consultation"
                     self.bookingreq.selectedPatient = UserDefaultConfig.PatientID
-//                     self.bookingreq.service_id = "\(self.categoryId)"
+                     self.bookingreq.service_id = "\(self.categoryId)"
                     self.bookingreq.scheduled_at = self.bookingreq.scheduled_at
                     }
 

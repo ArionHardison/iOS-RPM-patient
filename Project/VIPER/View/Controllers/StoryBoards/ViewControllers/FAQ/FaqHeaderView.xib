@@ -50,6 +50,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="plusLbl" destination="j4o-gQ-V3t" id="ScB-b8-XZN"/>
                 <outlet property="titleLbl" destination="4JM-hQ-98O" id="63p-9C-epa"/>
             </connections>
             <point key="canvasLocation" x="-149.27536231884059" y="53.571428571428569"/>

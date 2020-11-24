@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>$(PRODUCT_NAME)</string>
+	<string>Health manager patient </string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -54,13 +54,13 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Need photo library access for uploading images</string>
 	<key>UIAppFonts</key>
-    <array>
-        <string>Montserrat-Bold.ttf</string>
-        <string>Montserrat-Regular.ttf</string>
-        <string>Montserrat-Light.ttf</string>
-        <string>Montserrat-Medium.ttf</string>
-        <string>Montserrat-SemiBold.ttf</string>
-    </array>
+	<array>
+		<string>Montserrat-Bold.ttf</string>
+		<string>Montserrat-Regular.ttf</string>
+		<string>Montserrat-Light.ttf</string>
+		<string>Montserrat-Medium.ttf</string>
+		<string>Montserrat-SemiBold.ttf</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

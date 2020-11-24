@@ -46,16 +46,11 @@ class SelectedProblemAreaVC: UIViewController {
     func setupView(){
         
         self.selectionTomView.roundCorners(corners: [.topLeft,.topRight], radius: 15)
-//        selectionTomView.clipsToBounds = true
-//        selectionTomView.layer.cornerRadius = 20
-//        selectionTomView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     }
     
     func setupFont(){
         Common.setFontWithType(to: self.cancelBtn, size: 20, type: .regular)
         Common.setFontWithType(to: self.topLbl, size: 18, type: .regular)
-
-//        Common.setFont(to: self.cancelBtn, isTitle: true, size: 20)
     }
     
 }
@@ -73,6 +68,8 @@ extension SelectedProblemAreaVC : UICollectionViewDelegate,UICollectionViewDataS
         cell.problemsLbl.text = self.category[indexPath.row].name
         cell.orginalPrizeLbl.text = self.category[indexPath.row].fees
         cell.offerPrizeLbl.text = self.category[indexPath.row].offer_fees
+//        let url = baseUrl + "/storage/" + (self.category[indexPath.row].image ?? "")
+        cell.problemsImg.setURLImage(self.category[indexPath.row].image ?? "")
         
         return cell
         

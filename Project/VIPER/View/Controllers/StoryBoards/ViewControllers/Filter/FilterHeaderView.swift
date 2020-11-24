@@ -1,18 +1,17 @@
 //
-//  FaqHeaderView.swift
+//  FilterHeaderView.swift
 //  MiDokter User
 //
-//  Created by Basha's MacBook Pro on 19/11/20.
+//  Created by Sethuram Vijayakumar on 19/11/20.
 //  Copyright © 2020 css. All rights reserved.
 //
 
 import UIKit
 
-class FaqHeaderView: UIView {
+class FilterHeaderView: UIView {
     
-    @IBOutlet weak var titleLbl: UILabel!
-    @IBOutlet weak var plusLbl: UILabel!
-
+    @IBOutlet weak var lbl: UILabel!
+    
     override func draw(_ rect: CGRect) {
         // Drawing code
        
@@ -27,5 +26,4 @@ class FaqHeaderView: UIView {
     */
 
 }
-
 

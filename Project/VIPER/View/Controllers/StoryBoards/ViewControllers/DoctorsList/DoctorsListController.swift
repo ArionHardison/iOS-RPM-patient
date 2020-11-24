@@ -14,6 +14,8 @@ class DoctorsListController: UIViewController {
     @IBOutlet weak var btnBack: UIButton!
     
     @IBOutlet weak var doctorsListTV: UITableView!
+    @IBOutlet weak var filterButton: UIButton!
+    @IBOutlet weak var filterImageButton: UIButton!
     
     var doctorProfile : [Doctor_profile] = [Doctor_profile]()
     
@@ -28,23 +30,39 @@ class DoctorsListController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
-        self.getDoctorsList()
+       
     }
     
     override func viewWillDisappear(_ animated: Bool) {
             self.navigationController?.navigationBar.isHidden = false
     }
-     
+       
+}
+
+extension DoctorsListController {
     private func initilaLoads(){
         
    
         doctorsListTV.register(UINib(nibName: XIB.Names.DoctorCell, bundle: .main), forCellReuseIdentifier:  XIB.Names.DoctorCell)
         self.btnBack.addTarget(self, action: #selector(backButtonClick), for: .touchUpInside)
+        self.filterImageButton.addTarget(self, action: #selector(filterAction(sender:)), for: .touchUpInside)
+        self.filterButton.addTarget(self, action: #selector(filterAction(sender:)), for: .touchUpInside)
+        self.getDoctorsList()
 
     }
-    
-    
-       
+    @IBAction private func filterAction(sender:UIButton){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.FilterViewController) as! FilterViewController
+        vc.modalTransitionStyle = .coverVertical
+        vc.modalPresentationStyle = .fullScreen
+        vc.onClickDone = { (availablity,gender,price) in
+            let url = "/api/patient/doctor_catagory/\(self.catagoryID)?availability_type=\(availablity)&gender=\(gender)&fees=\(price)"
+            self.presenter?.HITAPI(api: url, params: nil, methodType: .GET, modelClass: DoctorsDetailModel.self, token: true)
+            vc.dismiss(animated: true, completion: nil)
+            
+            
+        }
+        self.navigationController?.present(vc, animated: true, completion: nil)
+    }
 }
 
 extension DoctorsListController : UITableViewDelegate,UITableViewDataSource{
@@ -80,6 +98,7 @@ extension DoctorsListController : UITableViewDelegate,UITableViewDataSource{
             let vc = DoctorDetailsController.initVC(storyBoardName: .main, vc: DoctorDetailsController.self, viewConrollerID:  Storyboard.Ids.DoctorDetailsController)
             vc.docProfile = detail
             vc.isFromSearchDoctor = false
+            vc.categoryID = self.catagoryID
             self.push(from: self, ToViewContorller: vc)
         }
         
@@ -97,6 +116,7 @@ extension DoctorsListController : UITableViewDelegate,UITableViewDataSource{
         let vc = BookingViewController.initVC(storyBoardName: .main, vc: BookingViewController.self, viewConrollerID: Storyboard.Ids.BookingViewController)
         vc.docProfile = detail
          vc.isFromSearch = false
+            vc.categoryId = self.catagoryID
         self.push(from: self, ToViewContorller: vc)
         }
     }

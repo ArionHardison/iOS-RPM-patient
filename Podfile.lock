@@ -5,6 +5,7 @@ PODS:
     - ObjectMapper (~> 3.4)
   - CLWeeklyCalendarView (0.0.3)
   - CountryPickerView (3.1.2)
+  - CreditCardForm (0.2.0)
   - DynamicBlurView (2.0.2)
   - GoogleMaps (2.7.0):
     - GoogleMaps/Maps (= 2.7.0)
@@ -40,6 +41,7 @@ PODS:
     - PubNub/Core (= 4.15.4)
   - PubNub/Core (4.15.4)
   - SKCountryPicker (1.2.9)
+  - Stripe (20.1.1)
   - TwilioVideo (2.12.0)
   - TwilioVoice (5.5.1)
 
@@ -48,6 +50,7 @@ DEPENDENCIES:
   - AlamofireObjectMapper
   - CLWeeklyCalendarView
   - CountryPickerView
+  - CreditCardForm
   - GoogleMaps
   - GooglePlaces
   - IQKeyboardManagerSwift
@@ -57,6 +60,7 @@ DEPENDENCIES:
   - PopupDialog (~> 0.7)
   - PubNub (~> 4)
   - SKCountryPicker
+  - Stripe
   - TwilioVideo (~> 2.10)
   - TwilioVoice (~> 5.5.0)
 
@@ -72,6 +76,7 @@ SPEC REPOS:
   trunk:
     - CLWeeklyCalendarView
     - CountryPickerView
+    - CreditCardForm
     - GooglePlaces
     - IQKeyboardManagerSwift
     - lottie-ios
@@ -80,6 +85,7 @@ SPEC REPOS:
     - PINRemoteImage
     - PubNub
     - SKCountryPicker
+    - Stripe
     - TwilioVideo
     - TwilioVoice
 
@@ -88,6 +94,7 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
   CLWeeklyCalendarView: 74d8511e58b40cb9571afc51b90217e32b51f891
   CountryPickerView: 08ff5f391143aa79e2ae21b0eaa5c15395a80d22
+  CreditCardForm: bba4aad545236f97f2dc45ea3bed0cb57d5e0e99
   DynamicBlurView: aa6db4defc6e537eb86fc5e58dd3991666178399
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
@@ -101,9 +108,10 @@ SPEC CHECKSUMS:
   PopupDialog: 39598b7d41719f5c025b4b70e62728bae7734fef
   PubNub: 0028862c42e5adafd2bf7cc8c062731c055da6e2
   SKCountryPicker: 7ad1e7dfb482cfb26855e33c2d70dbf1eaf218fe
+  Stripe: 2cb10595133247a96ece092eb0614786c604382f
   TwilioVideo: 057061e4302e4b2862b0ac6cf69a3321e7c29b19
   TwilioVoice: c440f2c964d3b0eba946c30c9f1018d8e5d82af9
 
-PODFILE CHECKSUM: 735e9f30ad5a2d5d11373159c26c25890990cba3
+PODFILE CHECKSUM: c60f07a56b3ddb5de726ff4fd788db4819ea17af
 
 COCOAPODS: 1.10.0

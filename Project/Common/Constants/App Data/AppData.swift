@@ -27,3 +27,4 @@ var serviceID = "0"
 var GlobalsenderId = String()
 var GlobalreciveId = String()
 let aboutUrl = "https://telehealthmanager.net/"
+let stripeKey = "pk_test_EacUddWKtq5XqAt3dGdpr0YW"

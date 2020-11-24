@@ -93,6 +93,10 @@ extension HealthFeedViewController : UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.push(id: Storyboard.Ids.HealthFeedDetailsViewController, animation: true)
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
 }
 
 

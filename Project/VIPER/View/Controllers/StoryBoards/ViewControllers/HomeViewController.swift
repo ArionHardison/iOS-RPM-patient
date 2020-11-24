@@ -195,6 +195,10 @@
         let TwilioAccess = "TwilioAccess"
         let Remainder = "Remainder"
         let RemainderSuccess = "RemainderSuccess"
+        let UpdatedVistedDoctor = "UpdatedVistedDoctor"
+        let CardSuccess = "CardSuccess"
+        let AddMoneyModel = "AddMoneyModel"
+        let CardsModel = "CardsModel"
     }
     
     
@@ -210,8 +214,11 @@
         
         override func awakeFromNib() {
             
-            Common.setFont(to: labelSpeciality, isTitle: false, size: 12)
-            Common.setFont(to: labelName, isTitle: true, size: 16)
+            Common.setFontWithType(to: labelSpeciality, size: 12, type: .regular)
+            Common.setFontWithType(to: labelName, size: 15, type: .meduim )
+
+//            Common.setFont(to: labelSpeciality, isTitle: false, size: 12)
+//            Common.setFont(to: labelName, isTitle: true, size: 16)
             imgDoctor.makeRoundedCorner()
             
         }

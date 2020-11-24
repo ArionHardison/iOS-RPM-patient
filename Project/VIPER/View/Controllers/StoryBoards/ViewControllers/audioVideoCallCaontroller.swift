@@ -28,7 +28,8 @@ class audioVideoCallCaontroller: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var RingingLbl: UILabel!
-    @IBOutlet weak var centerEndCallBtn: UIButton!
+//    @IBOutlet weak var centerEndCallBtn: UIButton!
+    @IBOutlet weak var centerEndCallBtn: UIImageView!
     @IBOutlet weak var EndCallBtn: UIButton!
     @IBOutlet weak var acceptCallBtn: UIButton!
     
@@ -36,8 +37,21 @@ class audioVideoCallCaontroller: UIViewController {
     @IBOutlet weak var audioClick: UIImageView!
     @IBOutlet weak var videoClick: UIImageView!
     @IBOutlet weak var videoView: UIView!
+//    @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var buttomView: UIView!
+    @IBOutlet weak var speakerBackView: UIView!
+    @IBOutlet weak var cameraBackView: UIView!
+    @IBOutlet weak var micBackView: UIView!
+    @IBOutlet weak var centerCalView: UIView!
+//    @IBOutlet var ourLocalPreview : TVIVideoView?
+
     
+    var speakerOnImg = UIImage(systemName: "speaker.3.fill")
+    var speakerOffImg = UIImage(systemName: "speaker.slash.fill")
+    var micOnImg = UIImage(systemName: "mic.fill")
+    var micOffImg = UIImage(systemName: "mic.slash.fill")
+    var cameraFlip = UIImage(systemName: "camera.rotate.fill")
+
       var accessToken : String?
     
       // CallKit components
@@ -80,7 +94,9 @@ class audioVideoCallCaontroller: UIViewController {
        var localVideoTrack: TVILocalVideoTrack?
        var localAudioTrack: TVILocalAudioTrack?
        var remoteParticipant: TVIRemoteParticipant?
-       var remoteView: TVIVideoView?
+        @IBOutlet var remoteView: TVIVideoView?
+
+//       var remoteView: TVIVideoView?
        private var avPlayerHelper :  AVPlayerHelper?
        private var incomingavPlayerHelper :  AVPlayerHelper?
        
@@ -115,13 +131,13 @@ class audioVideoCallCaontroller: UIViewController {
     var isCallType : callType = .none {
         didSet {
             if isCallType == callType.none {
-                self.centerEndCallBtn.isHidden = false
+                self.centerCalView.isHidden = false
                 self.EndCallBtn.isHidden = true
                 self.acceptCallBtn.isHidden = true
             }else if isCallType == callType.makeCall {
                 self.nameLbl.text = self.isCallType == callType.makeCall ? "Calling \(self.receiverName)" : "\(self.senderName)"
                  self.nameLbl.font = UIFont.boldSystemFont(ofSize: 28)
-                 self.centerEndCallBtn.isHidden = false
+                 self.centerCalView.isHidden = false
                  self.EndCallBtn.isHidden = true
                  self.acceptCallBtn.isHidden = true
                 if video != 1{
@@ -142,7 +158,7 @@ class audioVideoCallCaontroller: UIViewController {
             }else if isCallType == callType.receiveCall {
                 self.startTimer()
                 handleCall()
-                self.centerEndCallBtn.isHidden = false
+                self.centerCalView.isHidden = false
                 self.EndCallBtn.isHidden = true
                 self.acceptCallBtn.isHidden = true
                       if video == 1 {
@@ -150,7 +166,7 @@ class audioVideoCallCaontroller: UIViewController {
                                self.nameLbl.text = self.isCallType == callType.makeCall ? "Calling \(self.receiverName)" : "\(self.senderName)"
                                self.nameLbl.font = UIFont.boldSystemFont(ofSize: 28)
                                timerLabel.isHidden = true
-                               self.videoClick.image = #imageLiteral(resourceName: "switchCam")
+                               self.videoClick.image = cameraFlip //#imageLiteral(resourceName: "switchCam")
                                self.nameLbl.textColor = .white
                                self.RingingLbl.textColor = .white
                                self.profileImage.isHidden = true
@@ -274,6 +290,7 @@ class audioVideoCallCaontroller: UIViewController {
                if (frontCamera != nil && backCamera != nil) {
                     //We will flip camera on tap.
                    let tap = UITapGestureRecognizer(target: self, action: #selector(viewhideAni))
+                   self.remoteView?.addGestureRecognizer(tap)
                    self.ourLocalPreview?.addGestureRecognizer(tap)
                }
                                 if self.Iscamera == true{
@@ -313,12 +330,12 @@ extension audioVideoCallCaontroller {
         if IsHide == false{
             IsHide = true
             self.buttomView.isHidden = true
-            self.centerEndCallBtn.isHidden = true
+            self.centerCalView.isHidden = true
         }else
         {
             IsHide = false
             self.buttomView.isHidden = false
-            self.centerEndCallBtn.isHidden = false
+            self.centerCalView.isHidden = false
         }
            
         
@@ -327,38 +344,45 @@ extension audioVideoCallCaontroller {
     
     
     private func setCornerRadius(){
-        [self.EndCallBtn,self.centerEndCallBtn,self.acceptCallBtn,self.speakerClick,self.videoClick,self.audioClick].forEach { (view) in
+        [self.EndCallBtn,self.speakerBackView,self.micBackView,self.cameraBackView,self.centerCalView,self.acceptCallBtn,self.speakerClick,self.videoClick,self.audioClick].forEach { (view) in
                view?.layer.cornerRadius = (view?.frame.height)! / 2
-               view?.layer.masksToBounds = true
+//               view?.layer.masksToBounds = true
            }
        }
     
     private func initialLoad(){
             UIDevice.current.isProximityMonitoringEnabled = false
             UIApplication.shared.isIdleTimerDisabled = true
-           [self.EndCallBtn,self.centerEndCallBtn,self.acceptCallBtn,self.speakerClick,self.videoClick,self.audioClick].forEach { (view) in
+           [self.EndCallBtn,self.centerCalView,self.acceptCallBtn,self.speakerClick,self.videoClick,self.audioClick].forEach { (view) in
                view.isUserInteractionEnabled = true
            }
+        
+//            [self.micBackView,self.cameraBackView,self.speakerBackView].forEach { (addView) in addView?.addingBlur(styles: .extraLight) }
+        
            self.EndCallBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endCallAction)))
-           self.centerEndCallBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endCallAction)))
+           self.centerCalView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endCallAction)))
            self.acceptCallBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(Accept)))
         
-           self.videoClick.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(flipCameraAction)))
-           self.speakerClick.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(loudspeaker)))
-           self.audioClick.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(muteVoiceAction)))
+            self.cameraBackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(flipCameraAction)))
+            self.speakerBackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(loudspeaker)))
+            self.micBackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(muteVoiceAction)))
+        
+//           self.videoClick.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(flipCameraAction)))
+//           self.speakerClick.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(loudspeaker)))
+//           self.audioClick.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(muteVoiceAction)))
            
            if isCallType == .receiveCall {
                self.incomingavPlayerHelper = AVPlayerHelper()
                self.incomingavPlayerHelper?.play(file: "incoming.aiff")
                self.isCallType = .receiveCall
-               self.centerEndCallBtn.isHidden = true
+               self.centerCalView.isHidden = true
                self.EndCallBtn.isHidden = false
                self.acceptCallBtn.isHidden = false
                timerLabel.isHidden = false
         
             if video == 1 {
                 timerLabel.isHidden = true
-                self.videoClick.image = #imageLiteral(resourceName: "switchCam")
+                self.videoClick.image = cameraFlip //UIImage(systemName: "camera.rotate.fill") // #imageLiteral(resourceName: "switchCam")
                 self.nameLbl.textColor = .white
                 self.RingingLbl.textColor = .white
                 self.profileImage.isHidden = true
@@ -367,7 +391,7 @@ extension audioVideoCallCaontroller {
            }else if isCallType == .makeCall{
                 timerLabel.isHidden = false
                 self.isCallType = .makeCall
-                self.centerEndCallBtn.isHidden = false
+                self.centerCalView.isHidden = false
                 self.EndCallBtn.isHidden = true
                 self.acceptCallBtn.isHidden = true
                 self.videoClick.image = #imageLiteral(resourceName: "videoOff")
@@ -404,14 +428,14 @@ extension audioVideoCallCaontroller {
     func handleCall(roomId : String = "", receiverId : String = "",isVideo: Int = 0){
        
           if video == 1 {
-             self.videoClick.image = #imageLiteral(resourceName: "switch-1")
+             self.videoClick.image = cameraFlip //#imageLiteral(resourceName: "switch-1")
              self.nameLbl.textColor = .white
              self.RingingLbl.textColor = .white
              self.profileImage.isHidden = true
              self.SetOurLocalVideo()
              
           }else{
-             self.videoClick.image = #imageLiteral(resourceName: "video-camera")
+             self.videoClick.image = cameraFlip // #imageLiteral(resourceName: "video-camera")
              self.videoClick.tintColor = .white
              self.videoClick.isUserInteractionEnabled = false
         }
@@ -453,10 +477,10 @@ extension audioVideoCallCaontroller {
             
             // Update the button title
             if (self.localAudioTrack?.isEnabled == true) {
-                 self.audioClick.image = #imageLiteral(resourceName: "audioOn")
+                 self.audioClick.image = micOnImg // #imageLiteral(resourceName: "audioOn")
                 
             } else {
-                 self.audioClick.image = #imageLiteral(resourceName: "audioOff")
+                 self.audioClick.image = micOffImg//#imageLiteral(resourceName: "audioOff")
            }
         }
        }
@@ -489,7 +513,7 @@ extension audioVideoCallCaontroller {
         
         let isSpeakerON =  avPlayerHelper?.changeAudioOutput() ?? true
         print(isSpeakerON)
-        self.speakerClick.image = isSpeakerON ? #imageLiteral(resourceName: "newspeaker") : #imageLiteral(resourceName: "muteSpeakernew")
+        self.speakerClick.image = isSpeakerON ? speakerOnImg : speakerOffImg // #imageLiteral(resourceName: "newspeaker") : #imageLiteral(resourceName: "muteSpeakernew")
                
     }
     
@@ -500,16 +524,17 @@ extension audioVideoCallCaontroller {
     
     
     func makeTwilioCall(roomId : String,receiverId :String) {
-        DispatchQueue.main.async {
-            let baseUrl = self.isCallType == callType.receiveCall ? Base.twilioMakeCall.rawValue : Base.twilioMakeCall.rawValue
+        DispatchQueue.main.async { [self] in
+            let baseUrl = self.isCallType == callType.receiveCall ? Base.twilioRecieveCall.rawValue : Base.twilioMakeCall.rawValue
             var url = String()
             if self.isCallType != .makeCall {
                 url = "\(baseUrl)?room_id=\(self.senderId)_video_\(UserDefaultConfig.PatientID)"
                 self.newRoomID = "\(receiverId)_video_\(UserDefaultConfig.PatientID)"
 
             }else {
-                url =  "\(baseUrl)?room_id=\(receiverId)_video_\(UserDefaultConfig.PatientID)"
-                self.newRoomID = "\(receiverId)_video_\(UserDefaultConfig.PatientID)"
+//                /api/patient/video/call?hospital_id=1&patient_id=1&room_id=1_video_1&push_to=patient
+                url =  "\(baseUrl)?hospital_id=\(senderId)&patient_id=\(UserDefaultConfig.PatientID)&room_id=\(self.senderId)_video_\(UserDefaultConfig.PatientID)&push_to=patient"
+                self.newRoomID = "\(self.senderId)_video_\(UserDefaultConfig.PatientID)"
 
             }
             self.presenter?.HITAPI(api: url, params:nil, methodType: .GET, modelClass: TwilioAccess.self, token: true)
@@ -550,7 +575,7 @@ extension audioVideoCallCaontroller {
             // The name of the Room where the Client will attempt to connect to. Please note that if you pass an empty
             // Room `name`, the Client will create one for you. You can get the name or sid from any connected Room.
             if self.isServerCallType == .makeCall {
-            builder.roomName = "\(User.main.id ?? 0)_chats_\(self.receiverId)"
+//            builder.roomName = "\(User.main.id ?? 0)_chats_\(self.receiverId)"
             }else if self.isServerCallType == .receiveCall {
             builder.roomName = self.newRoomID
             }
@@ -751,10 +776,10 @@ extension audioVideoCallCaontroller : TVIRemoteParticipantDelegate {
         if (video == 1){
             setupRemoteVideoView()
             localVideoTrack?.removeRenderer(self.remoteView!)
-            videoTrack.addRenderer(self.remoteView!)
-            remoteView?.contentMode = .scaleAspectFit
-        }
             self.strintLocalView()
+            videoTrack.addRenderer(self.remoteView!)
+            remoteView?.contentMode = .scaleAspectFill
+        }
             self.isCallType = .none
             //labelReceiverName.isHidden = true
         }
@@ -768,18 +793,35 @@ extension audioVideoCallCaontroller : TVIRemoteParticipantDelegate {
             self.view.layoutIfNeeded()
             self.ourLocalPreview?.frame = CGRect(x: 16, y: 100, width: 130 ,height: 180)
             self.ourLocalPreview?.layer.cornerRadius = 15
-            
+            self.remoteView?.addSubview(self.ourLocalPreview!)
+            self.remoteView?.bringSubview(toFront: self.ourLocalPreview!)
+
         }
     }
     
     func setupRemoteVideoView() {
+//        self.view.bringSubview(toFront: ourLocalPreview!)
+//        self.view.bringSubview(toFront: self.remoteView!)
         // Creating `TVIVideoView` programmatically
-        self.remoteView = TVIVideoView.init(frame: CGRect.zero, delegate:self)
-        
-        self.videoView.insertSubview(self.remoteView!, at: 0)
-        
-        self.remoteView!.contentMode = .scaleAspectFill;
-        
+//        self.remoteView = TVIVideoView.init(frame: CGRect.zero, delegate:self)
+//
+//        self.videoView.insertSubview(self.remoteView!, at: 0)
+//
+//        self.remoteView!.contentMode = .scaleAspectFill;
+//
+//
+//        let constraintsTop = NSLayoutConstraint(item: self.remoteView!, attribute: .top, relatedBy: .equal, toItem: self.videoView, attribute: .top, multiplier: 1, constant: 0)
+//
+//        let constraintsBottom = NSLayoutConstraint(item: self.remoteView!, attribute: .bottom, relatedBy: .equal, toItem: self.videoView, attribute: .bottom, multiplier: 1, constant: 0)
+//
+//        let constraintsLeading = NSLayoutConstraint(item: self.remoteView!, attribute: .leading, relatedBy: .equal, toItem: self.videoView, attribute: .leading, multiplier: 1, constant: 0)
+//
+//        let constraintsTrailing = NSLayoutConstraint(item: self.remoteView!, attribute: .trailing, relatedBy: .equal, toItem: self.videoView, attribute: .trailing, multiplier: 1, constant: 0)
+//
+//        self.videoView.addConstraints([constraintsTop,constraintsBottom,constraintsLeading,constraintsTrailing])
+
+
+        /*
         let centerX = NSLayoutConstraint(item: self.remoteView!,
                                          attribute: NSLayoutConstraint.Attribute.centerX,
                                          relatedBy: NSLayoutConstraint.Relation.equal,
@@ -812,9 +854,15 @@ extension audioVideoCallCaontroller : TVIRemoteParticipantDelegate {
                                         multiplier: 1,
                                         constant: 0);
         self.videoView.addConstraint(height)
+        */
+//        self.videoView.addSubview(self.remoteView!)
+//        self.videoView.bringSubview(toFront: self.remoteView!)
+
         self.nameLbl.isHidden = true
         self.RingingLbl.isHidden = true
         self.timerLabel.isHidden = true
+//        self.videoView?.bringSubview(toFront: ourLocalPreview!)
+
     }
     
     func unsubscribed(from videoTrack: TVIRemoteVideoTrack,
@@ -1074,3 +1122,16 @@ extension audioVideoCallCaontroller : PresenterOutputProtocol {
 
 
  
+extension UIView {
+    
+    func addingBlur(styles:UIBlurEffectStyle){
+        
+        let blurEffect = UIBlurEffect(style: .dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.addSubview(blurEffectView)
+    }
+    
+
+    }

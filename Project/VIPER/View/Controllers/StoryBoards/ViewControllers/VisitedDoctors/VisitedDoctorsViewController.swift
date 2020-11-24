@@ -14,7 +14,7 @@ class VisitedDoctorsViewController: UIViewController {
     @IBOutlet weak var visitedDoctorsTable: UITableView!
     
     
-    var visitedDoctors : [Visited_doctors] = [Visited_doctors]()
+    var visitedDoctors : [Appointments] = [Appointments]()
 
     
     override func viewDidLoad() {
@@ -66,23 +66,23 @@ extension VisitedDoctorsViewController: UITableViewDelegate, UITableViewDataSour
         guard let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.VisitedDoctorsCell) as? VisitedDoctorsCell else{
             return UITableViewCell()
         }
-        cell.customizeStatusColor(indexPath: indexPath)
-        self.populateCell(cell: cell, data: self.visitedDoctors[indexPath.row])
+//        cell.customizeStatusColor(indexPath: indexPath)
+        cell.customizeStatusColor(status: self.visitedDoctors[indexPath.row].status ?? "")
+//        self.populateCell(cell: cell, data: self.visitedDoctors[indexPath.row])
+        cell.doctorNameLabel.text = (self.visitedDoctors[indexPath.row].hospital?.first_name ?? "") + (self.visitedDoctors[indexPath.row].hospital?.last_name ?? "")
+        cell.hospitalNameLabel.text = self.visitedDoctors[indexPath.row].hospital?.clinic?.name ?? ""
+        cell.dateLabel.text = dateConvertor(self.visitedDoctors[indexPath.row].scheduled_at ?? "", _input: .date_time, _output: .DM)
+        cell.timeLabel.text =  dateConvertor(self.visitedDoctors[indexPath.row].scheduled_at ?? "", _input: .date_time, _output: .N_hour)
+        cell.statusLabel.text = self.visitedDoctors[indexPath.row].appointment_type ?? ""
         cell.selectionStyle = .none
         return cell
     }
     
-    func populateCell(cell : VisitedDoctorsCell , data : Visited_doctors){
-        cell.doctorNameLabel.text = "\(data.hospital?.first_name ?? "") \(data.hospital?.last_name ?? "")"
-        cell.hospitalNameLabel.text = "\(data.hospital?.clinic?.name ?? "") \(data.hospital?.clinic?.address ?? "")"
-        cell.dateLabel.text = dateConvertor(data.scheduled_at ?? "", _input: .date_time, _output: .DM)
-        cell.timeLabel.text = dateConvertor(data.scheduled_at ?? "", _input: .date_time, _output: .N_hour)
-        cell.statusLabel.text = data.status ?? ""
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = AppointmentDetailsViewController.initVC(storyBoardName: .main, vc: AppointmentDetailsViewController.self, viewConrollerID: Storyboard.Ids.AppointmentDetailsViewController)
-        vc.visitedDetail = self.visitedDoctors[indexPath.row]
+//        vc.visitedDetail = self.visitedDoctors[indexPath.row]
+        vc.updatedVisitedDetail = self.visitedDoctors[indexPath.row]
+        vc.isFromVisited = true
         self.push(from: self, ToViewContorller: vc)
         
     }
@@ -99,10 +99,10 @@ extension VisitedDoctorsViewController: UITableViewDelegate, UITableViewDataSour
 extension VisitedDoctorsViewController : PresenterOutputProtocol{
     func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
         switch String(describing: modelClass) {
-            case model.type.DoctorsListModel:
-                let data = dataDict as? DoctorsListModel
-                self.visitedDoctors = data?.visited_doctors ?? [Visited_doctors]()
-                self.visitedDoctorsTable.reloadData()
+            case model.type.UpdatedVistedDoctor:
+                let data = dataDict as? UpdatedVistedDoctor
+                self.visitedDoctors = data?.vistedDoctors?.appointments ?? []
+                self.visitedDoctorsTable.reloadInMainThread()
                 break
             
             default: break
@@ -115,7 +115,7 @@ extension VisitedDoctorsViewController : PresenterOutputProtocol{
     }
     
     func getVisitedhDoctorList(){
-        self.presenter?.HITAPI(api: Base.searchDoctors.rawValue, params: nil, methodType: .GET, modelClass: DoctorsListModel.self, token: true)
+        self.presenter?.HITAPI(api: Base.visitedDoctor.rawValue, params: nil, methodType: .GET, modelClass: UpdatedVistedDoctor.self, token: true)
     }
     
 }

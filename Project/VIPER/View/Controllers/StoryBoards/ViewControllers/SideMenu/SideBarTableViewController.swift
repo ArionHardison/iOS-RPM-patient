@@ -19,9 +19,9 @@ class SideBarTableViewController: UITableViewController {
     @IBOutlet private var viewShadow : UIView!
     @IBOutlet private weak var profileImageCenterContraint : NSLayoutConstraint!
     
-    private let sideBarList = [Constants.string.appointments,Constants.string.onlineConsultations,Constants.string.favDoctor,Constants.string.medicalRecords,Constants.string.reminder,Constants.string.wallet,Constants.string.articles,Constants.string.relativesManagement,Constants.string.faqAndAdmin,Constants.string.settings]
+    private let sideBarList = [Constants.string.appointments,Constants.string.onlineConsultations,Constants.string.favDoctor,Constants.string.medicalRecords,Constants.string.reminder,Constants.string.wallet,Constants.string.articles,Constants.string.relativesManagement,Constants.string.settings] //Constants.string.faqAndAdmin,
     
-    private let imagesList = ["appointment","onlineConsultation","favdoctor","medicalRecords","reminder","wallet","articles","RelativesManagement","faq","settings"]
+    private let imagesList = ["appointment","onlineConsultation","favdoctor","medicalRecords","reminder","wallet","articles","RelativesManagement","settings"] //"faq",
     private let cellId = "cellId"
     private lazy var loader : UIView = {
         
@@ -165,9 +165,9 @@ extension SideBarTableViewController {
             self.push(to: Storyboard.Ids.RelativeManagementViewController)
             self.drawerController?.closeSide()
             
-        case(0,8):
-            self.push(to: Storyboard.Ids.FAQViewController)
-            self.drawerController?.closeSide()
+//        case(0,8):
+//            self.push(to: Storyboard.Ids.FAQViewController)
+//            self.drawerController?.closeSide()
 
         case (0,self.sideBarList.count-1):
             self.push(to: Storyboard.Ids.SettingsViewController)

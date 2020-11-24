@@ -174,8 +174,18 @@
 		8526FFD525516A8600E672B9 /* CallDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8526FFD125516A8500E672B9 /* CallDuration.swift */; };
 		8526FFD625516A8600E672B9 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8526FFD225516A8500E672B9 /* Settings.swift */; };
 		8526FFD725516A8600E672B9 /* audioVideoCallCaontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8526FFD325516A8500E672B9 /* audioVideoCallCaontroller.swift */; };
-		853F13F1256401A500BB20A8 /* AddAllergyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853F13EF256401A500BB20A8 /* AddAllergyTableViewCell.swift */; };
-		853F13F2256401A500BB20A8 /* AddAllergyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 853F13F0256401A500BB20A8 /* AddAllergyTableViewCell.xib */; };
+		8527C7A4256BCAFF007F9B31 /* CardsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8527C7A3256BCAFF007F9B31 /* CardsListViewController.swift */; };
+		8527C7AA256BCEF6007F9B31 /* CardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8527C7A8256BCEF6007F9B31 /* CardsTableViewCell.swift */; };
+		8527C7AB256BCEF6007F9B31 /* CardsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8527C7A9256BCEF6007F9B31 /* CardsTableViewCell.xib */; };
+		8527C7CA256BF440007F9B31 /* AddAllergyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8527C7C8256BF440007F9B31 /* AddAllergyTableViewCell.swift */; };
+		8527C7CB256BF440007F9B31 /* AddAllergyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8527C7C9256BF440007F9B31 /* AddAllergyTableViewCell.xib */; };
+		8527C7D1256BF46F007F9B31 /* AllergyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8527C7CF256BF46F007F9B31 /* AllergyViewController.swift */; };
+		8527C7D2256BF46F007F9B31 /* AllergiesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8527C7D0256BF46F007F9B31 /* AllergiesListViewController.swift */; };
+		852AAF3A25666EB900E9A157 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AAF3925666EB900E9A157 /* FilterViewController.swift */; };
+		852AAF5D2566712E00E9A157 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AAF5B2566712E00E9A157 /* FilterCell.swift */; };
+		852AAF5E2566712E00E9A157 /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 852AAF5C2566712E00E9A157 /* FilterCell.xib */; };
+		852AAF632566733D00E9A157 /* FilterHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AAF622566733D00E9A157 /* FilterHeaderView.swift */; };
+		852AAF682566734E00E9A157 /* FilterHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 852AAF672566734E00E9A157 /* FilterHeaderView.xib */; };
 		85537DB9255D8977006C061C /* TimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85537DB7255D8977006C061C /* TimeCell.xib */; };
 		85537DBA255D8977006C061C /* TimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85537DB8255D8977006C061C /* TimeCell.swift */; };
 		85537DD0255D9277006C061C /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85537DBE255D9272006C061C /* Montserrat-ExtraLight.ttf */; };
@@ -206,6 +216,7 @@
 		857416B1255ACDBD002D1F1F /* RelativeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857416B0255ACDBD002D1F1F /* RelativeDetailViewController.swift */; };
 		857416B6255AE12F002D1F1F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857416B5255AE12F002D1F1F /* SettingsViewController.swift */; };
 		8579C71C2551A03300F5B572 /* PushHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8579C71B2551A03300F5B572 /* PushHelper.swift */; };
+		85A59908256BBCFE004CEB1A /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A59907256BBCFE004CEB1A /* AddCardViewController.swift */; };
 		85B6D9D1255A83B9005997A5 /* RelativesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6D9CF255A83B9005997A5 /* RelativesTableViewCell.swift */; };
 		85B6D9D2255A83B9005997A5 /* RelativesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85B6D9D0255A83B9005997A5 /* RelativesTableViewCell.xib */; };
 		85C76852254D81F9002827B9 /* PickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C76851254D81F9002827B9 /* PickerManager.swift */; };
@@ -417,8 +428,18 @@
 		8526FFD125516A8500E672B9 /* CallDuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallDuration.swift; sourceTree = "<group>"; };
 		8526FFD225516A8500E672B9 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		8526FFD325516A8500E672B9 /* audioVideoCallCaontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = audioVideoCallCaontroller.swift; sourceTree = "<group>"; };
-		853F13EF256401A500BB20A8 /* AddAllergyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAllergyTableViewCell.swift; sourceTree = "<group>"; };
-		853F13F0256401A500BB20A8 /* AddAllergyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAllergyTableViewCell.xib; sourceTree = "<group>"; };
+		8527C7A3256BCAFF007F9B31 /* CardsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsListViewController.swift; sourceTree = "<group>"; };
+		8527C7A8256BCEF6007F9B31 /* CardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsTableViewCell.swift; sourceTree = "<group>"; };
+		8527C7A9256BCEF6007F9B31 /* CardsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardsTableViewCell.xib; sourceTree = "<group>"; };
+		8527C7C8256BF440007F9B31 /* AddAllergyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAllergyTableViewCell.swift; sourceTree = "<group>"; };
+		8527C7C9256BF440007F9B31 /* AddAllergyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddAllergyTableViewCell.xib; sourceTree = "<group>"; };
+		8527C7CF256BF46F007F9B31 /* AllergyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllergyViewController.swift; sourceTree = "<group>"; };
+		8527C7D0256BF46F007F9B31 /* AllergiesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllergiesListViewController.swift; sourceTree = "<group>"; };
+		852AAF3925666EB900E9A157 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		852AAF5B2566712E00E9A157 /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
+		852AAF5C2566712E00E9A157 /* FilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
+		852AAF622566733D00E9A157 /* FilterHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterHeaderView.swift; sourceTree = "<group>"; };
+		852AAF672566734E00E9A157 /* FilterHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterHeaderView.xib; sourceTree = "<group>"; };
 		85537DB7255D8977006C061C /* TimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeCell.xib; sourceTree = "<group>"; };
 		85537DB8255D8977006C061C /* TimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeCell.swift; sourceTree = "<group>"; };
 		85537DBE255D9272006C061C /* Montserrat-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLight.ttf"; sourceTree = "<group>"; };
@@ -450,6 +471,7 @@
 		857416B5255AE12F002D1F1F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8579C71B2551A03300F5B572 /* PushHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushHelper.swift; sourceTree = "<group>"; };
 		8579C7D22551B50900F5B572 /* TeleHealth.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeleHealth.entitlements; sourceTree = "<group>"; };
+		85A59907256BBCFE004CEB1A /* AddCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		85B6D9CF255A83B9005997A5 /* RelativesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativesTableViewCell.swift; sourceTree = "<group>"; };
 		85B6D9D0255A83B9005997A5 /* RelativesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RelativesTableViewCell.xib; sourceTree = "<group>"; };
 		85C76851254D81F9002827B9 /* PickerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerManager.swift; sourceTree = "<group>"; };
@@ -492,6 +514,11 @@
 		08487FA620B5E94100D4DEE4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8527C7D0256BF46F007F9B31 /* AllergiesListViewController.swift */,
+				8527C7CF256BF46F007F9B31 /* AllergyViewController.swift */,
+				8527C7C8256BF440007F9B31 /* AddAllergyTableViewCell.swift */,
+				8527C7C9256BF440007F9B31 /* AddAllergyTableViewCell.xib */,
+				85A59907256BBCFE004CEB1A /* AddCardViewController.swift */,
 				85550654256664500046A8A9 /* FAQ */,
 				8526FFD325516A8500E672B9 /* audioVideoCallCaontroller.swift */,
 				8526FFD125516A8500E672B9 /* CallDuration.swift */,
@@ -518,6 +545,8 @@
 				8574167D255AB249002D1F1F /* RelativeManagementViewController.swift */,
 				857416B0255ACDBD002D1F1F /* RelativeDetailViewController.swift */,
 				857416B5255AE12F002D1F1F /* SettingsViewController.swift */,
+				852AAF572566711600E9A157 /* Filter */,
+				8527C7A3256BCAFF007F9B31 /* CardsListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -977,8 +1006,8 @@
 				0871DEBB20B966E600EA80DC /* Homepage SubViews */,
 				85B6D9CF255A83B9005997A5 /* RelativesTableViewCell.swift */,
 				85B6D9D0255A83B9005997A5 /* RelativesTableViewCell.xib */,
-				853F13EF256401A500BB20A8 /* AddAllergyTableViewCell.swift */,
-				853F13F0256401A500BB20A8 /* AddAllergyTableViewCell.xib */,
+				8527C7A8256BCEF6007F9B31 /* CardsTableViewCell.swift */,
+				8527C7A9256BCEF6007F9B31 /* CardsTableViewCell.xib */,
 			);
 			path = XIB;
 			sourceTree = "<group>";
@@ -1564,6 +1593,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		852AAF572566711600E9A157 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				852AAF3925666EB900E9A157 /* FilterViewController.swift */,
+				852AAF5B2566712E00E9A157 /* FilterCell.swift */,
+				852AAF5C2566712E00E9A157 /* FilterCell.xib */,
+				852AAF622566733D00E9A157 /* FilterHeaderView.swift */,
+				852AAF672566734E00E9A157 /* FilterHeaderView.xib */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
 		85550654256664500046A8A9 /* FAQ */ = {
 			isa = PBXGroup;
 			children = (
@@ -1723,12 +1764,12 @@
 			files = (
 				12B6E20C2447010B00BE448F /* UpcomingTableviewCell.xib in Resources */,
 				7E401F292487CD860021991A /* VisitedDoctorsCell.xib in Resources */,
-				853F13F2256401A500BB20A8 /* AddAllergyTableViewCell.xib in Resources */,
 				85537DDE255D9277006C061C /* Montserrat-Regular.ttf in Resources */,
 				85537DE0255D9277006C061C /* Montserrat-Italic.ttf in Resources */,
 				905383782490E253009CCEE4 /* ReviewCell.xib in Resources */,
 				85537DD2255D9277006C061C /* Montserrat-BlackItalic.ttf in Resources */,
 				108010C82494EA4100C7249D /* SuggestedCell.xib in Resources */,
+				852AAF5E2566712E00E9A157 /* FilterCell.xib in Resources */,
 				08C0660620B0386F00A8C5F0 /* Readme.md in Resources */,
 				85537DD7255D9277006C061C /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				084B30E620B01DAC00B79318 /* Assets.xcassets in Resources */,
@@ -1752,6 +1793,7 @@
 				779DBC4A2493E7600055FCB9 /* FavDoctorTableViewCell.xib in Resources */,
 				1073728E2498B5370080A5A5 /* DatePickerAlert.xib in Resources */,
 				85537DDD255D9277006C061C /* Montserrat-SemiBold.ttf in Resources */,
+				8527C7CB256BF440007F9B31 /* AddAllergyTableViewCell.xib in Resources */,
 				85B6D9D2255A83B9005997A5 /* RelativesTableViewCell.xib in Resources */,
 				905383762490D38F009CCEE4 /* PhotosCell.xib in Resources */,
 				85537DD3255D9277006C061C /* Montserrat-Thin.ttf in Resources */,
@@ -1766,7 +1808,9 @@
 				1293C5692453376000FEC1C9 /* DoctorCell.xib in Resources */,
 				12B6E2072446E7DF00BE448F /* LogoCell.xib in Resources */,
 				12B6E211244711B100BE448F /* ArticlesCell.xib in Resources */,
+				8527C7AB256BCEF6007F9B31 /* CardsTableViewCell.xib in Resources */,
 				10C22C142495240800D43704 /* ChatRightCell.xib in Resources */,
+				852AAF682566734E00E9A157 /* FilterHeaderView.xib in Resources */,
 				85537DD6255D9277006C061C /* Montserrat-Bold.ttf in Resources */,
 				85537DD1255D9277006C061C /* Montserrat-Black.ttf in Resources */,
 				7E6AEF502488D0F6005F0899 /* SuggestedSpecialityCell.xib in Resources */,
@@ -1859,6 +1903,7 @@
 				084B34B720B030CB00B79318 /* Bundle.swift in Sources */,
 				084B346620B02C6A00B79318 /* Colors.swift in Sources */,
 				12AE3EE52451C88800E90872 /* OnlineAvailabeDoctorsController.swift in Sources */,
+				852AAF3A25666EB900E9A157 /* FilterViewController.swift in Sources */,
 				084B343920B029E900B79318 /* ParallaxHeader.swift in Sources */,
 				1073729A249902600080A5A5 /* DoctorsDetailModel.swift in Sources */,
 				084B343E20B02A3800B79318 /* Toast.swift in Sources */,
@@ -1866,8 +1911,10 @@
 				08C066F720B039C400A8C5F0 /* GMSMapView.swift in Sources */,
 				102D39AB2493A6E300C61CC6 /* ReviewCell.swift in Sources */,
 				084B346920B02C8000B79318 /* AppData.swift in Sources */,
+				8527C7A4256BCAFF007F9B31 /* CardsListViewController.swift in Sources */,
 				85537DBA255D8977006C061C /* TimeCell.swift in Sources */,
 				107372872498B0FF0080A5A5 /* AlertBuilder.swift in Sources */,
+				8527C7CA256BF440007F9B31 /* AddAllergyTableViewCell.swift in Sources */,
 				08DBC87B20B9F70800AE89E6 /* DatePickerDialog.swift in Sources */,
 				12AE3EF02451D24E00E90872 /* CategoryListController.swift in Sources */,
 				8526FFD425516A8600E672B9 /* TwilioViewController+CallKit.swift in Sources */,
@@ -1875,6 +1922,7 @@
 				12AE3EEC2451CFDC00E90872 /* CategoryCell.swift in Sources */,
 				084B343720B029E900B79318 /* UIView+Blur.swift in Sources */,
 				084B347520B02DA400B79318 /* ShimmerButton.swift in Sources */,
+				85A59908256BBCFE004CEB1A /* AddCardViewController.swift in Sources */,
 				084B348220B02E7300B79318 /* Router.swift in Sources */,
 				107372822497D7000080A5A5 /* EmailViewController.swift in Sources */,
 				084B34AE20B0306600B79318 /* ViewExtension.swift in Sources */,
@@ -1886,6 +1934,7 @@
 				084B34AB20B0305400B79318 /* TableView.swift in Sources */,
 				85B6D9D1255A83B9005997A5 /* RelativesTableViewCell.swift in Sources */,
 				12B6E210244711B100BE448F /* ArticlesCell.swift in Sources */,
+				8527C7D2256BF46F007F9B31 /* AllergiesListViewController.swift in Sources */,
 				084B348A20B02EAC00B79318 /* PresenterProcessor.swift in Sources */,
 				084B347B20B02DF700B79318 /* Global.swift in Sources */,
 				084B34CC20B031F400B79318 /* ImageView.swift in Sources */,
@@ -1897,7 +1946,6 @@
 				107372892498B1050080A5A5 /* AlertVC.swift in Sources */,
 				104ED4C72499EC6400555CA8 /* DoctorsListModel.swift in Sources */,
 				10529FDE251E002500262EF4 /* ChatManager.swift in Sources */,
-				853F13F1256401A500BB20A8 /* AddAllergyTableViewCell.swift in Sources */,
 				8526FFD625516A8600E672B9 /* Settings.swift in Sources */,
 				12384B3524600D990057943D /* DoctorDetailsController.swift in Sources */,
 				12681EFE2438D5A30072193B /* SigninInViewController.swift in Sources */,
@@ -1912,6 +1960,7 @@
 				084B343B20B029E900B79318 /* UIAplication+RLT.swift in Sources */,
 				084B34CE20B0422000B79318 /* ErrorLog.swift in Sources */,
 				8555064F256664450046A8A9 /* FAQViewController.swift in Sources */,
+				852AAF632566733D00E9A157 /* FilterHeaderView.swift in Sources */,
 				107372802497D2150080A5A5 /* UXUserDefaults.swift in Sources */,
 				10529FEB251E083E00262EF4 /* ChatViewController.swift in Sources */,
 				12681F012438E1840072193B /* NameAndEmailViewController.swift in Sources */,
@@ -1931,6 +1980,7 @@
 				8526FFD525516A8600E672B9 /* CallDuration.swift in Sources */,
 				084B34A520B0302100B79318 /* ViewController.swift in Sources */,
 				779DBC4E2493EFC20055FCB9 /* MedicalRecordsViewController.swift in Sources */,
+				8527C7AA256BCEF6007F9B31 /* CardsTableViewCell.swift in Sources */,
 				108010BE2494C6DE00C7249D /* ReminderDetailViewController.swift in Sources */,
 				084B346020B02C2B00B79318 /* WebConstants.swift in Sources */,
 				105D2156249A27C500475E48 /* ProfileModel.swift in Sources */,
@@ -1944,6 +1994,7 @@
 				088E4E9E20ECDE6900EEEF22 /* HomeViewController.swift in Sources */,
 				084B30DC20B01DAA00B79318 /* AppDelegate.swift in Sources */,
 				8579C71C2551A03300F5B572 /* PushHelper.swift in Sources */,
+				852AAF5D2566712E00E9A157 /* FilterCell.swift in Sources */,
 				084B34BB20B030F100B79318 /* Label.swift in Sources */,
 				084B347F20B02E5D00B79318 /* WebService.swift in Sources */,
 				084B349F20B02FD500B79318 /* String.swift in Sources */,
@@ -1954,6 +2005,7 @@
 				108010BA2494A69400C7249D /* ReminderViewController.swift in Sources */,
 				1293C5642453370000FEC1C9 /* DoctorsListController.swift in Sources */,
 				102D39B02493B4CB00C61CC6 /* SearchCell.swift in Sources */,
+				8527C7D1256BF46F007F9B31 /* AllergyViewController.swift in Sources */,
 				779DBC4B2493E7600055FCB9 /* FavDoctorTableViewCell.swift in Sources */,
 				7E6AEF4F2488D0F6005F0899 /* SuggestedSpecialityCell.swift in Sources */,
 				10C22C162495241E00D43704 /* ChatRightCell.swift in Sources */,
@@ -2175,7 +2227,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TeleHealth.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.5;
+				CURRENT_PROJECT_VERSION = 2.8;
 				DEVELOPMENT_TEAM = Q4N6XWX7K3;
 				INFOPLIST_FILE = "$(SRCROOT)/Project/Common/Plist Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -2198,7 +2250,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TeleHealth.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.5;
+				CURRENT_PROJECT_VERSION = 2.8;
 				DEVELOPMENT_TEAM = Q4N6XWX7K3;
 				INFOPLIST_FILE = "$(SRCROOT)/Project/Common/Plist Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

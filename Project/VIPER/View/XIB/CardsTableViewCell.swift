@@ -1,21 +1,22 @@
 //
-//  FAQCell.swift
+//  CardsTableViewCell.swift
 //  MiDokter User
 //
-//  Created by Basha's MacBook Pro on 19/11/20.
+//  Created by Sethuram Vijayakumar on 23/11/20.
 //  Copyright © 2020 css. All rights reserved.
 //
 
 import UIKit
 
-class FAQCell: UITableViewCell {
-    @IBOutlet weak var textLbl: UILabel!
-    @IBOutlet weak var radioImage: UIImageView!
-
-
+class CardsTableViewCell: UITableViewCell {
+    @IBOutlet weak var labelCardNumber: UILabel!
+    @IBOutlet weak var buttonSelected: UIButton!
+    
+    var selectedButton : Bool = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
