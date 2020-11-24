@@ -19,7 +19,7 @@ class SideBarTableViewController: UITableViewController {
     @IBOutlet private var viewShadow : UIView!
     @IBOutlet private weak var profileImageCenterContraint : NSLayoutConstraint!
     
-    private let sideBarList = [Constants.string.appointments,Constants.string.onlineConsultations,Constants.string.favDoctor,Constants.string.medicalRecords,Constants.string.reminder,Constants.string.wallet,Constants.string.articles,Constants.string.relativesManagement,Constants.string.settings] //Constants.string.faqAndAdmin,
+    private let sideBarList = [Constants.string.appointments,Constants.string.onlineConsultations,Constants.string.favDoctor,Constants.string.medicalRecords,Constants.string.reminder,Constants.string.wallet,Constants.string.articles,Constants.string.relativesManagement,Constants.string.settings] // Constants.string.faqAndAdmin,
     
     private let imagesList = ["appointment","onlineConsultation","favdoctor","medicalRecords","reminder","wallet","articles","RelativesManagement","settings"] //"faq",
     private let cellId = "cellId"
@@ -93,8 +93,13 @@ extension SideBarTableViewController {
     // MARK:- Set Designs
     
     private func setDesigns () {
-        Common.setFont(to: labelName)
-        Common.setFont(to: labelProfileCompletion)
+        
+        Common.setFontWithType(to: labelName, size: 16, type: .meduim)
+        Common.setFontWithType(to: labelProfileCompletion, size: 10, type: .regular)
+        Common.setFontWithType(to: viewPtofileBtn, size: 10, type: .regular)
+
+//        Common.setFont(to: labelName)
+//        Common.setFont(to: labelProfileCompletion)
     }
     
     
@@ -235,7 +240,7 @@ extension SideBarTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 65
+        return 50
     }
     
 }
@@ -274,8 +279,9 @@ class SideBarCell: UITableViewCell {
     
     override func awakeFromNib() {
         
-        Common.setFont(to: labelTitle, isTitle: false, size: 16)
-       
+//        Common.setFont(to: labelTitle, isTitle: false, size: 16)
+        Common.setFontWithType(to: labelTitle, size: 14, type: .regular)
+
         
     }
     

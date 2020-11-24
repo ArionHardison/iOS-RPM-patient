@@ -18,7 +18,6 @@ class RelativesTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        imageBackgroundView.makeRoundedCorner()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -28,6 +27,11 @@ class RelativesTableViewCell: UITableViewCell {
         
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        profileImageView.makeRoundedCorner()
+
+    }
 }
 
 extension RelativesTableViewCell {

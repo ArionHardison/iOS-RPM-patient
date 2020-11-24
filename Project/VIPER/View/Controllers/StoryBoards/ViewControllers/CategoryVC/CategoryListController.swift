@@ -82,8 +82,9 @@ extension CategoryListController : UICollectionViewDelegate,UICollectionViewData
 
         let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: XIB.Names.CategoryCell, for: indexPath) as! CategoryCell
         cell.labelCategoryName.text = self.category[indexPath.row].name
-        print(self.category[indexPath.row].image ?? "")
-        cell.categoryImg.setURLImage(self.category[indexPath.row].image ?? "")
+        let imageurl = self.category[indexPath.row].image ?? ""
+        print(imageurl)
+        cell.categoryImg.setURLImage(imageurl)
 //        if indexPath.row % 2 == 0{
 //            cell.LeftborderSet = true
 ////            cell.leftstripeview.isHidden = false

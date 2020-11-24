@@ -24,7 +24,8 @@ class WalletViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
-        self.setValues()
+        self.getProfileApi()
+//        self.setValues()
     }
 
     func setupAction(){
@@ -69,6 +70,10 @@ extension WalletViewController {
          self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.02583951317, green: 0.1718649864, blue: 0.4112361372, alpha: 1)
 
     }
+    
+    func getProfileApi(){
+        self.presenter?.HITAPI(api: Base.profile.rawValue, params: nil, methodType: .GET, modelClass: ProfileModel.self, token: true)
+    }
 }
 
 
@@ -83,6 +88,12 @@ extension WalletViewController : PresenterOutputProtocol{
                  self.textFieldAmount.text = ""
                  
                 break
+        case model.type.ProfileModel:
+            let data = dataDict as? ProfileModel
+            profileDetali = data ?? ProfileModel()
+            self.setValues()
+            self.textFieldAmount.text = ""
+            break
             
             default: break
             

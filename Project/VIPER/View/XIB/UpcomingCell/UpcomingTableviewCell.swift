@@ -32,13 +32,20 @@ class UpcomingTableviewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.dateView.roundCorners(corners: [.topRight,.bottomRight], radius: 6)
-        self.labelStatus.roundCorners(corners: [.bottomLeft,.topLeft], radius: 2)
+        self.roundCorners(cornerRadius: 6, cornerView: dateView)
+        self.roundCorners(cornerRadius: 6, cornerView: labelStatus)
+
+//        self.dateView.roundCorners(corners: [.topRight,.bottomRight], radius: 6)
+//        self.labelStatus.roundCorners(corners: [.bottomLeft,.topLeft], radius: 2)
         self.dateView.borderLineWidth = 1.0
         
         
     }
 
-   
+    func roundCorners(cornerRadius: Double,cornerView:UIView) {
+        cornerView.layer.cornerRadius = CGFloat(cornerRadius)
+        cornerView.clipsToBounds = true
+        cornerView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+    }
     
 }

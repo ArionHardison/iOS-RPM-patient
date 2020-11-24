@@ -174,13 +174,13 @@ extension SummaryViewController : PresenterOutputProtocol{
     func setupData(){
         self.userCollection.reloadData()
         if self.doctors.specialities?.offer_fees != "0.00"{
-            self.proceedAmount = (self.doctors.specialities?.offer_fees ?? "") ?? ""
-            self.offerPriceLbl.text = currency + (self.doctors.specialities?.offer_fees ?? "") ?? ""
-            self.orginalPrieLbl.text = currency + (self.doctors.specialities?.fees ?? "") ?? ""
+            self.proceedAmount = (self.doctors.specialities?.offer_fees ?? "")
+            self.offerPriceLbl.text = currency + (self.doctors.specialities?.offer_fees ?? "")
+            self.orginalPrieLbl.text = currency + "\(self.doctors.specialities?.fees ?? 0)"
             self.orginalPrieLbl.isHidden = false
         }else{
-            self.proceedAmount = (self.doctors.specialities?.fees ?? "") ?? ""
-            self.offerPriceLbl.text = currency + (self.doctors.specialities?.fees ?? "") ?? ""
+            self.proceedAmount = "\(self.doctors.specialities?.fees ?? 0)"
+            self.offerPriceLbl.text = currency + "\(self.doctors.specialities?.fees ?? 0)"
             self.orginalPrieLbl.isHidden = true
             self.strickView.isHidden = true
         }
@@ -188,8 +188,8 @@ extension SummaryViewController : PresenterOutputProtocol{
     
     func updatePromoDetail(data : PromoCodeEntity){
         showToast(msg: data.message ?? "")
-        self.offerPriceLbl.text = currency + (data.final_fees ?? 0).description ?? ""
-        self.setSeatchCountLbl(price: Int(self.doctors.specialities?.fees ?? "") ?? 0, offer: data.promo_discount ?? 0)
+        self.offerPriceLbl.text = currency + (data.final_fees ?? 0).description
+        self.setSeatchCountLbl(price: Int(self.doctors.specialities?.fees ?? 0) , offer: data.promo_discount ?? 0)
     }
     
     func showError(error: CustomError) {

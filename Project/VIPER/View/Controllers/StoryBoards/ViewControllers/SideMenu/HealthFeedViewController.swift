@@ -36,7 +36,7 @@ extension HealthFeedViewController {
     func initialLoads() {
         registerCell()
         setupNavigationBar()
-
+        self.setDesign()
     }
     private func setupNavigationBar() {
         self.navigationController?.isNavigationBarHidden = false
@@ -57,12 +57,7 @@ extension HealthFeedViewController {
     }
 
     func setDesign() {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 40))
-        let label = UILabel(frame: CGRect(x: 16, y: 0, width: self.view.frame.height, height: 40))
-        label.text = "Published Articles"
-        label.textColor = .black
-        headerView.addSubview(label)
-        self.tableViewHealthFeed.tableHeaderView = headerView
+
         self.tableViewHealthFeed.separatorStyle = .none
     }
 }
@@ -73,7 +68,24 @@ extension HealthFeedViewController {
 extension HealthFeedViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.article.count ?? 0
+        return self.article.count
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
+        let label = UILabel(frame: CGRect(x: 16, y: 0, width: self.view.frame.height, height: 40))
+        label.text = "Published Articles"
+        headerView.backgroundColor = .white
+        label.textColor = .black
+        headerView.addSubview(label)
+        Common.setFontWithType(to: label, size: 18.0, type: .meduim)
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return 50
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -84,9 +96,10 @@ extension HealthFeedViewController : UITableViewDelegate, UITableViewDataSource 
     }
     
     func populateCell(cell : HealthFeedTableViewCell , data : Article){
+//        cell.ArticleImage.setImage(with: data.cover_photo, placeHolder: UIImage(named: "NoImageFound"))//setURLImage(data.cover_photo ?? "")
         cell.ArticleImage.setURLImage(data.cover_photo ?? "")
-        cell.ArticleTitle.text = data.name ?? ""
-        cell.Articlecontent.text = data.description ?? ""
+        cell.ArticleTitle.text = data.name ?? "".capitalized
+        cell.Articlecontent.text = data.description ?? "".capitalized
         cell.publishedDate.text = dateConvertor(data.created_at ?? "", _input: .date_time, _output: .DMY)
     }
         
@@ -95,7 +108,7 @@ extension HealthFeedViewController : UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 250 //UITableViewAutomaticDimension
     }
 }
 

@@ -223,5 +223,10 @@
             
         }
         
+        override func layoutSubviews() {
+            super.layoutSubviews()
+            
+            self.bgView.addShadow(color: .lightGray, opacity: 0.4, offset: CGSize(width: -0.5,height: 1.0), radius: 2, rasterize: false, maskToBounds: false)
+        }
     }
 

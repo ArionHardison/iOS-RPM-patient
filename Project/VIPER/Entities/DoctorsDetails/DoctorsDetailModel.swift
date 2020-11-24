@@ -297,7 +297,7 @@ struct Specialities : Mappable {
     var image : String?
     var status : Int?
     var discount : String?
-    var fees : String?
+    var fees : Int?
     var offer_fees : String?
     var doctor_profile : [Doctor_profile]?
 

@@ -14,7 +14,7 @@ struct Category : Mappable {
     var name : String?
     var image : String?
     var offer_fees : String?
-    var fees : String?
+    var fees : Int?
     var status : Int?
     init() {
         

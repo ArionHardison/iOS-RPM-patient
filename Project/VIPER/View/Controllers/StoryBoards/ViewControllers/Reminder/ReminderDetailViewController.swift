@@ -54,12 +54,12 @@ extension ReminderDetailViewController {
     
     func initailSetup(){
         self.setupNavigation()
-        Common.setFont(to: self.DateTitleLbl, isTitle: false, size: 17)
-        Common.setFont(to: self.dateTxt, isTitle: true, size: 17)
-        Common.setFont(to: self.TimeTitleLbl, isTitle: false, size: 17)
-        Common.setFont(to: self.timeTxt, isTitle: true, size: 17)
-        Common.setFont(to: self.alaramTitleLbl, isTitle: false, size: 17)
-        Common.setFont(to: self.NotifyTitleLbl, isTitle: false, size: 17)
+//        Common.setFont(to: self.DateTitleLbl, isTitle: false, size: 17)
+//        Common.setFont(to: self.dateTxt, isTitle: true, size: 17)
+//        Common.setFont(to: self.TimeTitleLbl, isTitle: false, size: 17)
+//        Common.setFont(to: self.timeTxt, isTitle: true, size: 17)
+//        Common.setFont(to: self.alaramTitleLbl, isTitle: false, size: 17)
+//        Common.setFont(to: self.NotifyTitleLbl, isTitle: false, size: 17)
         self.alaramSwiftch.setOn(isAlarm, animated: true)
         self.NotifySwiftch.setOn(isNotify, animated: true)
         self.alaramSwiftch.addTarget(self, action: #selector(alarmAction(sender:)), for: .valueChanged)

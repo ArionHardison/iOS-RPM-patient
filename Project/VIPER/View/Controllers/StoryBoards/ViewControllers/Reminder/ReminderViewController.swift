@@ -39,7 +39,8 @@ class ReminderViewController: UIViewController {
         self.noDataView.isHidden = true
         self.noDataLabel.text = "No Remainders"
         self.presenter?.HITAPI(api: Base.remainderApi.rawValue, params: nil, methodType: .GET, modelClass: Remainder.self, token: true)
-        
+        self.addreminderImg.image =  self.addreminderImg.image?.withRenderingMode(.alwaysTemplate)
+        self.addreminderImg.tintColor = .AppBlueColor
        
     }
     

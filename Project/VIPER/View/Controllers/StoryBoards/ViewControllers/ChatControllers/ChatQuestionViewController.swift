@@ -97,8 +97,8 @@ extension ChatQuestionViewController : UITableViewDelegate,UITableViewDataSource
         if indexPath.row <= (self.category.count )-1{
             let data : Category = self.category[indexPath.row]
             cell.titleLbl.text = data.name ?? ""
-            cell.offerPriceLbl.text = data.offer_fees ?? ""
-            cell.priceLbl.text = data.fees ?? ""
+            cell.offerPriceLbl.text = "$" + " " + (data.offer_fees ?? "")
+            cell.priceLbl.text = "$ \(data.fees ?? 0)"
         }
         
         return cell

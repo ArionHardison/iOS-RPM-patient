@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "Taking-Care-of-Health- article.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Taking-Care-of-Health- article@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
