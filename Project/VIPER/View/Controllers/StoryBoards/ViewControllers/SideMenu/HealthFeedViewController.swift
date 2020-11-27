@@ -91,20 +91,27 @@ extension HealthFeedViewController : UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HealthFeedTableViewCell") as! HealthFeedTableViewCell
         cell.selectionStyle = .none
-        self.populateCell(cell: cell, data: self.article[indexPath.row])
+//        self.populateCell(cell: cell, data: self.article[indexPath.row])
+        cell.ArticleImage.setURLImage(self.article[indexPath.row].cover_photo ?? "")
+        cell.ArticleTitle.text = self.article[indexPath.row].name ?? "".capitalized
+        cell.Articlecontent.text = self.article[indexPath.row].description ?? "".capitalized
+        cell.publishedDate.text = dateConvertor(self.article[indexPath.row].created_at ?? "", _input: .date_time, _output: .DMY)
         return cell
     }
     
     func populateCell(cell : HealthFeedTableViewCell , data : Article){
 //        cell.ArticleImage.setImage(with: data.cover_photo, placeHolder: UIImage(named: "NoImageFound"))//setURLImage(data.cover_photo ?? "")
-        cell.ArticleImage.setURLImage(data.cover_photo ?? "")
-        cell.ArticleTitle.text = data.name ?? "".capitalized
-        cell.Articlecontent.text = data.description ?? "".capitalized
-        cell.publishedDate.text = dateConvertor(data.created_at ?? "", _input: .date_time, _output: .DMY)
+ 
     }
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(id: Storyboard.Ids.HealthFeedDetailsViewController, animation: true)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.HealthFeedDetailsViewController) as! HealthFeedDetailsViewController
+        vc.titleText = self.article[indexPath.row].name ?? "" .capitalized
+        vc.descriptionText = self.article[indexPath.row].description ?? ""
+        vc.imageTitle = self.article[indexPath.row].cover_photo ?? ""
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+//        self.push(id: Storyboard.Ids.HealthFeedDetailsViewController, animation: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -198,7 +198,7 @@ extension DoctorDetailsController{
         self.navigationController?.isNavigationBarHidden = false
         let shareButton = UIBarButtonItem(image: #imageLiteral(resourceName: "share").resizeImage(newWidth: 20), style: .plain, target: self, action: #selector(shareAction))
         let infoButton = UIBarButtonItem(image: #imageLiteral(resourceName: "info").resizeImage(newWidth: 20), style: .plain, target: self, action: #selector(infoAction))
-        self.navigationItem.rightBarButtonItems = [shareButton,infoButton]
+//        self.navigationItem.rightBarButtonItems = [shareButton,infoButton]
     }
     
     @objc func shareAction() {

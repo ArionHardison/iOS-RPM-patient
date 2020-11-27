@@ -17,7 +17,11 @@ class CardsListViewController: UIViewController {
     @IBOutlet weak var addMoneyButton: UIButton!
     
     var amount =  ""
+    var id = ""
+    var message = ""
+    var promoCode = ""
     var cardsList : [CardsModel]?
+    var isFromWallet : Bool = false
     private lazy var loader : UIView = {
         return createActivityIndicator(UIScreen.main.focusedView ?? self.view)
     }()
@@ -105,6 +109,7 @@ extension CardsListViewController : UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if isFromWallet{
         var params = [String:Any]()
         params.updateValue(amount, forKey: "amount")
         params.updateValue(cardsList?[indexPath.row].card_id ?? "", forKey: "card_id")
@@ -112,6 +117,19 @@ extension CardsListViewController : UITableViewDelegate,UITableViewDataSource {
         params.updateValue("patient", forKey: "user_type")
         self.presenter?.HITAPI(api: Base.addMoney.rawValue, params: params, methodType: .POST, modelClass: AddMoneyModel.self, token: true)
         self.loader.isHidden = false
+        }else{
+            var params = [String:Any]()
+            params.updateValue(id, forKey: "id")
+            params.updateValue(self.message, forKey: "message")
+            params.updateValue(self.amount, forKey: "Amount")
+            params.updateValue("CHAT", forKey: "pay_for")
+            params.updateValue(id, forKey: "speciality_id")
+            params.updateValue(promoCode, forKey: "promo_id")
+            params.updateValue("FALSE", forKey: "use_wallet")
+            params.updateValue("CARD", forKey: "payment_mode")
+            params.updateValue(cardsList?[indexPath.row].card_id ?? "", forKey: "card_id")
+            self.presenter?.HITAPI(api: Base.proceedToPay.rawValue, params: params, methodType: .POST, modelClass: CardSuccess.self, token: true)
+        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
@@ -128,7 +146,18 @@ extension CardsListViewController : PresenterOutputProtocol {
                 case model.type.CardSuccess:
                     let data = dataDict as? CardSuccess
                     let alert  = showAlert(message: data?.message) { (_) in
-                        self.navigationController?.popViewController(animated: true)
+//                        self.navigationController?.popViewController(animated: true)
+//                        self.navigationController?.popToViewController(HomeViewController.self, animated: true)
+                        if !self.isFromWallet{
+                        for controller in self.navigationController!.viewControllers as Array {
+                                if controller.isKind(of: HomeViewController.self) {
+                                    _ =  self.navigationController!.popToViewController(controller, animated: true)
+                                    break
+                                }
+                            }
+                        }else{
+                            self.navigationController?.popViewController(animated: true)
+                        }
                         }
                     self.present(alert, animated: true, completion: nil)
                     

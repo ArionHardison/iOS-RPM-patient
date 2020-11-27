@@ -370,3 +370,49 @@ struct PromoCodeEntity : Mappable {
     }
     
 }
+
+struct FAQModel : Mappable {
+   var status : Int?
+   var faq : [Faq]?
+    init() {
+        
+    }
+   init?(map: Map) {
+
+   }
+
+   mutating func mapping(map: Map) {
+
+       status <- map["status"]
+       faq <- map["faq"]
+   }
+
+}
+
+
+struct Faq : Mappable {
+    var id : Int?
+    var question : String?
+    var answer : String?
+    var created_at : String?
+    var updated_at : String?
+    var deleted_at : String?
+    init() {
+        
+    }
+
+    init?(map: Map) {
+
+    }
+
+    mutating func mapping(map: Map) {
+
+        id <- map["id"]
+        question <- map["question"]
+        answer <- map["answer"]
+        created_at <- map["created_at"]
+        updated_at <- map["updated_at"]
+        deleted_at <- map["deleted_at"]
+    }
+
+}

@@ -55,6 +55,8 @@ class ChatQuestionViewController: UIViewController {
         self.submitBtn.addTap {
             let vc = SummaryViewController.initVC(storyBoardName: .main, vc: SummaryViewController.self, viewConrollerID: Storyboard.Ids.SummaryViewController)
             vc.selectedCategory = self.category[self.selectedindex]
+            vc.offerPrice = self.category[self.selectedindex].offer_fees ?? ""
+            vc.price = "\(self.category[self.selectedindex].fees ?? 0)"
             vc.message = self.symptomsTxt.text ?? ""
             self.push(from: self, ToViewContorller: vc)
         }
@@ -97,8 +99,8 @@ extension ChatQuestionViewController : UITableViewDelegate,UITableViewDataSource
         if indexPath.row <= (self.category.count )-1{
             let data : Category = self.category[indexPath.row]
             cell.titleLbl.text = data.name ?? ""
-            cell.offerPriceLbl.text = "$" + " " + (data.offer_fees ?? "")
-            cell.priceLbl.text = "$ \(data.fees ?? 0)"
+            cell.offerPriceLbl.text = "$ \(data.fees ?? 0)" 
+            cell.priceLbl.text =  "$" + " " + (data.offer_fees ?? "")
         }
         
         return cell

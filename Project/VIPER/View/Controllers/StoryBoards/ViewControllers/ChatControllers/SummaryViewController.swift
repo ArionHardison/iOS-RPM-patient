@@ -33,10 +33,13 @@ class SummaryViewController: UIViewController {
     var doctors : DoctorsDetailModel = DoctorsDetailModel()
     var proceedAmount : String = "0"
     var message : String = ""
+    var offerPrice : String = ""
+    var price : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initialsetup()
+        self.proceedAmount = self.offerPrice
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,8 +81,6 @@ class SummaryViewController: UIViewController {
     
     
     func setupFont(){
-       
-        
         Common.setFont(to: titleLbl, isTitle: true, size: 20)
         Common.setFont(to: feeLbl, isTitle: true, size: 18)
         Common.setFont(to: proceedTPayBtn, isTitle: true, size: 20)
@@ -174,12 +175,12 @@ extension SummaryViewController : PresenterOutputProtocol{
     func setupData(){
         self.userCollection.reloadData()
         if self.doctors.specialities?.offer_fees != "0.00"{
-            self.proceedAmount = (self.doctors.specialities?.offer_fees ?? "")
-            self.offerPriceLbl.text = currency + (self.doctors.specialities?.offer_fees ?? "")
-            self.orginalPrieLbl.text = currency + "\(self.doctors.specialities?.fees ?? 0)"
+            self.proceedAmount = self.offerPrice//(self.doctors.specialities?.offer_fees ?? "")
+            self.offerPriceLbl.text = currency + (self.offerPrice)
+            self.orginalPrieLbl.text = currency + "\(self.price)"
             self.orginalPrieLbl.isHidden = false
         }else{
-            self.proceedAmount = "\(self.doctors.specialities?.fees ?? 0)"
+            self.proceedAmount = "\(self.doctors.specialities?.offer_fees ?? "0")"
             self.offerPriceLbl.text = currency + "\(self.doctors.specialities?.fees ?? 0)"
             self.orginalPrieLbl.isHidden = true
             self.strickView.isHidden = true
@@ -189,6 +190,7 @@ extension SummaryViewController : PresenterOutputProtocol{
     func updatePromoDetail(data : PromoCodeEntity){
         showToast(msg: data.message ?? "")
         self.offerPriceLbl.text = currency + (data.final_fees ?? 0).description
+        self.proceedAmount = (data.final_fees ?? 0).description
         self.setSeatchCountLbl(price: Int(self.doctors.specialities?.fees ?? 0) , offer: data.promo_discount ?? 0)
     }
     
@@ -205,7 +207,14 @@ extension SummaryViewController : PresenterOutputProtocol{
     }
     
     func proceedToPay(id : String,message : String,Amount:String,promo_id : String,speciality_id : String){
-        self.presenter?.HITAPI(api: Base.proceedToPay.rawValue, params: ["id" : id, "message" : message,"Amount":Amount,"pay_for":"CHAT","promo_id":promo_id,"speciality_id" : speciality_id,"payment_mode":"CARD","use_wallet":"FALSE"], methodType: .POST, modelClass: PromoCodeEntity.self, token: true)
+//        self.presenter?.HITAPI(api: Base.proceedToPay.rawValue, params: ["id" : id, "message" : message,"Amount":Amount,"pay_for":"CHAT","promo_id":promo_id,"speciality_id" : speciality_id,"payment_mode":"CARD","use_wallet":"FALSE"], methodType: .POST, modelClass: PromoCodeEntity.self, token: true)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.CardsListViewController) as! CardsListViewController
+        vc.amount = Amount
+        vc.isFromWallet = false
+        vc.id = id
+        vc.promoCode = promo_id
+        vc.message = message
+        self.navigationController?.pushViewController(vc, animated:true)
     }
   
 }

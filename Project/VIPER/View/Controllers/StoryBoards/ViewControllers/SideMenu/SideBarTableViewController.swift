@@ -19,7 +19,7 @@ class SideBarTableViewController: UITableViewController {
     @IBOutlet private var viewShadow : UIView!
     @IBOutlet private weak var profileImageCenterContraint : NSLayoutConstraint!
     
-    private let sideBarList = [Constants.string.appointments,Constants.string.onlineConsultations,Constants.string.favDoctor,Constants.string.medicalRecords,Constants.string.reminder,Constants.string.wallet,Constants.string.articles,Constants.string.relativesManagement,Constants.string.settings] // Constants.string.faqAndAdmin,
+    private let sideBarList = [Constants.string.appointments,Constants.string.onlineConsultations,Constants.string.favDoctor,Constants.string.medicalRecords,Constants.string.reminder,Constants.string.wallet,Constants.string.articles,Constants.string.relativesManagement,Constants.string.settings] //Constants.string.faqAndAdmin,
     
     private let imagesList = ["appointment","onlineConsultation","favdoctor","medicalRecords","reminder","wallet","articles","RelativesManagement","settings"] //"faq",
     private let cellId = "cellId"

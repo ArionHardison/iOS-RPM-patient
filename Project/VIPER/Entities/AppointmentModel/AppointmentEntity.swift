@@ -111,6 +111,10 @@ struct Previous : Mappable {
     var deleted_at : String?
     var appointments : [Appointments]?
     
+    init() {
+        
+    }
+    
     init?(map: Map) {
         
     }
@@ -194,6 +198,10 @@ struct Upcomming : Mappable {
     var updated_at : String?
     var deleted_at : String?
     var appointments : [Appointments]?
+    
+    init() {
+        
+    }
     
     init?(map: Map) {
         

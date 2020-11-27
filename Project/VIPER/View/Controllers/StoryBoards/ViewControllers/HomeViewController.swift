@@ -199,6 +199,9 @@
         let CardSuccess = "CardSuccess"
         let AddMoneyModel = "AddMoneyModel"
         let CardsModel = "CardsModel"
+        let FAQModel = "FAQModel"
+        let RelativeManagement = "RelativeManagement"
+        let CreateRelativeResponse = "CreateRelativeResponse"
     }
     
     

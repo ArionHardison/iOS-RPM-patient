@@ -90,14 +90,14 @@ extension VisitedDoctorsViewController: UITableViewDelegate, UITableViewDataSour
         cell.labelStatus.isHidden = false
 //        cell.statusWidth.constant = isFirstBlockSelected ? 0 : 81
 //        cell.labelStatus.layer.cornerRadius = 4
-        if data.status ?? "" == "ONLINE"{
-            cell.labelStatus.backgroundColor = UIColor(named: "LightGreen") //UIColor.red.withAlphaComponent(0.2)
-            cell.labelStatus.textColor = UIColor(named: "ConfirmedGreenColor") //UIColor(named: "")
+        if data.status ?? "" == "CANCELLED"{
+            cell.labelStatus.backgroundColor = UIColor.red.withAlphaComponent(0.2) //UIColor(named: "LightGreen") //
+            cell.labelStatus.textColor = UIColor.red.withAlphaComponent(0.2)//UIColor(named: "ConfirmedGreenColor") //UIColor(named: "")
         }else{
             cell.labelStatus.backgroundColor = UIColor(named: "LightGreen") //UIColor.LightGreen
             cell.labelStatus.textColor = UIColor(named: "ConfirmedGreenColor") //UIColor.AppBlueColor
         }
-        cell.labelStatus.text = data.appointment_type ?? "".uppercased()
+        cell.labelStatus.text = data.status ?? "".uppercased()
 
     }
     

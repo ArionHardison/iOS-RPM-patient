@@ -30,6 +30,9 @@ class AllergiesListViewController: UIViewController {
         super.viewDidLoad()
         self.setUpnavigation()
         
+//        self.allergyID += [allergy.count]
+//        self.allergyName += [""]
+
         self.allergyTableView.register(UINib(nibName: "FAQCell", bundle: nil), forCellReuseIdentifier: "FAQCell")
         self.allergyTableView.allowsMultipleSelection = true
     
@@ -137,41 +140,41 @@ extension AllergiesListViewController : UITableViewDelegate, UITableViewDataSour
         return allergy.count
     }
     
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "FAQCell", for: indexPath) as? FAQCell
         cell?.textLbl.text = self.allergy[indexPath.row].name
-        if self.allergyID.contains(self.allergy[indexPath.row].id ?? 0){
-            cell?.radioImage.image = #imageLiteral(resourceName: "RadioON")
-        }else{
-            cell?.radioImage.image = #imageLiteral(resourceName: "Ellipse 162")
-        }
-        cell?.contentView.addTap {
-           if self.allergyID.contains(self.allergy[indexPath.row].id ?? 0){
-                var index1 = Int()
-            for i in 0 ... (self.allergyID.count - 1){
-                print(self.allergyID[i])
-                if(self.allergyID[i] == self.allergy[indexPath.row].id ?? 0){
-                   
-                    index1 = i
-                }
-                self.allergyID.remove(at: i)
-                self.allergyName.remove(at: i)
-                self.allergyTableView.reloadInMainThread()
-            }
-                
-           }else{
-            self.allergyID.append(self.allergy[indexPath.row].id ?? 0)
-            self.allergyName.append(self.allergy[indexPath.row].name ?? "")
-            self.allergyTableView.reloadInMainThread()
-            print(self.allergyName)
-           }
-        }
+        cell?.accessoryType = .none
+        cell?.tintColor = .AppBlueColor
+
         return cell!
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.cellForRow(at: indexPath) as? FAQCell
+        cell?.accessoryType = .checkmark
+        self.allergyID.append(self.allergy[indexPath.row].id ?? 0)
+        self.allergyName.append(self.allergy[indexPath.row].name ?? "")
+
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.cellForRow(at: indexPath) as? FAQCell
+        cell?.accessoryType = .none
+        let names = self.allergy[indexPath.row].name
+        let ids = self.allergyName.lastIndex{$0 == names}
+        self.allergyName.remove(at: ids!)
+        self.allergyID.remove(at: ids!)
+
+
+    }
 
     
 }
 
 
+ 

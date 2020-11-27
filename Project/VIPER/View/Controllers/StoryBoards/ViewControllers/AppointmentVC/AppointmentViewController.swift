@@ -19,8 +19,8 @@ class AppointmentViewController: UIViewController {
        
        var isYourTripsSelected = true
     
-      var upcomingAppointment : [Appointments] = [Appointments]()
-      var previousAppointment : [Appointments] = [Appointments]()
+      var upcomingAppointment = Upcomming()
+      var previousAppointment = Previous()
 
     
        private var isFirstBlockSelected = true {
@@ -99,9 +99,9 @@ extension AppointmentViewController : UITableViewDelegate,UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFirstBlockSelected{
-            return self.upcomingAppointment.count ?? 0
+            return self.upcomingAppointment.appointments?.count ?? 0
         }else {
-            return self.previousAppointment.count
+            return self.previousAppointment.appointments?.count ?? 0
         }
         
     }
@@ -111,9 +111,9 @@ extension AppointmentViewController : UITableViewDelegate,UITableViewDataSource
         
         let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.UpcomingTableviewCell, for: indexPath) as! UpcomingTableviewCell
         if isFirstBlockSelected{
-            self.populateData(cell: cell, data: self.upcomingAppointment[indexPath.row],index: indexPath.row)
+            self.populateData(cell: cell, data: self.upcomingAppointment.appointments?[indexPath.row] ?? Appointments(),index: indexPath.row)
         }else {
-            self.populateData(cell: cell, data: self.previousAppointment[indexPath.row],index: indexPath.row)
+            self.populateData(cell: cell, data: self.previousAppointment.appointments?[indexPath.row] ?? Appointments(),index: indexPath.row)
         }
         
         
@@ -154,10 +154,10 @@ extension AppointmentViewController : UITableViewDelegate,UITableViewDataSource
             twilioVideoController.modalPresentationStyle = .fullScreen
             self.present(twilioVideoController, animated: true, completion: {
                 twilioVideoController.video = 1
-                twilioVideoController.senderId = "\(self.previousAppointment[sender.tag].doctor_id ?? 0 )"
-                twilioVideoController.receiverName = (self.previousAppointment[sender.tag].hospital?.first_name ?? "") + (self.previousAppointment[sender.tag].hospital?.first_name ?? "")
+                twilioVideoController.senderId = "\(self.previousAppointment.appointments?[sender.tag].doctor_id ?? 0 )"
+                twilioVideoController.receiverName = (self.previousAppointment.appointments?[sender.tag].hospital?.first_name ?? "") + (self.previousAppointment.appointments?[sender.tag].hospital?.first_name ?? "")
                 twilioVideoController.isCallType = .makeCall
-                twilioVideoController.handleCall(roomId: "12345", receiverId: "\(self.previousAppointment[sender.tag].doctor_id ?? 0)",isVideo : 1)
+                twilioVideoController.handleCall(roomId: "12345", receiverId: "\(self.previousAppointment.appointments?[sender.tag].doctor_id ?? 0)",isVideo : 1)
                                })
                            } else {
                              // Fallback on earlier versions
@@ -179,12 +179,16 @@ extension AppointmentViewController : UITableViewDelegate,UITableViewDataSource
             
             if self.isFirstBlockSelected{
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.UpcomingDetailsController) as! UpcomingDetailsController
-                vc.appointment = self.upcomingAppointment[indexPath.row]
+                vc.appointment = self.upcomingAppointment //self.upcomingAppointment[indexPath.row]
+                vc.index = indexPath.row
+                vc.isFromUpcomming = true
                 self.navigationController?.pushViewController(vc, animated: true)
             }else{
                 
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.AppointmentDetailsViewController) as! AppointmentDetailsViewController
-                vc.visitedDetail = Visited_doctors(JSON: self.previousAppointment[indexPath.row].toJSON())!
+                vc.visitedDetail = self.previousAppointment
+                vc.index = indexPath.row
+//                vc.visitedDetail = Visited_doctors(JSON: self.previousAppointment.appointments?[indexPath.row].toJSON() ?? Appointments().toJSON())!
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             
@@ -215,8 +219,8 @@ extension AppointmentViewController : PresenterOutputProtocol{
             case model.type.AppointmentModel:
                 
                let data = dataDict as? AppointmentModel
-               self.upcomingAppointment = data?.upcomming?.appointments ?? [Appointments]()
-               self.previousAppointment = data?.previous?.appointments ?? [Appointments]()
+                self.upcomingAppointment = (data?.upcomming)!
+               self.previousAppointment = (data?.previous)!
                self.reloadTable()
                 break
             case model.type.CommonModel:

@@ -55,6 +55,7 @@ class AllergyViewController: UIViewController {
         addallergyView.addTap {
             
             let vc = self.storyboard?.instantiateViewController(identifier: "AllergiesListViewController") as! AllergiesListViewController
+            vc.modalPresentationStyle = .overFullScreen
             vc.onClickDone = { allergies in
                 self.allergies = allergies
                 print(self.allergies )

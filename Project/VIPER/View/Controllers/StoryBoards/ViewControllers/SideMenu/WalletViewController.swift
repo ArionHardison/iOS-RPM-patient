@@ -36,6 +36,7 @@ class WalletViewController: UIViewController {
             }else{
                 let vc = self.storyboard?.instantiateViewController(withIdentifier:Storyboard.Ids.CardsListViewController) as! CardsListViewController
                 vc.amount = self.textFieldAmount.getText
+                vc.isFromWallet = true
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }

@@ -200,7 +200,7 @@ fileprivate class CustomPicker: NSObject {
         pickerView.leadingAnchor.constraint(equalTo: vc.view.leadingAnchor).isActive = true
         pickerView.trailingAnchor.constraint(equalTo: vc.view.trailingAnchor).isActive = true
         
-        pickerConstraints = NSLayoutConstraint(item: pickerView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: vc.view, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1.0, constant: 0)
+        pickerConstraints = NSLayoutConstraint(item: pickerView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: vc.view, attribute: NSLayoutConstraint.Attribute.bottomMargin, multiplier: 1.0, constant: 0)
         vc.view.addConstraints([pickerConstraints])
         
         

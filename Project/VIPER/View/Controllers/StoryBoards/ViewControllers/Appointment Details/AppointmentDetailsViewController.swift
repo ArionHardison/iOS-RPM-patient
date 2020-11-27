@@ -29,11 +29,13 @@ class AppointmentDetailsViewController: UITableViewController {
     @IBOutlet weak var SubmitButton: UIButton!
     @IBOutlet weak var consultedText: HoshiTextField!
     @IBOutlet weak var commentsText: UITextView!
+    @IBOutlet weak var ratingView: FloatRatingView!
     
-    var visitedDetail : Visited_doctors = Visited_doctors()
+    var visitedDetail : Previous = Previous()
     var updatedVisitedDetail : Appointments = Appointments()
     var isFromVisited : Bool = false
     var likedStatus : String = ""
+    var index : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +57,12 @@ extension AppointmentDetailsViewController {
         setTextFonts()
         self.doctorImg.makeRoundedCorner()
         self.setupAction()
+        self.ratingView.minRating = 1
+        self.ratingView.maxRating = 5
+        self.ratingView.rating = 3
+//        self.ratingView.tintColor = .AppBlueColor
+//        self.ratingView.emptyImage = UIImage(systemName: "star")
+//        self.ratingView.fullImage = UIImage(systemName: "star.fill")
     }
     
     private func setupNavigationBar() {
@@ -93,15 +101,15 @@ extension AppointmentDetailsViewController {
     
     func setupData(){
         if !isFromVisited{
-         let data : Visited_doctors = self.visitedDetail
+//         let data : Visited_doctors = self.visitedDetail
           
-            self.doctorImg.setURLImage(data.hospital?.doctor_profile?.profile_pic ?? "")
-        self.doctorName.text = "\(data.hospital?.first_name ?? "") \(data.hospital?.last_name ?? "")".capitalized
-        self.labelCategory.text = "\(data.hospital?.doctor_profile?.speciality?.name ?? "")".uppercased()
-        self.labelHospitalName.text = "\(data.hospital?.clinic?.name ?? ""), \(data.hospital?.clinic?.address ?? "")".capitalized
-            self.labelPatientName.text = "\(data.booking_for ?? "")"
-            self.labelDate.text = dateConvertor(data.scheduled_at ?? "", _input: .date_time, _output: .DMY_Time)
-            self.labelStatusResponse.text = data.status ?? ""
+            self.doctorImg.setURLImage(self.visitedDetail.appointments?[index].hospital?.doctor_profile?.profile_pic ?? "")
+        self.doctorName.text = "\(self.visitedDetail.appointments?[index].hospital?.first_name ?? "") \(self.visitedDetail.appointments?[index].hospital?.last_name ?? "")".capitalized
+        self.labelCategory.text = "\(self.visitedDetail.appointments?[index].hospital?.doctor_profile?.speciality?.name ?? "")".uppercased()
+        self.labelHospitalName.text = "\(self.visitedDetail.appointments?[index].hospital?.clinic?.name ?? ""), \(self.visitedDetail.appointments?[index].hospital?.clinic?.address ?? "")".capitalized
+            self.labelPatientName.text = "\(self.visitedDetail.first_name ?? "")  \(self.visitedDetail.last_name ?? "")"
+            self.labelDate.text = dateConvertor(self.visitedDetail.appointments?[index].scheduled_at ?? "", _input: .date_time, _output: .DMY_Time)
+            self.labelStatusResponse.text = self.visitedDetail.appointments?[index].status ?? ""
         }else{
             let data : Appointments = self.updatedVisitedDetail
             self.doctorImg.setURLImage(data.hospital?.doctor_profile?.profile_pic ?? "")
@@ -134,9 +142,9 @@ extension AppointmentDetailsViewController {
                 var comment = FeedBackReq()
                 comment.comments = self.commentsText.text ?? ""
                 comment.experiences = self.likedStatus
-                comment.hospital_id = (self.visitedDetail.hospital?.id ?? 0).description
+                comment.hospital_id = (self.visitedDetail.appointments?[self.index].hospital?.id ?? 0).description
                 comment.visited_for = self.consultedText.getText
-                comment.rating = "5"
+                comment.rating = "\(self.ratingView.rating)"
                 comment.title = "Rating Review"
                 self.postFeedBack(feedback: comment)
             }

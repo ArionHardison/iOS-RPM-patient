@@ -212,6 +212,7 @@
 		8555064E256664450046A8A9 /* FaqHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85550649256664440046A8A9 /* FaqHeaderView.xib */; };
 		8555064F256664450046A8A9 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555064A256664440046A8A9 /* FAQViewController.swift */; };
 		85550650256664450046A8A9 /* FaqHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555064B256664440046A8A9 /* FaqHeaderView.swift */; };
+		8564F15D256FFAAD00AED2D8 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8564F15C256FFAAD00AED2D8 /* FloatRatingView.swift */; };
 		8574167E255AB249002D1F1F /* RelativeManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8574167D255AB249002D1F1F /* RelativeManagementViewController.swift */; };
 		857416B1255ACDBD002D1F1F /* RelativeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857416B0255ACDBD002D1F1F /* RelativeDetailViewController.swift */; };
 		857416B6255AE12F002D1F1F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857416B5255AE12F002D1F1F /* SettingsViewController.swift */; };
@@ -466,6 +467,7 @@
 		85550649256664440046A8A9 /* FaqHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FaqHeaderView.xib; sourceTree = "<group>"; };
 		8555064A256664440046A8A9 /* FAQViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		8555064B256664440046A8A9 /* FaqHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaqHeaderView.swift; sourceTree = "<group>"; };
+		8564F15C256FFAAD00AED2D8 /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
 		8574167D255AB249002D1F1F /* RelativeManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeManagementViewController.swift; sourceTree = "<group>"; };
 		857416B0255ACDBD002D1F1F /* RelativeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeDetailViewController.swift; sourceTree = "<group>"; };
 		857416B5255AE12F002D1F1F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -619,6 +621,7 @@
 		084B342420B028E800B79318 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				8564F15C256FFAAD00AED2D8 /* FloatRatingView.swift */,
 				85540293256535DF003972F5 /* KeyboardManager.swift */,
 				8579C71B2551A03300F5B572 /* PushHelper.swift */,
 				85C76851254D81F9002827B9 /* PickerManager.swift */,
@@ -1914,6 +1917,7 @@
 				8527C7A4256BCAFF007F9B31 /* CardsListViewController.swift in Sources */,
 				85537DBA255D8977006C061C /* TimeCell.swift in Sources */,
 				107372872498B0FF0080A5A5 /* AlertBuilder.swift in Sources */,
+				8564F15D256FFAAD00AED2D8 /* FloatRatingView.swift in Sources */,
 				8527C7CA256BF440007F9B31 /* AddAllergyTableViewCell.swift in Sources */,
 				08DBC87B20B9F70800AE89E6 /* DatePickerDialog.swift in Sources */,
 				12AE3EF02451D24E00E90872 /* CategoryListController.swift in Sources */,
@@ -2227,7 +2231,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TeleHealth.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.10;
+				CURRENT_PROJECT_VERSION = 2.11;
 				DEVELOPMENT_TEAM = Q4N6XWX7K3;
 				INFOPLIST_FILE = "$(SRCROOT)/Project/Common/Plist Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -2250,7 +2254,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TeleHealth.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.10;
+				CURRENT_PROJECT_VERSION = 2.11;
 				DEVELOPMENT_TEAM = Q4N6XWX7K3;
 				INFOPLIST_FILE = "$(SRCROOT)/Project/Common/Plist Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

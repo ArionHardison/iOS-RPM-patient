@@ -66,8 +66,8 @@ extension SelectedProblemAreaVC : UICollectionViewDelegate,UICollectionViewDataS
         
         let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: XIB.Names.ProblemCell, for: indexPath) as! ProblemCell
         cell.problemsLbl.text = self.category[indexPath.row].name
-        cell.orginalPrizeLbl.text = "$" + " \(self.category[indexPath.row].fees ?? 0)"
-        cell.offerPrizeLbl.text = "$" + " " + (self.category[indexPath.row].offer_fees ?? "")
+        cell.orginalPrizeLbl.text = "$" + "\(self.category[indexPath.row].fees ?? 0)"
+        cell.offerPrizeLbl.text = "$" + (self.category[indexPath.row].offer_fees ?? "")
 //        let url = baseUrl + "/storage/" + (self.category[indexPath.row].image ?? "")
         cell.problemsImg.setURLImage(self.category[indexPath.row].image ?? "")
         

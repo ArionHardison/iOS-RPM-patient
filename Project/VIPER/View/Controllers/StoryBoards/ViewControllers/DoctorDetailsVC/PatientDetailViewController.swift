@@ -71,29 +71,31 @@ class PatientDetailViewController: UIViewController {
      func setupAction(){
         self.confirmBtn.addTap {
             if self.validation(){
+                var params = [String:Any]()
                 if !self.isfromSearch{
-                self.bookingreq.consult_time = "5"
-                self.bookingreq.appointment_type = "ONLINE"
-                self.bookingreq.description = "Patient Testing Purpose"
-                    self.bookingreq.doctor_id = "\(self.docProfile.id ?? 0)"
+                    params.updateValue("5", forKey: "consult_time") //self.bookingreq.consult_time = "5"
+                    params.updateValue("ONLINE", forKey: "appointment_type")   // self.bookingreq.appointment_type = "ONLINE"
+                    params.updateValue("Patient Testing Purpose", forKey: "description")//     self.bookingreq.description = "Patient Testing Purpose"
+                    params.updateValue("\(self.docProfile.doctor_id ?? 0)", forKey: "doctor_id") //self.bookingreq.doctor_id = "\(self.docProfile.id ?? 0)"
+                    params.updateValue(self.isFollowup ? "follow_up" : "consultation", forKey: "booking_for") //self.bookingreq.booking_for =  self.isFollowup ? "follow_up" : "consultation"
+                    params.updateValue(UserDefaultConfig.PatientID, forKey: "selectedPatient") // self.bookingreq.selectedPatient = UserDefaultConfig.PatientID
+                    params.updateValue("\(self.categoryId)", forKey: "service_id") //self.bookingreq.service_id = "\(self.categoryId)"
+                    params.updateValue(self.bookingreq.scheduled_at, forKey: "scheduled_at") //self.bookingreq.scheduled_at = self.bookingreq.scheduled_at
+               
+                 
                 
-                self.bookingreq.booking_for =  self.isFollowup ? "follow_up" : "consultation"
-                self.bookingreq.selectedPatient = UserDefaultConfig.PatientID
-                 self.bookingreq.service_id = "\(self.categoryId)"
-                self.bookingreq.scheduled_at = self.bookingreq.scheduled_at
                 }else{
-                    self.bookingreq.consult_time = "5"
-                    self.bookingreq.appointment_type = "ONLINE"
-                    self.bookingreq.description = "Patient Testing Purpose"
-                    self.bookingreq.doctor_id = "\(self.searchDoctor.id ?? 0)"
-                    
-                    self.bookingreq.booking_for =  self.isFollowup ? "follow_up" : "consultation"
-                    self.bookingreq.selectedPatient = UserDefaultConfig.PatientID
-                     self.bookingreq.service_id = "\(self.categoryId)"
-                    self.bookingreq.scheduled_at = self.bookingreq.scheduled_at
+                    params.updateValue("15", forKey: "consult_time") //self.bookingreq.consult_time = "5"
+                    params.updateValue("OFFLINE", forKey: "appointment_type")   // self.bookingreq.appointment_type = "ONLINE"
+                    params.updateValue("Patient Testing Purpose", forKey: "description")//     self.bookingreq.description = "Patient Testing Purpose"
+                    params.updateValue(self.searchDoctor.doctor_profile?.doctor_id ?? 0, forKey: "doctor_id") //self.bookingreq.doctor_id = "\(self.docProfile.id ?? 0)"
+                    params.updateValue(self.isFollowup ? "follow_up" : "consultation", forKey: "booking_for") //self.bookingreq.booking_for =  self.isFollowup ? "follow_up" : "consultation"
+                    params.updateValue(UserDefaultConfig.PatientID, forKey: "selectedPatient") // self.bookingreq.selectedPatient = UserDefaultConfig.PatientID
+                    params.updateValue(self.searchDoctor.doctor_service?.first?.service_id ?? 0, forKey: "service_id") //self.bookingreq.service_id = "\(self.categoryId)"
+                    params.updateValue(self.bookingreq.scheduled_at, forKey: "scheduled_at") //self.bookingreq.scheduled_at = self.bookingreq.scheduled_at
                     }
 
-                self.bookingApointment(booking : self.bookingreq)
+                self.bookingApointment(booking : params)
 
             }
         }
@@ -162,8 +164,8 @@ extension PatientDetailViewController : PresenterOutputProtocol{
         showToast(msg: error.localizedDescription)
     }
     
-    func bookingApointment(booking : BookingReq){
-        self.presenter?.HITAPI(api: Base.booking.rawValue, params: convertToDictionary(model: booking), methodType: .POST, modelClass: BookingModel.self, token: true)
+    func bookingApointment(booking : [String:Any]){
+        self.presenter?.HITAPI(api: Base.booking.rawValue, params: booking, methodType: .POST, modelClass: BookingModel.self, token: true)
     }
     
 }

@@ -75,6 +75,10 @@ enum Base : String{
     case addMoney = "/api/patient/add_money"
     case deleteCard = "/api/patient/delete/card"
     case listCard = "//api/patient/card"
+    case faq = "/api/patient/faq"
+    case getRelative = "/api/patient/relative/list"
+    case createRelative = "/api/patient/relative"
+    
    
     init(fromRawValue: String){
         self = Base(rawValue: fromRawValue) ?? .signUp

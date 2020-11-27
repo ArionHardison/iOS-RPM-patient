@@ -34,8 +34,10 @@ class UpcomingDetailsController: UITableViewController {
     @IBOutlet weak var buttonCancel: UIButton!
     @IBOutlet weak var videoCallButton: UIButton!
     
-    var appointment = Appointments()
+    var appointment = Upcomming()
+    var pastAppoitment =  Previous()
     var isFromUpcomming:Bool = false
+    var index : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,18 +70,31 @@ class UpcomingDetailsController: UITableViewController {
 extension UpcomingDetailsController {
     
     private func initalLoads(){
-        
-        self.doctorName.text = "\(self.appointment.hospital?.first_name ?? "") \(self.appointment.hospital?.last_name ?? "")".capitalized
-        self.labelHospitalName.text = "\(self.appointment.hospital?.clinic?.name ?? ""), \(self.appointment.hospital?.clinic?.address ?? "")".capitalized
-        self.labelDate.text = dateConvertor(self.appointment.scheduled_at ?? "", _input: .date_time, _output: .DMY_Time)
-        self.labelPatientName.text = (self.appointment.hospital?.first_name ?? "").capitalized + (self.appointment.hospital?.last_name ?? "").capitalized
+        if isFromUpcomming{
+        self.doctorName.text = "\(self.appointment.appointments?[self.index].hospital?.first_name ?? "") \(self.appointment.appointments?[self.index].hospital?.last_name ?? "")".capitalized
+        self.labelHospitalName.text = "\(self.appointment.appointments?[self.index].hospital?.clinic?.name ?? ""), \(self.appointment.appointments?[self.index].hospital?.clinic?.address ?? "")".capitalized
+        self.labelDate.text = dateConvertor(self.appointment.appointments?[self.index].scheduled_at ?? "", _input: .date_time, _output: .DMY_Time)
+        self.labelPatientName.text = (self.appointment.first_name ?? "").capitalized + " " + (self.appointment.last_name ?? "").capitalized
 //        self.doctorName.text = self.appointment.hospital?.clinic?.name ?? "".capitalized
-        self.labelDesignation.text = self.appointment.hospital?.doctor_profile?.speciality?.name ?? "".uppercased()
-        self.doctorImg.setImage(with: self.appointment.hospital?.doctor_profile?.profile_pic, placeHolder: #imageLiteral(resourceName: "1"))
+        self.labelDesignation.text = self.appointment.appointments?[self.index].hospital?.doctor_profile?.speciality?.name ?? "".uppercased()
+        self.doctorImg.setImage(with: self.appointment.appointments?[self.index].hospital?.doctor_profile?.profile_pic, placeHolder: #imageLiteral(resourceName: "1"))
         self.buttonCancel.addTarget(self, action: #selector(cancelAppointment(sender:)), for: .touchUpInside)
         self.videoCallButton.addTarget(self, action: #selector(videoCallAction(sender:)), for: .touchUpInside)
 //        self.videoCallButton.isHidden = !isFromUpcomming
-        self.buttonCancel.isHidden = isFromUpcomming
+        self.buttonCancel.isHidden = !isFromUpcomming
+        }else{
+            self.doctorName.text = "\(self.pastAppoitment.appointments?[index].hospital?.first_name ?? "") \(self.pastAppoitment.appointments?[index].hospital?.last_name ?? "")".capitalized
+            self.labelHospitalName.text = "\(self.pastAppoitment.appointments?[index].hospital?.clinic?.name ?? ""), \(self.pastAppoitment.appointments?[index].hospital?.clinic?.address ?? "")".capitalized
+            self.labelDate.text = dateConvertor(self.pastAppoitment.appointments?[index].scheduled_at ?? "", _input: .date_time, _output: .DMY_Time)
+            self.labelPatientName.text = (self.pastAppoitment.first_name ?? "").capitalized + (self.pastAppoitment.last_name ?? "").capitalized
+    //        self.doctorName.text = self.appointment.hospital?.clinic?.name ?? "".capitalized
+            self.labelDesignation.text = self.pastAppoitment.appointments?[index].hospital?.doctor_profile?.speciality?.name ?? "".uppercased()
+            self.doctorImg.setImage(with: self.pastAppoitment.appointments?[index].hospital?.doctor_profile?.profile_pic, placeHolder: #imageLiteral(resourceName: "1"))
+            self.buttonCancel.addTarget(self, action: #selector(cancelAppointment(sender:)), for: .touchUpInside)
+            self.videoCallButton.addTarget(self, action: #selector(videoCallAction(sender:)), for: .touchUpInside)
+    //        self.videoCallButton.isHidden = !isFromUpcomming
+            self.buttonCancel.isHidden = isFromUpcomming
+            }
     }
     
     
@@ -95,10 +110,10 @@ extension UpcomingDetailsController {
             twilioVideoController.modalPresentationStyle = .fullScreen
             self.present(twilioVideoController, animated: true, completion: {
                 twilioVideoController.video = 1
-                twilioVideoController.senderId = "\(self.appointment.doctor_id ?? 0 )"
-                twilioVideoController.receiverName = (self.appointment.hospital?.first_name ?? "")
+                twilioVideoController.senderId = "\(self.appointment.appointments?[self.index].doctor_id ?? 0 )"
+                twilioVideoController.receiverName = (self.appointment.appointments?[self.index].hospital?.first_name ?? "")
                 twilioVideoController.isCallType = .makeCall
-                twilioVideoController.handleCall(roomId: "12345", receiverId: "\(self.appointment.doctor_id ?? 0 )",isVideo : 1)
+                twilioVideoController.handleCall(roomId: "12345", receiverId: "\(self.appointment.appointments?[self.index].doctor_id ?? 0 )",isVideo : 1)
                                })
                            } else {
                              // Fallback on earlier versions

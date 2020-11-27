@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class FAQViewController: UIViewController {
 
@@ -14,15 +15,14 @@ class FAQViewController: UIViewController {
     var hiddenSections = Set<Int>()
 //    var section = 0
 
-    var dataStr = ["In a storyboard-based application, you will often want to do a little preparation before navigation.In a storyboard-based application, you will often want to do a little preparation before navigation","In a storyboard-based application, you will often want to do a little preparation before navigation.In a storyboard-based application, you will often want to do a little preparation before navigation","In a storyboard-based application, you will often want to do a little preparation before navigation.In a storyboard-based application, you will often want to do a little preparation before navigation","In a storyboard-based application, you will often want to do a little preparation before navigation.In a storyboard-based application, you will often want to do a little preparation before navigation"]
-
+    var faq = [Faq]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpnavigation()
         
-        
-        for value in 0..<dataStr.count { self.hideSection(section: value)}
+        self.presenter?.HITAPI(api: Base.faq.rawValue, params: nil, methodType: .GET, modelClass: FAQModel.self, token: true)
+        for value in 0..<faq.count { self.hideSection(section: value)}
         
         
         self.faqTableView.register(UINib(nibName: "FAQCell", bundle: nil), forCellReuseIdentifier: "FAQCell")
@@ -47,11 +47,13 @@ class FAQViewController: UIViewController {
         
         let button: UIButton = UIButton(type: .custom)
         //set image for button
-        button.setImage(UIImage(named: "headphone"), for: .normal)
+        button.setImage(UIImage(systemName: "headphones"), for: .normal)
+        button.tintColor = .white
         //add function for button
         button.addTarget(self, action: #selector(doneAction(sender:)), for: .touchUpInside)
         //set frame
-        button.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+   
 //        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneAction(sender:)))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
         Common.setFontWithType(to: self.navigationItem.title!, size: 18, type: .regular)
@@ -123,7 +125,7 @@ extension FAQViewController {
 extension FAQViewController : UITableViewDelegate, UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return dataStr.count
+        return faq.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -144,7 +146,7 @@ extension FAQViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerView = Bundle.main.loadNibNamed("FaqHeaderView", owner: self, options: nil)?.first as? FaqHeaderView
-        headerView?.titleLbl.text = "Question \(section + 1)"
+        headerView?.titleLbl.text = faq[section].question
         headerView?.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50)
         headerView?.addTap {
             self.hideSection(section: section)
@@ -172,8 +174,35 @@ extension FAQViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "FAQCell", for: indexPath) as? FAQCell
-        cell?.textLbl.text = dataStr[indexPath.section]
+        cell?.textLbl.text = faq[indexPath.section].answer
         return cell!
     }
+    
+}
+
+
+extension FAQViewController : PresenterOutputProtocol {
+    func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
+        DispatchQueue.main.async {
+            switch String(describing: modelClass) {
+                case model.type.FAQModel:
+                    
+                    let data = dataDict as? FAQModel
+                    self.faq = data?.faq ?? []
+                    self.faqTableView.reloadInMainThread()
+                    
+                    break
+                
+                default: break
+                
+            }
+            
+        }
+    }
+    
+    func showError(error: CustomError) {
+        showToast(msg:error.localizedDescription)
+    }
+    
     
 }

@@ -25,8 +25,8 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var alcoholYesBtn : UIButton!
     @IBOutlet weak var smokeYesBtn : UIButton!
-//    @IBOutlet weak var smokeNoBtn : UIButton!
-//    @IBOutlet weak var alcoholNoBtn : UIButton!
+//    @IBOutlet weak var smokeImg : UIImageView!
+//    @IBOutlet weak var alcohoImg : UIImageView!
 
     @IBOutlet weak var personalView : UIView!
     @IBOutlet weak var medicalView : UIView!
@@ -55,6 +55,9 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var injuriesTxt : HoshiTextField!
     @IBOutlet weak var surgeriesTxt : HoshiTextField!
     
+    @IBOutlet weak var alchoholLbl : UILabel!
+    @IBOutlet weak var smokingLbl : UILabel!
+
     
 //    @IBOutlet weak var smokinghabitTxt : HoshiTextField!
 //    @IBOutlet weak var alcoholTxt : HoshiTextField!
@@ -70,12 +73,16 @@ class ProfileViewController: UIViewController {
     var dlon : Double?
     var dAddress = String()
     var updateProfile = UIImage()
+    var genderArray = ["Male","Female","Other"]
     private var googlePlacesHelper : GooglePlacesHelper?
     var allergies = [String]()
     private lazy var loader : UIView = {
         return createActivityIndicator(UIScreen.main.focusedView ?? self.view)
     }()
     
+    let checkedImg = UIImage(systemName: "checkmark.circle.fill") //UIImage(named: "")
+    let uncheckedImg = UIImage(systemName: "circle") //UIImage(named: "circle")
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initialLoad()
@@ -91,10 +98,21 @@ class ProfileViewController: UIViewController {
         self.profileImage.isUserInteractionEnabled = true
         self.profileImage.addGestureRecognizer(tap)
         self.allergiesTxt.delegate = self
+        self.locationTxt.delegate = self
         
 
+        self.getTextfield(view: self.view).forEach { (text) in Common.setFontWithType(to: text, size: 14, type: .regular)}
+//            Common.setFontWithType(to: (text.placeholder)!, size: 16, type: .meduim)
+            
+        [self.smokingLbl,self.alchoholLbl].forEach { (text) in Common.setFontWithType(to: text!, size: 16, type: .regular)}
+       
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        self.profileImage.makeRoundedCorner()
+    }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -126,8 +144,8 @@ class ProfileViewController: UIViewController {
             self.activityTxt.text = profile.patient?.profile?.activity ?? ""
             self.foodPreferenceTxt.text = profile.patient?.profile?.food ?? ""
             self.occupationTxt.text = profile.patient?.profile?.occupation ?? ""
-            self.alcoholYesBtn.setImage(!isAlchol ? #imageLiteral(resourceName: "Ellipse 162") : #imageLiteral(resourceName: "RadioON"), for: .normal)
-            self.smokeYesBtn.setImage(!isSmoking ? #imageLiteral(resourceName: "RadioOFF") : #imageLiteral(resourceName: "RadioON"), for: .normal)
+            self.alcoholYesBtn.setImage(!isAlchol ? uncheckedImg : checkedImg, for: .normal)
+            self.smokeYesBtn.setImage(!isSmoking ? uncheckedImg : checkedImg, for: .normal)
     }
     
    @objc private func updateValues(){
@@ -251,6 +269,7 @@ extension ProfileViewController : UITextFieldDelegate {
           }else if textField == self.allergiesTxt {
 //            self.present(id: "AllergyViewController", animation: true)
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "AllergyViewController") as! AllergyViewController
+            vc.modalPresentationStyle = .overFullScreen
             vc.onClickDone = { content in
                 self.allergies = content
                 print(self.allergies)
@@ -261,6 +280,13 @@ extension ProfileViewController : UITextFieldDelegate {
             }
             self.present(vc, animated: true, completion: nil)
             
+            return false
+          }else if textField == self.genderTxt {
+            PickerManager.shared.showPicker(pickerData: self.genderArray, selectedData: textField.text, completionHandler: { selectedData in
+                textField.text = selectedData
+                
+                
+            })
             return false
           }
           return true
@@ -302,41 +328,37 @@ extension ProfileViewController{
         self.segmentProfile.setTitle("Medical".uppercased(), forSegmentAt: 1)
         self.segmentProfile.setTitle("Lifestyle".uppercased(), forSegmentAt: 2)
         
-        let selectedImg = #imageLiteral(resourceName: "RadioON").resizeImage(newWidth: 30)
-        let unselectedImg = #imageLiteral(resourceName: "RadioOFF").resizeImage(newWidth: 30)
-        
         [self.alcoholYesBtn,self.smokeYesBtn].forEach { (btn) in
-            btn?.imageView?.image = btn?.imageView?.image?.withRenderingMode(.alwaysTemplate)
-            btn?.imageView?.tintColor = .AppBlueColor
+
             if #available(iOS 14.0, *) {
-                btn?.menu = UIMenu(title: "Choose", options: .displayInline, children: [
+                btn?.menu = UIMenu(title: btn?.tag == 101 ? "Do you have the habit of consuming alcohol?" : "Do you have the habit of smoking?", options: .displayInline, children: [
 
-                    UIAction(title: Constants.string.Yes.localize(), image: selectedImg, handler: { (action) in
+                    UIAction(title: Constants.string.Yes.localize(), image: checkedImg, handler: { [self] (action) in
 
-                        btn?.setImage(selectedImg, for: .normal)
+                        btn?.setImage(checkedImg, for: .normal)
 
 
                     }),
 
-                    UIAction(title: Constants.string.No.localize(), image: unselectedImg, handler: { (action) in
+                    UIAction(title: Constants.string.No.localize(), image: uncheckedImg, handler: { [self] (action) in
 
-                        btn?.setImage(unselectedImg, for: .normal)
+                        btn?.setImage(uncheckedImg, for: .normal)
 
                     })
                 ])
+                
                 btn?.showsMenuAsPrimaryAction = true
 
             } else {
                 
                 btn?.addTap {
-                    showAlert(message: btn?.tag == 101 ? "Do you have the habit of consuming alcohol?" : "Do you have the habit of smoking?", btnHandler: { (value) in
-                        let selectedImg = #imageLiteral(resourceName: "RadioON").resizeImage(newWidth: 30)
-                        let unselectedImg = #imageLiteral(resourceName: "RadioOFF").resizeImage(newWidth: 30)
+                    showAlert(message: btn?.tag == 101 ? "Do you have the habit of consuming alcohol?" : "Do you have the habit of smoking?", btnHandler: { [self] (value) in
+                  
                         if value == 101 {
-                            btn?.setImage(value == 1 ? selectedImg : unselectedImg, for: .normal)
+                            btn?.setImage(value == 1 ? checkedImg : uncheckedImg, for: .normal)
                             self.isSmoking = value == 1 ? true : false
                         }else{
-                            btn?.setImage(value == 1 ? selectedImg : unselectedImg, for: .normal)
+                            btn?.setImage(value == 1 ? checkedImg : uncheckedImg, for: .normal)
                             self.isAlchol = value == 1 ? true : false
                         }
                         
@@ -433,3 +455,17 @@ extension UIImage {
 
 
 
+extension ProfileViewController{
+    
+    func getTextfield(view: UIView) -> [HoshiTextField] {
+    var results = [HoshiTextField]()
+    for subview in view.subviews as [UIView] {
+        if let textField = subview as? HoshiTextField {
+            results += [textField]
+        } else {
+            results += getTextfield(view: subview)
+        }
+    }
+    return results
+}
+}
