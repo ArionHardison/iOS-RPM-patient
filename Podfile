@@ -5,22 +5,22 @@ target 'MiDokter User' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-    pod 'Alamofire'
+    pod 'Alamofire','4.8.2'
     pod 'GoogleMaps'
     pod 'GooglePlaces'
     pod 'IQKeyboardManagerSwift'
-    pod 'PopupDialog', '~> 0.7'
-    pod 'KWDrawerController', '~> 4.1.6'
+    pod 'PopupDialog'
+    pod 'KWDrawerController'
     pod 'AlamofireObjectMapper'
     pod 'CountryPickerView'
     pod 'lottie-ios'
     pod 'PINRemoteImage'
     pod 'CLWeeklyCalendarView'
-    pod 'PubNub', '~> 4'
+    pod 'PubNub'
     pod 'TwilioVoice', '~> 5.5.0'            #//, '~> 2.0.0'
     pod 'TwilioVideo', '~> 2.10'
     pod 'SKCountryPicker'
-    pod 'Stripe'
+    pod 'Stripe', '~> 20.1.1'
     pod 'CreditCardForm'
-    
+
 end

@@ -96,7 +96,7 @@ class DoctorDetailsController: UIViewController {
                self.labelDoctorName.text = "\(detail.first_name ?? "") \(detail.last_name ?? "")"
                self.imgDoctor.setURLImage(detail.doctor_profile?.profile_pic ?? "")
                 self.imgDoctor.makeRoundedCorner()
-                self.labelConsultationfee.text = "\(detail.doctor_profile?.fees ?? 0)"
+                self.labelConsultationfee.text = "Consulation Fees" +  "$\(detail.doctor_profile?.fees ?? 0)"
                self.labelQualification.text = "Consulation Fees" + "$ \(detail.doctor_profile?.speciality?.name ?? "")"
                self.labelPercentage.text = "\(detail.feedback_percentage ?? "") %"
                 self.speciality.append(self.favouriteDoctor?.hospital?.doctor_profile?.speciality?.name ?? "")
@@ -114,7 +114,7 @@ class DoctorDetailsController: UIViewController {
             self.imgDoctor.setURLImage(detail.doctor_profile?.profile_pic ?? "")
              self.imgDoctor.makeRoundedCorner()
             self.labelConsultationfee.text = "Consulation Fees  " +  "$ \(self.docProfile.fees ?? 0)"
-            self.labelQualification.text = "\(self.docProfile.speciality?.name ?? "")"
+            self.labelQualification.text = "Consulation Fees" + "\(self.docProfile.speciality?.name ?? "")"
             self.labelPercentage.text = "\(detail.feedback_percentage ?? "") %"
             self.speciality.append(self.docProfile.speciality?.name ?? "")
          //   self.imgLocationPreview.pin_setImage(from: URL(string: detail.clinic?.static_map ?? "")!)

@@ -60,6 +60,7 @@ extension AppointmentDetailsViewController {
         self.ratingView.minRating = 1
         self.ratingView.maxRating = 5
         self.ratingView.rating = 3
+        self.ratingView.tintColor = UIColor.systemYellow
 //        self.ratingView.tintColor = .AppBlueColor
 //        self.ratingView.emptyImage = UIImage(systemName: "star")
 //        self.ratingView.fullImage = UIImage(systemName: "star.fill")
@@ -90,12 +91,12 @@ extension AppointmentDetailsViewController {
         Common.setFontWithType(to: commentsText, size: 16, type: .regular)
         Common.setFontWithType(to: SubmitButton, size: 16, type: .meduim)
 
-        self.likeButton.layer.cornerRadius = self.likeButton.frame.width / 2
-        self.dislikeButton.layer.cornerRadius = self.dislikeButton.frame.width / 2
-        self.likeButton.layer.borderColor = UIColor(named: "TextForegroundColor")?.cgColor
-        self.dislikeButton.layer.borderColor = UIColor(named: "TextForegroundColor")?.cgColor
-        self.likeButton.layer.borderWidth = 0.6
-        self.dislikeButton.layer.borderWidth = 0.6
+//        self.likeButton.layer.cornerRadius = self.likeButton.frame.width / 2
+//        self.dislikeButton.layer.cornerRadius = self.dislikeButton.frame.width / 2
+//        self.likeButton.layer.borderColor = UIColor(named: "TextForegroundColor")?.cgColor
+//        self.dislikeButton.layer.borderColor = UIColor(named: "TextForegroundColor")?.cgColor
+//        self.likeButton.layer.borderWidth = 0.6
+//        self.dislikeButton.layer.borderWidth = 0.6
     }
     
     
@@ -125,15 +126,27 @@ extension AppointmentDetailsViewController {
     
     
     func setupAction(){
+        
+        let likeImg = UIImage(named: "Like-1")
+        let disLikeImg = UIImage(named: "dislike-1")
+        let normalLikeImg = UIImage(named: "like")
+        let normalDisLikeImg = UIImage(named: "dislike")
+
+        
         self.likeButton.addTap {
-            self.likeButton.backgroundColor = UIColor.AppBlueColor
-            self.dislikeButton.backgroundColor = UIColor.clear
+            self.likeButton.setImage(likeImg, for: .normal)
+            self.dislikeButton.setImage(normalDisLikeImg, for: .normal)
+//            self.likeButton.backgroundColor = UIColor.AppBlueColor
+//            self.dislikeButton.backgroundColor = UIColor.clear
             self.likedStatus = "LIKE"
         }
         
         self.dislikeButton.addTap {
-            self.likeButton.backgroundColor = UIColor.clear
-            self.dislikeButton.backgroundColor = UIColor.AppBlueColor
+            
+            self.likeButton.setImage(normalLikeImg, for: .normal)
+            self.dislikeButton.setImage(disLikeImg, for: .normal)
+//            self.likeButton.backgroundColor = UIColor.clear
+//            self.dislikeButton.backgroundColor = UIColor.AppBlueColor
             self.likedStatus = "DISLIKE"
         }
         
@@ -151,7 +164,10 @@ extension AppointmentDetailsViewController {
         }
         
         func validation() -> Bool{
-             if (self.commentsText.text ?? "").isEmpty{
+            if self.consultedText.getText.isEmpty{
+                showToast(msg: "Enter consultant detail")
+                return false
+            }else if (self.commentsText.text ?? "").isEmpty{
                 showToast(msg: "Please Enter Your Comments")
                 return false
             }else if self.likedStatus.isEmpty{
@@ -164,8 +180,6 @@ extension AppointmentDetailsViewController {
         
     }
    
-    
-    
     
 }
 

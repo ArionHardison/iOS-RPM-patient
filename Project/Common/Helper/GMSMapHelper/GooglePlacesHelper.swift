@@ -20,7 +20,6 @@ class GooglePlacesHelper : NSObject {
     // MARK:- Initilaize Fetcher
     
     private func initFetcher() {
-        
         if fetcher == nil {
             self.fetcher = GMSAutocompleteFetcher()
             self.filter = GMSAutocompleteFilter()
@@ -41,11 +40,12 @@ class GooglePlacesHelper : NSObject {
     // MARK:- Get Google Auto Complete
     
     func getGoogleAutoComplete(completion : @escaping ((GMSPlace)->Void)){
-        
+        self.initFetcher()
+
         self.gmsAutoComplete = GMSAutocompleteViewController()
         self.gmsAutoComplete?.autocompleteFilter = filter
-        self.gmsAutoComplete?.primaryTextColor = .primary
-        self.gmsAutoComplete?.secondaryTextColor = .secondary
+        self.gmsAutoComplete?.primaryTextColor = .AppBlueColor
+        self.gmsAutoComplete?.secondaryTextColor = .appColor
         self.gmsAutoComplete?.delegate = self
         self.placesCompletion = completion
         UIApplication.topViewController()?.present(self.gmsAutoComplete!, animated: true, completion: nil)

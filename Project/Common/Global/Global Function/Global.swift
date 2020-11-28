@@ -193,12 +193,16 @@ func toastSuccess(_ view:UIView,message:NSString,smallFont:Bool,isPhoneX:Bool, c
 internal func forceLogout(with message : String? = nil) {
     
 //    clearUserDefaults()
-    UIApplication.shared.windows.last?.rootViewController?.popOrDismiss(animation: true)
-    UIApplication.shared.windows.first?.rootViewController = Router.createModule() //Router.main.instantiateViewController(withIdentifier: Storyboard.Ids.DrawerController)
-    UIApplication.shared.windows.first?.makeKeyAndVisible()
     UserDefaultConfig.Token = ""
     UserDefaultConfig.UserName = ""
     UserDefaultConfig.PatientID = ""
+    UIApplication.shared.windows.last?.rootViewController?.popOrDismiss(animation: true)
+    UIApplication.shared.windows.first?.rootViewController = Router.createModule()
+    UIApplication.shared.windows.first?.makeKeyAndVisible()
+    
+   
+    
+    
     if message != nil {
         UIApplication.shared.windows.last?.rootViewController?.view.makeToast(message, duration: 2, position: .center, title: nil, image: nil, style: ToastStyle(), completion: nil)
     }

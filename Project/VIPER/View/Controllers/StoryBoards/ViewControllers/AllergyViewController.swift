@@ -25,6 +25,7 @@ class AllergyViewController: UIViewController {
     
     var allergies = [String]()
     var onClickDone : (([String])->Void)?
+    var onClickCancel : ((String)->Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +50,8 @@ class AllergyViewController: UIViewController {
             
 //            let vc = self.storyboard?.instantiateViewController(identifier: "AllergiesListViewController") as? AllergiesListViewController
 //            self.present(id: "AllergiesListViewController", animation: true)
-            self.dismiss(animated: true, completion: nil)
+            self.onClickCancel?("NO")
+//            self.dismiss(animated: true, completion: nil)
         }
         
         addallergyView.addTap {

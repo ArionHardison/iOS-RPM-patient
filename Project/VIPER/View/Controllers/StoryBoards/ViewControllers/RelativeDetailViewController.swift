@@ -74,10 +74,11 @@ class RelativeDetailViewController: UIViewController {
     var dlon : Double?
     var dAddress = String()
     var updateProfile = UIImage()
-    private var googlePlacesHelper : GooglePlacesHelper?
+    var googlePlacesHelper : GooglePlacesHelper?
     var allergies = [String]()
     var isNewRelative : Bool = true
     var userRelatives = Relatives()
+//    var googlePlace = googlePlacesHelper()
     private lazy var loader : UIView = {
         return createActivityIndicator(UIScreen.main.focusedView ?? self.view)
     }()
@@ -87,6 +88,7 @@ class RelativeDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.googlePlacesHelper = GooglePlacesHelper()
         self.initialLoad()
     }
     
@@ -96,16 +98,16 @@ class RelativeDetailViewController: UIViewController {
         if !isNewRelative{
         self.setValues()
         }
-        IQKeyboardManager.shared.enable = false
+        IQKeyboardManager.shared.enable = true
         self.dobTXT.delegate = self
         let tap = UITapGestureRecognizer(target: self, action: #selector(updateImage))
         self.profileImage.isUserInteractionEnabled = true
         self.profileImage.addGestureRecognizer(tap)
         self.allergiesTxt.delegate = self
-//        self.maritalStateTxt.delegate = self
-//        self.genderTxt.delegate = self
-//        self.locationTxt.delegate = self
-
+        self.maritalStateTxt.delegate = self
+        self.genderTxt.delegate = self
+        self.locationTxt.delegate = self
+        
         self.getTextfield(view: self.view).forEach { (text) in Common.setFontWithType(to: text, size: 14, type: .regular)}
 //            Common.setFontWithType(to: (text.placeholder)!, size: 16, type: .meduim)
             
@@ -276,11 +278,13 @@ extension RelativeDetailViewController : UITextFieldDelegate {
               })
               return false
           }else if textField == self.locationTxt {
-              self.googlePlacesHelper?.getGoogleAutoComplete(completion: { (place) in
+            self.googlePlacesHelper?.getGoogleAutoComplete(completion: { (place) in
                   self.dAddress = place.formattedAddress ?? ""
+                textField.text   = place.formattedAddress ?? ""
                   self.dlat = place.coordinate.latitude
                   self.dlon = place.coordinate.longitude
               })
+           
               return false
           }else if textField == self.allergiesTxt {
 //            self.present(id: "AllergyViewController", animation: true)
@@ -292,6 +296,11 @@ extension RelativeDetailViewController : UITextFieldDelegate {
                 textField.text = self.allergies.joined(separator: ",")
                 vc.dismiss(animated: true, completion: nil)
                 
+                
+            }
+            vc.onClickCancel = { content in
+                textField.text = content
+                vc.dismiss(animated: true, completion: nil)
                 
             }
             self.present(vc, animated: true, completion: nil)

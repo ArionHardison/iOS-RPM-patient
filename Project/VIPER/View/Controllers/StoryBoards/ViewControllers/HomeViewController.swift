@@ -193,6 +193,7 @@
         let PromoCodeEntity = "PromoCodeEntity"
         let ChatHistoryEntity = "ChatHistoryEntity"
         let TwilioAccess = "TwilioAccess"
+        let MakeTwilioCall = "MakeTwilioCall"
         let Remainder = "Remainder"
         let RemainderSuccess = "RemainderSuccess"
         let UpdatedVistedDoctor = "UpdatedVistedDoctor"

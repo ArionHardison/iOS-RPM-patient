@@ -530,14 +530,16 @@ extension audioVideoCallCaontroller {
             if self.isCallType != .makeCall {
                 url = "\(baseUrl)?room_id=\(self.senderId)_video_\(UserDefaultConfig.PatientID)"
                 self.newRoomID = "\(receiverId)_video_\(UserDefaultConfig.PatientID)"
+                self.presenter?.HITAPI(api: url, params:nil, methodType: .GET, modelClass: TwilioAccess.self, token: true)
 
             }else {
 //                /api/patient/video/call?hospital_id=1&patient_id=1&room_id=1_video_1&push_to=patient
-                url =  "\(baseUrl)?hospital_id=\(senderId)&patient_id=\(UserDefaultConfig.PatientID)&room_id=\(self.senderId)_video_\(UserDefaultConfig.PatientID)&push_to=patient"
+                url =  "\(baseUrl)?hospital_id=\(senderId)&patient_id=\(UserDefaultConfig.PatientID)&room_id=\(self.senderId)_video_\(UserDefaultConfig.PatientID)&push_to=hospital"
                 self.newRoomID = "\(self.senderId)_video_\(UserDefaultConfig.PatientID)"
+                self.presenter?.HITAPI(api: url, params:nil, methodType: .GET, modelClass: MakeTwilioCall.self, token: true)
 
             }
-            self.presenter?.HITAPI(api: url, params:nil, methodType: .GET, modelClass: TwilioAccess.self, token: true)
+           
 //            self.presenter?.get(api: .Callprocess, url: url ?? "")
         }
         
@@ -1107,6 +1109,17 @@ extension audioVideoCallCaontroller : PresenterOutputProtocol {
       
            
              break
+        case model.type.MakeTwilioCall:
+        guard let data = dataDict as? MakeTwilioCall else { return }
+        self.accessToken = data.accessToken
+
+           self.uuid = UUID()
+           self.isServerCallType = .makeCall
+        self.performStartCallAction(uuid: self.uuid!, roomName: self.newRoomID)
+
+
+
+ break
             default: break
         }
 }

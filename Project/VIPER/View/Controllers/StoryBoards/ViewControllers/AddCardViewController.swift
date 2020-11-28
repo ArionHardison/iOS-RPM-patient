@@ -81,7 +81,7 @@ extension AddCardViewController {
                           cardParams.expMonth = paymentTextField.expirationMonth
                           cardParams.expYear = paymentTextField.expirationYear
                           cardParams.cvc = paymentTextField.cvc
-                      STPAPIClient.shared().createToken(withCard: cardParams) { (stpToken, error) in
+        STPAPIClient.shared().createToken(withCard: cardParams) { (stpToken, error) in
             
             guard let token = stpToken?.tokenId else {
                 self.loader.isHideInMainThread(true)

@@ -732,3 +732,22 @@ struct Patient_relative : Mappable {
     }
 
 }
+
+
+struct MakeTwilioCall  : Mappable {
+    var accessToken : String?
+    var roomName : String?
+    var user : User?
+
+    init?(map: Map) {
+
+    }
+
+    mutating func mapping(map: Map) {
+
+        accessToken <- map["accessToken"]
+        roomName <- map["roomName"]
+        user <- map["user"]
+    }
+
+}

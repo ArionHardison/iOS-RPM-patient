@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class SettingsViewController: UIViewController {
     @IBOutlet weak var showReminderLabel: UILabel!
@@ -63,7 +64,7 @@ extension SettingsViewController {
     
     @IBAction private func logoutAction(sender:UIButton){
         
-        forceLogout()
+        self.logout()
         
     }
     
@@ -79,6 +80,38 @@ extension SettingsViewController {
             })
         }
         
+    }
+    
+    
+    private func logout() {
+        
+        let alert = UIAlertController(title: nil, message: Constants.string.areYouSureWantToLogout.localize(), preferredStyle: .actionSheet)
+        let logoutAction = UIAlertAction(title: Constants.string.logout.localize(), style: .destructive) { (_) in
+            self.presenter?.HITAPI(api: Base.logout.rawValue, params: nil, methodType: .POST, modelClass: LoginModel.self, token: false)
+        }
+        
+        let cancelAction = UIAlertAction(title: Constants.string.Cancel.localize(), style: .cancel, handler: nil)
+        
+        alert.view.tintColor = .primary
+        alert.addAction(logoutAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+}
+
+
+extension SettingsViewController : PresenterOutputProtocol{
+    func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
+        DispatchQueue.main.async {
+            forceLogout()
+        }
+    }
+    
+    func showError(error: CustomError) {
+        showToast(msg: error.localizedDescription)
     }
     
     

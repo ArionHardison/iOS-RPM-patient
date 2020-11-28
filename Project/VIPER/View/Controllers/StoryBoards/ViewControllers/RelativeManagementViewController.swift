@@ -38,7 +38,7 @@ extension RelativeManagementViewController {
     
     
     private func initalLoads(){
-        self.backButton.setImage(#imageLiteral(resourceName: "back"), for: .normal)
+//        self.backButton.setImage(UIImage(systemName: ""), for: .normal)
         self.titleLabel.text = "Relatives Management"
         self.titleLabel.textColor = .white
         self.backButton.tintColor = .white

@@ -77,7 +77,7 @@ fileprivate class CustomPicker: NSObject {
     static var selectedValue = ""
     
     static func showPicker(sourceVC: UIViewController, pickerDataSource: [String], selectedData: String?, closure:@escaping (PickerCompletion) -> Void) {
-        
+        currentVC?.view = nil
         currentVC?.view.addSubview(dummyBackgroundView)
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         currentVC?.view.addGestureRecognizer(tap)
@@ -132,7 +132,7 @@ fileprivate class CustomPicker: NSObject {
     }
     
     static func showDatePicker(type:UIDatePicker.Mode,sourceVC: UIViewController, minDate: Date?, maxDate: Date?, selectedDate: String?, closure:@escaping (PickerCompletion) -> Void) {
-        
+        currentVC?.view = nil
         currentVC?.view.addSubview(dummyBackgroundView)
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         currentVC?.view.addGestureRecognizer(tap)
@@ -237,6 +237,7 @@ fileprivate class CustomPicker: NSObject {
         }, completion: { (_) in
             CustomPicker.currentVC?.dismiss(animated: true, completion: nil)
             CustomPicker.selectedValue = ""
+            CustomPicker.currentVC?.removeFromParentViewController()
         })
     }
     @objc static func cancelClick() {
