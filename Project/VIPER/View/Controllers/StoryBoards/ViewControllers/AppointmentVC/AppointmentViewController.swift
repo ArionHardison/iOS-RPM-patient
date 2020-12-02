@@ -141,7 +141,11 @@ extension AppointmentViewController : UITableViewDelegate,UITableViewDataSource
             cell.labelStatus.backgroundColor = UIColor(named: "LightGreen") //UIColor.LightGreen
             cell.labelStatus.textColor = UIColor(named: "ConfirmedGreenColor") //UIColor.AppBlueColor
         }
+        if data.status == "CHECKEDOUT"{
+            cell.labelStatus.text = "CONSULTED"
+        }else{
         cell.labelStatus.text = data.status ?? "".uppercased()
+        }
 
         cell.buttonCancel.addTap {
             self.cancelAppointment(id: data.id?.description ?? "")

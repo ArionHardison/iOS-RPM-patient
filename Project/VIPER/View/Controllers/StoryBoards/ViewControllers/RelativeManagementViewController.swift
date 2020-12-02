@@ -78,8 +78,8 @@ extension RelativeManagementViewController : UITableViewDelegate,UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.RelativesTableViewCell, for: indexPath) as! RelativesTableViewCell
-        cell.labeRelativeName.text = (relatives[indexPath.row].first_name ?? "") + (relatives[indexPath.row].last_name ?? "")
-        cell.labelRelativeAge.text = "\(relatives[indexPath.row].profile?.age ?? "") Years of age"
+        cell.labeRelativeName.text = "\(relatives[indexPath.row].first_name ?? "") \(relatives[indexPath.row].last_name ?? "")"
+        cell.labelRelativeAge.text = "\(relatives[indexPath.row].profile?.age ?? "") Years old"
         cell.profileImageView.setURLImage(relatives[indexPath.row].profile?.profile_pic ?? "")
         cell.selectionStyle = .none
         return cell

@@ -272,7 +272,7 @@ func showToast(msg : String , bgcolor : UIColor = UIColor.gray) {
         toastLabel.centerXAnchor.constraint(equalTo: window.centerXAnchor)
         
     ])
-    UIView.animate(withDuration: 8.0, delay: 0.0, options: .curveEaseOut, animations: {
+    UIView.animate(withDuration: 3.0, delay: 0.0, options: .curveEaseOut, animations: {
         toastLabel.alpha = 0.0
     }, completion: {(isCompleted) in
         toastLabel.removeFromSuperview()
@@ -285,7 +285,7 @@ func dateConvertor(_ date: String, _input: DateTimeFormate, _output: DateTimeFor
     dateFormatter.dateFormat = _input.rawValue
     let dates = dateFormatter.date(from: date)
     dateFormatter.dateFormat = _output.rawValue
-    let datestr = dateFormatter.string(from: dates ?? Date())
+    _ = dateFormatter.string(from: dates ?? Date())
     
     return  dateFormatter.string(from: dates ?? Date())
 }
@@ -299,4 +299,6 @@ enum DateTimeFormate : String{
     case date_time = "yyyy-MM-dd HH:mm:ss"
     case date_time_Z = "yyyy-MM-dd HH:mm:ss z"
     case DM = "dd MMM"
+    case DMYhy = "dd-MMM-YYYY"
+    case YMD = "yyyy-MM-dd"
 }

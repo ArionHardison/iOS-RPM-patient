@@ -147,6 +147,7 @@ extension AppDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let deviceToken = deviceToken.hexString
             print(deviceToken)
+        push_device_token = deviceToken
 //        deviceTokenString = deviceToken
         
     }

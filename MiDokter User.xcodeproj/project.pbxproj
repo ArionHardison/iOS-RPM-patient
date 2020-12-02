@@ -170,6 +170,8 @@
 		7E6AEF502488D0F6005F0899 /* SuggestedSpecialityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E6AEF4E2488D0F6005F0899 /* SuggestedSpecialityCell.xib */; };
 		7E6AEF532488D4B5005F0899 /* ChatCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6AEF512488D4B5005F0899 /* ChatCommentCell.swift */; };
 		7E6AEF542488D4B5005F0899 /* ChatCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E6AEF522488D4B5005F0899 /* ChatCommentCell.xib */; };
+		850560F625777E14003EBA29 /* PatientRecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850560F525777E14003EBA29 /* PatientRecordsViewController.swift */; };
+		8505610325779AD5003EBA29 /* ShowRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8505610225779AD5003EBA29 /* ShowRecordViewController.swift */; };
 		8526FFD425516A8600E672B9 /* TwilioViewController+CallKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8526FFD025516A8500E672B9 /* TwilioViewController+CallKit.swift */; };
 		8526FFD525516A8600E672B9 /* CallDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8526FFD125516A8500E672B9 /* CallDuration.swift */; };
 		8526FFD625516A8600E672B9 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8526FFD225516A8500E672B9 /* Settings.swift */; };
@@ -213,6 +215,7 @@
 		8555064F256664450046A8A9 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555064A256664440046A8A9 /* FAQViewController.swift */; };
 		85550650256664450046A8A9 /* FaqHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555064B256664440046A8A9 /* FaqHeaderView.swift */; };
 		8564F15D256FFAAD00AED2D8 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8564F15C256FFAAD00AED2D8 /* FloatRatingView.swift */; };
+		856C0D3A257632790033CEB4 /* AddMedicalRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856C0D39257632790033CEB4 /* AddMedicalRecordViewController.swift */; };
 		8574167E255AB249002D1F1F /* RelativeManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8574167D255AB249002D1F1F /* RelativeManagementViewController.swift */; };
 		857416B1255ACDBD002D1F1F /* RelativeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857416B0255ACDBD002D1F1F /* RelativeDetailViewController.swift */; };
 		857416B6255AE12F002D1F1F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857416B5255AE12F002D1F1F /* SettingsViewController.swift */; };
@@ -425,6 +428,8 @@
 		7E6AEF4E2488D0F6005F0899 /* SuggestedSpecialityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestedSpecialityCell.xib; sourceTree = "<group>"; };
 		7E6AEF512488D4B5005F0899 /* ChatCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCommentCell.swift; sourceTree = "<group>"; };
 		7E6AEF522488D4B5005F0899 /* ChatCommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatCommentCell.xib; sourceTree = "<group>"; };
+		850560F525777E14003EBA29 /* PatientRecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientRecordsViewController.swift; sourceTree = "<group>"; };
+		8505610225779AD5003EBA29 /* ShowRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRecordViewController.swift; sourceTree = "<group>"; };
 		8526FFD025516A8500E672B9 /* TwilioViewController+CallKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TwilioViewController+CallKit.swift"; sourceTree = "<group>"; };
 		8526FFD125516A8500E672B9 /* CallDuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallDuration.swift; sourceTree = "<group>"; };
 		8526FFD225516A8500E672B9 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -469,6 +474,7 @@
 		8555064A256664440046A8A9 /* FAQViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		8555064B256664440046A8A9 /* FaqHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaqHeaderView.swift; sourceTree = "<group>"; };
 		8564F15C256FFAAD00AED2D8 /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
+		856C0D39257632790033CEB4 /* AddMedicalRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicalRecordViewController.swift; sourceTree = "<group>"; };
 		8574167D255AB249002D1F1F /* RelativeManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeManagementViewController.swift; sourceTree = "<group>"; };
 		857416B0255ACDBD002D1F1F /* RelativeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeDetailViewController.swift; sourceTree = "<group>"; };
 		857416B5255AE12F002D1F1F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -550,6 +556,9 @@
 				857416B5255AE12F002D1F1F /* SettingsViewController.swift */,
 				852AAF572566711600E9A157 /* Filter */,
 				8527C7A3256BCAFF007F9B31 /* CardsListViewController.swift */,
+				856C0D39257632790033CEB4 /* AddMedicalRecordViewController.swift */,
+				850560F525777E14003EBA29 /* PatientRecordsViewController.swift */,
+				8505610225779AD5003EBA29 /* ShowRecordViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1925,6 +1934,7 @@
 				12AE3EF02451D24E00E90872 /* CategoryListController.swift in Sources */,
 				8526FFD425516A8600E672B9 /* TwilioViewController+CallKit.swift in Sources */,
 				084B344A20B02AD900B79318 /* AVPlayerHelper.swift in Sources */,
+				850560F625777E14003EBA29 /* PatientRecordsViewController.swift in Sources */,
 				12AE3EEC2451CFDC00E90872 /* CategoryCell.swift in Sources */,
 				084B343720B029E900B79318 /* UIView+Blur.swift in Sources */,
 				084B347520B02DA400B79318 /* ShimmerButton.swift in Sources */,
@@ -1964,6 +1974,7 @@
 				084B346C20B02C9100B79318 /* ErrorMessages.swift in Sources */,
 				7E401F282487CD860021991A /* VisitedDoctorsCell.swift in Sources */,
 				084B343B20B029E900B79318 /* UIAplication+RLT.swift in Sources */,
+				8505610325779AD5003EBA29 /* ShowRecordViewController.swift in Sources */,
 				084B34CE20B0422000B79318 /* ErrorLog.swift in Sources */,
 				8555064F256664450046A8A9 /* FAQViewController.swift in Sources */,
 				852AAF632566733D00E9A157 /* FilterHeaderView.swift in Sources */,
@@ -2022,6 +2033,7 @@
 				105D215E249A792C00475E48 /* PatientDetailViewController.swift in Sources */,
 				7E401F252487C2E70021991A /* VisitedDoctorsViewController.swift in Sources */,
 				7E6AEF532488D4B5005F0899 /* ChatCommentCell.swift in Sources */,
+				856C0D3A257632790033CEB4 /* AddMedicalRecordViewController.swift in Sources */,
 				084B348920B02EAC00B79318 /* Presenter.swift in Sources */,
 				1293C5682453376000FEC1C9 /* DoctorCell.swift in Sources */,
 				85C76852254D81F9002827B9 /* PickerManager.swift in Sources */,
@@ -2233,7 +2245,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TeleHealth.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.12;
+				CURRENT_PROJECT_VERSION = 1.3;
 				DEVELOPMENT_TEAM = Q4N6XWX7K3;
 				INFOPLIST_FILE = "$(SRCROOT)/Project/Common/Plist Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -2241,6 +2253,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Telehealth.user;
 				PRODUCT_NAME = TeleHealth;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
@@ -2256,7 +2269,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TeleHealth.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.12;
+				CURRENT_PROJECT_VERSION = 1.3;
 				DEVELOPMENT_TEAM = Q4N6XWX7K3;
 				INFOPLIST_FILE = "$(SRCROOT)/Project/Common/Plist Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -2264,6 +2277,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Telehealth.user;
 				PRODUCT_NAME = TeleHealth;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";

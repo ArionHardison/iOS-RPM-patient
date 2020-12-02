@@ -15,6 +15,7 @@ class AddCardViewController: UIViewController {
 
     @IBOutlet private weak var creditCardView : CreditCardFormView!
     let paymentTextField = STPPaymentCardTextField()
+    
     private lazy var loader  : UIView = {
         return createActivityIndicator(self.view)
     }()
@@ -99,6 +100,7 @@ extension AddCardViewController {
                         params.updateValue("patient", forKey: "user_type")
                         params.updateValue("active", forKey: "status")
                         self.presenter?.HITAPI(api: Base.addCard.rawValue, params: params, methodType: .POST, modelClass: CardSuccess.self, token: true)
+            self.loader.isHidden = false
             
             
         }
@@ -131,6 +133,7 @@ extension AddCardViewController : STPPaymentCardTextFieldDelegate {
 
 extension AddCardViewController : PresenterOutputProtocol {
     func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
+        self.loader.isHideInMainThread(true)
         DispatchQueue.main.async {
             switch String(describing: modelClass) {
                 case model.type.CardSuccess:
@@ -151,6 +154,7 @@ extension AddCardViewController : PresenterOutputProtocol {
     }
     
     func showError(error: CustomError) {
+        self.loader.isHideInMainThread(true)
         DispatchQueue.main.async {
                 self.loader.isHidden = true
                 showAlert(message: error.localizedDescription, okHandler: nil, fromView: self)

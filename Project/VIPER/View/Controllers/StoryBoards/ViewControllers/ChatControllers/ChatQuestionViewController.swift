@@ -116,10 +116,18 @@ extension ChatQuestionViewController : UITableViewDelegate,UITableViewDataSource
             let vc = SelectedProblemAreaVC.initVC(storyBoardName: .main, vc: SelectedProblemAreaVC.self, viewConrollerID: Storyboard.Ids.SelectedProblemAreaVC)
             vc.category = self.AllAategory
             
-            vc.selectedCategory = {(category) in
-                self.category.remove(at: 2)
-                self.selectedindex = 2
-                self.category.append(category)
+            vc.selectedCategory = {(category,index) in
+              
+                if index >= 2{
+                    self.category.remove(at: 2)
+                    self.selectedindex = 2
+                    self.category.append(category)
+                }else{
+//                    self.category.remove(at: index)
+                    self.selectedindex = index
+                    
+                }
+               
                 
                 self.suggestionList.reloadData()
             }

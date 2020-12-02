@@ -8,6 +8,7 @@
 
 import UIKit
 import ObjectMapper
+import Alamofire
 
 class HealthFeedViewController: UIViewController {
 
@@ -26,6 +27,7 @@ class HealthFeedViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
          self.getArticlesList()
+
     }
 
 
@@ -90,17 +92,36 @@ extension HealthFeedViewController : UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HealthFeedTableViewCell") as! HealthFeedTableViewCell
-        cell.selectionStyle = .none
-//        self.populateCell(cell: cell, data: self.article[indexPath.row])
-        cell.ArticleImage.setURLImage(self.article[indexPath.row].cover_photo ?? "")
-        cell.ArticleTitle.text = self.article[indexPath.row].name ?? "".capitalized
-        cell.Articlecontent.text = self.article[indexPath.row].description ?? "".capitalized
-        cell.publishedDate.text = dateConvertor(self.article[indexPath.row].created_at ?? "", _input: .date_time, _output: .DMY)
+        DispatchQueue.main.async {
+            cell.selectionStyle = .none
+            self.populateCell(cell: cell, data: self.article[indexPath.row])
+          
+        }
+
         return cell
     }
     
     func populateCell(cell : HealthFeedTableViewCell , data : Article){
-//        cell.ArticleImage.setImage(with: data.cover_photo, placeHolder: UIImage(named: "NoImageFound"))//setURLImage(data.cover_photo ?? "")
+//        Cache.image(forUrl: "\(imageURL)\(data.cover_photo ?? "")", completion: {  (image) in
+//            if image != nil{
+//                DispatchQueue.main.async {
+//                    cell.ArticleImage.image = image
+//                }
+//
+//            }
+//        })
+        cell.ArticleImage.imageFromUrl( "\(imageURL)\(data.cover_photo ?? "")", completion: { (image) in
+            if image != nil{
+            cell.ArticleImage.image = image
+            }else{
+                cell.ArticleImage.image = #imageLiteral(resourceName: "NoImageFound")
+            }
+            
+        })
+       
+        cell.ArticleTitle.text = data.name ?? "".capitalized
+        cell.Articlecontent.text = data.description ?? "".capitalized
+        cell.publishedDate.text = dateConvertor(data.created_at ?? "", _input: .date_time, _output: .DMY)
  
     }
         
@@ -109,13 +130,14 @@ extension HealthFeedViewController : UITableViewDelegate, UITableViewDataSource 
         vc.titleText = self.article[indexPath.row].name ?? "" .capitalized
         vc.descriptionText = self.article[indexPath.row].description ?? ""
         vc.imageTitle = self.article[indexPath.row].cover_photo ?? ""
+        vc.timeText = self.article[indexPath.row].updated_at ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
         
 //        self.push(id: Storyboard.Ids.HealthFeedDetailsViewController, animation: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250 //UITableViewAutomaticDimension
+        return 225 //UITableViewAutomaticDimension
     }
 }
 
@@ -150,4 +172,50 @@ extension HealthFeedViewController : PresenterOutputProtocol{
         self.presenter?.HITAPI(api: Base.articles.rawValue, params: nil, methodType: .GET, modelClass: ArticleModel.self, token: true)
     }
     
+}
+
+
+
+
+extension UIImageView {
+    
+    public func imageFromUrl(_ urlStr: String,completion: @escaping (_ img: UIImage) -> Void) {
+        
+        self.image = nil
+        
+        if urlStr.count > 0 {
+        
+            if let cachedImg = CacheA.imgCache.object(forKey: urlStr as NSString) {
+               
+                completion(cachedImg)
+           
+            }else {
+                Alamofire.request(urlStr).responseString { (res) in
+                    
+                    switch res.result   {
+                    
+                    case .success(_):
+                        
+                        CacheA.imgCache.setObject(UIImage(data: res.data!) ?? UIImage(), forKey: urlStr as NSString)
+                        let cachedImg = CacheA.imgCache.object(forKey: urlStr as NSString)
+                        
+                        completion(cachedImg ?? #imageLiteral(resourceName: "NoImageFound"))
+                        
+                    case .failure(let error):
+                        
+                        print("errrr", error)
+                        completion(#imageLiteral(resourceName: "NoImageFound"))
+                    }
+            }
+            }
+           
+        }else {
+            completion(#imageLiteral(resourceName: "NoImageFound"))
+        }
+    }
+    
+}
+
+struct CacheA {
+    static let imgCache = NSCache<NSString,UIImage>()
 }

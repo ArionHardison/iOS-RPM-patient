@@ -74,8 +74,8 @@ class PatientDetailViewController: UIViewController {
                 var params = [String:Any]()
                 if !self.isfromSearch{
                     params.updateValue("5", forKey: "consult_time") //self.bookingreq.consult_time = "5"
-                    params.updateValue("ONLINE", forKey: "appointment_type")   // self.bookingreq.appointment_type = "ONLINE"
-                    params.updateValue("Patient Testing Purpose", forKey: "description")//     self.bookingreq.description = "Patient Testing Purpose"
+                    params.updateValue("OFFLINE", forKey: "appointment_type")   // self.bookingreq.appointment_type = "ONLINE"
+                    params.updateValue("Appoitment", forKey: "description")//     self.bookingreq.description = "Patient Testing Purpose"
                     params.updateValue("\(self.docProfile.doctor_id ?? 0)", forKey: "doctor_id") //self.bookingreq.doctor_id = "\(self.docProfile.id ?? 0)"
                     params.updateValue(self.isFollowup ? "follow_up" : "consultation", forKey: "booking_for") //self.bookingreq.booking_for =  self.isFollowup ? "follow_up" : "consultation"
                     params.updateValue(UserDefaultConfig.PatientID, forKey: "selectedPatient") // self.bookingreq.selectedPatient = UserDefaultConfig.PatientID
@@ -87,7 +87,7 @@ class PatientDetailViewController: UIViewController {
                 }else{
                     params.updateValue("15", forKey: "consult_time") //self.bookingreq.consult_time = "5"
                     params.updateValue("OFFLINE", forKey: "appointment_type")   // self.bookingreq.appointment_type = "ONLINE"
-                    params.updateValue("Patient Testing Purpose", forKey: "description")//     self.bookingreq.description = "Patient Testing Purpose"
+                    params.updateValue("Appoitment", forKey: "description")//     self.bookingreq.description = "Patient Testing Purpose"
                     params.updateValue(self.searchDoctor.doctor_profile?.doctor_id ?? 0, forKey: "doctor_id") //self.bookingreq.doctor_id = "\(self.docProfile.id ?? 0)"
                     params.updateValue(self.isFollowup ? "follow_up" : "consultation", forKey: "booking_for") //self.bookingreq.booking_for =  self.isFollowup ? "follow_up" : "consultation"
                     params.updateValue(UserDefaultConfig.PatientID, forKey: "selectedPatient") // self.bookingreq.selectedPatient = UserDefaultConfig.PatientID

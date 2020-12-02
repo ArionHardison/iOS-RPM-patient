@@ -17,7 +17,7 @@ class SelectedProblemAreaVC: UIViewController {
 
     var category : [Category] = [Category]()
     
-    var selectedCategory : ((Category)->())?
+    var selectedCategory : ((Category,Int)->())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +87,7 @@ extension SelectedProblemAreaVC : UICollectionViewDelegate,UICollectionViewDataS
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.selectedCategory?(self.category[indexPath.row])
+        self.selectedCategory?(self.category[indexPath.row],indexPath.row)
         self.dismiss(animated: true, completion: nil)
     }
 

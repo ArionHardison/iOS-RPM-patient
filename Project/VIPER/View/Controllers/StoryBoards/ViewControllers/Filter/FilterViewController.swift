@@ -18,7 +18,7 @@ class FilterViewController: UIViewController {
     var arr = ["","",""]
     var selectedAvailablity = String()
     var selectedPrice = String()
-    var selectedGender :Bool = false
+    var selectedGender :String = ""
     var orderCheckedStatus = [Int : [[Int] : Bool]]() // To update carton
 
     
@@ -32,7 +32,7 @@ class FilterViewController: UIViewController {
 
     var sectionHeader = ["Availabilty","Gender","Consultation Fee"]
     var availabitlityArr = ["Available anyday","Available today","Available next 3 days","Available coming weekend"]
-    var genderArr = ["Male","Female"]
+    var genderArr = ["MALE","FEMALE"]
     var consultationArr = ["1-20","20-30","30+"]
     
     private var dataCells = [Int : [Int : (row : Int?, isSelect : Bool)]]()
@@ -116,19 +116,19 @@ extension FilterViewController {
         var seleGender = String()
         var price = String()
         if selectedAvailablity == "Available anyday"{
-            availability_type = "Any"
+            availability_type = "AvailableAllDAY"
             
         }else if selectedAvailablity == "Available today" {
             availability_type = "today"
             
         }else if selectedAvailablity == "Available next 3 days" {
-            availability_type = "3week"
+            availability_type = "3w"
             
         }else {
            availability_type = "week"
         }
         
-        seleGender = selectedGender ? "MALE" : "FEMALE"
+        seleGender = selectedGender
         
         if selectedPrice == "1-20"{
             price = "10"
@@ -205,18 +205,18 @@ extension FilterViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        switch indexPath.section {
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FilterCell", for: indexPath) as? FilterCell
-            cell?.titleLbl.text = self.selectedData?[indexPath.section].row[indexPath.row].valueName // genderArr[indexPath.row]
-            if let data = self.selectedData?[indexPath.section].row[indexPath.row].isSelected{
-//                print(self.selectedData
-                self.selectedGender = data
-                cell?.setBoxImageForSelection = data
-        }
-            return cell!
+//        switch indexPath.section {
+//        case 1:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "FilterCell", for: indexPath) as? FilterCell
+//            cell?.titleLbl.text = self.selectedData?[indexPath.section].row[indexPath.row].valueName // genderArr[indexPath.row]
+//            if let data = self.selectedData?[indexPath.section].row[indexPath.row].isSelected{
+////                print(self.selectedData
+//                self.selectedGender = data
+//                cell?.setBoxImageForSelection = data
+//        }
+//            return cell!
 
-        default:
+//        default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "FilterCell", for: indexPath) as? FilterCell
             
             for i in 0...(self.selectedData?[indexPath.section].row.count)! {
@@ -226,9 +226,9 @@ extension FilterViewController : UITableViewDelegate, UITableViewDataSource{
                     case 0:
                         self.selectedAvailablity = self.selectedData?[indexPath.section].row[indexPath.row].valueName ?? "0"
                     case 1:
-                        break
-//                        self.selectedGender = self.selectedData?[indexPath.section].row[indexPath.row].valueName ?? "0"
+                        self.selectedGender = self.selectedData?[indexPath.section].row[indexPath.row].valueName ?? "0"
                     case 2:
+                        
                         self.selectedPrice = self.selectedData?[indexPath.section].row[indexPath.row].valueName ?? "0"
                     default:
                         break
@@ -246,7 +246,7 @@ extension FilterViewController : UITableViewDelegate, UITableViewDataSource{
             return cell!
         }
          
-    }
+//    }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

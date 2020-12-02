@@ -203,6 +203,10 @@
         let FAQModel = "FAQModel"
         let RelativeManagement = "RelativeManagement"
         let CreateRelativeResponse = "CreateRelativeResponse"
+        let GetDoctors = "GetDoctors"
+        let AddMedicalRecordModel = "AddMedicalRecordModel"
+        let ListMedicalRecord = "ListMedicalRecord"
+        let PatientRecord = "PatientRecord"
     }
     
     

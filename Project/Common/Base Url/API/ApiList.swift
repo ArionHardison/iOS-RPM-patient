@@ -56,7 +56,7 @@ enum Base : String{
     case catagoryList = "/api/patient/doctor_catagory"
     case addWallet = "/api/patient/add_wallet"
     case articles = "api/patient/articles"
-    case medicalRecords = "/api/patient/medical_records"
+    case medicalRecords = "/api/patient/records_list"
     case searchDoctors = "/api/patient/search_doctor"
     case fav = "/api/patient/favourite_doctor"
     case profile = "/api/patient/profile"
@@ -78,6 +78,10 @@ enum Base : String{
     case faq = "/api/patient/faq"
     case getRelative = "/api/patient/relative/list"
     case createRelative = "/api/patient/relative"
+    case getDoctor = "/api/patient/doctor"
+    case addMedicalRecord = "/api/patient/medical_records"
+    case patientRecords = "/api/patient/records_details"
+    
     
    
     init(fromRawValue: String){

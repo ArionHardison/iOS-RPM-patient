@@ -751,3 +751,295 @@ struct MakeTwilioCall  : Mappable {
     }
 
 }
+
+
+
+struct AddMedicalRecordModel : Mappable {
+    var patient_prescription : Patient_prescription?
+
+    init?(map: Map) {
+
+    }
+
+    mutating func mapping(map: Map) {
+
+        patient_prescription <- map["patient_prescription"]
+    }
+
+}
+
+struct Patient_prescription : Mappable {
+    var id : Int?
+    var appointment_id : Int?
+    var patient_id : Int?
+    var doctor_id : Int?
+    var drug_id : Int?
+    var inventory_item_id : String?
+    var dosage : String?
+    var dosage_unit : String?
+    var frequency : String?
+    var intake : String?
+    var duration : String?
+    var duration_unit : String?
+    var instruction : String?
+    var title : String?
+    var file : String?
+    var created_by : String?
+    var status : String?
+    var record_date : String?
+    var created_at : String?
+    var updated_at : String?
+    var deleted_at : String?
+    var hospital : Hospital?
+    var appointment : Appointment?
+
+    init?(map: Map) {
+
+    }
+
+    mutating func mapping(map: Map) {
+
+        id <- map["id"]
+        appointment_id <- map["appointment_id"]
+        patient_id <- map["patient_id"]
+        doctor_id <- map["doctor_id"]
+        drug_id <- map["drug_id"]
+        inventory_item_id <- map["inventory_item_id"]
+        dosage <- map["dosage"]
+        dosage_unit <- map["dosage_unit"]
+        frequency <- map["frequency"]
+        intake <- map["intake"]
+        duration <- map["duration"]
+        duration_unit <- map["duration_unit"]
+        instruction <- map["instruction"]
+        title <- map["title"]
+        file <- map["file"]
+        created_by <- map["created_by"]
+        status <- map["status"]
+        record_date <- map["record_date"]
+        created_at <- map["created_at"]
+        updated_at <- map["updated_at"]
+        deleted_at <- map["deleted_at"]
+        hospital <- map["hospital"]
+        appointment <- map["appointment"]
+    }
+
+}
+
+
+struct GetDoctors  : Mappable {
+    var status : Bool?
+    var doctor : [Doctor]?
+
+    init?(map: Map) {
+
+    }
+
+    mutating func mapping(map: Map) {
+
+        status <- map["status"]
+        doctor <- map["doctor"]
+    }
+
+}
+
+
+struct Doctor : Mappable {
+    var id : Int?
+    var first_name : String?
+    var last_name : String?
+    var mobile : String?
+    var country_code : String?
+    var email : String?
+    var device_token : String?
+    var device_id : String?
+    var device_type : String?
+    var login_by : String?
+    var social_unique_id : String?
+    var wallet_balance : Int?
+    var otp : String?
+    var rating : String?
+    var gender : String?
+    var tax_id : String?
+    var medical_id : String?
+    var regn_id : String?
+    var clinic_id : Int?
+    var services_id : String?
+    var specialities_name : String?
+    var is_administrative : Int?
+    var is_doctor : Int?
+    var added_by : Int?
+    var is_staff : Int?
+    var is_receptionist : Int?
+    var role : Int?
+    var email_verified : Int?
+    var email_token : String?
+    var email_verified_at : String?
+    var subscribe_from : String?
+    var subscribe_to : String?
+    var subscribe_limit : String?
+    var created_at : String?
+    var updated_at : String?
+    var deleted_at : String?
+    var status : String?
+
+    init() {
+        
+    }
+    
+    init?(map: Map) {
+
+    }
+
+    mutating func mapping(map: Map) {
+
+        id <- map["id"]
+        first_name <- map["first_name"]
+        last_name <- map["last_name"]
+        mobile <- map["mobile"]
+        country_code <- map["country_code"]
+        email <- map["email"]
+        device_token <- map["device_token"]
+        device_id <- map["device_id"]
+        device_type <- map["device_type"]
+        login_by <- map["login_by"]
+        social_unique_id <- map["social_unique_id"]
+        wallet_balance <- map["wallet_balance"]
+        otp <- map["otp"]
+        rating <- map["rating"]
+        gender <- map["gender"]
+        tax_id <- map["tax_id"]
+        medical_id <- map["medical_id"]
+        regn_id <- map["regn_id"]
+        clinic_id <- map["clinic_id"]
+        services_id <- map["services_id"]
+        specialities_name <- map["specialities_name"]
+        is_administrative <- map["is_administrative"]
+        is_doctor <- map["is_doctor"]
+        added_by <- map["added_by"]
+        is_staff <- map["is_staff"]
+        is_receptionist <- map["is_receptionist"]
+        role <- map["role"]
+        email_verified <- map["email_verified"]
+        email_token <- map["email_token"]
+        email_verified_at <- map["email_verified_at"]
+        subscribe_from <- map["subscribe_from"]
+        subscribe_to <- map["subscribe_to"]
+        subscribe_limit <- map["subscribe_limit"]
+        created_at <- map["created_at"]
+        updated_at <- map["updated_at"]
+        deleted_at <- map["deleted_at"]
+        status <- map["status"]
+    }
+
+}
+
+
+struct ListMedicalRecord : Mappable {
+    var status : Int?
+    var medicals : [Medicals]?
+
+    init?(map: Map) {
+
+    }
+
+    mutating func mapping(map: Map) {
+
+        status <- map["status"]
+        medicals <- map["medical"]
+    }
+
+}
+
+
+struct Medicals : Mappable {
+    var id : Int?
+    var first_name : String?
+    var last_name : String?
+    var mobile : String?
+    var country_code : String?
+    var email : String?
+    var device_token : String?
+    var push_device_token : String?
+    var device_id : String?
+    var device_type : String?
+    var login_by : String?
+    var social_unique_id : String?
+    var wallet_balance : Int?
+    var otp : Int?
+    var rating : String?
+    var gender : String?
+    var tax_id : String?
+    var medical_id : String?
+    var regn_id : String?
+    var clinic_id : Int?
+    var services_id : String?
+    var specialities_name : String?
+    var is_administrative : Int?
+    var is_doctor : Int?
+    var added_by : Int?
+    var is_staff : Int?
+    var is_receptionist : Int?
+    var role : Int?
+    var email_verified : Int?
+    var email_token : String?
+    var email_verified_at : String?
+    var subscribe_from : String?
+    var subscribe_to : String?
+    var subscribe_limit : String?
+    var created_at : String?
+    var updated_at : String?
+    var deleted_at : String?
+    var status : String?
+    var doctor_profile : Doctor_profile?
+    var clinic : Clinic?
+
+    init?(map: Map) {
+
+    }
+
+    mutating func mapping(map: Map) {
+
+        id <- map["id"]
+        first_name <- map["first_name"]
+        last_name <- map["last_name"]
+        mobile <- map["mobile"]
+        country_code <- map["country_code"]
+        email <- map["email"]
+        device_token <- map["device_token"]
+        push_device_token <- map["push_device_token"]
+        device_id <- map["device_id"]
+        device_type <- map["device_type"]
+        login_by <- map["login_by"]
+        social_unique_id <- map["social_unique_id"]
+        wallet_balance <- map["wallet_balance"]
+        otp <- map["otp"]
+        rating <- map["rating"]
+        gender <- map["gender"]
+        tax_id <- map["tax_id"]
+        medical_id <- map["medical_id"]
+        regn_id <- map["regn_id"]
+        clinic_id <- map["clinic_id"]
+        services_id <- map["services_id"]
+        specialities_name <- map["specialities_name"]
+        is_administrative <- map["is_administrative"]
+        is_doctor <- map["is_doctor"]
+        added_by <- map["added_by"]
+        is_staff <- map["is_staff"]
+        is_receptionist <- map["is_receptionist"]
+        role <- map["role"]
+        email_verified <- map["email_verified"]
+        email_token <- map["email_token"]
+        email_verified_at <- map["email_verified_at"]
+        subscribe_from <- map["subscribe_from"]
+        subscribe_to <- map["subscribe_to"]
+        subscribe_limit <- map["subscribe_limit"]
+        created_at <- map["created_at"]
+        updated_at <- map["updated_at"]
+        deleted_at <- map["deleted_at"]
+        status <- map["status"]
+        doctor_profile <- map["doctor_profile"]
+        clinic <- map["clinic"]
+    }
+
+}

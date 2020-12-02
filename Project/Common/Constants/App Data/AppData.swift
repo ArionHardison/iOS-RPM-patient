@@ -10,6 +10,7 @@ import UIKit
 
 let AppName = "TeleHealth User"
 var deviceTokenString = Constants.string.noDevice
+var push_device_token = Constants.string.noDevice
 var deviceId = Constants.string.noDevice
 var deviceType : DeviceType = .ios
 let googleMapKey = "AIzaSyA0E5hVa9FQhK7CBqnz4alq23f6LUxrbUI" //"AIzaSyCgW9ZrUixRu9-AbVt78C3Xo6Stp1DjO-g"

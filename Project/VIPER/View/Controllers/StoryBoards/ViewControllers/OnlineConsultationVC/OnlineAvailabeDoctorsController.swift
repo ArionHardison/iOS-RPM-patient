@@ -60,7 +60,9 @@ extension OnlineAvailabeDoctorsController : UITableViewDelegate,UITableViewDataS
         if let data = self.chatData?.chats?[indexPath.row]{
             cell.labelDocotrName.text = (data.hospital?.first_name ?? "") + " " + (data.hospital?.last_name ?? "")
             cell.labelSubtitle.text = (data.chat_request?.messages ?? "")
+            cell.docotrImage.setURLImage(data.hospital?.doctor_profile?.profile_pic ?? "")
             cell.labelTiming.text = dateConvertor((data.chat_request?.started_at ?? ""), _input: .date_time, _output: .N_hour)
+            
         }
         return cell
     }

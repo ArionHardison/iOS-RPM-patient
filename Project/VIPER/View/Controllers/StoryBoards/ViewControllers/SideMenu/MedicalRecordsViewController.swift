@@ -15,8 +15,9 @@ class MedicalRecordsViewController: UIViewController {
     @IBOutlet weak var noDataView: UIView!
     @IBOutlet weak var noDataLabel: UILabel!
     @IBOutlet weak var downloadMedicalView: UIView!
+    @IBOutlet weak var addMedicalRecordButton: UIButton!
     
-     var medical : [Medical] = [Medical]()
+     var medical  = [Medicals]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,7 @@ class MedicalRecordsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
         self.getMedicalRecords()
+        self.setupNavigationBar()
     }
 
 }
@@ -33,7 +35,8 @@ class MedicalRecordsViewController: UIViewController {
 extension MedicalRecordsViewController {
     func initialLoads() {
         registerCell()
-        setupNavigationBar()
+      
+        self.addMedicalRecordButton.addTarget(self, action: #selector(addAction(sender:)), for: .touchUpInside)
 
     }
     private func setupNavigationBar() {
@@ -47,13 +50,22 @@ extension MedicalRecordsViewController {
     }
 
     func registerCell(){
-        self.listTable.registerCell(withId: XIB.Names.FavDoctorTableViewCell)
-        
-        self.listTable.tableFooterView = UIView()
+//        self.listTable.registerCell(withId: XIB.Names.FavDoctorTableViewCell)
+        self.listTable.register(UINib(nibName: XIB.Names.FavDoctorTableViewCell, bundle: nil), forCellReuseIdentifier: XIB.Names.FavDoctorTableViewCell)
+    }
+    
+    @IBAction private func addAction(sender:UIButton){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.AddMedicalRecordViewController) as! AddMedicalRecordViewController
+        vc.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
 extension MedicalRecordsViewController : UITableViewDelegate,UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.medical.count
     }
@@ -61,22 +73,44 @@ extension MedicalRecordsViewController : UITableViewDelegate,UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = self.listTable.dequeueReusableCell(withIdentifier: XIB.Names.FavDoctorTableViewCell, for: indexPath) as! FavDoctorTableViewCell
-        self.populateData(cell: cell, data: self.medical[indexPath.row])
+        cell.doctorImage.setURLImage(self.medical[indexPath.row].doctor_profile?.profile_pic ?? "")
+        cell.labelName.text = "\(self.medical[indexPath.row].first_name ?? "") \(self.medical[indexPath.row].last_name ?? "")"
+        cell.labelSpeciality.text = "\(self.medical[indexPath.row].doctor_profile?.speciality?.name ?? "")"
         return cell
     }
     
-    func populateData(cell : FavDoctorTableViewCell , data : Medical){
-        cell.labelName.text = "\(data.hospital?.first_name ?? "") \(data.hospital?.last_name ?? "")"
-        cell.doctorImage.setURLImage(data.hospital?.doctor_profile?.profile_pic ?? "")
-        cell.labelSpeciality.text = data.hospital?.doctor_profile?.speciality?.name ?? ""
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let recordVC = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.PatientRecordsViewController) as! PatientRecordsViewController
+        recordVC.doctorId = self.medical[indexPath.row].clinic?.doctor_id ?? 0
+        self.navigationController?.pushViewController(recordVC, animated: true)
+
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 0.3))
+        view.backgroundColor = section != 2 ? UIColor(named: "TextForegroundColor") : .clear
+        return view
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        
+        return 0.3
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headerView = Bundle.main.loadNibNamed("FilterHeaderView", owner: self, options: nil)?.first as? FilterHeaderView
+        headerView?.lbl.text = "Medical Records given by Doctors"
+        headerView?.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50)
+        return headerView
     }
 
 }
@@ -84,9 +118,9 @@ extension MedicalRecordsViewController : UITableViewDelegate,UITableViewDataSour
 extension MedicalRecordsViewController : PresenterOutputProtocol{
     func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
         switch String(describing: modelClass) {
-            case model.type.MedicalRecordsModel:
-                let data = dataDict as? MedicalRecordsModel
-                self.medical = data?.medical ?? [Medical]()
+            case model.type.ListMedicalRecord:
+                let data = dataDict as? ListMedicalRecord
+                self.medical = data?.medicals ?? []
                 if self.medical.count > 0 {
                     self.downloadMedicalView.isHidden = false
                     self.listTable.isHidden = false
@@ -109,7 +143,7 @@ extension MedicalRecordsViewController : PresenterOutputProtocol{
     }
     
     func getMedicalRecords(){
-        self.presenter?.HITAPI(api: Base.medicalRecords.rawValue, params: nil, methodType: .GET, modelClass: MedicalRecordsModel.self, token: true)
+        self.presenter?.HITAPI(api: Base.medicalRecords.rawValue, params: nil, methodType: .GET, modelClass: ListMedicalRecord.self, token: true)
     }
     
 }

@@ -145,6 +145,8 @@ class DoctorDetailsController: UIViewController {
                 self.labelDoctorName.text = "\(self.searchDoctor.first_name ?? "")" + " " + "\(self.searchDoctor.last_name ?? "")"
                 self.imgDoctor.setURLImage(self.searchDoctor.doctor_profile?.profile_pic ?? "")
                      self.imgDoctor.makeRoundedCorner()
+            self.labelConsultationfee.text = "Consulation Fees  " +  "$ \(self.docProfile.fees ?? 0)"
+            self.labelQualification.text = "Consulation Fees" + "\(self.docProfile.speciality?.name ?? "")"
                 self.labelQualification.text = "\(self.searchDoctor.doctor_profile?.certification ?? "")".capitalized
         //        self.labelPercentage.text = "\(self.docProfile.feedback?.first.) %"
                 self.speciality.append((self.searchDoctor.doctor_profile?.speciality?.name ?? "").capitalized)

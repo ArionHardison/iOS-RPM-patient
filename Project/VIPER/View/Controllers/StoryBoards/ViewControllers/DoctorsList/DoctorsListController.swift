@@ -66,8 +66,13 @@ extension DoctorsListController {
     @IBAction private func filterAction(sender:UIButton){
         let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.FilterViewController) as! FilterViewController
         vc.onClickDone = { (availablity,gender,price) in
+            if availablity == "AvailableAllDAY"{
+                let url = "/api/patient/doctor_catagory/\(self.catagoryID)?gender=\(gender)&fees=\(price)"
+                self.presenter?.HITAPI(api: url, params: nil, methodType: .GET, modelClass: DoctorsDetailModel.self, token: true)
+            }else{
             let url = "/api/patient/doctor_catagory/\(self.catagoryID)?availability_type=\(availablity)&gender=\(gender)&fees=\(price)"
             self.presenter?.HITAPI(api: url, params: nil, methodType: .GET, modelClass: DoctorsDetailModel.self, token: true)
+            }
             vc.dismiss(animated: true, completion: nil)
 
 

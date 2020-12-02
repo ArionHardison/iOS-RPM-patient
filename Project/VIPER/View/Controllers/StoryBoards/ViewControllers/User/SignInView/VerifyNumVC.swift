@@ -140,6 +140,7 @@ extension VerifyNumVC : PresenterOutputProtocol{
     }
     
     func showError(error: CustomError) {
+        showToast(msg: error.localizedDescription)
         
     }
     
@@ -150,6 +151,7 @@ extension VerifyNumVC : PresenterOutputProtocol{
         params.updateValue(self.mobileVerifyData?.otp?.description ?? "", forKey: "otp")
         params.updateValue("ios", forKey: "device_type")
         params.updateValue(deviceTokenString, forKey: "device_token")
+        params.updateValue(push_device_token, forKey: "push_device_token")
         params.updateValue(UUID().uuidString, forKey: "device_id")
         params.updateValue(appClientId, forKey: "client_id")
         params.updateValue(appSecretKey, forKey: "client_secret")

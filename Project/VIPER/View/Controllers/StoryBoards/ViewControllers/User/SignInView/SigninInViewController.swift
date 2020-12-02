@@ -168,7 +168,7 @@ extension SigninInViewController : PresenterOutputProtocol{
     }
     
     func showError(error: CustomError) {
-        
+        showToast(msg: error.localizedDescription)
     }
     
     func verifyNumber(mobileNum : String){

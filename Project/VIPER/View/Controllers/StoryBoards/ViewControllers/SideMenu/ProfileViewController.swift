@@ -156,6 +156,20 @@ class ProfileViewController: UIViewController {
             showToast(msg: "Enter Name")
             return
         }
+    
+    if !name.isEmpty {
+//        let pattern = "/^[A-Z][a-z]{0,19}[\\s,][A-Z][a-z]{0,19}$/"
+//        let predicate = NSPredicate(format: "self MATCHES [c] %@", pattern)
+        if self.nameTxt.getText.contains(" ") {
+            print("Valid")
+            
+        }
+        else {
+            print("Invalid")
+            showToast(msg: "Enter the First Name,Last Name with space between them")
+            return
+        }
+    }
         let fullNameArr = name.components(separatedBy: " ")
         let firstName = fullNameArr[0]
         let lastName = fullNameArr[1]

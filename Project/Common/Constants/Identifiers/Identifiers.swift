@@ -61,6 +61,9 @@ struct Storyboard {
     let FilterViewController = "FilterViewController"
     let AddCardViewController = "AddCardViewController"
     let CardsListViewController = "CardsListViewController"
+    let AddMedicalRecordViewController = "AddMedicalRecordViewController"
+    let PatientRecordsViewController = "PatientRecordsViewController"
+    let ShowRecordViewController = "ShowRecordViewController"
 }
 
 

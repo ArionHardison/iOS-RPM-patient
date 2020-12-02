@@ -125,7 +125,7 @@ extension SummaryViewController : UICollectionViewDelegate,UICollectionViewDataS
         
         let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: XIB.Names.PhotosCell, for: indexPath) as! PhotosCell
         cell.photoImage.setURLImage(self.doctors.specialities?.doctor_profile?[indexPath.row].profile_pic ?? "")
-        cell.photoImage.makeRoundedCorner()
+//        cell.photoImage.makeRoundedCorner()
         return cell
         
     }
@@ -207,14 +207,14 @@ extension SummaryViewController : PresenterOutputProtocol{
     }
     
     func proceedToPay(id : String,message : String,Amount:String,promo_id : String,speciality_id : String){
-//        self.presenter?.HITAPI(api: Base.proceedToPay.rawValue, params: ["id" : id, "message" : message,"Amount":Amount,"pay_for":"CHAT","promo_id":promo_id,"speciality_id" : speciality_id,"payment_mode":"CARD","use_wallet":"FALSE"], methodType: .POST, modelClass: PromoCodeEntity.self, token: true)
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.CardsListViewController) as! CardsListViewController
-        vc.amount = Amount
-        vc.isFromWallet = false
-        vc.id = id
-        vc.promoCode = promo_id
-        vc.message = message
-        self.navigationController?.pushViewController(vc, animated:true)
+        self.presenter?.HITAPI(api: Base.proceedToPay.rawValue, params: ["id" : id, "message" : message,"Amount":Amount,"pay_for":"CHAT","promo_id":promo_id,"speciality_id" : speciality_id,"payment_mode":"CARD","use_wallet":"TRUE"], methodType: .POST, modelClass: PromoCodeEntity.self, token: true)
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.CardsListViewController) as! CardsListViewController
+//        vc.amount = Amount
+//        vc.isFromWallet = false
+//        vc.id = id
+//        vc.promoCode = promo_id
+//        vc.message = message
+//        self.navigationController?.pushViewController(vc, animated:true)
     }
   
 }

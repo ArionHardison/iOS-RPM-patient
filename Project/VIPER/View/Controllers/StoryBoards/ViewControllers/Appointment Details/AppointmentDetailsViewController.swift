@@ -110,7 +110,11 @@ extension AppointmentDetailsViewController {
         self.labelHospitalName.text = "\(self.visitedDetail.appointments?[index].hospital?.clinic?.name ?? ""), \(self.visitedDetail.appointments?[index].hospital?.clinic?.address ?? "")".capitalized
             self.labelPatientName.text = "\(self.visitedDetail.first_name ?? "")  \(self.visitedDetail.last_name ?? "")"
             self.labelDate.text = dateConvertor(self.visitedDetail.appointments?[index].scheduled_at ?? "", _input: .date_time, _output: .DMY_Time)
+            if self.visitedDetail.appointments?[index].status ?? "" == "CHECKEDOUT"{
+                self.labelStatusResponse.text = "Consulted"
+            }else{
             self.labelStatusResponse.text = self.visitedDetail.appointments?[index].status ?? ""
+            }
         }else{
             let data : Appointments = self.updatedVisitedDetail
             self.doctorImg.setURLImage(data.hospital?.doctor_profile?.profile_pic ?? "")

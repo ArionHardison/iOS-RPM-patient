@@ -160,9 +160,20 @@ class RelativeDetailViewController: UIViewController {
                showToast(msg: "Enter Name")
                return
            }
-//           let fullNameArr = name.components(separatedBy: "")
-//           let firstName = fullNameArr[0]
-//           let lastName = fullNameArr[1]
+        if !name.isEmpty {
+            if self.nameTxt.getText.contains(" ") {
+                print("Valid")
+                
+            }
+            else {
+                print("Invalid")
+                showToast(msg: "Enter the First Name,Last Name with space between")
+                return
+            }
+        }
+           let fullNameArr = name.components(separatedBy: " ")
+           let firstName = fullNameArr[0]
+           let lastName = fullNameArr[1]
            guard  let phoneNumber = self.contantNumTxt.text,!phoneNumber.isEmpty else {
                showToast(msg: "Enter Mobile Number")
                return
@@ -214,15 +225,24 @@ class RelativeDetailViewController: UIViewController {
                return
            }
            var imageData = [String:Data]()
-           imageData.updateValue(self.profileImage.image?.pngRepresentationData ?? Data(), forKey: "profile_pic")
+        let imageValue = self.profileImage.image?.pngRepresentationData ?? Data()
+           imageData.updateValue(imageValue, forKey: "profile_pic")
+        
+//        let date = dateConvertor(dob, _input: .DMY, _output: .YMD)
+          let dateFormatte = DateFormatter()
+        dateFormatte.dateFormat = "dd-MM-yyyy"
+        let date = dateFormatte.date(from: dob)
+        dateFormatte.dateFormat = "yyyy-MM-dd"
+        let updateDate = dateFormatte.string(from: date!)
+        
            
            var params = [String:Any]()
-           params.updateValue(name, forKey: "first_name")
-           params.updateValue("lastName", forKey: "last_name")
+           params.updateValue(firstName, forKey: "first_name")
+           params.updateValue(lastName, forKey: "last_name")
            params.updateValue(phoneNumber, forKey: "phone")
            params.updateValue(email, forKey: "email")
            params.updateValue(gender, forKey: "gender")
-           params.updateValue(dob, forKey: "dob")
+           params.updateValue(updateDate, forKey: "dob")
            params.updateValue(bloodGroup, forKey: "blood_group")
            params.updateValue(marital_status, forKey: "merital_status")
            params.updateValue(height, forKey: "height")
@@ -243,7 +263,8 @@ class RelativeDetailViewController: UIViewController {
            params.updateValue(UserDefaultConfig.PatientID, forKey: "patient_id")
            print("Profile Update",params)
        if isNewRelative{
-        self.presenter?.HITAPI(api: Base.createRelative.rawValue, params: params, methodType: .POST, modelClass: CreateRelativeResponse.self, token: true)
+//        self.presenter?.HITAPI(api: Base.createRelative.rawValue, params: params, methodType: .POST, modelClass: CreateRelativeResponse.self, token: true)
+        self.presenter?.IMAGEPOST(api: Base.createRelative.rawValue, params: params, methodType: .POST, imgData: imageData, imgName: "profile_pic", modelClass: CreateRelativeResponse.self, token: true)
        }else{
        let url = "\(Base.createRelative.rawValue)/\(self.userRelatives.id ?? 0)"
            self.presenter?.IMAGEPOST(api: url, params: params, methodType: .POST, imgData: imageData, imgName: "profile_pic", modelClass: CreateRelativeResponse.self, token: true)
@@ -463,6 +484,7 @@ extension RelativeDetailViewController : PresenterOutputProtocol {
     
     func showError(error: CustomError) {
         showToast(msg: error.localizedDescription)
+        self.loader.isHideInMainThread(true)
     }
     
         
