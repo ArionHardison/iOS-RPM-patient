@@ -121,7 +121,7 @@ extension CardsListViewController : UITableViewDelegate,UITableViewDataSource {
             var params = [String:Any]()
             params.updateValue(id, forKey: "id")
             params.updateValue(self.message, forKey: "message")
-            params.updateValue(self.amount, forKey: "Amount")
+            params.updateValue(self.amount, forKey: "amount")
             params.updateValue("CHAT", forKey: "pay_for")
             params.updateValue(id, forKey: "speciality_id")
             params.updateValue(promoCode, forKey: "promo_id")

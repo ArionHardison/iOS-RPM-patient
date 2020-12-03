@@ -33,6 +33,7 @@ extension ShowRecordViewController {
     
     private func intiatlLoads(){
         self.setupNavigationBar()
+        self.setLocalization()
         self.titleTextField.text = self.titleString
         self.descriptionTextView.text = self.descriptionText
         self.viewFileButton.addTarget(self, action: #selector(viewFileAction(sender:)), for: .touchUpInside)

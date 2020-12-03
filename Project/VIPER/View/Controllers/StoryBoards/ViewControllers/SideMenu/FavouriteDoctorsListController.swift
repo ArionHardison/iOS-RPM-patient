@@ -15,6 +15,11 @@ class FavouriteDoctorsListController: UIViewController {
     
     var favouriteDoctors : [Favourite_Doctors] = [Favourite_Doctors]()
     
+    lazy var loader  : UIView = {
+        return createActivityIndicator(self.view.window ?? self.view)
+       }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -95,6 +100,7 @@ extension FavouriteDoctorsListController : PresenterOutputProtocol{
     func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
         switch String(describing: modelClass) {
             case model.type.DoctorsListModel:
+                self.loader.isHideInMainThread(true)
                 let data = dataDict as? DoctorsListModel
                 self.favouriteDoctors = data?.favourite_Doctors ?? [Favourite_Doctors]()
                 self.listTable.reloadData()
@@ -111,6 +117,7 @@ extension FavouriteDoctorsListController : PresenterOutputProtocol{
     
     func getFavDoctorList(){
         self.presenter?.HITAPI(api: Base.searchDoctors.rawValue, params: nil, methodType: .GET, modelClass: DoctorsListModel.self, token: true)
+        self.loader.isHidden = false
     }
     
 }

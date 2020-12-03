@@ -103,7 +103,7 @@ internal func createActivityIndicator(_ uiView : UIView)->UIView{
     let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
     actInd.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
     actInd.clipsToBounds = true
-    actInd.activityIndicatorViewStyle = .whiteLarge
+    actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.large
     
     actInd.center = CGPoint(x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2)
     loadingView.addSubview(actInd)

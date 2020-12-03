@@ -15,7 +15,9 @@ class VisitedDoctorsViewController: UIViewController {
     
     
     var visitedDoctors : [Appointments] = [Appointments]()
-
+    lazy var loader : UIView = {
+        return createActivityIndicator(self.view.window ?? self.view)
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +99,11 @@ extension VisitedDoctorsViewController: UITableViewDelegate, UITableViewDataSour
             cell.labelStatus.backgroundColor = UIColor(named: "LightGreen") //UIColor.LightGreen
             cell.labelStatus.textColor = UIColor(named: "ConfirmedGreenColor") //UIColor.AppBlueColor
         }
+        if data.status == "CHECKEDOUT"{
+            cell.labelStatus.text = ("Consulted").uppercased()
+        }else {
         cell.labelStatus.text = data.status ?? "".uppercased()
+        }
 
     }
     
@@ -131,6 +137,7 @@ extension VisitedDoctorsViewController : PresenterOutputProtocol{
     func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
         switch String(describing: modelClass) {
             case model.type.UpdatedVistedDoctor:
+                self.loader.isHideInMainThread(true)
                 let data = dataDict as? UpdatedVistedDoctor
                 self.visitedDoctors = data?.vistedDoctors?.appointments ?? []
                 self.visitedDoctorsTable.reloadInMainThread()
@@ -147,6 +154,7 @@ extension VisitedDoctorsViewController : PresenterOutputProtocol{
     
     func getVisitedhDoctorList(){
         self.presenter?.HITAPI(api: Base.visitedDoctor.rawValue, params: nil, methodType: .GET, modelClass: UpdatedVistedDoctor.self, token: true)
+        self.loader.isHidden = false
     }
     
 }

@@ -17,7 +17,9 @@ class SearchViewController: UIViewController {
     
    var searchDoctors : [Search_doctors] = [Search_doctors]()
     
-   
+    lazy var loader : UIView = {
+        return createActivityIndicator(self.view.window ?? self.view)
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -125,6 +127,7 @@ extension SearchViewController : PresenterOutputProtocol{
     func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
         switch String(describing: modelClass) {
             case model.type.DoctorsListModel:
+                self.loader.isHideInMainThread(true)
                 let data = dataDict as? DoctorsListModel
                 self.searchDoctors = data?.search_doctors ?? [Search_doctors]()
                 DispatchQueue.main.async {
@@ -144,6 +147,7 @@ extension SearchViewController : PresenterOutputProtocol{
     
     func getSearchDoctorList(){
         self.presenter?.HITAPI(api: Base.searchDoctors.rawValue, params: nil, methodType: .GET, modelClass: DoctorsListModel.self, token: true)
+        self.loader.isHidden = false
     }
     
 }

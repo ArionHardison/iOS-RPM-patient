@@ -19,6 +19,10 @@ class HealthFeedViewController: UIViewController {
     
     var article : [Article] = [Article]()
     
+    lazy var loader  : UIView = {
+        return createActivityIndicator(self.view.window ?? self.view)
+       }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialLoads()
@@ -110,14 +114,21 @@ extension HealthFeedViewController : UITableViewDelegate, UITableViewDataSource 
 //
 //            }
 //        })
+        let image = data.cover_photo
+       
         cell.ArticleImage.imageFromUrl( "\(imageURL)\(data.cover_photo ?? "")", completion: { (image) in
-            if image != nil{
+         
             cell.ArticleImage.image = image
-            }else{
-                cell.ArticleImage.image = #imageLiteral(resourceName: "NoImageFound")
-            }
+//            if image != nil{
+//            cell.ArticleImage.image = image
+//            }else{
+//                cell.ArticleImage.image = #imageLiteral(resourceName: "NoImageFound")
+//            }
             
         })
+            if image == nil{
+                cell.ArticleImage.image = #imageLiteral(resourceName: "NoImageFound")
+            }
        
         cell.ArticleTitle.text = data.name ?? "".capitalized
         cell.Articlecontent.text = data.description ?? "".capitalized
@@ -147,6 +158,7 @@ extension HealthFeedViewController : PresenterOutputProtocol{
     func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
         switch String(describing: modelClass) {
             case model.type.ArticleModel:
+                self.loader.isHideInMainThread(true)
                 let data = dataDict as? ArticleModel
                 self.article = data?.article ?? [Article]()
                 if self.article.count > 0{
@@ -170,6 +182,7 @@ extension HealthFeedViewController : PresenterOutputProtocol{
     
     func getArticlesList(){
         self.presenter?.HITAPI(api: Base.articles.rawValue, params: nil, methodType: .GET, modelClass: ArticleModel.self, token: true)
+        self.loader.isHidden = false
     }
     
 }
@@ -181,7 +194,7 @@ extension UIImageView {
     
     public func imageFromUrl(_ urlStr: String,completion: @escaping (_ img: UIImage) -> Void) {
         
-        self.image = nil
+      //  self.image = #imageLiteral(resourceName: <#T##String#>)
         
         if urlStr.count > 0 {
         
@@ -198,8 +211,13 @@ extension UIImageView {
                         
                         CacheA.imgCache.setObject(UIImage(data: res.data!) ?? UIImage(), forKey: urlStr as NSString)
                         let cachedImg = CacheA.imgCache.object(forKey: urlStr as NSString)
-                        
+                      //  https://telehealthmanager.net/storage/images/article_img/bjOsiGZuBsBWvYuGn64abYAsDOJfhtuxfdJ9RkG6.jpeg
                         completion(cachedImg ?? #imageLiteral(resourceName: "NoImageFound"))
+                        if urlStr == "https://telehealthmanager.net/storage/" {
+                            completion (#imageLiteral(resourceName: "NoImageFound"))
+                        }else{
+                            completion(cachedImg ?? #imageLiteral(resourceName: "NoImageFound"))
+                        }
                         
                     case .failure(let error):
                         

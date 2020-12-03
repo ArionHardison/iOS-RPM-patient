@@ -18,6 +18,9 @@ class MedicalRecordsViewController: UIViewController {
     @IBOutlet weak var addMedicalRecordButton: UIButton!
     
      var medical  = [Medicals]()
+    lazy var loader  : UIView = {
+        return createActivityIndicator(self.view.window ?? self.view)
+       }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,6 +122,7 @@ extension MedicalRecordsViewController : PresenterOutputProtocol{
     func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
         switch String(describing: modelClass) {
             case model.type.ListMedicalRecord:
+                self.loader.isHideInMainThread(true)
                 let data = dataDict as? ListMedicalRecord
                 self.medical = data?.medicals ?? []
                 if self.medical.count > 0 {
@@ -144,6 +148,7 @@ extension MedicalRecordsViewController : PresenterOutputProtocol{
     
     func getMedicalRecords(){
         self.presenter?.HITAPI(api: Base.medicalRecords.rawValue, params: nil, methodType: .GET, modelClass: ListMedicalRecord.self, token: true)
+        self.loader.isHidden = false
     }
     
 }

@@ -63,11 +63,27 @@ class FAQViewController: UIViewController {
     @IBAction private func doneAction (sender : UIBarButtonItem){
 
         let alert = UIAlertController(title: "Conact our Help center", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Chat", style: .default, handler: { (Void) in
+        alert.addAction(UIAlertAction(title: "Mail", style: .default, handler: { (Void) in
+            if let url = URL(string: "mailto:\(supportEmail)") {
+              if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url)
+              } else {
+                UIApplication.shared.openURL(url)
+              }
+            }
+            
+            
         }))
         alert.addAction(UIAlertAction(title: "Call", style: .default, handler: { (Void) in
+            guard let number = URL(string: "tel://" + supportNumber) else { return }
+            UIApplication.shared.open(number)
+
+            
         }))
         alert.addAction(UIAlertAction(title: "Web", style: .default, handler: { (Void) in
+            if let url = URL(string: baseUrl) {
+                UIApplication.shared.open(url)
+            }
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:nil))
         alert.view.tintColor = .AppBlueColor

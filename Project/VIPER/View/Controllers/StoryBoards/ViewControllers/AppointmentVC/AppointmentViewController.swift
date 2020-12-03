@@ -33,7 +33,7 @@ class AppointmentViewController: UIViewController {
        }
     
     lazy var loader  : UIView = {
-           return createActivityIndicator(UIApplication.shared.keyWindow ?? self.view)
+        return createActivityIndicator(self.view.window ?? self.view)
        }()
        
     
@@ -221,7 +221,7 @@ extension AppointmentViewController : PresenterOutputProtocol{
     func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
         switch String(describing: modelClass) {
             case model.type.AppointmentModel:
-                
+                self.loader.isHideInMainThread(true)
                let data = dataDict as? AppointmentModel
                 self.upcomingAppointment = (data?.upcomming)!
                self.previousAppointment = (data?.previous)!
@@ -245,6 +245,7 @@ extension AppointmentViewController : PresenterOutputProtocol{
     
     func getAppointment(){
         self.presenter?.HITAPI(api: Base.appointment.rawValue, params: nil, methodType: .GET, modelClass: AppointmentModel.self, token: true)
+        self.loader.isHidden = false
     }
     
     func cancelAppointment(id : String){

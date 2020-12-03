@@ -21,7 +21,7 @@
         @IBOutlet weak var searchBar: UISearchBar!
         
         lazy var loader : UIView = {
-            return createActivityIndicator(UIApplication.shared.keyWindow ?? self.view)
+            return createActivityIndicator(self.view.window ?? self.view)
         }()
         
         var titles = ["Find Doctors","Chat","Search Doctors","Visited Doctors"]
