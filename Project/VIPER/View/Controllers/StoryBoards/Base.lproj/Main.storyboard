@@ -8524,7 +8524,7 @@
         <image name="AcceptCall" width="256" height="256"/>
         <image name="AddPlaceholder" width="337.5" height="337.5"/>
         <image name="EndCall" width="256" height="256"/>
-        <image name="Logo" width="1024" height="1024"/>
+        <image name="Logo" width="512" height="512"/>
         <image name="NoImageFound" width="190.5" height="143"/>
         <image name="RadioOFF" width="42" height="41"/>
         <image name="add" width="960" height="540"/>

@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "app_icon_1024.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "User-splash@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
