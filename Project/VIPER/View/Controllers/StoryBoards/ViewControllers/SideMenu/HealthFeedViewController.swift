@@ -101,6 +101,7 @@ extension HealthFeedViewController : UITableViewDelegate, UITableViewDataSource 
             self.populateCell(cell: cell, data: self.article[indexPath.row])
           
         }
+        cell.ArticleImage.image = #imageLiteral(resourceName: "NoImageFound")
 
         return cell
     }

@@ -97,6 +97,7 @@ struct XIB {
     let RelativesTableViewCell = "RelativesTableViewCell"
     let AddAllergyTableViewCell = "AddAllergyTableViewCell"
     let CardsTableViewCell = "CardsTableViewCell"
+    let InvoiceView = "InvoiceView"
     
     
 }

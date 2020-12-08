@@ -120,6 +120,7 @@ class ProfileViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         IQKeyboardManager.shared.enable = true
+        
     }
     
     private func setValues(){

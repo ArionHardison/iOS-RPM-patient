@@ -38,6 +38,7 @@ class UpcomingDetailsController: UITableViewController {
     var pastAppoitment =  Previous()
     var isFromUpcomming:Bool = false
     var index : Int = 0
+    var invoiceView : InvoiceView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,6 +109,19 @@ extension UpcomingDetailsController {
         if #available(iOS 13.0, *) {
          let twilioVideoController = self.storyboard?.instantiateViewController(identifier: "audioVideoCallCaontroller") as! audioVideoCallCaontroller
             twilioVideoController.modalPresentationStyle = .fullScreen
+            twilioVideoController.onCallEnd = {
+                twilioVideoController.dismiss(animated: true, completion: nil)
+                if self.invoiceView == nil, let invoice = Bundle.main.loadNibNamed(XIB.Names.InvoiceView, owner: self, options: [:])?.first as? InvoiceView {
+                    invoice.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: self.view.frame.width, height: self.view.frame.height))
+                    self.invoiceView = invoice
+                    self.invoiceView.populateData(invoice: self.appointment.appointments?[self.index].invoice)
+                    self.invoiceView.onClickDone = {
+                        self.invoiceView.removeFromSuperview()
+                        self.invoiceView = nil
+                    }
+                    self.view.addSubview(self.invoiceView!)
+                }
+            }
             self.present(twilioVideoController, animated: true, completion: {
                 twilioVideoController.video = 1
                 twilioVideoController.senderId = "\(self.appointment.appointments?[self.index].doctor_id ?? 0 )"

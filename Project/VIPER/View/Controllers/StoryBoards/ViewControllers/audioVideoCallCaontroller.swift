@@ -59,6 +59,7 @@ class audioVideoCallCaontroller: UIViewController {
       let callKitCallController: CXCallController
       var callKitCompletionHandler: ((Bool)->Swift.Void?)? = nil
       //var userInitiatedDisconnect: Bool = false
+    var onCallEnd:(()->Void)?
     
     required init?(coder aDecoder: NSCoder) {
            let configuration = CXProviderConfiguration(localizedName: AppName)
@@ -414,7 +415,8 @@ extension audioVideoCallCaontroller {
            // appdelagate?.performEndCallAction(uuid: self.uuid!)
              performEndCallAction(uuid: self.uuid ?? UUID())
         }
-        self.dismiss(animated: true, completion:nil)
+//        self.dismiss(animated: true, completion:nil)
+        self.onCallEnd?()
  
        }
     

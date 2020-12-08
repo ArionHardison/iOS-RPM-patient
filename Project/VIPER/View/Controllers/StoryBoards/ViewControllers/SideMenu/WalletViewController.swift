@@ -25,7 +25,7 @@ class WalletViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
         self.getProfileApi()
-//        self.setValues()
+        self.setValues()
     }
 
     func setupAction(){

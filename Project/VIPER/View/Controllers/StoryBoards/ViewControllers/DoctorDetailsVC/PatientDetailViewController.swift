@@ -50,7 +50,7 @@ class PatientDetailViewController: UIViewController {
         self.setupNavigation()
         self.setupAction()
         self.populateData()
-        self.setupFont()
+//        self.setupFont()
          IQKeyboardManager.shared.enable = false
 //        self.scrollView.addSubview(self.scrollInnerView)
 //        self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.scrollInnerView.frame.height)
@@ -61,12 +61,12 @@ class PatientDetailViewController: UIViewController {
         self.navigationItem.title = "Enter patient detail"
     }
     
-    func setupFont(){
-        [self.doctorNameLbl , self.clinicDetailLbl , self.patientDetailLbl ,self.bookingforTitleLbl,self.dateandtimeTitleLbl ,self.doctorInfoTitleLbl,self.bookingforLbl,self.dateandtimeLbl].forEach { (label) in
-            
-            Common.setFont(to: label)
-        }
-    }
+//    func setupFont(){
+//        [self.doctorNameLbl , self.clinicDetailLbl , self.patientDetailLbl ,self.bookingforTitleLbl,self.dateandtimeTitleLbl ,self.doctorInfoTitleLbl,self.bookingforLbl,self.dateandtimeLbl].forEach { (label) in
+//
+//            Common.setFontWithType(to: label, size: 16, type: .meduim)
+//        }
+//    }
 
      func setupAction(){
         self.confirmBtn.addTap {
@@ -75,7 +75,7 @@ class PatientDetailViewController: UIViewController {
                 if !self.isfromSearch{
                     params.updateValue("5", forKey: "consult_time") //self.bookingreq.consult_time = "5"
                     params.updateValue("OFFLINE", forKey: "appointment_type")   // self.bookingreq.appointment_type = "ONLINE"
-                    params.updateValue("Appoitment", forKey: "description")//     self.bookingreq.description = "Patient Testing Purpose"
+                    params.updateValue("Appointment", forKey: "description")//     self.bookingreq.description = "Patient Testing Purpose"
                     params.updateValue("\(self.docProfile.doctor_id ?? 0)", forKey: "doctor_id") //self.bookingreq.doctor_id = "\(self.docProfile.id ?? 0)"
                     params.updateValue(self.isFollowup ? "follow_up" : "consultation", forKey: "booking_for") //self.bookingreq.booking_for =  self.isFollowup ? "follow_up" : "consultation"
                     params.updateValue(UserDefaultConfig.PatientID, forKey: "selectedPatient") // self.bookingreq.selectedPatient = UserDefaultConfig.PatientID

@@ -12,6 +12,7 @@ import ObjectMapper
 class VisitedDoctorsViewController: UIViewController {
     
     @IBOutlet weak var visitedDoctorsTable: UITableView!
+    @IBOutlet weak var noDataView: UIView!
     
     
     var visitedDoctors : [Appointments] = [Appointments]()
@@ -39,6 +40,8 @@ extension VisitedDoctorsViewController {
     private func initialLoads() {
         setupNavigationBar()
         registerCell()
+        self.noDataView.isHidden = false
+        self.visitedDoctorsTable.isHidden = true
     }
     
     private func setupNavigationBar() {
@@ -139,8 +142,16 @@ extension VisitedDoctorsViewController : PresenterOutputProtocol{
             case model.type.UpdatedVistedDoctor:
                 self.loader.isHideInMainThread(true)
                 let data = dataDict as? UpdatedVistedDoctor
-                self.visitedDoctors = data?.vistedDoctors?.appointments ?? []
-                self.visitedDoctorsTable.reloadInMainThread()
+                if data?.vistedDoctors?.appointments?.count ?? 0 > 0{
+                    self.noDataView.isHidden = true
+                    self.visitedDoctorsTable.isHidden = false
+                    self.visitedDoctors = data?.vistedDoctors?.appointments ?? []
+                    self.visitedDoctorsTable.reloadInMainThread()
+                }else{
+                    self.noDataView.isHidden = false
+                    self.visitedDoctorsTable.isHidden = true
+                }
+               
                 break
             
             default: break

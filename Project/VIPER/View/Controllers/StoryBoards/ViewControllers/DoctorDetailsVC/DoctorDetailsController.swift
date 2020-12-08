@@ -114,7 +114,7 @@ class DoctorDetailsController: UIViewController {
             self.imgDoctor.setURLImage(detail.doctor_profile?.profile_pic ?? "")
              self.imgDoctor.makeRoundedCorner()
             self.labelConsultationfee.text = "Consulation Fees  " +  "$ \(self.docProfile.fees ?? 0)"
-            self.labelQualification.text = "Consulation Fees" + "\(self.docProfile.speciality?.name ?? "")"
+            self.labelQualification.text = "\(self.docProfile.speciality?.name ?? "")"
             self.labelPercentage.text = "\(detail.feedback_percentage ?? "") %"
             self.speciality.append(self.docProfile.speciality?.name ?? "")
          //   self.imgLocationPreview.pin_setImage(from: URL(string: detail.clinic?.static_map ?? "")!)
@@ -146,7 +146,7 @@ class DoctorDetailsController: UIViewController {
                 self.imgDoctor.setURLImage(self.searchDoctor.doctor_profile?.profile_pic ?? "")
                      self.imgDoctor.makeRoundedCorner()
             self.labelConsultationfee.text = "Consulation Fees  " +  "$ \(self.docProfile.fees ?? 0)"
-            self.labelQualification.text = "Consulation Fees" + "\(self.docProfile.speciality?.name ?? "")"
+            self.labelQualification.text = "\(self.docProfile.speciality?.name ?? "")"
                 self.labelQualification.text = "\(self.searchDoctor.doctor_profile?.certification ?? "")".capitalized
         //        self.labelPercentage.text = "\(self.docProfile.feedback?.first.) %"
                 self.speciality.append((self.searchDoctor.doctor_profile?.speciality?.name ?? "").capitalized)
@@ -170,8 +170,16 @@ class DoctorDetailsController: UIViewController {
     
     func setupAction(){
         self.btnFavourite.addTap {
+            if !self.isFromSearchDoctor{
+                if self.isfromFavourite{
+                    self.addRemoveFav(patient_id: UserDefaultConfig.PatientID, doctor_id: (self.favouriteDoctor?.hospital?.doctor_profile?.id ?? 0).description)
+                }else{
             self.addRemoveFav(patient_id: UserDefaultConfig.PatientID, doctor_id:(self.docProfile.id ?? 0).description)
-        }
+            }
+            }else{
+                self.addRemoveFav(patient_id: UserDefaultConfig.PatientID, doctor_id:(self.searchDoctor.doctor_profile?.id ?? 0).description)
+            }
+            }
         
         self.bookBtn.addTap {
             let vc = BookingViewController.initVC(storyBoardName: .main, vc: BookingViewController.self, viewConrollerID: Storyboard.Ids.BookingViewController)
@@ -256,7 +264,7 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
             cell.serviceLbl.text = self.speciality[indexPath.row]
         }else if tableView == self.timingTableView{
             if let timing : Timing = self.searchDoctor.timing?[indexPath.row]{
-                cell.dotImg.isHidden = true
+                cell.dotImg.isHidden = false
                 self.setSeatchCountLbl(label: cell.serviceLbl, day: "\(timing.day ?? "") - " , timing: "\(timing.start_time ?? "") : \(timing.end_time ?? "")")
             }
         }
@@ -270,14 +278,14 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
                     
                     if tableView == self.servicesTV{
                         cell.serviceLbl.text = self.favouriteDoctor?.hospital?.doctor_service?[indexPath.row].service?.name ?? ""
-            //            cell.lblLeadConstraints.constant = 10
+//                        cell.lblLeadConstraints.constant = 10
 
                     }else if tableView == self.specilizationTV{
                         cell.serviceLbl.text = self.speciality[indexPath.row]
                     }else if tableView == self.timingTableView{
                         if let timing : Timing = self.favouriteDoctor?.hospital?.timing?[indexPath.row]{
-                            cell.dotImg.isHidden = true
-            //                cell.lblLeadConstraints.constant = -10
+//                            cell.dotImg.isHidden = true
+//                            cell.lblLeadConstraints.constant = -50
                             self.setSeatchCountLbl(label: cell.serviceLbl, day: "\(timing.day ?? "") -" , timing: "\(timing.start_time ?? "") : \(timing.end_time ?? "")")
                         }
                     }

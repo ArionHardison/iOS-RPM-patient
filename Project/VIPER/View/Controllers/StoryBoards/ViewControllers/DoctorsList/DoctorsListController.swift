@@ -45,8 +45,8 @@ extension DoctorsListController {
    
         doctorsListTV.register(UINib(nibName: XIB.Names.DoctorCell, bundle: .main), forCellReuseIdentifier:  XIB.Names.DoctorCell)
         self.btnBack.addTarget(self, action: #selector(backButtonClick), for: .touchUpInside)
+//        self.filterImageButton.addTarget(self, action: #selector(filterAction(sender:)), for: .touchUpInside)
         self.filterImageButton.addTarget(self, action: #selector(filterAction(sender:)), for: .touchUpInside)
-        self.filterButton.addTarget(self, action: #selector(filterAction(sender:)), for: .touchUpInside)
         self.getDoctorsList()
 
     }

@@ -229,11 +229,13 @@ class RelativeDetailViewController: UIViewController {
            imageData.updateValue(imageValue, forKey: "profile_pic")
         
 //        let date = dateConvertor(dob, _input: .DMY, _output: .YMD)
+        var updateDate = String()
           let dateFormatte = DateFormatter()
         dateFormatte.dateFormat = "dd-MM-yyyy"
         let date = dateFormatte.date(from: dob)
         dateFormatte.dateFormat = "yyyy-MM-dd"
-        let updateDate = dateFormatte.string(from: date!)
+        updateDate = dateFormatte.string(from: date ?? Date())
+        
         
            
            var params = [String:Any]()

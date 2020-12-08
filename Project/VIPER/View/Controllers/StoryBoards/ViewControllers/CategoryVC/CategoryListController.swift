@@ -31,6 +31,7 @@ class CategoryListController: UIViewController {
         let size = CGSize(width:categoryListCV.bounds.width/2, height: 175)
         layout.itemSize = size
         }
+        self.doctorSearchBar.change(textFont: .systemFont(ofSize: 17))
     }
     
     
@@ -164,3 +165,16 @@ extension CategoryListController : UISearchBarDelegate {
     
     
 }
+
+
+extension UISearchBar {
+
+func change(textFont : UIFont?) {
+
+    for view : UIView in (self.subviews[0]).subviews {
+
+        if let textField = view as? UITextField {
+            textField.font = textFont
+        }
+    }
+} }

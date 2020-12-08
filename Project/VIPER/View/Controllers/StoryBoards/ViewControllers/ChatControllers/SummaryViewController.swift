@@ -81,16 +81,16 @@ class SummaryViewController: UIViewController {
     
     
     func setupFont(){
-        Common.setFont(to: titleLbl, isTitle: true, size: 20)
-        Common.setFont(to: feeLbl, isTitle: true, size: 18)
-        Common.setFont(to: proceedTPayBtn, isTitle: true, size: 20)
-        Common.setFont(to: backBtn, isTitle: true, size: 20)
-        Common.setFont(to: offerPriceLbl, isTitle: false, size: 17)
-        Common.setFont(to: orginalPrieLbl, isTitle: false, size: 15)
-        Common.setFont(to: moneyBack, isTitle: false, size: 14)
-        Common.setFont(to: verifiedLbl, isTitle: false, size: 16)
-        Common.setFont(to: chatoutLbl, isTitle: false, size: 16)
-        Common.setFont(to: promoCode, isTitle: false, size: 18)
+//        Common.setFont(to: titleLbl, isTitle: true, size: 20)
+//        Common.setFont(to: feeLbl, isTitle: true, size: 18)
+//        Common.setFont(to: proceedTPayBtn, isTitle: true, size: 20)
+//        Common.setFont(to: backBtn, isTitle: true, size: 20)
+//        Common.setFont(to: offerPriceLbl, isTitle: false, size: 17)
+//        Common.setFont(to: orginalPrieLbl, isTitle: false, size: 15)
+//        Common.setFont(to: moneyBack, isTitle: false, size: 14)
+//        Common.setFont(to: verifiedLbl, isTitle: false, size: 16)
+//        Common.setFont(to: chatoutLbl, isTitle: false, size: 16)
+//        Common.setFont(to: promoCode, isTitle: false, size: 18)
     }
     
     func setSeatchCountLbl(price : Int = 0,offer : Int){
@@ -207,7 +207,7 @@ extension SummaryViewController : PresenterOutputProtocol{
     }
     
     func proceedToPay(id : String,message : String,Amount:String,promo_id : String,speciality_id : String){
-        self.presenter?.HITAPI(api: Base.proceedToPay.rawValue, params: ["id" : id, "message" : message,"Amount":Amount,"pay_for":"CHAT","promo_id":promo_id,"speciality_id" : speciality_id,"payment_mode":"CARD","use_wallet":"TRUE"], methodType: .POST, modelClass: PromoCodeEntity.self, token: true)
+//        self.presenter?.HITAPI(api: Base.proceedToPay.rawValue, params: ["id" : id, "message" : message,"Amount":Amount,"pay_for":"CHAT","promo_id":promo_id,"speciality_id" : speciality_id,"payment_mode":"CARD","use_wallet":"TRUE"], methodType: .POST, modelClass: PromoCodeEntity.self, token: true)
         let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.CardsListViewController) as! CardsListViewController
         vc.amount = Amount
         vc.isFromWallet = false
