@@ -12,6 +12,7 @@ import ObjectMapper
 class OnlineAvailabeDoctorsController: UIViewController {
 
     @IBOutlet weak var doctorsListTV: UITableView!
+    @IBOutlet weak var noDataView: UIView!
     
     var chatData : ChatHistoryEntity?
     
@@ -26,7 +27,8 @@ class OnlineAvailabeDoctorsController: UIViewController {
     
     private func registerCell(){
         
-       
+        self.noDataView.isHidden = false
+        self.doctorsListTV.isHidden = true
         doctorsListTV.register(UINib(nibName: XIB.Names.OnlineDoctorCell, bundle: .main), forCellReuseIdentifier:  XIB.Names.OnlineDoctorCell)
         
     }
@@ -94,7 +96,15 @@ extension OnlineAvailabeDoctorsController : PresenterOutputProtocol{
             case model.type.ChatHistoryEntity:
                 guard let data = dataDict as? ChatHistoryEntity else { return }
                 self.chatData = data
-                self.doctorsListTV.reloadData()
+                if (data.chats?.count ?? 0) > 0{
+                    self.noDataView.isHidden = true
+                    self.doctorsListTV.isHidden = false
+                    self.doctorsListTV.reloadData()
+                }else{
+                    self.noDataView.isHidden = false
+                    self.doctorsListTV.isHidden = true
+                }
+                
                 break
             
             default: break

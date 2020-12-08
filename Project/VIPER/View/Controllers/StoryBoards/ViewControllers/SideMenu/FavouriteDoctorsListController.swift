@@ -12,6 +12,7 @@ import ObjectMapper
 class FavouriteDoctorsListController: UIViewController {
 
     @IBOutlet var listTable : UITableView!
+    @IBOutlet weak var noDataView: UIView!
     
     var favouriteDoctors : [Favourite_Doctors] = [Favourite_Doctors]()
     
@@ -41,6 +42,8 @@ extension FavouriteDoctorsListController {
     func initialLoads() {
         registerCell()
         setupNavigationBar()
+        self.noDataView.isHidden = false
+        self.listTable.isHidden = true
 
     }
     private func setupNavigationBar() {
@@ -103,7 +106,14 @@ extension FavouriteDoctorsListController : PresenterOutputProtocol{
                 self.loader.isHideInMainThread(true)
                 let data = dataDict as? DoctorsListModel
                 self.favouriteDoctors = data?.favourite_Doctors ?? [Favourite_Doctors]()
-                self.listTable.reloadData()
+                if (data?.favourite_Doctors?.count ?? 0) > 0{
+                    self.noDataView.isHidden = true
+                    self.listTable.isHidden = false
+                    self.listTable.reloadData()
+                }else{
+                    self.noDataView.isHidden = false
+                    self.listTable.isHidden = true
+                }
                 break
             
             default: break
