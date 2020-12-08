@@ -17,15 +17,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="User-splash" translatesAutoresizingMaskIntoConstraints="NO" id="wDn-lK-Fpf">
-                                <rect key="frame" x="21" y="167" width="333.5" height="333.5"/>
+                                <rect key="frame" x="71" y="217" width="233" height="233"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7nC-HY-vTV"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="wDn-lK-Fpf" firstAttribute="width" secondItem="mdC-IL-fGJ" secondAttribute="height" multiplier="0.5" id="9z0-p4-rKK"/>
+                            <constraint firstItem="wDn-lK-Fpf" firstAttribute="width" secondItem="mdC-IL-fGJ" secondAttribute="height" multiplier="0.35" id="9z0-p4-rKK"/>
                             <constraint firstItem="wDn-lK-Fpf" firstAttribute="centerX" secondItem="mdC-IL-fGJ" secondAttribute="centerX" id="PGs-4N-2gm"/>
-                            <constraint firstItem="wDn-lK-Fpf" firstAttribute="height" secondItem="mdC-IL-fGJ" secondAttribute="height" multiplier="0.5" id="d7F-c8-58W"/>
+                            <constraint firstItem="wDn-lK-Fpf" firstAttribute="height" secondItem="mdC-IL-fGJ" secondAttribute="height" multiplier="0.35" id="d7F-c8-58W"/>
                             <constraint firstItem="wDn-lK-Fpf" firstAttribute="centerY" secondItem="mdC-IL-fGJ" secondAttribute="centerY" id="fCs-4a-3o4"/>
                         </constraints>
                     </view>
