@@ -56,7 +56,8 @@ extension CardsListViewController {
     }
     
     private func getCards(){
-        self.presenter?.HITAPI(api: Base.addCard.rawValue, params: nil, methodType: .GET, modelClass: CardsModel.self, token: true)
+        let url = "\(Base.addCard.rawValue)?user_type=patient"
+        self.presenter?.HITAPI(api: url, params: nil, methodType: .GET, modelClass: CardsModel.self, token: true)
         self.loader.isHidden = false
     }
     
@@ -99,12 +100,16 @@ extension CardsListViewController {
 
 extension CardsListViewController : UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return cardsList?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: XIB.Names.CardsTableViewCell, for: indexPath) as! CardsTableViewCell
-        cell.labelCardNumber.text = "XXXX-XXXX-XXXX-" + (cardsList?[indexPath.row].last_four ?? "")
+        cell.labelCardNumber.text = "XXXX-XXXX-XXXX-" + (cardsList?[indexPath.section].last_four ?? "")
         return cell
     }
     
@@ -112,7 +117,7 @@ extension CardsListViewController : UITableViewDelegate,UITableViewDataSource {
         if isFromWallet{
         var params = [String:Any]()
         params.updateValue(amount, forKey: "amount")
-        params.updateValue(cardsList?[indexPath.row].card_id ?? "", forKey: "card_id")
+        params.updateValue(cardsList?[indexPath.section].card_id ?? "", forKey: "card_id")
         params.updateValue("stripe", forKey: "payment_type")
         params.updateValue("patient", forKey: "user_type")
         self.presenter?.HITAPI(api: Base.addMoney.rawValue, params: params, methodType: .POST, modelClass: AddMoneyModel.self, token: true)
@@ -127,7 +132,7 @@ extension CardsListViewController : UITableViewDelegate,UITableViewDataSource {
             params.updateValue(promoCode, forKey: "promo_id")
             params.updateValue("FALSE", forKey: "use_wallet")
             params.updateValue("CARD", forKey: "payment_mode")
-            params.updateValue(cardsList?[indexPath.row].card_id ?? "", forKey: "card_id")
+            params.updateValue(cardsList?[indexPath.section].card_id ?? "", forKey: "card_id")
             self.presenter?.HITAPI(api: Base.proceedToPay.rawValue, params: params, methodType: .POST, modelClass: CardSuccess.self, token: true)
         }
     }

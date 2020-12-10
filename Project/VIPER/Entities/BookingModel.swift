@@ -42,6 +42,7 @@ struct Appointment : Mappable {
     var updated_at : String?
     var created_at : String?
     var id : Int?
+    var invoice : Invoice?
     
     init() {
     }
@@ -63,6 +64,7 @@ struct Appointment : Mappable {
         updated_at <- map["updated_at"]
         created_at <- map["created_at"]
         id <- map["id"]
+        invoice <- map["invoice"]
     }
     
 }

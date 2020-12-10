@@ -415,8 +415,8 @@ extension audioVideoCallCaontroller {
            // appdelagate?.performEndCallAction(uuid: self.uuid!)
              performEndCallAction(uuid: self.uuid ?? UUID())
         }
-//        self.dismiss(animated: true, completion:nil)
-        self.onCallEnd?()
+        self.dismiss(animated: true, completion:nil)
+//        self.onCallEnd?()
  
        }
     

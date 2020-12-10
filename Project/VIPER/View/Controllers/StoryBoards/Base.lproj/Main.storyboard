@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,8 +33,8 @@
             <objects>
                 <viewController storyboardIdentifier="DrawerController" id="QaU-iy-v7H" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="SB3-5u-pfL"/>
-                        <viewControllerLayoutGuide type="bottom" id="qVI-az-7RM"/>
+                        <viewControllerLayoutGuide type="top" id="cyQ-cs-Cqw"/>
+                        <viewControllerLayoutGuide type="bottom" id="k5B-Yj-ITZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7yL-PS-sOl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -58,8 +57,8 @@
             <objects>
                 <viewController storyboardIdentifier="MedicalRecordsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="e9k-Ez-O3n" customClass="MedicalRecordsViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0El-fk-eUC"/>
-                        <viewControllerLayoutGuide type="bottom" id="mVh-7x-MCm"/>
+                        <viewControllerLayoutGuide type="top" id="5WH-eX-V2V"/>
+                        <viewControllerLayoutGuide type="bottom" id="Q4D-vp-cKc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XL3-TA-xPN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -135,15 +134,15 @@
                             <constraint firstItem="dmh-aw-QWQ" firstAttribute="top" secondItem="IYg-TQ-p8T" secondAttribute="bottom" constant="1" id="Njb-MM-TYa"/>
                             <constraint firstItem="Czz-uJ-xNn" firstAttribute="leading" secondItem="XL3-TA-xPN" secondAttribute="leading" id="SXS-G3-nhk"/>
                             <constraint firstItem="IYg-TQ-p8T" firstAttribute="leading" secondItem="XL3-TA-xPN" secondAttribute="leading" id="Tbx-bH-Hd7"/>
-                            <constraint firstItem="IYg-TQ-p8T" firstAttribute="top" secondItem="0El-fk-eUC" secondAttribute="bottom" id="Trd-b0-cJF"/>
-                            <constraint firstItem="IYg-TQ-p8T" firstAttribute="top" secondItem="0El-fk-eUC" secondAttribute="bottom" id="ZgP-Bk-zsm"/>
+                            <constraint firstItem="IYg-TQ-p8T" firstAttribute="top" secondItem="5WH-eX-V2V" secondAttribute="bottom" id="Trd-b0-cJF"/>
+                            <constraint firstItem="IYg-TQ-p8T" firstAttribute="top" secondItem="5WH-eX-V2V" secondAttribute="bottom" id="ZgP-Bk-zsm"/>
                             <constraint firstItem="dmh-aw-QWQ" firstAttribute="centerX" secondItem="XL3-TA-xPN" secondAttribute="centerX" id="bGX-vt-8yX"/>
                             <constraint firstItem="Czz-uJ-xNn" firstAttribute="top" secondItem="AOV-XG-Vhy" secondAttribute="bottom" id="cSa-Cy-pGA"/>
-                            <constraint firstItem="mVh-7x-MCm" firstAttribute="top" secondItem="dmh-aw-QWQ" secondAttribute="bottom" constant="8" symbolic="YES" id="dJe-jM-y5u"/>
+                            <constraint firstItem="Q4D-vp-cKc" firstAttribute="top" secondItem="dmh-aw-QWQ" secondAttribute="bottom" constant="8" symbolic="YES" id="dJe-jM-y5u"/>
                             <constraint firstAttribute="trailing" secondItem="AOV-XG-Vhy" secondAttribute="trailing" id="hMi-hh-IcJ"/>
-                            <constraint firstItem="Czz-uJ-xNn" firstAttribute="top" secondItem="0El-fk-eUC" secondAttribute="bottom" id="hjB-XM-Jlu"/>
+                            <constraint firstItem="Czz-uJ-xNn" firstAttribute="top" secondItem="5WH-eX-V2V" secondAttribute="bottom" id="hjB-XM-Jlu"/>
                             <constraint firstItem="dmh-aw-QWQ" firstAttribute="top" secondItem="Czz-uJ-xNn" secondAttribute="bottom" constant="1" id="m40-QN-nN2"/>
-                            <constraint firstItem="AOV-XG-Vhy" firstAttribute="top" secondItem="0El-fk-eUC" secondAttribute="bottom" id="mVO-gg-YYF"/>
+                            <constraint firstItem="AOV-XG-Vhy" firstAttribute="top" secondItem="5WH-eX-V2V" secondAttribute="bottom" id="mVO-gg-YYF"/>
                             <constraint firstAttribute="trailing" secondItem="IYg-TQ-p8T" secondAttribute="trailing" id="qW1-lJ-1PR"/>
                             <constraint firstItem="AOV-XG-Vhy" firstAttribute="leading" secondItem="XL3-TA-xPN" secondAttribute="leading" id="qoM-ov-iII"/>
                         </constraints>
@@ -170,8 +169,8 @@
             <objects>
                 <viewController storyboardIdentifier="VisitedDoctorsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YPF-11-tk5" customClass="VisitedDoctorsViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jdY-ho-eF8"/>
-                        <viewControllerLayoutGuide type="bottom" id="sgZ-sw-OuZ"/>
+                        <viewControllerLayoutGuide type="top" id="1G1-m0-oum"/>
+                        <viewControllerLayoutGuide type="bottom" id="3Jq-rz-BHS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CFt-NB-zEU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -216,12 +215,12 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="kvb-fb-2I8" firstAttribute="top" secondItem="jdY-ho-eF8" secondAttribute="bottom" id="3Gn-c9-nI3"/>
+                            <constraint firstItem="kvb-fb-2I8" firstAttribute="top" secondItem="1G1-m0-oum" secondAttribute="bottom" id="3Gn-c9-nI3"/>
                             <constraint firstItem="kvb-fb-2I8" firstAttribute="leading" secondItem="CFt-NB-zEU" secondAttribute="leading" id="5kc-yO-wOh"/>
                             <constraint firstItem="Q15-eF-qIl" firstAttribute="leading" secondItem="CFt-NB-zEU" secondAttribute="leading" id="HSQ-Fe-mYE"/>
-                            <constraint firstItem="Q15-eF-qIl" firstAttribute="top" secondItem="jdY-ho-eF8" secondAttribute="bottom" id="Oze-CQ-grz"/>
-                            <constraint firstItem="sgZ-sw-OuZ" firstAttribute="top" secondItem="Q15-eF-qIl" secondAttribute="bottom" id="cSr-df-wQ7"/>
-                            <constraint firstItem="sgZ-sw-OuZ" firstAttribute="top" secondItem="kvb-fb-2I8" secondAttribute="bottom" id="kbM-K6-YLB"/>
+                            <constraint firstItem="Q15-eF-qIl" firstAttribute="top" secondItem="1G1-m0-oum" secondAttribute="bottom" id="Oze-CQ-grz"/>
+                            <constraint firstItem="3Jq-rz-BHS" firstAttribute="top" secondItem="Q15-eF-qIl" secondAttribute="bottom" id="cSr-df-wQ7"/>
+                            <constraint firstItem="3Jq-rz-BHS" firstAttribute="top" secondItem="kvb-fb-2I8" secondAttribute="bottom" id="kbM-K6-YLB"/>
                             <constraint firstAttribute="trailing" secondItem="kvb-fb-2I8" secondAttribute="trailing" id="qAg-Si-TWG"/>
                             <constraint firstAttribute="trailing" secondItem="Q15-eF-qIl" secondAttribute="trailing" id="zFz-7W-D5s"/>
                         </constraints>
@@ -240,8 +239,8 @@
             <objects>
                 <viewController storyboardIdentifier="ChatViewController" id="nzW-fV-yTs" customClass="ChatViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="J7C-is-rrP"/>
-                        <viewControllerLayoutGuide type="bottom" id="o2n-jn-8Xk"/>
+                        <viewControllerLayoutGuide type="top" id="YgO-KY-RWd"/>
+                        <viewControllerLayoutGuide type="bottom" id="PQd-B8-efK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JSh-vb-Kn2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -380,12 +379,12 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="o2n-jn-8Xk" firstAttribute="top" secondItem="25m-vl-hUH" secondAttribute="bottom" id="0UQ-Ah-kO7"/>
+                            <constraint firstItem="PQd-B8-efK" firstAttribute="top" secondItem="25m-vl-hUH" secondAttribute="bottom" id="0UQ-Ah-kO7"/>
                             <constraint firstItem="25m-vl-hUH" firstAttribute="top" secondItem="U4W-G7-zTc" secondAttribute="bottom" constant="10" id="DLk-Df-h0r"/>
                             <constraint firstItem="U4W-G7-zTc" firstAttribute="leading" secondItem="JSh-vb-Kn2" secondAttribute="leading" constant="10" id="Oak-gN-cYc"/>
                             <constraint firstItem="U4W-G7-zTc" firstAttribute="top" secondItem="nBp-HA-bRi" secondAttribute="bottom" constant="10" id="PDZ-vM-4el"/>
                             <constraint firstAttribute="trailing" secondItem="nBp-HA-bRi" secondAttribute="trailing" id="PFh-11-gA3"/>
-                            <constraint firstItem="nBp-HA-bRi" firstAttribute="top" secondItem="J7C-is-rrP" secondAttribute="bottom" id="YFC-j1-wVG"/>
+                            <constraint firstItem="nBp-HA-bRi" firstAttribute="top" secondItem="YgO-KY-RWd" secondAttribute="bottom" id="YFC-j1-wVG"/>
                             <constraint firstAttribute="trailing" secondItem="U4W-G7-zTc" secondAttribute="trailing" constant="10" id="cxc-nh-PNa"/>
                             <constraint firstItem="25m-vl-hUH" firstAttribute="leading" secondItem="JSh-vb-Kn2" secondAttribute="leading" id="fYs-Km-oSf"/>
                             <constraint firstItem="nBp-HA-bRi" firstAttribute="leading" secondItem="JSh-vb-Kn2" secondAttribute="leading" id="nek-fR-oxa"/>
@@ -411,8 +410,8 @@
             <objects>
                 <viewController storyboardIdentifier="SearchViewController" id="R2s-ML-nM2" customClass="SearchViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="DPb-7d-TbF"/>
-                        <viewControllerLayoutGuide type="bottom" id="nlm-pt-48X"/>
+                        <viewControllerLayoutGuide type="top" id="2ZK-OL-yvZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="w7L-oJ-qEI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oJj-xU-F9x">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -460,11 +459,11 @@
                         <constraints>
                             <constraint firstItem="elq-OS-At8" firstAttribute="top" secondItem="bC1-yU-wiS" secondAttribute="bottom" constant="5" id="INA-Cu-dZe"/>
                             <constraint firstItem="elq-OS-At8" firstAttribute="leading" secondItem="oJj-xU-F9x" secondAttribute="leading" id="Rgg-bu-b8G"/>
-                            <constraint firstItem="bC1-yU-wiS" firstAttribute="top" secondItem="DPb-7d-TbF" secondAttribute="bottom" constant="10" id="bLA-Qi-ziH"/>
+                            <constraint firstItem="bC1-yU-wiS" firstAttribute="top" secondItem="2ZK-OL-yvZ" secondAttribute="bottom" constant="10" id="bLA-Qi-ziH"/>
                             <constraint firstAttribute="trailing" secondItem="bC1-yU-wiS" secondAttribute="trailing" constant="10" id="hCi-ay-NGW"/>
                             <constraint firstAttribute="trailing" secondItem="elq-OS-At8" secondAttribute="trailing" id="him-qZ-psn"/>
                             <constraint firstItem="bC1-yU-wiS" firstAttribute="leading" secondItem="oJj-xU-F9x" secondAttribute="leading" constant="10" id="iJV-b7-xQA"/>
-                            <constraint firstItem="nlm-pt-48X" firstAttribute="top" secondItem="elq-OS-At8" secondAttribute="bottom" id="u9B-Qx-sHi"/>
+                            <constraint firstItem="w7L-oJ-qEI" firstAttribute="top" secondItem="elq-OS-At8" secondAttribute="bottom" id="u9B-Qx-sHi"/>
                         </constraints>
                     </view>
                     <connections>
@@ -482,8 +481,8 @@
             <objects>
                 <viewController storyboardIdentifier="ThankYouViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y3a-zs-Jkz" customClass="ThankYouViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="rvp-mT-jRg"/>
-                        <viewControllerLayoutGuide type="bottom" id="dnW-60-ALl"/>
+                        <viewControllerLayoutGuide type="top" id="Xxj-Li-xp9"/>
+                        <viewControllerLayoutGuide type="bottom" id="H4q-69-3h9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="458-Hx-P1I">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -587,8 +586,8 @@
             <objects>
                 <viewController storyboardIdentifier="OnlineAvailabeDoctorsController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ky7-y6-vKM" customClass="OnlineAvailabeDoctorsController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="lWE-UA-GHF"/>
-                        <viewControllerLayoutGuide type="bottom" id="5Qf-GR-VRm"/>
+                        <viewControllerLayoutGuide type="top" id="pkp-xD-uWo"/>
+                        <viewControllerLayoutGuide type="bottom" id="xrd-SD-SzA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gPI-4R-JuU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -633,13 +632,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="5Qf-GR-VRm" firstAttribute="top" secondItem="7cl-xy-eeS" secondAttribute="bottom" id="3n9-ng-KgV"/>
+                            <constraint firstItem="xrd-SD-SzA" firstAttribute="top" secondItem="7cl-xy-eeS" secondAttribute="bottom" id="3n9-ng-KgV"/>
                             <constraint firstAttribute="trailing" secondItem="L4G-2n-ldA" secondAttribute="trailing" id="CiD-0h-HhK"/>
                             <constraint firstItem="L4G-2n-ldA" firstAttribute="leading" secondItem="gPI-4R-JuU" secondAttribute="leading" id="J2E-cN-A30"/>
-                            <constraint firstItem="5Qf-GR-VRm" firstAttribute="top" secondItem="L4G-2n-ldA" secondAttribute="bottom" id="MDQ-YV-Acw"/>
+                            <constraint firstItem="xrd-SD-SzA" firstAttribute="top" secondItem="L4G-2n-ldA" secondAttribute="bottom" id="MDQ-YV-Acw"/>
                             <constraint firstItem="7cl-xy-eeS" firstAttribute="leading" secondItem="gPI-4R-JuU" secondAttribute="leading" id="Xl9-Ck-u4P"/>
                             <constraint firstAttribute="trailing" secondItem="7cl-xy-eeS" secondAttribute="trailing" id="iAr-Nx-THs"/>
-                            <constraint firstItem="L4G-2n-ldA" firstAttribute="top" secondItem="lWE-UA-GHF" secondAttribute="bottom" id="ojK-cY-Ec7"/>
+                            <constraint firstItem="L4G-2n-ldA" firstAttribute="top" secondItem="pkp-xD-uWo" secondAttribute="bottom" id="ojK-cY-Ec7"/>
                             <constraint firstItem="7cl-xy-eeS" firstAttribute="top" secondItem="gPI-4R-JuU" secondAttribute="top" id="rJK-NA-bhw"/>
                         </constraints>
                     </view>
@@ -657,14 +656,14 @@
             <objects>
                 <viewController storyboardIdentifier="ServiceListViewController" id="VH3-3P-XHa" customClass="ServiceListViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="BCB-rv-bWe"/>
-                        <viewControllerLayoutGuide type="bottom" id="gZz-Np-dxR"/>
+                        <viewControllerLayoutGuide type="top" id="LcP-ry-O4j"/>
+                        <viewControllerLayoutGuide type="bottom" id="W5e-IB-QFR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JjT-Kk-X7b">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2tA-lK-YXO">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2tA-lK-YXO">
                                 <rect key="frame" x="10" y="54" width="394" height="798"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
@@ -675,10 +674,10 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="gZz-Np-dxR" firstAttribute="top" secondItem="2tA-lK-YXO" secondAttribute="bottom" constant="10" id="EXx-N4-IgH"/>
+                            <constraint firstItem="W5e-IB-QFR" firstAttribute="top" secondItem="2tA-lK-YXO" secondAttribute="bottom" constant="10" id="EXx-N4-IgH"/>
                             <constraint firstAttribute="trailing" secondItem="2tA-lK-YXO" secondAttribute="trailing" constant="10" id="OcG-Uo-daW"/>
                             <constraint firstItem="2tA-lK-YXO" firstAttribute="leading" secondItem="JjT-Kk-X7b" secondAttribute="leading" constant="10" id="shh-p7-J26"/>
-                            <constraint firstItem="2tA-lK-YXO" firstAttribute="top" secondItem="BCB-rv-bWe" secondAttribute="bottom" constant="10" id="yKK-Tk-nfn"/>
+                            <constraint firstItem="2tA-lK-YXO" firstAttribute="top" secondItem="LcP-ry-O4j" secondAttribute="bottom" constant="10" id="yKK-Tk-nfn"/>
                         </constraints>
                     </view>
                     <connections>
@@ -694,8 +693,8 @@
             <objects>
                 <viewController storyboardIdentifier="FavouriteDoctorsListController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AaX-bh-LcL" customClass="FavouriteDoctorsListController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="op2-rT-qtS"/>
-                        <viewControllerLayoutGuide type="bottom" id="hE0-ww-pcX"/>
+                        <viewControllerLayoutGuide type="top" id="JA0-u1-r2w"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xe3-9m-H8N"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="90J-4f-i6e">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -757,8 +756,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="q0I-pJ-l7N" firstAttribute="leading" secondItem="90J-4f-i6e" secondAttribute="leading" id="7Xt-uc-i9T"/>
-                            <constraint firstItem="hE0-ww-pcX" firstAttribute="top" secondItem="q0I-pJ-l7N" secondAttribute="bottom" id="LZi-Jo-VO4"/>
-                            <constraint firstItem="q0I-pJ-l7N" firstAttribute="top" secondItem="op2-rT-qtS" secondAttribute="bottom" id="cPR-aX-8lP"/>
+                            <constraint firstItem="Xe3-9m-H8N" firstAttribute="top" secondItem="q0I-pJ-l7N" secondAttribute="bottom" id="LZi-Jo-VO4"/>
+                            <constraint firstItem="q0I-pJ-l7N" firstAttribute="top" secondItem="JA0-u1-r2w" secondAttribute="bottom" id="cPR-aX-8lP"/>
                             <constraint firstItem="q0I-pJ-l7N" firstAttribute="trailing" secondItem="90J-4f-i6e" secondAttribute="trailing" id="ik3-DS-JxK"/>
                         </constraints>
                     </view>
@@ -776,8 +775,8 @@
             <objects>
                 <viewController storyboardIdentifier="HealthFeedViewController" id="BBq-bt-aBO" customClass="HealthFeedViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ts6-BW-uLP"/>
-                        <viewControllerLayoutGuide type="bottom" id="NFv-au-l13"/>
+                        <viewControllerLayoutGuide type="top" id="y5V-ts-hra"/>
+                        <viewControllerLayoutGuide type="bottom" id="b1g-jf-T3Z"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="st6-SO-heg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -832,15 +831,15 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="A9r-g2-nNz" firstAttribute="top" secondItem="Ts6-BW-uLP" secondAttribute="bottom" id="EWa-LD-K8I"/>
+                            <constraint firstItem="A9r-g2-nNz" firstAttribute="top" secondItem="y5V-ts-hra" secondAttribute="bottom" id="EWa-LD-K8I"/>
                             <constraint firstAttribute="trailing" secondItem="SaV-VP-MsF" secondAttribute="trailing" id="HQu-vD-xn3"/>
-                            <constraint firstItem="NFv-au-l13" firstAttribute="top" secondItem="SaV-VP-MsF" secondAttribute="bottom" id="JmT-6l-FUk"/>
+                            <constraint firstItem="b1g-jf-T3Z" firstAttribute="top" secondItem="SaV-VP-MsF" secondAttribute="bottom" id="JmT-6l-FUk"/>
                             <constraint firstItem="dw3-ly-jsH" firstAttribute="leading" secondItem="st6-SO-heg" secondAttribute="leading" constant="15" id="OEb-kG-yV2"/>
                             <constraint firstAttribute="trailing" secondItem="A9r-g2-nNz" secondAttribute="trailing" id="R2g-zR-dwY"/>
                             <constraint firstItem="SaV-VP-MsF" firstAttribute="leading" secondItem="st6-SO-heg" secondAttribute="leading" id="dRg-SV-ePh"/>
-                            <constraint firstItem="NFv-au-l13" firstAttribute="top" secondItem="A9r-g2-nNz" secondAttribute="bottom" id="f0G-f6-535"/>
-                            <constraint firstItem="SaV-VP-MsF" firstAttribute="top" secondItem="Ts6-BW-uLP" secondAttribute="bottom" id="hwb-YV-2ea"/>
-                            <constraint firstItem="NFv-au-l13" firstAttribute="top" secondItem="dw3-ly-jsH" secondAttribute="bottom" constant="60" id="inq-dd-Wr4"/>
+                            <constraint firstItem="b1g-jf-T3Z" firstAttribute="top" secondItem="A9r-g2-nNz" secondAttribute="bottom" id="f0G-f6-535"/>
+                            <constraint firstItem="SaV-VP-MsF" firstAttribute="top" secondItem="y5V-ts-hra" secondAttribute="bottom" id="hwb-YV-2ea"/>
+                            <constraint firstItem="b1g-jf-T3Z" firstAttribute="top" secondItem="dw3-ly-jsH" secondAttribute="bottom" constant="60" id="inq-dd-Wr4"/>
                             <constraint firstItem="A9r-g2-nNz" firstAttribute="leading" secondItem="st6-SO-heg" secondAttribute="leading" id="s72-Kj-cQN"/>
                         </constraints>
                         <variation key="default">
@@ -865,8 +864,8 @@
             <objects>
                 <viewController storyboardIdentifier="CardsListViewController" id="VWu-LX-615" customClass="CardsListViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kLS-Nv-39S"/>
-                        <viewControllerLayoutGuide type="bottom" id="IP9-NT-ebB"/>
+                        <viewControllerLayoutGuide type="top" id="Rje-yf-dbU"/>
+                        <viewControllerLayoutGuide type="bottom" id="QNY-SJ-adQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XA1-Kh-E97">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -901,38 +900,24 @@
                                     <constraint firstAttribute="bottom" secondItem="n2r-SG-LDU" secondAttribute="bottom" constant="10" id="VZ0-ZS-Xaz"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pdm-Sg-dPF">
-                                <rect key="frame" x="0.0" y="147.5" width="414" height="714.5"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pdm-Sg-dPF">
+                                <rect key="frame" x="0.0" y="147.5" width="414" height="653"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="nnl-NE-5wW">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1E-1S-EYV">
-                                            <rect key="frame" x="8" y="10" width="398" height="80"/>
-                                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="17"/>
-                                            <state key="normal" title="+ Add New Card">
-                                                <color key="titleColor" name="AppBlueColor"/>
-                                            </state>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="borderLineWidth">
-                                                    <real key="value" value="0.5"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                    <color key="value" name="AppBlueColor"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="U1E-1S-EYV" secondAttribute="trailing" constant="8" id="1pg-cz-RFN"/>
-                                        <constraint firstItem="U1E-1S-EYV" firstAttribute="leading" secondItem="nnl-NE-5wW" secondAttribute="leading" constant="8" id="qBM-Rd-IfE"/>
-                                        <constraint firstItem="U1E-1S-EYV" firstAttribute="top" secondItem="nnl-NE-5wW" secondAttribute="top" constant="10" id="wnu-jl-C42"/>
-                                        <constraint firstAttribute="bottom" secondItem="U1E-1S-EYV" secondAttribute="bottom" constant="10" id="yAT-pd-z3f"/>
-                                    </constraints>
-                                </view>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dI1-RJ-7L0">
+                                <rect key="frame" x="10" y="810.5" width="394" height="41.5"/>
+                                <state key="normal" title="Add New Card">
+                                    <color key="titleColor" name="AppBlueColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderLineWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" name="AppBlueColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Itb-WI-w0h">
                                 <rect key="frame" x="0.0" y="800" width="414" height="62"/>
                                 <subviews>
@@ -953,19 +938,23 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="QNY-SJ-adQ" firstAttribute="top" secondItem="dI1-RJ-7L0" secondAttribute="bottom" constant="10" id="3Vo-Nm-8U6"/>
                             <constraint firstAttribute="trailing" secondItem="Itb-WI-w0h" secondAttribute="trailing" id="7VW-R5-Lkb"/>
-                            <constraint firstItem="Ncp-DG-zwy" firstAttribute="top" secondItem="kLS-Nv-39S" secondAttribute="bottom" id="9PB-ri-OZk"/>
+                            <constraint firstItem="Ncp-DG-zwy" firstAttribute="top" secondItem="Rje-yf-dbU" secondAttribute="bottom" id="9PB-ri-OZk"/>
                             <constraint firstItem="Ncp-DG-zwy" firstAttribute="height" secondItem="XA1-Kh-E97" secondAttribute="width" multiplier="0.25" id="BKS-wU-1LS"/>
                             <constraint firstAttribute="trailing" secondItem="Ncp-DG-zwy" secondAttribute="trailing" id="Bhx-lt-e89"/>
-                            <constraint firstItem="IP9-NT-ebB" firstAttribute="top" secondItem="Pdm-Sg-dPF" secondAttribute="bottom" id="H2A-lN-wLk"/>
+                            <constraint firstItem="dI1-RJ-7L0" firstAttribute="leading" secondItem="oMf-LW-eD4" secondAttribute="leading" id="EsA-fA-fdd"/>
                             <constraint firstAttribute="trailing" secondItem="Pdm-Sg-dPF" secondAttribute="trailing" id="H5V-7C-sje"/>
                             <constraint firstItem="Itb-WI-w0h" firstAttribute="leading" secondItem="XA1-Kh-E97" secondAttribute="leading" id="JL2-Qy-kwT"/>
+                            <constraint firstItem="dI1-RJ-7L0" firstAttribute="height" secondItem="XA1-Kh-E97" secondAttribute="width" multiplier="0.1" id="NhL-N1-zNl"/>
                             <constraint firstItem="Itb-WI-w0h" firstAttribute="height" secondItem="XA1-Kh-E97" secondAttribute="width" multiplier="0.15" id="PPB-OI-qDr"/>
                             <constraint firstItem="Ncp-DG-zwy" firstAttribute="leading" secondItem="XA1-Kh-E97" secondAttribute="leading" id="aGx-r2-cJc"/>
                             <constraint firstItem="Pdm-Sg-dPF" firstAttribute="top" secondItem="Ncp-DG-zwy" secondAttribute="bottom" id="eGm-MW-P6n"/>
+                            <constraint firstItem="dI1-RJ-7L0" firstAttribute="trailing" secondItem="oMf-LW-eD4" secondAttribute="trailing" id="iO9-uz-FZw"/>
                             <constraint firstItem="Itb-WI-w0h" firstAttribute="top" secondItem="Pdm-Sg-dPF" secondAttribute="bottom" id="qRU-bl-CY2"/>
                             <constraint firstItem="Pdm-Sg-dPF" firstAttribute="leading" secondItem="XA1-Kh-E97" secondAttribute="leading" id="rVo-gr-YRB"/>
-                            <constraint firstItem="IP9-NT-ebB" firstAttribute="top" secondItem="Itb-WI-w0h" secondAttribute="bottom" id="uqs-Va-GQI"/>
+                            <constraint firstItem="dI1-RJ-7L0" firstAttribute="top" secondItem="Pdm-Sg-dPF" secondAttribute="bottom" constant="10" id="ruE-w6-kPK"/>
+                            <constraint firstItem="QNY-SJ-adQ" firstAttribute="top" secondItem="Itb-WI-w0h" secondAttribute="bottom" id="uqs-Va-GQI"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -976,7 +965,7 @@
                     <connections>
                         <outlet property="addMoneyButton" destination="nwa-hh-Ulg" id="gVn-Dy-cy6"/>
                         <outlet property="addMoneyTitleLabel" destination="Td3-kv-Zfm" id="jyA-sU-UTW"/>
-                        <outlet property="addNewCardButton" destination="U1E-1S-EYV" id="rPo-fb-WFe"/>
+                        <outlet property="addNewCardButton" destination="dI1-RJ-7L0" id="pTD-AF-PVH"/>
                         <outlet property="amountLabel" destination="oMf-LW-eD4" id="21Z-Pz-Aui"/>
                         <outlet property="cardListTableView" destination="Pdm-Sg-dPF" id="xNC-FA-Yje"/>
                     </connections>
@@ -990,8 +979,8 @@
             <objects>
                 <viewController storyboardIdentifier="AlertVC" id="HzY-Df-soM" customClass="AlertVC" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0Yf-QQ-RlJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="Eym-mH-xUc"/>
+                        <viewControllerLayoutGuide type="top" id="nIJ-4p-ysp"/>
+                        <viewControllerLayoutGuide type="bottom" id="IxK-RS-tat"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pSr-jT-edx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -1082,8 +1071,8 @@
             <objects>
                 <viewController storyboardIdentifier="DoctorDetailsController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="B3G-kQ-3O0" customClass="DoctorDetailsController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="LoJ-Nw-Laf"/>
-                        <viewControllerLayoutGuide type="bottom" id="JXl-u2-iI5"/>
+                        <viewControllerLayoutGuide type="top" id="eNo-uS-od0"/>
+                        <viewControllerLayoutGuide type="bottom" id="sSi-fC-Al9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="m9Q-iF-usv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -1737,13 +1726,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="3iQ-Hd-SvE" firstAttribute="trailing" secondItem="m9Q-iF-usv" secondAttribute="trailing" id="6y3-xF-DgQ"/>
-                            <constraint firstItem="3iQ-Hd-SvE" firstAttribute="bottom" secondItem="JXl-u2-iI5" secondAttribute="top" id="BFV-RX-eat"/>
+                            <constraint firstItem="3iQ-Hd-SvE" firstAttribute="bottom" secondItem="sSi-fC-Al9" secondAttribute="top" id="BFV-RX-eat"/>
                             <constraint firstAttribute="trailing" secondItem="r26-kd-gFo" secondAttribute="trailing" id="KLV-N0-mmc"/>
                             <constraint firstItem="3iQ-Hd-SvE" firstAttribute="top" secondItem="r26-kd-gFo" secondAttribute="bottom" id="Ll2-aT-wjt"/>
                             <constraint firstAttribute="trailing" secondItem="3iQ-Hd-SvE" secondAttribute="trailing" id="Pqp-N7-SVh"/>
                             <constraint firstItem="3iQ-Hd-SvE" firstAttribute="leading" secondItem="m9Q-iF-usv" secondAttribute="leading" id="cwq-He-ToJ"/>
-                            <constraint firstItem="JXl-u2-iI5" firstAttribute="top" secondItem="3iQ-Hd-SvE" secondAttribute="bottom" id="dR0-Wx-6zd"/>
-                            <constraint firstItem="r26-kd-gFo" firstAttribute="top" secondItem="LoJ-Nw-Laf" secondAttribute="bottom" id="emZ-05-xfQ"/>
+                            <constraint firstItem="sSi-fC-Al9" firstAttribute="top" secondItem="3iQ-Hd-SvE" secondAttribute="bottom" id="dR0-Wx-6zd"/>
+                            <constraint firstItem="r26-kd-gFo" firstAttribute="top" secondItem="eNo-uS-od0" secondAttribute="bottom" id="emZ-05-xfQ"/>
                             <constraint firstItem="r26-kd-gFo" firstAttribute="leading" secondItem="m9Q-iF-usv" secondAttribute="leading" id="hsw-9t-Uq6"/>
                             <constraint firstItem="3iQ-Hd-SvE" firstAttribute="leading" secondItem="m9Q-iF-usv" secondAttribute="leading" id="kZH-xL-Pjt"/>
                         </constraints>
@@ -1804,8 +1793,8 @@
             <objects>
                 <viewController storyboardIdentifier="CategoryListController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TOv-gs-PhT" customClass="CategoryListController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="po8-8S-Iio"/>
-                        <viewControllerLayoutGuide type="bottom" id="3JM-4p-cYM"/>
+                        <viewControllerLayoutGuide type="top" id="VgO-Oj-cVZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="JzV-Nx-C70"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="y20-b4-TuT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -1874,9 +1863,9 @@
                             <constraint firstItem="T9A-4F-uJp" firstAttribute="trailing" secondItem="y20-b4-TuT" secondAttribute="trailing" id="EI3-d7-Brh"/>
                             <constraint firstItem="3Xa-1Q-n1F" firstAttribute="leading" secondItem="y20-b4-TuT" secondAttribute="leading" id="Hty-h9-Fe5"/>
                             <constraint firstAttribute="trailing" secondItem="3Xa-1Q-n1F" secondAttribute="trailing" id="Xva-2y-skj"/>
-                            <constraint firstItem="3JM-4p-cYM" firstAttribute="top" secondItem="3Xa-1Q-n1F" secondAttribute="bottom" id="jd3-dT-sOa"/>
+                            <constraint firstItem="JzV-Nx-C70" firstAttribute="top" secondItem="3Xa-1Q-n1F" secondAttribute="bottom" id="jd3-dT-sOa"/>
                             <constraint firstItem="3Xa-1Q-n1F" firstAttribute="top" secondItem="T9A-4F-uJp" secondAttribute="bottom" id="mIF-0f-vu3"/>
-                            <constraint firstItem="T9A-4F-uJp" firstAttribute="top" secondItem="po8-8S-Iio" secondAttribute="bottom" constant="20" id="qMf-pX-GN9"/>
+                            <constraint firstItem="T9A-4F-uJp" firstAttribute="top" secondItem="VgO-Oj-cVZ" secondAttribute="bottom" constant="20" id="qMf-pX-GN9"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1893,8 +1882,8 @@
             <objects>
                 <viewController storyboardIdentifier="PatientDetailViewController" id="0D5-2C-dnv" customClass="PatientDetailViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0Bo-3F-vlC"/>
-                        <viewControllerLayoutGuide type="bottom" id="ydj-mf-UxD"/>
+                        <viewControllerLayoutGuide type="top" id="jqB-yg-fbp"/>
+                        <viewControllerLayoutGuide type="bottom" id="iLA-f8-2iE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6mo-eq-3EP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -2219,14 +2208,14 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Oqs-WD-2Bm" firstAttribute="top" secondItem="0Bo-3F-vlC" secondAttribute="bottom" id="2LM-rv-45w"/>
+                            <constraint firstItem="Oqs-WD-2Bm" firstAttribute="top" secondItem="jqB-yg-fbp" secondAttribute="bottom" id="2LM-rv-45w"/>
                             <constraint firstAttribute="trailing" secondItem="Oqs-WD-2Bm" secondAttribute="trailing" id="7Aa-Y7-8K1"/>
                             <constraint firstItem="Oqs-WD-2Bm" firstAttribute="leading" secondItem="6mo-eq-3EP" secondAttribute="leading" id="Aap-lr-6hp"/>
                             <constraint firstItem="SL8-cM-Vdk" firstAttribute="height" secondItem="5iV-zh-OcP" secondAttribute="height" multiplier="0.06" id="PDs-ra-mpH"/>
                             <constraint firstAttribute="trailing" secondItem="SL8-cM-Vdk" secondAttribute="trailing" constant="20" id="Qhc-ed-dlK"/>
                             <constraint firstItem="SL8-cM-Vdk" firstAttribute="leading" secondItem="6mo-eq-3EP" secondAttribute="leading" constant="20" id="UUx-9t-0pB"/>
-                            <constraint firstItem="ydj-mf-UxD" firstAttribute="top" secondItem="Oqs-WD-2Bm" secondAttribute="bottom" id="WFE-d4-4LZ"/>
-                            <constraint firstItem="ydj-mf-UxD" firstAttribute="top" secondItem="SL8-cM-Vdk" secondAttribute="bottom" constant="20" id="eoU-hu-Ctu"/>
+                            <constraint firstItem="iLA-f8-2iE" firstAttribute="top" secondItem="Oqs-WD-2Bm" secondAttribute="bottom" id="WFE-d4-4LZ"/>
+                            <constraint firstItem="iLA-f8-2iE" firstAttribute="top" secondItem="SL8-cM-Vdk" secondAttribute="bottom" constant="20" id="eoU-hu-Ctu"/>
                         </constraints>
                     </view>
                     <connections>
@@ -2255,8 +2244,8 @@
             <objects>
                 <viewController storyboardIdentifier="BookingViewController" id="j54-Sr-jRS" customClass="BookingViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="sJk-rb-n4e"/>
-                        <viewControllerLayoutGuide type="bottom" id="Igc-xj-i67"/>
+                        <viewControllerLayoutGuide type="top" id="acG-JR-rel"/>
+                        <viewControllerLayoutGuide type="bottom" id="VvP-rA-aio"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Mno-4T-5fa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -2542,7 +2531,7 @@
                             <constraint firstAttribute="trailing" secondItem="CSa-Jf-Vzl" secondAttribute="trailing" id="2kW-EP-Rwp"/>
                             <constraint firstItem="69K-C3-YPU" firstAttribute="leading" secondItem="Mno-4T-5fa" secondAttribute="leading" id="33S-vH-EQv"/>
                             <constraint firstItem="iD5-G6-T6i" firstAttribute="leading" secondItem="Mno-4T-5fa" secondAttribute="leading" id="3LN-xV-opE"/>
-                            <constraint firstItem="Igc-xj-i67" firstAttribute="top" secondItem="qHg-LU-rXr" secondAttribute="bottom" constant="10" id="5uK-Cm-flC"/>
+                            <constraint firstItem="VvP-rA-aio" firstAttribute="top" secondItem="qHg-LU-rXr" secondAttribute="bottom" constant="10" id="5uK-Cm-flC"/>
                             <constraint firstItem="69K-C3-YPU" firstAttribute="height" secondItem="Mno-4T-5fa" secondAttribute="height" multiplier="0.13" id="ApU-HO-35n"/>
                             <constraint firstItem="0Ap-Tq-BA6" firstAttribute="trailing" secondItem="69K-C3-YPU" secondAttribute="trailing" constant="-10" id="CWh-6l-NiI"/>
                             <constraint firstItem="qHg-LU-rXr" firstAttribute="centerX" secondItem="Mno-4T-5fa" secondAttribute="centerX" id="CbQ-pl-zEY"/>
@@ -2565,7 +2554,7 @@
                             <constraint firstAttribute="trailing" secondItem="iD5-G6-T6i" secondAttribute="trailing" id="rin-Mv-mmp"/>
                             <constraint firstItem="0Ap-Tq-BA6" firstAttribute="centerY" secondItem="69K-C3-YPU" secondAttribute="centerY" constant="0.29999999999999999" id="suF-yt-UkA"/>
                             <constraint firstItem="0Hw-cX-YWS" firstAttribute="height" secondItem="Mno-4T-5fa" secondAttribute="height" multiplier="0.13" id="tf8-i5-daJ"/>
-                            <constraint firstItem="JFu-0A-An1" firstAttribute="top" secondItem="sJk-rb-n4e" secondAttribute="bottom" id="uH3-0R-Pnw"/>
+                            <constraint firstItem="JFu-0A-An1" firstAttribute="top" secondItem="acG-JR-rel" secondAttribute="bottom" id="uH3-0R-Pnw"/>
                             <constraint firstItem="qHg-LU-rXr" firstAttribute="height" secondItem="Mno-4T-5fa" secondAttribute="height" multiplier="0.06" id="xkM-b3-cFF"/>
                             <constraint firstItem="0Hw-cX-YWS" firstAttribute="leading" secondItem="Mno-4T-5fa" secondAttribute="leading" id="xxV-a0-FWo"/>
                             <constraint firstAttribute="trailing" secondItem="CPa-D2-4dc" secondAttribute="trailing" id="zTt-Ol-Gsk"/>
@@ -2601,8 +2590,8 @@
             <objects>
                 <viewController storyboardIdentifier="SummaryViewController" id="2aV-zV-LFe" customClass="SummaryViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1Kx-jX-h2r"/>
-                        <viewControllerLayoutGuide type="bottom" id="CNH-Y0-mRT"/>
+                        <viewControllerLayoutGuide type="top" id="eOY-nd-8NJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="KoE-1q-iF4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="B2l-yK-h06">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -2885,8 +2874,8 @@
                         </subviews>
                         <color key="backgroundColor" name="AppColor"/>
                         <constraints>
-                            <constraint firstItem="CNH-Y0-mRT" firstAttribute="top" secondItem="jp2-MC-Wmu" secondAttribute="bottom" id="2mJ-in-eMD"/>
-                            <constraint firstItem="jp2-MC-Wmu" firstAttribute="top" secondItem="1Kx-jX-h2r" secondAttribute="bottom" id="730-TH-Ah3"/>
+                            <constraint firstItem="KoE-1q-iF4" firstAttribute="top" secondItem="jp2-MC-Wmu" secondAttribute="bottom" id="2mJ-in-eMD"/>
+                            <constraint firstItem="jp2-MC-Wmu" firstAttribute="top" secondItem="eOY-nd-8NJ" secondAttribute="bottom" id="730-TH-Ah3"/>
                             <constraint firstItem="jp2-MC-Wmu" firstAttribute="leading" secondItem="B2l-yK-h06" secondAttribute="leading" id="fPL-5P-CTh"/>
                             <constraint firstAttribute="trailing" secondItem="jp2-MC-Wmu" secondAttribute="trailing" id="sr1-8l-cam"/>
                         </constraints>
@@ -2936,8 +2925,8 @@
             <objects>
                 <viewController storyboardIdentifier="ChatQuestionViewController" id="x1P-z2-Xg3" customClass="ChatQuestionViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bsR-OG-msI"/>
-                        <viewControllerLayoutGuide type="bottom" id="SoR-Bp-d51"/>
+                        <viewControllerLayoutGuide type="top" id="JaQ-Os-oVo"/>
+                        <viewControllerLayoutGuide type="bottom" id="UQN-BU-lzD"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cso-dC-Dyf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -3047,7 +3036,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="32v-hl-mj2" firstAttribute="top" secondItem="sB5-jw-eq4" secondAttribute="bottom" constant="10" id="Baa-7R-NQl"/>
-                            <constraint firstItem="SoR-Bp-d51" firstAttribute="top" secondItem="32v-hl-mj2" secondAttribute="bottom" constant="20" id="IZW-lI-9Z1"/>
+                            <constraint firstItem="UQN-BU-lzD" firstAttribute="top" secondItem="32v-hl-mj2" secondAttribute="bottom" constant="20" id="IZW-lI-9Z1"/>
                             <constraint firstItem="XI3-QR-ysb" firstAttribute="top" secondItem="cso-dC-Dyf" secondAttribute="top" id="M2W-AD-7TC"/>
                             <constraint firstAttribute="bottom" secondItem="XI3-QR-ysb" secondAttribute="bottom" id="MHp-Th-97r"/>
                             <constraint firstAttribute="trailing" secondItem="32v-hl-mj2" secondAttribute="trailing" constant="20" id="Z8F-2T-502"/>
@@ -3075,8 +3064,8 @@
             <objects>
                 <viewController storyboardIdentifier="SelectedProblemAreaVC" id="cg4-2R-eGt" customClass="SelectedProblemAreaVC" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="YPg-hH-ljv"/>
-                        <viewControllerLayoutGuide type="bottom" id="SWA-Rp-cSh"/>
+                        <viewControllerLayoutGuide type="top" id="zcZ-dt-UdI"/>
+                        <viewControllerLayoutGuide type="bottom" id="Sog-ho-4NM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="N5g-LM-z3t">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -3165,7 +3154,7 @@
                             <constraint firstItem="hbs-mR-FMm" firstAttribute="leading" secondItem="N5g-LM-z3t" secondAttribute="leading" id="2Ti-H4-lvP"/>
                             <constraint firstAttribute="trailing" secondItem="hbs-mR-FMm" secondAttribute="trailing" id="6fZ-rR-fpr"/>
                             <constraint firstItem="kt3-9N-pwx" firstAttribute="top" secondItem="hbs-mR-FMm" secondAttribute="bottom" id="FVS-vy-pnT"/>
-                            <constraint firstItem="SWA-Rp-cSh" firstAttribute="top" secondItem="kt3-9N-pwx" secondAttribute="bottom" id="IDf-fG-RD1"/>
+                            <constraint firstItem="Sog-ho-4NM" firstAttribute="top" secondItem="kt3-9N-pwx" secondAttribute="bottom" id="IDf-fG-RD1"/>
                             <constraint firstAttribute="trailing" secondItem="kt3-9N-pwx" secondAttribute="trailing" id="Ibr-Ic-zh0"/>
                             <constraint firstItem="hbs-mR-FMm" firstAttribute="top" secondItem="N5g-LM-z3t" secondAttribute="top" id="cL9-lx-MOh"/>
                             <constraint firstItem="kt3-9N-pwx" firstAttribute="leading" secondItem="N5g-LM-z3t" secondAttribute="leading" id="hrB-D2-z76"/>
@@ -3188,8 +3177,8 @@
             <objects>
                 <viewController storyboardIdentifier="AppointmentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="M4O-3N-Cpl" customClass="AppointmentViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ogt-sW-KYE"/>
-                        <viewControllerLayoutGuide type="bottom" id="BaM-sx-POJ"/>
+                        <viewControllerLayoutGuide type="top" id="GKC-df-KzZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="gCE-sy-fu1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pEt-ym-OCS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -3351,10 +3340,10 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="01Z-Qk-yi2" firstAttribute="top" secondItem="Ogt-sW-KYE" secondAttribute="bottom" id="60g-ES-Ej6"/>
+                            <constraint firstItem="01Z-Qk-yi2" firstAttribute="top" secondItem="GKC-df-KzZ" secondAttribute="bottom" id="60g-ES-Ej6"/>
                             <constraint firstItem="01Z-Qk-yi2" firstAttribute="leading" secondItem="pEt-ym-OCS" secondAttribute="leading" id="6Nm-67-P4F"/>
                             <constraint firstItem="01Z-Qk-yi2" firstAttribute="trailing" secondItem="pEt-ym-OCS" secondAttribute="trailing" id="cxt-c0-Sm1"/>
-                            <constraint firstItem="BaM-sx-POJ" firstAttribute="top" secondItem="01Z-Qk-yi2" secondAttribute="bottom" id="gq8-r3-tIV"/>
+                            <constraint firstItem="gCE-sy-fu1" firstAttribute="top" secondItem="01Z-Qk-yi2" secondAttribute="bottom" id="gq8-r3-tIV"/>
                         </constraints>
                     </view>
                     <connections>
@@ -3703,8 +3692,8 @@
             <objects>
                 <viewController storyboardIdentifier="SettingsViewController" id="8HW-ej-Dsr" customClass="SettingsViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="p1j-Dg-0Oo"/>
-                        <viewControllerLayoutGuide type="bottom" id="1HW-Uq-mOW"/>
+                        <viewControllerLayoutGuide type="top" id="RRr-Xf-b0g"/>
+                        <viewControllerLayoutGuide type="bottom" id="faw-N3-0VX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="i4l-Hu-dTg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -3848,7 +3837,7 @@
                             <constraint firstItem="Y2l-7E-yR2" firstAttribute="top" secondItem="X42-EN-CCx" secondAttribute="bottom" id="Dh9-j2-oHL"/>
                             <constraint firstItem="rtm-2j-01A" firstAttribute="leading" secondItem="i4l-Hu-dTg" secondAttribute="leading" id="Gh4-Ki-Xfn"/>
                             <constraint firstItem="X42-EN-CCx" firstAttribute="height" secondItem="i4l-Hu-dTg" secondAttribute="width" multiplier="0.15" id="HOD-TJ-zpG"/>
-                            <constraint firstItem="1HW-Uq-mOW" firstAttribute="top" secondItem="rtm-2j-01A" secondAttribute="bottom" id="LWs-Om-tZK"/>
+                            <constraint firstItem="faw-N3-0VX" firstAttribute="top" secondItem="rtm-2j-01A" secondAttribute="bottom" id="LWs-Om-tZK"/>
                             <constraint firstAttribute="trailing" secondItem="2kr-io-oq4" secondAttribute="trailing" id="LdX-l3-PjY"/>
                             <constraint firstAttribute="trailing" secondItem="rtm-2j-01A" secondAttribute="trailing" id="NwH-KV-jLI"/>
                             <constraint firstItem="n3K-mW-acG" firstAttribute="leading" secondItem="1gp-73-trP" secondAttribute="leading" id="PFB-oO-fiC"/>
@@ -3862,7 +3851,7 @@
                             <constraint firstAttribute="trailing" secondItem="X42-EN-CCx" secondAttribute="trailing" id="jh8-mC-SPv"/>
                             <constraint firstItem="yAL-6w-gpd" firstAttribute="top" secondItem="2kr-io-oq4" secondAttribute="bottom" id="kca-OT-BQg"/>
                             <constraint firstItem="yAL-6w-gpd" firstAttribute="leading" secondItem="i4l-Hu-dTg" secondAttribute="leading" id="mSm-YG-D5T"/>
-                            <constraint firstItem="2kr-io-oq4" firstAttribute="top" secondItem="p1j-Dg-0Oo" secondAttribute="bottom" id="pps-1k-eyN"/>
+                            <constraint firstItem="2kr-io-oq4" firstAttribute="top" secondItem="RRr-Xf-b0g" secondAttribute="bottom" id="pps-1k-eyN"/>
                             <constraint firstItem="n3K-mW-acG" firstAttribute="trailing" secondItem="1gp-73-trP" secondAttribute="trailing" id="rbS-MN-IRi"/>
                             <constraint firstItem="X42-EN-CCx" firstAttribute="top" secondItem="yAL-6w-gpd" secondAttribute="bottom" id="zVp-vE-gZJ"/>
                         </constraints>
@@ -3884,8 +3873,8 @@
             <objects>
                 <viewController storyboardIdentifier="ShowRecordViewController" id="V8d-Wm-T6k" customClass="ShowRecordViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Q8G-0o-ONZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="nxA-Nj-Ned"/>
+                        <viewControllerLayoutGuide type="top" id="zIv-di-nIl"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vp3-KF-2gD"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0uy-hc-JhV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -3948,7 +3937,7 @@
                             <constraint firstItem="Mvg-Qu-Ax6" firstAttribute="centerY" secondItem="0uy-hc-JhV" secondAttribute="centerY" id="5r5-Jd-xmT"/>
                             <constraint firstAttribute="trailing" secondItem="Mvg-Qu-Ax6" secondAttribute="trailing" constant="5" id="7s5-Ap-0kt"/>
                             <constraint firstItem="TRO-du-QMz" firstAttribute="trailing" secondItem="bXw-P7-92j" secondAttribute="trailing" id="NTQ-CR-6Ba"/>
-                            <constraint firstItem="bXw-P7-92j" firstAttribute="top" secondItem="Q8G-0o-ONZ" secondAttribute="bottom" constant="20" id="SvS-83-HHK"/>
+                            <constraint firstItem="bXw-P7-92j" firstAttribute="top" secondItem="zIv-di-nIl" secondAttribute="bottom" constant="20" id="SvS-83-HHK"/>
                             <constraint firstItem="kgf-ck-pCT" firstAttribute="top" secondItem="bXw-P7-92j" secondAttribute="bottom" constant="8" id="imw-1H-qPp"/>
                             <constraint firstItem="TRO-du-QMz" firstAttribute="top" secondItem="kgf-ck-pCT" secondAttribute="bottom" constant="10" id="jVc-nJ-6pW"/>
                             <constraint firstItem="Mvg-Qu-Ax6" firstAttribute="height" secondItem="0uy-hc-JhV" secondAttribute="height" multiplier="0.07" id="jrY-NJ-nmJ"/>
@@ -3978,8 +3967,8 @@
             <objects>
                 <viewController storyboardIdentifier="FAQViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="41O-Ws-skK" customClass="FAQViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="mkC-7F-Nt9"/>
-                        <viewControllerLayoutGuide type="bottom" id="hVC-Ki-PHE"/>
+                        <viewControllerLayoutGuide type="top" id="g0p-ha-re9"/>
+                        <viewControllerLayoutGuide type="bottom" id="djz-17-Ybk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="HBw-ex-SgZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -4003,8 +3992,8 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="a6f-vt-VoU" secondAttribute="trailing" id="JIN-tB-NXG"/>
                             <constraint firstItem="a6f-vt-VoU" firstAttribute="leading" secondItem="HBw-ex-SgZ" secondAttribute="leading" id="UfQ-DE-gte"/>
-                            <constraint firstItem="hVC-Ki-PHE" firstAttribute="top" secondItem="a6f-vt-VoU" secondAttribute="bottom" id="jhc-tx-Ytd"/>
-                            <constraint firstItem="a6f-vt-VoU" firstAttribute="top" secondItem="mkC-7F-Nt9" secondAttribute="bottom" id="tb3-sy-X7u"/>
+                            <constraint firstItem="djz-17-Ybk" firstAttribute="top" secondItem="a6f-vt-VoU" secondAttribute="bottom" id="jhc-tx-Ytd"/>
+                            <constraint firstItem="a6f-vt-VoU" firstAttribute="top" secondItem="g0p-ha-re9" secondAttribute="bottom" id="tb3-sy-X7u"/>
                         </constraints>
                     </view>
                     <connections>
@@ -4019,6 +4008,10 @@
         <scene sceneID="aNb-9O-b0f">
             <objects>
                 <viewController storyboardIdentifier="audioVideoCallCaontroller" id="SCi-mQ-XB2" customClass="audioVideoCallCaontroller" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sDd-fv-edO"/>
+                        <viewControllerLayoutGuide type="bottom" id="wcJ-J4-STi"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pQp-EK-QE9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4184,34 +4177,33 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="SGF-Yb-9jL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="SB9-Uo-3Tu" firstAttribute="trailing" secondItem="SGF-Yb-9jL" secondAttribute="trailing" id="0NU-fv-TKR"/>
+                            <constraint firstItem="SB9-Uo-3Tu" firstAttribute="trailing" secondItem="pQp-EK-QE9" secondAttribute="trailing" id="0NU-fv-TKR"/>
                             <constraint firstItem="lt2-jT-XRI" firstAttribute="top" secondItem="xoQ-2Z-DgG" secondAttribute="bottom" constant="8" id="BPw-pj-8YB"/>
                             <constraint firstItem="5dK-XU-usN" firstAttribute="height" secondItem="pQp-EK-QE9" secondAttribute="height" multiplier="0.07" id="BU3-Db-DiV"/>
                             <constraint firstItem="92u-B6-xpT" firstAttribute="height" secondItem="SB9-Uo-3Tu" secondAttribute="height" multiplier="0.075" id="Du8-Xw-w9i"/>
                             <constraint firstItem="KlJ-k1-uQX" firstAttribute="top" secondItem="5dK-XU-usN" secondAttribute="bottom" constant="15" id="Elx-Ql-rlI"/>
                             <constraint firstAttribute="bottom" secondItem="gHc-N9-mIZ" secondAttribute="bottom" id="F1W-UU-jaE"/>
-                            <constraint firstItem="SB9-Uo-3Tu" firstAttribute="leading" secondItem="SGF-Yb-9jL" secondAttribute="leading" id="FBY-rO-cg6"/>
-                            <constraint firstItem="lt2-jT-XRI" firstAttribute="trailing" secondItem="SGF-Yb-9jL" secondAttribute="trailing" id="I7E-5s-1hw"/>
-                            <constraint firstItem="KlJ-k1-uQX" firstAttribute="trailing" secondItem="SGF-Yb-9jL" secondAttribute="trailing" id="KDT-EC-le4"/>
+                            <constraint firstItem="SB9-Uo-3Tu" firstAttribute="leading" secondItem="pQp-EK-QE9" secondAttribute="leading" id="FBY-rO-cg6"/>
+                            <constraint firstItem="lt2-jT-XRI" firstAttribute="trailing" secondItem="pQp-EK-QE9" secondAttribute="trailing" id="I7E-5s-1hw"/>
+                            <constraint firstItem="KlJ-k1-uQX" firstAttribute="trailing" secondItem="pQp-EK-QE9" secondAttribute="trailing" id="KDT-EC-le4"/>
                             <constraint firstItem="5dK-XU-usN" firstAttribute="width" secondItem="pQp-EK-QE9" secondAttribute="height" multiplier="0.07" id="TtJ-7J-rmf"/>
                             <constraint firstItem="KlJ-k1-uQX" firstAttribute="top" secondItem="92u-B6-xpT" secondAttribute="bottom" constant="10" id="UGq-iD-a23"/>
-                            <constraint firstItem="gHc-N9-mIZ" firstAttribute="leading" secondItem="SGF-Yb-9jL" secondAttribute="leading" id="ViZ-xU-2xk"/>
-                            <constraint firstItem="lt2-jT-XRI" firstAttribute="leading" secondItem="SGF-Yb-9jL" secondAttribute="leading" id="WvN-a8-Ae6"/>
-                            <constraint firstItem="SGF-Yb-9jL" firstAttribute="trailing" secondItem="xoQ-2Z-DgG" secondAttribute="trailing" id="XkN-ij-2so"/>
+                            <constraint firstItem="gHc-N9-mIZ" firstAttribute="leading" secondItem="pQp-EK-QE9" secondAttribute="leading" id="ViZ-xU-2xk"/>
+                            <constraint firstItem="lt2-jT-XRI" firstAttribute="leading" secondItem="pQp-EK-QE9" secondAttribute="leading" id="WvN-a8-Ae6"/>
+                            <constraint firstAttribute="trailing" secondItem="xoQ-2Z-DgG" secondAttribute="trailing" id="XkN-ij-2so"/>
                             <constraint firstAttribute="bottom" secondItem="SB9-Uo-3Tu" secondAttribute="bottom" id="bgx-pb-vo5"/>
                             <constraint firstItem="92u-B6-xpT" firstAttribute="width" secondItem="SB9-Uo-3Tu" secondAttribute="height" multiplier="0.08" id="cAW-1v-MEj"/>
-                            <constraint firstItem="KlJ-k1-uQX" firstAttribute="bottom" secondItem="SGF-Yb-9jL" secondAttribute="bottom" id="chu-OD-fan"/>
-                            <constraint firstItem="xoQ-2Z-DgG" firstAttribute="top" secondItem="SGF-Yb-9jL" secondAttribute="top" id="goG-rF-iSu"/>
-                            <constraint firstItem="KlJ-k1-uQX" firstAttribute="leading" secondItem="SGF-Yb-9jL" secondAttribute="leading" id="i8o-LC-VxE"/>
+                            <constraint firstItem="KlJ-k1-uQX" firstAttribute="bottom" secondItem="wcJ-J4-STi" secondAttribute="top" id="chu-OD-fan"/>
+                            <constraint firstItem="xoQ-2Z-DgG" firstAttribute="top" secondItem="sDd-fv-edO" secondAttribute="bottom" id="goG-rF-iSu"/>
+                            <constraint firstItem="KlJ-k1-uQX" firstAttribute="leading" secondItem="pQp-EK-QE9" secondAttribute="leading" id="i8o-LC-VxE"/>
                             <constraint firstItem="KlJ-k1-uQX" firstAttribute="height" secondItem="pQp-EK-QE9" secondAttribute="height" multiplier="0.1" id="kor-2p-D2T"/>
-                            <constraint firstItem="92u-B6-xpT" firstAttribute="centerX" secondItem="SGF-Yb-9jL" secondAttribute="centerX" id="oLS-Qs-b52"/>
-                            <constraint firstItem="5dK-XU-usN" firstAttribute="centerX" secondItem="SGF-Yb-9jL" secondAttribute="centerX" id="oYI-Ex-CWn"/>
+                            <constraint firstItem="92u-B6-xpT" firstAttribute="centerX" secondItem="pQp-EK-QE9" secondAttribute="centerX" id="oLS-Qs-b52"/>
+                            <constraint firstItem="5dK-XU-usN" firstAttribute="centerX" secondItem="pQp-EK-QE9" secondAttribute="centerX" id="oYI-Ex-CWn"/>
                             <constraint firstItem="SB9-Uo-3Tu" firstAttribute="top" secondItem="pQp-EK-QE9" secondAttribute="top" id="rln-a6-hzT"/>
-                            <constraint firstItem="gHc-N9-mIZ" firstAttribute="trailing" secondItem="SGF-Yb-9jL" secondAttribute="trailing" id="uLp-Mm-0EV"/>
-                            <constraint firstItem="xoQ-2Z-DgG" firstAttribute="leading" secondItem="SGF-Yb-9jL" secondAttribute="leading" id="xgo-5V-chS"/>
+                            <constraint firstItem="gHc-N9-mIZ" firstAttribute="trailing" secondItem="pQp-EK-QE9" secondAttribute="trailing" id="uLp-Mm-0EV"/>
+                            <constraint firstItem="xoQ-2Z-DgG" firstAttribute="leading" secondItem="pQp-EK-QE9" secondAttribute="leading" id="xgo-5V-chS"/>
                             <constraint firstItem="gHc-N9-mIZ" firstAttribute="top" secondItem="pQp-EK-QE9" secondAttribute="top" id="z8H-Yp-F5l"/>
                         </constraints>
                         <variation key="default">
@@ -4254,8 +4246,8 @@
             <objects>
                 <viewController storyboardIdentifier="AddCardViewController" id="Xfh-9R-goW" customClass="AddCardViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6X9-lD-rBK"/>
-                        <viewControllerLayoutGuide type="bottom" id="JhL-h5-EtU"/>
+                        <viewControllerLayoutGuide type="top" id="j5z-By-P4H"/>
+                        <viewControllerLayoutGuide type="bottom" id="Y7n-6M-JCr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bcS-Cd-ujZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -4269,11 +4261,10 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="3HH-OZ-mpl"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="USf-lf-7uz" firstAttribute="centerX" secondItem="bcS-Cd-ujZ" secondAttribute="centerX" id="XTJ-bK-UYp"/>
-                            <constraint firstItem="USf-lf-7uz" firstAttribute="top" secondItem="6X9-lD-rBK" secondAttribute="bottom" constant="20" id="aDL-7g-sUh"/>
+                            <constraint firstItem="USf-lf-7uz" firstAttribute="top" secondItem="j5z-By-P4H" secondAttribute="bottom" constant="20" id="aDL-7g-sUh"/>
                         </constraints>
                     </view>
                     <connections>
@@ -4289,8 +4280,8 @@
             <objects>
                 <viewController storyboardIdentifier="AllergiesListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gtB-f2-CGz" customClass="AllergiesListViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ea0-yg-R1y"/>
-                        <viewControllerLayoutGuide type="bottom" id="9Wt-1k-d9N"/>
+                        <viewControllerLayoutGuide type="top" id="Oof-ea-7aS"/>
+                        <viewControllerLayoutGuide type="bottom" id="HNy-s3-HE4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YUS-2s-LRp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -4415,8 +4406,8 @@
             <objects>
                 <viewController storyboardIdentifier="AllergyViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yr9-ii-WPs" customClass="AllergyViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="02i-Gz-zar"/>
-                        <viewControllerLayoutGuide type="bottom" id="iHQ-Ua-y6K"/>
+                        <viewControllerLayoutGuide type="top" id="TWX-A9-Hs8"/>
+                        <viewControllerLayoutGuide type="bottom" id="NA6-y0-MAX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zTM-DJ-Jzl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -4767,8 +4758,8 @@
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" id="TSm-Dm-twC" customClass="HomeViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Nkr-b0-KP1"/>
-                        <viewControllerLayoutGuide type="bottom" id="DWU-9V-We7"/>
+                        <viewControllerLayoutGuide type="top" id="1fo-8C-Soo"/>
+                        <viewControllerLayoutGuide type="bottom" id="xbF-Q5-654"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="S0X-HI-rbZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -4912,7 +4903,7 @@
                         <color key="backgroundColor" name="AppColor"/>
                         <constraints>
                             <constraint firstItem="BpM-5Q-IJP" firstAttribute="trailing" secondItem="S0X-HI-rbZ" secondAttribute="trailing" id="CfB-sc-wZQ"/>
-                            <constraint firstItem="xc6-6y-Ypf" firstAttribute="top" secondItem="Nkr-b0-KP1" secondAttribute="bottom" id="HkK-HJ-Dq0"/>
+                            <constraint firstItem="xc6-6y-Ypf" firstAttribute="top" secondItem="1fo-8C-Soo" secondAttribute="bottom" id="HkK-HJ-Dq0"/>
                             <constraint firstAttribute="bottom" secondItem="BpM-5Q-IJP" secondAttribute="bottom" id="SGZ-Ni-skV"/>
                             <constraint firstItem="BpM-5Q-IJP" firstAttribute="leading" secondItem="S0X-HI-rbZ" secondAttribute="leading" id="YOb-ZD-djW"/>
                             <constraint firstItem="BpM-5Q-IJP" firstAttribute="top" secondItem="xc6-6y-Ypf" secondAttribute="bottom" id="jki-Ik-k4y"/>
@@ -4936,8 +4927,8 @@
             <objects>
                 <viewController storyboardIdentifier="DoctorsListController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1jM-Qv-sFA" customClass="DoctorsListController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="efG-Eq-G6R"/>
-                        <viewControllerLayoutGuide type="bottom" id="ayO-eM-DAD"/>
+                        <viewControllerLayoutGuide type="top" id="Rpg-Cz-0Ok"/>
+                        <viewControllerLayoutGuide type="bottom" id="ouF-RH-wd0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YIw-sQ-U78">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -5072,7 +5063,7 @@
                             <constraint firstItem="nIR-us-cFd" firstAttribute="leading" secondItem="YIw-sQ-U78" secondAttribute="leading" id="fLb-vZ-B5E"/>
                             <constraint firstItem="gBd-nY-tOh" firstAttribute="trailing" secondItem="YIw-sQ-U78" secondAttribute="trailing" id="lhS-l0-lPY"/>
                             <constraint firstItem="TlM-fY-aXE" firstAttribute="top" secondItem="gBd-nY-tOh" secondAttribute="bottom" id="v1k-o2-8Do"/>
-                            <constraint firstItem="ayO-eM-DAD" firstAttribute="top" secondItem="nIR-us-cFd" secondAttribute="bottom" id="vdJ-Ff-Y0w"/>
+                            <constraint firstItem="ouF-RH-wd0" firstAttribute="top" secondItem="nIR-us-cFd" secondAttribute="bottom" id="vdJ-Ff-Y0w"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -5095,8 +5086,8 @@
             <objects>
                 <viewController storyboardIdentifier="FilterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4A1-4J-qF3" customClass="FilterViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="TE9-MF-ewp"/>
-                        <viewControllerLayoutGuide type="bottom" id="6ox-Ae-vu6"/>
+                        <viewControllerLayoutGuide type="top" id="WdJ-oD-0ni"/>
+                        <viewControllerLayoutGuide type="bottom" id="Scd-43-Kjv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Dy9-Kg-7cE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -5162,8 +5153,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="lZz-d3-GA1" secondAttribute="trailing" id="AYg-5l-8Z6"/>
-                            <constraint firstItem="6ox-Ae-vu6" firstAttribute="top" secondItem="lZz-d3-GA1" secondAttribute="bottom" id="BNr-gy-5rf"/>
-                            <constraint firstItem="lZz-d3-GA1" firstAttribute="top" secondItem="TE9-MF-ewp" secondAttribute="bottom" id="GOM-lo-STL"/>
+                            <constraint firstItem="Scd-43-Kjv" firstAttribute="top" secondItem="lZz-d3-GA1" secondAttribute="bottom" id="BNr-gy-5rf"/>
+                            <constraint firstItem="lZz-d3-GA1" firstAttribute="top" secondItem="WdJ-oD-0ni" secondAttribute="bottom" id="GOM-lo-STL"/>
                             <constraint firstItem="lZz-d3-GA1" firstAttribute="leading" secondItem="Dy9-Kg-7cE" secondAttribute="leading" id="fbF-Ci-oY7"/>
                         </constraints>
                     </view>
@@ -5182,8 +5173,8 @@
             <objects>
                 <viewController storyboardIdentifier="ReminderViewController" id="Lot-Mn-LEu" customClass="ReminderViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ELw-HF-LzM"/>
-                        <viewControllerLayoutGuide type="bottom" id="vHZ-tm-CLC"/>
+                        <viewControllerLayoutGuide type="top" id="D4p-FG-CbA"/>
+                        <viewControllerLayoutGuide type="bottom" id="XtF-fD-wFd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="re6-pX-NzH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -5269,10 +5260,10 @@
                             <constraint firstItem="Zbc-6u-83v" firstAttribute="top" secondItem="b6H-8q-fAg" secondAttribute="bottom" constant="5" id="GEM-MP-ng4"/>
                             <constraint firstItem="Zbc-6u-83v" firstAttribute="leading" secondItem="re6-pX-NzH" secondAttribute="leading" id="JMZ-5O-HWS"/>
                             <constraint firstAttribute="trailing" secondItem="gqs-EW-sBp" secondAttribute="trailing" id="JXI-Wb-UoT"/>
-                            <constraint firstItem="vHZ-tm-CLC" firstAttribute="top" secondItem="Zbc-6u-83v" secondAttribute="bottom" id="XUV-yH-Ifz"/>
+                            <constraint firstItem="XtF-fD-wFd" firstAttribute="top" secondItem="Zbc-6u-83v" secondAttribute="bottom" id="XUV-yH-Ifz"/>
                             <constraint firstItem="b6H-8q-fAg" firstAttribute="trailing" secondItem="re6-pX-NzH" secondAttribute="trailing" id="YmX-il-pVL"/>
-                            <constraint firstItem="b6H-8q-fAg" firstAttribute="top" secondItem="ELw-HF-LzM" secondAttribute="bottom" constant="10" id="av0-Qt-jgw"/>
-                            <constraint firstItem="gqs-EW-sBp" firstAttribute="top" secondItem="ELw-HF-LzM" secondAttribute="bottom" id="c62-AZ-oIm"/>
+                            <constraint firstItem="b6H-8q-fAg" firstAttribute="top" secondItem="D4p-FG-CbA" secondAttribute="bottom" constant="10" id="av0-Qt-jgw"/>
+                            <constraint firstItem="gqs-EW-sBp" firstAttribute="top" secondItem="D4p-FG-CbA" secondAttribute="bottom" id="c62-AZ-oIm"/>
                             <constraint firstAttribute="trailing" secondItem="b6H-8q-fAg" secondAttribute="trailing" id="eT3-6B-NvR"/>
                             <constraint firstItem="b6H-8q-fAg" firstAttribute="leading" secondItem="re6-pX-NzH" secondAttribute="leading" id="gPN-0Q-jty"/>
                             <constraint firstItem="b6H-8q-fAg" firstAttribute="leading" secondItem="re6-pX-NzH" secondAttribute="leading" id="rXe-JD-qLM"/>
@@ -5295,8 +5286,8 @@
             <objects>
                 <viewController storyboardIdentifier="ReminderDetailViewController" id="WGx-WN-iKK" customClass="ReminderDetailViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3bC-qO-hrz"/>
-                        <viewControllerLayoutGuide type="bottom" id="QD3-bZ-3WB"/>
+                        <viewControllerLayoutGuide type="top" id="ZfH-5G-Qq1"/>
+                        <viewControllerLayoutGuide type="bottom" id="R4e-lp-Gi8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bpw-6y-zTn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -5563,9 +5554,9 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="zq3-Ay-Ax9" secondAttribute="trailing" id="Ht9-0O-Sbx"/>
                             <constraint firstItem="MLV-ko-LVm" firstAttribute="height" secondItem="bpw-6y-zTn" secondAttribute="width" multiplier="0.13" id="OLo-rj-W9H"/>
-                            <constraint firstItem="zq3-Ay-Ax9" firstAttribute="top" secondItem="3bC-qO-hrz" secondAttribute="bottom" id="bEq-7Y-lPm"/>
+                            <constraint firstItem="zq3-Ay-Ax9" firstAttribute="top" secondItem="ZfH-5G-Qq1" secondAttribute="bottom" id="bEq-7Y-lPm"/>
                             <constraint firstItem="zq3-Ay-Ax9" firstAttribute="leading" secondItem="bpw-6y-zTn" secondAttribute="leading" id="rnN-zy-6AV"/>
-                            <constraint firstItem="QD3-bZ-3WB" firstAttribute="top" secondItem="zq3-Ay-Ax9" secondAttribute="bottom" id="tiT-pd-2d7"/>
+                            <constraint firstItem="R4e-lp-Gi8" firstAttribute="top" secondItem="zq3-Ay-Ax9" secondAttribute="bottom" id="tiT-pd-2d7"/>
                         </constraints>
                     </view>
                     <connections>
@@ -5590,8 +5581,8 @@
             <objects>
                 <viewController storyboardIdentifier="WalletViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SQP-Qn-oOq" customClass="WalletViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="f7H-00-2ro"/>
-                        <viewControllerLayoutGuide type="bottom" id="hWi-LH-a3D"/>
+                        <viewControllerLayoutGuide type="top" id="IvQ-Aj-vV9"/>
+                        <viewControllerLayoutGuide type="bottom" id="xHD-s3-4Hm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gQa-SE-zNT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -5721,8 +5712,8 @@
             <objects>
                 <viewController storyboardIdentifier="RelativeManagementViewController" id="5ca-I3-Mmx" customClass="RelativeManagementViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="nm4-B5-bdd"/>
-                        <viewControllerLayoutGuide type="bottom" id="fqd-M3-ZFJ"/>
+                        <viewControllerLayoutGuide type="top" id="MK7-fe-SQW"/>
+                        <viewControllerLayoutGuide type="bottom" id="vuz-c9-Ifh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="K2e-dR-JiP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -5773,9 +5764,9 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="N55-OF-Xjp" secondAttribute="trailing" id="3Jh-Gd-I8c"/>
                             <constraint firstItem="N55-OF-Xjp" firstAttribute="top" secondItem="K2e-dR-JiP" secondAttribute="top" id="88d-7D-eeP"/>
-                            <constraint firstItem="fqd-M3-ZFJ" firstAttribute="top" secondItem="FIR-OH-896" secondAttribute="bottom" constant="20" id="9H8-PU-6tN"/>
+                            <constraint firstItem="vuz-c9-Ifh" firstAttribute="top" secondItem="FIR-OH-896" secondAttribute="bottom" constant="20" id="9H8-PU-6tN"/>
                             <constraint firstItem="FIR-OH-896" firstAttribute="top" secondItem="kq5-Dj-yQX" secondAttribute="bottom" id="Aof-mv-5h9"/>
-                            <constraint firstItem="kq5-Dj-yQX" firstAttribute="top" secondItem="nm4-B5-bdd" secondAttribute="bottom" id="EVS-19-88M"/>
+                            <constraint firstItem="kq5-Dj-yQX" firstAttribute="top" secondItem="MK7-fe-SQW" secondAttribute="bottom" id="EVS-19-88M"/>
                             <constraint firstItem="FIR-OH-896" firstAttribute="width" secondItem="K2e-dR-JiP" secondAttribute="width" multiplier="0.15" id="Wvd-Zl-Oiw"/>
                             <constraint firstItem="N55-OF-Xjp" firstAttribute="height" secondItem="K2e-dR-JiP" secondAttribute="width" multiplier="0.25" id="Xjr-ah-BVY"/>
                             <constraint firstItem="kq5-Dj-yQX" firstAttribute="top" secondItem="N55-OF-Xjp" secondAttribute="bottom" id="dNn-iF-oDi"/>
@@ -5807,8 +5798,8 @@
             <objects>
                 <viewController storyboardIdentifier="ProfileViewController" id="c1o-e5-4ZW" customClass="ProfileViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jPK-Ug-Osl"/>
-                        <viewControllerLayoutGuide type="bottom" id="g6f-0q-v57"/>
+                        <viewControllerLayoutGuide type="top" id="hPV-Aq-98s"/>
+                        <viewControllerLayoutGuide type="bottom" id="q6x-KR-NmZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ehb-Xc-PEO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -6591,14 +6582,14 @@
                             <constraint firstItem="WCK-pi-p8u" firstAttribute="top" secondItem="cn5-U3-foX" secondAttribute="bottom" constant="8" symbolic="YES" id="NmX-yX-XvY"/>
                             <constraint firstItem="pgw-cH-76d" firstAttribute="top" secondItem="cn5-U3-foX" secondAttribute="bottom" constant="8" symbolic="YES" id="UFp-dm-Wac"/>
                             <constraint firstItem="LVT-Ps-AVv" firstAttribute="leading" secondItem="ehb-Xc-PEO" secondAttribute="leading" id="Yeh-lu-H7e"/>
-                            <constraint firstItem="g6f-0q-v57" firstAttribute="top" secondItem="pgw-cH-76d" secondAttribute="bottom" id="bON-S1-Dlg"/>
+                            <constraint firstItem="q6x-KR-NmZ" firstAttribute="top" secondItem="pgw-cH-76d" secondAttribute="bottom" id="bON-S1-Dlg"/>
                             <constraint firstItem="cn5-U3-foX" firstAttribute="leading" secondItem="ehb-Xc-PEO" secondAttribute="leading" id="bQx-Ur-uPO"/>
-                            <constraint firstItem="g6f-0q-v57" firstAttribute="top" secondItem="LVT-Ps-AVv" secondAttribute="bottom" id="bok-KF-Knb"/>
-                            <constraint firstItem="cn5-U3-foX" firstAttribute="top" secondItem="jPK-Ug-Osl" secondAttribute="bottom" id="cAO-bn-oOX"/>
+                            <constraint firstItem="q6x-KR-NmZ" firstAttribute="top" secondItem="LVT-Ps-AVv" secondAttribute="bottom" id="bok-KF-Knb"/>
+                            <constraint firstItem="cn5-U3-foX" firstAttribute="top" secondItem="hPV-Aq-98s" secondAttribute="bottom" id="cAO-bn-oOX"/>
                             <constraint firstItem="pgw-cH-76d" firstAttribute="trailing" secondItem="ehb-Xc-PEO" secondAttribute="trailing" id="dyJ-zA-Ud1"/>
                             <constraint firstItem="pgw-cH-76d" firstAttribute="leading" secondItem="ehb-Xc-PEO" secondAttribute="leading" id="iE3-bi-bEj"/>
                             <constraint firstAttribute="trailing" secondItem="cn5-U3-foX" secondAttribute="trailing" id="iEO-vU-OlR"/>
-                            <constraint firstItem="g6f-0q-v57" firstAttribute="top" secondItem="WCK-pi-p8u" secondAttribute="bottom" id="oiJ-YM-fSt"/>
+                            <constraint firstItem="q6x-KR-NmZ" firstAttribute="top" secondItem="WCK-pi-p8u" secondAttribute="bottom" id="oiJ-YM-fSt"/>
                             <constraint firstItem="LVT-Ps-AVv" firstAttribute="top" secondItem="cn5-U3-foX" secondAttribute="bottom" constant="8" symbolic="YES" id="xZF-jQ-cmn"/>
                         </constraints>
                     </view>
@@ -6646,8 +6637,8 @@
             <objects>
                 <viewController storyboardIdentifier="RelativeDetailViewController" id="Amj-qd-O03" customClass="RelativeDetailViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="zGp-Dp-ERW"/>
-                        <viewControllerLayoutGuide type="bottom" id="64k-4G-1WD"/>
+                        <viewControllerLayoutGuide type="top" id="vHN-y4-JKG"/>
+                        <viewControllerLayoutGuide type="bottom" id="oLs-Jz-6aI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bjV-6n-BQ2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -7425,18 +7416,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cCv-zo-zAc" firstAttribute="top" secondItem="NJO-kv-hvW" secondAttribute="bottom" constant="8" symbolic="YES" id="2Lm-UK-Dgi"/>
-                            <constraint firstItem="NJO-kv-hvW" firstAttribute="top" secondItem="zGp-Dp-ERW" secondAttribute="bottom" id="6GE-bJ-Y5b"/>
+                            <constraint firstItem="NJO-kv-hvW" firstAttribute="top" secondItem="vHN-y4-JKG" secondAttribute="bottom" id="6GE-bJ-Y5b"/>
                             <constraint firstItem="NJO-kv-hvW" firstAttribute="leading" secondItem="bjV-6n-BQ2" secondAttribute="leading" id="8UC-hI-kHR"/>
                             <constraint firstItem="hRf-dX-7IZ" firstAttribute="leading" secondItem="bjV-6n-BQ2" secondAttribute="leading" id="9o2-ae-ENj"/>
-                            <constraint firstItem="64k-4G-1WD" firstAttribute="top" secondItem="W5L-hH-xs6" secondAttribute="bottom" id="LSw-EF-GZx"/>
+                            <constraint firstItem="oLs-Jz-6aI" firstAttribute="top" secondItem="W5L-hH-xs6" secondAttribute="bottom" id="LSw-EF-GZx"/>
                             <constraint firstItem="hRf-dX-7IZ" firstAttribute="trailing" secondItem="bjV-6n-BQ2" secondAttribute="trailing" id="MLX-NK-c6w"/>
                             <constraint firstItem="W5L-hH-xs6" firstAttribute="trailing" secondItem="bjV-6n-BQ2" secondAttribute="trailing" id="MiC-jO-zPB"/>
                             <constraint firstAttribute="trailing" secondItem="NJO-kv-hvW" secondAttribute="trailing" id="O7b-pg-urT"/>
                             <constraint firstItem="cCv-zo-zAc" firstAttribute="leading" secondItem="bjV-6n-BQ2" secondAttribute="leading" id="Qec-iR-Lj9"/>
                             <constraint firstItem="W5L-hH-xs6" firstAttribute="leading" secondItem="bjV-6n-BQ2" secondAttribute="leading" id="RuD-jT-JUY"/>
                             <constraint firstItem="cCv-zo-zAc" firstAttribute="trailing" secondItem="bjV-6n-BQ2" secondAttribute="trailing" id="bmy-oA-2LR"/>
-                            <constraint firstItem="64k-4G-1WD" firstAttribute="top" secondItem="hRf-dX-7IZ" secondAttribute="bottom" id="k1l-fx-WZL"/>
-                            <constraint firstItem="64k-4G-1WD" firstAttribute="top" secondItem="cCv-zo-zAc" secondAttribute="bottom" id="liM-tY-D0e"/>
+                            <constraint firstItem="oLs-Jz-6aI" firstAttribute="top" secondItem="hRf-dX-7IZ" secondAttribute="bottom" id="k1l-fx-WZL"/>
+                            <constraint firstItem="oLs-Jz-6aI" firstAttribute="top" secondItem="cCv-zo-zAc" secondAttribute="bottom" id="liM-tY-D0e"/>
                             <constraint firstItem="hRf-dX-7IZ" firstAttribute="top" secondItem="NJO-kv-hvW" secondAttribute="bottom" constant="8" symbolic="YES" id="uA9-W1-Ji1"/>
                             <constraint firstItem="W5L-hH-xs6" firstAttribute="top" secondItem="NJO-kv-hvW" secondAttribute="bottom" constant="8" symbolic="YES" id="yDJ-Bl-67m"/>
                         </constraints>
@@ -7485,8 +7476,8 @@
             <objects>
                 <viewController storyboardIdentifier="AddMedicalRecordViewController" id="4sb-3c-huT" customClass="AddMedicalRecordViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="yl8-7G-2ji"/>
-                        <viewControllerLayoutGuide type="bottom" id="xOj-C3-n06"/>
+                        <viewControllerLayoutGuide type="top" id="zFR-ny-ksF"/>
+                        <viewControllerLayoutGuide type="bottom" id="rFM-Vb-jll"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oji-gS-LEp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -7622,7 +7613,7 @@
                             <constraint firstItem="gwp-Kd-P9M" firstAttribute="height" secondItem="oji-gS-LEp" secondAttribute="width" multiplier="0.15" id="K9y-Pz-eBJ"/>
                             <constraint firstItem="E6K-zk-VsJ" firstAttribute="leading" secondItem="m5b-nK-9QS" secondAttribute="leading" id="N4i-i3-fAa"/>
                             <constraint firstItem="Vgg-WI-vvd" firstAttribute="trailing" secondItem="6uH-cc-TNx" secondAttribute="trailing" id="PJd-d1-rWC"/>
-                            <constraint firstItem="xOj-C3-n06" firstAttribute="top" secondItem="gwp-Kd-P9M" secondAttribute="bottom" constant="40" id="Rcy-Ri-KnH"/>
+                            <constraint firstItem="rFM-Vb-jll" firstAttribute="top" secondItem="gwp-Kd-P9M" secondAttribute="bottom" constant="40" id="Rcy-Ri-KnH"/>
                             <constraint firstItem="H1m-P8-gAK" firstAttribute="width" secondItem="oji-gS-LEp" secondAttribute="width" multiplier="0.929907" id="SIm-qf-OW1"/>
                             <constraint firstItem="E6K-zk-VsJ" firstAttribute="top" secondItem="m5b-nK-9QS" secondAttribute="bottom" constant="10" id="T4v-Dw-sCX"/>
                             <constraint firstItem="avp-ie-MZP" firstAttribute="height" secondItem="oji-gS-LEp" secondAttribute="height" multiplier="0.142857" id="TrU-6s-Tt5"/>
@@ -7667,8 +7658,8 @@
             <objects>
                 <viewController storyboardIdentifier="HealthFeedDetailsViewController" id="wip-fi-AW2" customClass="HealthFeedDetailsViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="JhX-Pm-MJx"/>
-                        <viewControllerLayoutGuide type="bottom" id="I4W-Pg-Fsz"/>
+                        <viewControllerLayoutGuide type="top" id="MO3-Ej-Mec"/>
+                        <viewControllerLayoutGuide type="bottom" id="KKn-XQ-xwS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1vl-Fx-fJb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -7742,8 +7733,8 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="I4W-Pg-Fsz" firstAttribute="top" secondItem="E3D-Gj-moc" secondAttribute="bottom" id="KI9-7c-RRY"/>
-                            <constraint firstItem="E3D-Gj-moc" firstAttribute="top" secondItem="JhX-Pm-MJx" secondAttribute="bottom" id="Rf8-LY-rvP"/>
+                            <constraint firstItem="KKn-XQ-xwS" firstAttribute="top" secondItem="E3D-Gj-moc" secondAttribute="bottom" id="KI9-7c-RRY"/>
+                            <constraint firstItem="E3D-Gj-moc" firstAttribute="top" secondItem="MO3-Ej-Mec" secondAttribute="bottom" id="Rf8-LY-rvP"/>
                             <constraint firstAttribute="trailing" secondItem="E3D-Gj-moc" secondAttribute="trailing" id="hPc-fF-hYk"/>
                             <constraint firstItem="E3D-Gj-moc" firstAttribute="leading" secondItem="1vl-Fx-fJb" secondAttribute="leading" id="wbT-ca-lTw"/>
                         </constraints>
@@ -7764,8 +7755,8 @@
             <objects>
                 <viewController storyboardIdentifier="PatientRecordsViewController" id="iB2-hD-5gJ" customClass="PatientRecordsViewController" customModule="TeleHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="PKF-Dn-T1V"/>
-                        <viewControllerLayoutGuide type="bottom" id="USh-ec-ZRW"/>
+                        <viewControllerLayoutGuide type="top" id="LiG-Bo-iSH"/>
+                        <viewControllerLayoutGuide type="bottom" id="s5G-gf-RkL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zFu-Yn-K5Q">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -7782,8 +7773,8 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="XSJ-pG-7GE" firstAttribute="top" secondItem="PKF-Dn-T1V" secondAttribute="bottom" id="BKC-rm-ew2"/>
-                            <constraint firstItem="USh-ec-ZRW" firstAttribute="top" secondItem="XSJ-pG-7GE" secondAttribute="bottom" constant="10" id="tgj-TN-CAR"/>
+                            <constraint firstItem="XSJ-pG-7GE" firstAttribute="top" secondItem="LiG-Bo-iSH" secondAttribute="bottom" id="BKC-rm-ew2"/>
+                            <constraint firstItem="s5G-gf-RkL" firstAttribute="top" secondItem="XSJ-pG-7GE" secondAttribute="bottom" constant="10" id="tgj-TN-CAR"/>
                             <constraint firstItem="XSJ-pG-7GE" firstAttribute="leading" secondItem="zFu-Yn-K5Q" secondAttribute="leading" id="vU2-Xy-nBz"/>
                             <constraint firstAttribute="trailing" secondItem="XSJ-pG-7GE" secondAttribute="trailing" id="zGe-ih-n7D"/>
                         </constraints>

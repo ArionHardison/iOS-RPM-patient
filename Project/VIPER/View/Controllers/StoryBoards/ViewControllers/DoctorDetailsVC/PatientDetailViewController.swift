@@ -37,6 +37,7 @@ class PatientDetailViewController: UIViewController {
     var isfromSearch : Bool = false
     var bookingreq : BookingReq = BookingReq()
     var isFollowup : Bool = false
+    var invoiceView : InvoiceView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initialLoad()
@@ -149,7 +150,18 @@ extension PatientDetailViewController : PresenterOutputProtocol{
                
                 if Bool(data?.success ?? "false") ?? false{
                     showToast(msg: "Appointment booking successfully")
-                    self.navigationController?.popToRootViewController(animated: true)
+//
+                    if self.invoiceView == nil, let invoice = Bundle.main.loadNibNamed(XIB.Names.InvoiceView, owner: self, options: [:])?.first as? InvoiceView {
+                        invoice.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: self.view.frame.width, height: self.view.frame.height))
+                        self.invoiceView = invoice
+                        self.invoiceView.populateData(invoice: data?.appointment?.invoice)
+                        self.invoiceView.onClickDone = {
+                            self.invoiceView.removeFromSuperview()
+                            self.invoiceView = nil
+                            self.navigationController?.popToRootViewController(animated: true)
+                        }
+                        self.view.addSubview(self.invoiceView!)
+                    }
                 }
                 
                 break

@@ -104,8 +104,7 @@ extension ChatQuestionViewController : UITableViewDelegate,UITableViewDataSource
         }
         
         return cell
-        
-    }
+        t    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
