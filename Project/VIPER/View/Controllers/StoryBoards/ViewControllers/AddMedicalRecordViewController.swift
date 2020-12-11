@@ -149,13 +149,18 @@ extension AddMedicalRecordViewController : UITextFieldDelegate {
         if textField == self.doctorTexField{
             var doctorsNames = [String]()
             doctorsNames = self.doctors.map({($0.first_name ?? "") + " " + ($0.last_name ?? "")})
+            doctorsNames.append("Others")
             PickerManager.shared.showPicker(pickerData: doctorsNames, selectedData: textField.text, completionHandler: { (selectedValue) in
                 textField.text = selectedValue
                 for (index,value) in doctorsNames.enumerated(){
                     print(value)
                     if value == selectedValue{
                         self.selectedDoctorName = selectedValue
+                        if self.selectedDoctorName == "Others"{
+                            self.selectedDoctorId = 0
+                        }else{
                         self.selectedDoctorId = self.doctors[index].id ?? 0
+                        }
                         print(self.selectedDoctorId)
                     }
                 }

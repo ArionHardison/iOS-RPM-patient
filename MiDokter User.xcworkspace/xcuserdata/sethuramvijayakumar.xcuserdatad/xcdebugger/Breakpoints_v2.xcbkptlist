@@ -7,80 +7,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "36099B85-3BCA-4E86-AFAE-6421D090F994"
+            uuid = "1242E812-10C1-4703-B5BB-F8D927937266"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Project/VIPER/View/Controllers/StoryBoards/ViewControllers/SideMenu/HealthFeedViewController.swift"
+            filePath = "Project/VIPER/View/Controllers/StoryBoards/ViewControllers/DoctorDetailsVC/DoctorDetailsController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
-            landmarkName = "imageFromUrl(_:completion:)"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "populateData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CBD64E39-8E8C-4733-9C61-39FF927AAB1E"
+            uuid = "45FC7657-3C68-4491-8373-247F3117DAED"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Project/VIPER/View/Controllers/StoryBoards/ViewControllers/SideMenu/HealthFeedViewController.swift"
+            filePath = "Project/VIPER/View/Controllers/StoryBoards/ViewControllers/DoctorDetailsVC/DoctorDetailsController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
-            landmarkName = "imageFromUrl(_:completion:)"
+            startingLineNumber = "548"
+            endingLineNumber = "548"
+            landmarkName = "addRemoveFav(patient_id:doctor_id:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F8D0117F-050A-4B70-B11F-2B8EAABEB1AF"
+            uuid = "1A0CE582-2F43-48D8-8B2B-BB9008D74FA5"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Project/VIPER/View/Controllers/StoryBoards/ViewControllers/SideMenu/HealthFeedViewController.swift"
+            filePath = "Project/VIPER/View/Controllers/StoryBoards/ViewControllers/AddMedicalRecordViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
-            landmarkName = "imageFromUrl(_:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5EC9D556-7DF1-4DD8-A149-B6ECABF5CA0D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Project/VIPER/View/Controllers/StoryBoards/ViewControllers/SideMenu/HealthFeedViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
-            landmarkName = "imageFromUrl(_:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E5021881-4D88-447C-9B56-F81F03A1773D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Project/VIPER/View/Controllers/StoryBoards/ViewControllers/SideMenu/HealthFeedViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
-            landmarkName = "imageFromUrl(_:completion:)"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "submitAction(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

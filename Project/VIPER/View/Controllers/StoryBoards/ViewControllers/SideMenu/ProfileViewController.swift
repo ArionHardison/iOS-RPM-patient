@@ -64,6 +64,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var activityTxt : HoshiTextField!
     @IBOutlet weak var foodPreferenceTxt : HoshiTextField!
     @IBOutlet weak var occupationTxt : HoshiTextField!
+    @IBOutlet weak var lastNameTextField: HoshiTextField!
     
 //    var value  : [ProfileViewOption]!
     var isSmoking : Bool = false
@@ -125,7 +126,8 @@ class ProfileViewController: UIViewController {
     
     private func setValues(){
          let profile : ProfileModel = profileDetali
-            self.nameTxt.text = "\(profile.patient?.first_name ?? "") \(profile.patient?.last_name ?? "")"
+            self.nameTxt.text = "\(profile.patient?.first_name ?? "")"
+            self.lastNameTextField.text = "\(profile.patient?.last_name ?? "")"
             self.emailidTxt.text = "\(profile.patient?.email ?? "")"
             self.contantNumTxt.text = "\(profile.patient?.phone ?? "")"
             self.profileImage.setURLImage(profile.patient?.profile?.profile_pic ?? "")
@@ -158,22 +160,11 @@ class ProfileViewController: UIViewController {
             return
         }
     
-    if !name.isEmpty {
-//        let pattern = "/^[A-Z][a-z]{0,19}[\\s,][A-Z][a-z]{0,19}$/"
-//        let predicate = NSPredicate(format: "self MATCHES [c] %@", pattern)
-        if self.nameTxt.getText.contains(" ") {
-            print("Valid")
-            
-        }
-        else {
-            print("Invalid")
-            showToast(msg: "Enter the First Name,Last Name with space between them")
-            return
-        }
+    guard  let lastName = self.lastNameTextField.text ,!lastName.isEmpty else {
+        showToast(msg: "Enter Last Name")
+        return
     }
-        let fullNameArr = name.components(separatedBy: " ")
-        let firstName = fullNameArr[0]
-        let lastName = fullNameArr[1]
+
         guard  let phoneNumber = self.contantNumTxt.text,!phoneNumber.isEmpty else {
             showToast(msg: "Enter Mobile Number")
             return
@@ -228,7 +219,7 @@ class ProfileViewController: UIViewController {
         imageData.updateValue(self.profileImage.image?.pngRepresentationData ?? Data(), forKey: "profile_pic")
         
         var params = [String:Any]()
-        params.updateValue(firstName, forKey: "first_name")
+        params.updateValue(name, forKey: "first_name")
         params.updateValue(lastName, forKey: "last_name")
         params.updateValue(phoneNumber, forKey: "phone")
         params.updateValue(email, forKey: "email")

@@ -64,6 +64,7 @@ class RelativeDetailViewController: UIViewController {
     @IBOutlet weak var activityTxt : HoshiTextField!
     @IBOutlet weak var foodPreferenceTxt : HoshiTextField!
     @IBOutlet weak var occupationTxt : HoshiTextField!
+    @IBOutlet weak var lastNameTxt: HoshiTextField!
     
 //    var value  : [ProfileViewOption]!
     var isSmoking : Bool = false
@@ -128,7 +129,8 @@ class RelativeDetailViewController: UIViewController {
     
     private func setValues(){
    //         let profile : ProfileModel = profileDetali
-           self.nameTxt.text = "\(self.userRelatives.first_name ?? "") \(self.userRelatives.last_name ?? "")"
+               self.nameTxt.text = "\(self.userRelatives.first_name ?? "")"
+               self.lastNameTxt.text = "\(self.userRelatives.last_name ?? "")"
                self.emailidTxt.text = "\(self.userRelatives.email ?? "")"
                self.contantNumTxt.text = "\(self.userRelatives.phone ?? "")"
                self.profileImage.setURLImage(self.userRelatives.profile?.profile_pic ?? "")
@@ -160,20 +162,12 @@ class RelativeDetailViewController: UIViewController {
                showToast(msg: "Enter Name")
                return
            }
-        if !name.isEmpty {
-            if self.nameTxt.getText.contains(" ") {
-                print("Valid")
-                
-            }
-            else {
-                print("Invalid")
-                showToast(msg: "Enter the First Name,Last Name with space between")
-                return
-            }
+        guard  let lastName = self.lastNameTxt.text ,!lastName.isEmpty  else {
+            showToast(msg: "Enter Last Name")
+            return
+            
         }
-           let fullNameArr = name.components(separatedBy: " ")
-           let firstName = fullNameArr[0]
-           let lastName = fullNameArr[1]
+
            guard  let phoneNumber = self.contantNumTxt.text,!phoneNumber.isEmpty else {
                showToast(msg: "Enter Mobile Number")
                return
@@ -239,7 +233,7 @@ class RelativeDetailViewController: UIViewController {
         
            
            var params = [String:Any]()
-           params.updateValue(firstName, forKey: "first_name")
+           params.updateValue(name, forKey: "first_name")
            params.updateValue(lastName, forKey: "last_name")
            params.updateValue(phoneNumber, forKey: "phone")
            params.updateValue(email, forKey: "email")

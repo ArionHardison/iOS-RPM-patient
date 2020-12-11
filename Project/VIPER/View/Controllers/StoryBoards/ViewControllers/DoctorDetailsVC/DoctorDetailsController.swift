@@ -172,12 +172,12 @@ class DoctorDetailsController: UIViewController {
         self.btnFavourite.addTap {
             if !self.isFromSearchDoctor{
                 if self.isfromFavourite{
-                    self.addRemoveFav(patient_id: UserDefaultConfig.PatientID, doctor_id: (self.favouriteDoctor?.hospital?.doctor_profile?.id ?? 0).description)
+                    self.addRemoveFav(patient_id: UserDefaultConfig.PatientID, doctor_id: (self.favouriteDoctor?.id ?? 0).description)
                 }else{
             self.addRemoveFav(patient_id: UserDefaultConfig.PatientID, doctor_id:(self.docProfile.id ?? 0).description)
             }
             }else{
-                self.addRemoveFav(patient_id: UserDefaultConfig.PatientID, doctor_id:(self.searchDoctor.doctor_profile?.id ?? 0).description)
+                self.addRemoveFav(patient_id: UserDefaultConfig.PatientID, doctor_id:(self.searchDoctor.id ?? 0).description)
             }
             }
         
