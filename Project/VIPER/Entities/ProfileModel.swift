@@ -11,7 +11,7 @@ import ObjectMapper
 
 struct ProfileModel : Mappable {
     var patient : Patient?
-    var profile_complete : String?
+    var profile_complete : Int?
     var allergies : [Allergies]?
     var currency : Currency?
     

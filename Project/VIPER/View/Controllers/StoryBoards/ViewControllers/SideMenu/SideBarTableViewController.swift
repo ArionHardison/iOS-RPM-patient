@@ -108,7 +108,7 @@ extension SideBarTableViewController {
     private func setValues(){
         let profile : ProfileModel = profileDetali
            self.labelName.text = "\(profile.patient?.first_name ?? "") \(profile.patient?.last_name ?? "")"
-           self.labelProfileCompletion.text = "Profile Completed : \(profile.profile_complete ?? "")"
+           self.labelProfileCompletion.text = "Profile Completed : \(profile.profile_complete ?? 0)%"
            self.imageViewProfile.setURLImage(profile.patient?.profile?.profile_pic ?? "")
        
    }

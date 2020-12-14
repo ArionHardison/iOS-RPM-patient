@@ -108,8 +108,7 @@ class DoctorDetailsController: UIViewController {
                }else{
                    self.btnFavourite.setImage(UIImage(named: "love_red"), for: .normal)
                }
-    }else{
-            let detail : Hospital = (self.docProfile.hospital?[0])!
+    }else{        let detail : Hospital = (self.docProfile.hospital?.first)!
             self.labelDoctorName.text = "\(detail.first_name ?? "") \(detail.last_name ?? "")"
             self.imgDoctor.setURLImage(detail.doctor_profile?.profile_pic ?? "")
              self.imgDoctor.makeRoundedCorner()

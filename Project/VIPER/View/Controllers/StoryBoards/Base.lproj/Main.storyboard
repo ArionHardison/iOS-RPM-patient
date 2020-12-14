@@ -6619,12 +6619,6 @@
                             <constraint firstItem="q6x-KR-NmZ" firstAttribute="top" secondItem="WCK-pi-p8u" secondAttribute="bottom" id="oiJ-YM-fSt"/>
                             <constraint firstItem="LVT-Ps-AVv" firstAttribute="top" secondItem="cn5-U3-foX" secondAttribute="bottom" constant="8" symbolic="YES" id="xZF-jQ-cmn"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="LVT-Ps-AVv"/>
-                                <exclude reference="WCK-pi-p8u"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="activityTxt" destination="tN3-YC-2Rm" id="OiK-99-5OM"/>
