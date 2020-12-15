@@ -92,7 +92,7 @@ class DoctorDetailsController: UIViewController {
         
         if !isFromSearchDoctor {
             if isfromFavourite {
-               let detail : Hospital = (self.favouriteDoctor?.hospital)!
+               let detail : Hospital = (self.favouriteDoctor?.hospital) ?? Hospital()
                self.labelDoctorName.text = "\(detail.first_name ?? "") \(detail.last_name ?? "")"
                self.imgDoctor.setURLImage(detail.doctor_profile?.profile_pic ?? "")
                 self.imgDoctor.makeRoundedCorner()
@@ -108,7 +108,7 @@ class DoctorDetailsController: UIViewController {
                }else{
                    self.btnFavourite.setImage(UIImage(named: "love_red"), for: .normal)
                }
-    }else{        let detail : Hospital = (self.docProfile.hospital?.first)!
+    }else{        let detail : Hospital = (self.docProfile.hospital?.first) ?? Hospital()
             self.labelDoctorName.text = "\(detail.first_name ?? "") \(detail.last_name ?? "")"
             self.imgDoctor.setURLImage(detail.doctor_profile?.profile_pic ?? "")
              self.imgDoctor.makeRoundedCorner()
@@ -144,6 +144,7 @@ class DoctorDetailsController: UIViewController {
                 self.labelDoctorName.text = "\(self.searchDoctor.first_name ?? "")" + " " + "\(self.searchDoctor.last_name ?? "")"
                 self.imgDoctor.setURLImage(self.searchDoctor.doctor_profile?.profile_pic ?? "")
                      self.imgDoctor.makeRoundedCorner()
+                
             self.labelConsultationfee.text = "Consulation Fees  " +  "$ \(self.docProfile.fees ?? 0)"
             self.labelQualification.text = "\(self.docProfile.speciality?.name ?? "")"
                 self.labelQualification.text = "\(self.searchDoctor.doctor_profile?.certification ?? "")".capitalized

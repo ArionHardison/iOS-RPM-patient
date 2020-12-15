@@ -223,6 +223,10 @@ struct Hospital : Mappable {
     var doctor_profile : Doctor_profile?
     var timing : [Timing]?
     var doctor_service : [Doctor_service]?
+    
+    init() {
+        
+    }
 
     init?(map: Map) {
 

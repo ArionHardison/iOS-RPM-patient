@@ -33,10 +33,10 @@ class UpcomingTableviewCell: UITableViewCell {
         super.layoutSubviews()
         
         self.roundCorners(cornerRadius: 6, cornerView: dateView)
-        self.roundCorners(cornerRadius: 6, cornerView: labelStatus)
+//        self.roundCorners(cornerRadius: 6, cornerView: labelStatus)
 
 //        self.dateView.roundCorners(corners: [.topRight,.bottomRight], radius: 6)
-//        self.labelStatus.roundCorners(corners: [.bottomLeft,.topLeft], radius: 2)
+        self.labelStatus.roundCorners(corners: [.bottomLeft,.topLeft], radius: 6)
         self.dateView.borderLineWidth = 1.0
         
         
