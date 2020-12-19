@@ -64,6 +64,7 @@ struct Storyboard {
     let AddMedicalRecordViewController = "AddMedicalRecordViewController"
     let PatientRecordsViewController = "PatientRecordsViewController"
     let ShowRecordViewController = "ShowRecordViewController"
+    let PaymentSelectViewController = "PaymentSelectViewController"
 }
 
 
@@ -98,6 +99,7 @@ struct XIB {
     let AddAllergyTableViewCell = "AddAllergyTableViewCell"
     let CardsTableViewCell = "CardsTableViewCell"
     let InvoiceView = "InvoiceView"
+    let PaymentModeTableViewCell = "PaymentModeTableViewCell"
     
     
 }

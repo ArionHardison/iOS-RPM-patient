@@ -45,7 +45,9 @@ class AllergyViewController: UIViewController {
 
     }
     func addAction(){
-        
+        self.backBtn.addTap {
+            self.onClickCancel?("NO")
+        }
         noView.addTap {
             
 //            let vc = self.storyboard?.instantiateViewController(identifier: "AllergiesListViewController") as? AllergiesListViewController

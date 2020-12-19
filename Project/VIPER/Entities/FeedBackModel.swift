@@ -32,6 +32,7 @@ struct FeedBackReq : Codable {
     var comments : String = ""
     var rating : String = ""
     var title : String = ""
+    var appointment_id : Int = 0
     
 }
 

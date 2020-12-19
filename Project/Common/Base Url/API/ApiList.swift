@@ -81,6 +81,7 @@ enum Base : String{
     case getDoctor = "/api/patient/doctor"
     case addMedicalRecord = "/api/patient/medical_records"
     case patientRecords = "/api/patient/records_details"
+    case chatpush = "api/patient/chat_push"
     
     
     

@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import ObjectMapper
 
 class ChatViewController: UIViewController {
 
@@ -69,6 +70,10 @@ class ChatViewController: UIViewController {
                 showToast(msg: "Messge should not be empty")
             }else{
             ChatManager.shared.sentMessage(message: self.msgTxt.text ?? "", senderId: Int(UserDefaultConfig.PatientID ?? "0") ?? 0, timestamp: Date().description, provider_id: (self.chats?.hospital?.id ?? 0).description)
+               
+                let url = "\(Base.chatpush.rawValue)?message=\(self.msgTxt.getText)&doctor_id=\(self.chats?.hospital?.doctor_profile?.id ?? 0)"
+                self.presenter?.HITAPI(api: url, params: nil, methodType: .GET, modelClass: CardSuccess.self, token: true)
+                
 //                ChatManager.shared.sentMessage(message: self.msgTxt.text ?? "", senderId: (self.chats?.hospital?.id ?? 0), timestamp: Date().description, provider_id: (UserDefaultConfig.PatientID).description)
 //                ChatManager.shared.sendFile(with: <#T##PNSendFileRequest#>, completion: <#T##PNSendFileCompletionBlock?##PNSendFileCompletionBlock?##(PNSendFileStatus) -> Void#>)
                
@@ -134,5 +139,18 @@ extension ChatViewController : UITableViewDelegate,UITableViewDataSource{
         self.chatListTable.registerCell(withId: XIB.Names.ChatRightCell)
         self.chatListTable.registerCell(withId: XIB.Names.ChatLeftCell)
     }
+    
+}
+
+
+extension ChatViewController : PresenterOutputProtocol{
+    func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
+                
+    }
+    
+    func showError(error: CustomError) {
+        
+    }
+    
     
 }

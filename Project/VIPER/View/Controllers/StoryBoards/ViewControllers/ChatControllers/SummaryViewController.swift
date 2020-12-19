@@ -27,6 +27,8 @@ class SummaryViewController: UIViewController {
     @IBOutlet weak var userCollection : UICollectionView!
     @IBOutlet weak var bottomView : UIView!
     @IBOutlet weak var strickView : UIView!
+    @IBOutlet weak var selectedPaymentMode: UILabel!
+    @IBOutlet weak var changePaymentButton: UIButton!
     
     
     var selectedCategory : Category = Category()
@@ -35,6 +37,8 @@ class SummaryViewController: UIViewController {
     var message : String = ""
     var offerPrice : String = ""
     var price : String = ""
+    var selectedPaymentType : String = "wallet"
+    var cardId : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +62,7 @@ class SummaryViewController: UIViewController {
         bottomView.clipsToBounds = true
         bottomView.layer.cornerRadius = 20
         bottomView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        self.changePaymentButton.addTarget(self, action: #selector(changePaymentAction(_sender:)), for: .touchUpInside)
        
     }
     
@@ -111,6 +116,8 @@ class SummaryViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
+    
+    
 }
 
 
@@ -147,7 +154,24 @@ extension SummaryViewController : UICollectionViewDelegate,UICollectionViewDataS
         self.userCollection.registerCell(withId: XIB.Names.PhotosCell)
     }
     
-    
+    @IBAction private func changePaymentAction(_sender:UIButton){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.PaymentSelectViewController) as! PaymentSelectViewController
+        vc.modalPresentationStyle = .automatic
+        vc.onSelectPaymentType = { (paymentType,card_id,lastfour) in
+            self.selectedPaymentType = paymentType
+            self.cardId = card_id
+            if self.selectedPaymentType == "stripe"{
+                self.selectedPaymentMode.text = "XXXX-XXXX-XXXX-\(lastfour)"
+            }else{
+            self.selectedPaymentMode.text = paymentType
+            }
+            vc.dismiss(animated: true, completion: nil)
+            
+        }
+        let nav = UINavigationController(rootViewController: vc)
+        self.navigationController?.present(nav, animated: true, completion: nil)
+        
+    }
     
 }
 
@@ -158,15 +182,27 @@ extension SummaryViewController : PresenterOutputProtocol{
     func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
         switch String(describing: modelClass) {
             case model.type.DoctorsDetailModel:
-                
                 let data = dataDict as? DoctorsDetailModel
                 self.doctors = data!
                 self.setupData()
                 break
+            
+                
             case model.type.PromoCodeEntity:
                 let data = dataDict as? PromoCodeEntity
                 self.updatePromoDetail(data: data!)
             break
+        case model.type.CardSuccess:
+            let data = dataDict as? CardSuccess
+            let alert  = showAlert(message: data?.message) { (_) in
+                for controller in self.navigationController!.viewControllers as Array {
+                        if controller.isKind(of: HomeViewController.self) {
+                            _ =  self.navigationController!.popToViewController(controller, animated: true)
+                            break
+                        }
+                    }
+            }
+            self.present(alert, animated: true, completion: nil)
             default: break
             
         }
@@ -207,14 +243,27 @@ extension SummaryViewController : PresenterOutputProtocol{
     }
     
     func proceedToPay(id : String,message : String,Amount:String,promo_id : String,speciality_id : String){
-//        self.presenter?.HITAPI(api: Base.proceedToPay.rawValue, params: ["id" : id, "message" : message,"Amount":Amount,"pay_for":"CHAT","promo_id":promo_id,"speciality_id" : speciality_id,"payment_mode":"CARD","use_wallet":"TRUE"], methodType: .POST, modelClass: PromoCodeEntity.self, token: true)
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.CardsListViewController) as! CardsListViewController
-        vc.amount = Amount
-        vc.isFromWallet = false
-        vc.id = id
-        vc.promoCode = promo_id
-        vc.message = message
-        self.navigationController?.pushViewController(vc, animated:true)
+        var params = [String:Any]()
+        params.updateValue(id, forKey: "id")
+        params.updateValue(message, forKey: "message")
+        params.updateValue(Amount, forKey: "amount")
+        params.updateValue("CHAT", forKey: "pay_for")
+        params.updateValue(id, forKey: "speciality_id")
+        params.updateValue(promo_id, forKey: "promo_id")
+        params.updateValue(selectedPaymentType == "stripe" ? "False" : "True", forKey: "use_wallet")
+        params.updateValue(selectedPaymentType, forKey: "payment_mode")
+        if selectedPaymentType == "stripe"{
+        params.updateValue(cardId, forKey: "card_id")
+        }
+        self.presenter?.HITAPI(api: Base.proceedToPay.rawValue, params: params, methodType: .POST, modelClass: CardSuccess.self, token: true)
+        
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.CardsListViewController) as! CardsListViewController
+//        vc.amount = Amount
+//        vc.isFromWallet = false
+//        vc.id = id
+//        vc.promoCode = promo_id
+//        vc.message = message
+//        self.navigationController?.pushViewController(vc, animated:true)
     }
   
 }

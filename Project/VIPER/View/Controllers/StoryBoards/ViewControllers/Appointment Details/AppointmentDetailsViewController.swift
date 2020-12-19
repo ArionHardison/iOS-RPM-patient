@@ -36,6 +36,7 @@ class AppointmentDetailsViewController: UITableViewController {
     var isFromVisited : Bool = false
     var likedStatus : String = ""
     var index : Int = 0
+    var appoitmentID : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,6 +115,7 @@ extension AppointmentDetailsViewController {
                 self.labelStatusResponse.text = "Consulted"
             }else{
             self.labelStatusResponse.text = self.visitedDetail.appointments?[index].status ?? ""
+                self.appoitmentID = self.visitedDetail.appointments?[index].id ?? 0
             }
         }else{
             let data : Appointments = self.updatedVisitedDetail
@@ -124,6 +126,7 @@ extension AppointmentDetailsViewController {
         self.labelPatientName.text = "\(data.booking_for ?? "")"
         self.labelDate.text = dateConvertor(data.scheduled_at ?? "", _input: .date_time, _output: .DMY_Time)
         self.labelStatusResponse.text = data.status ?? ""
+            self.appoitmentID = data.id ?? 0
         }
         
     }
@@ -163,6 +166,7 @@ extension AppointmentDetailsViewController {
                 comment.visited_for = self.consultedText.getText
                 comment.rating = "\(self.ratingView.rating)"
                 comment.title = "Rating Review"
+                comment.appointment_id = self.appoitmentID
                 self.postFeedBack(feedback: comment)
             }
         }
@@ -183,7 +187,13 @@ extension AppointmentDetailsViewController {
         }
         
     }
-   
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        if self.updatedVisitedDetail.patient_rating == 0{
+            return 4
+        }else{
+            return 2
+        }
+    }
     
 }
 

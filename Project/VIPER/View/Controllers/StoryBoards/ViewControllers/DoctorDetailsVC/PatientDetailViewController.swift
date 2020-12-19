@@ -28,6 +28,8 @@ class PatientDetailViewController: UIViewController {
     @IBOutlet weak var nameTxt : HoshiTextField!
     @IBOutlet weak var emailTxt : HoshiTextField!
     @IBOutlet weak var phonenumTxt : HoshiTextField!
+    @IBOutlet weak var paymentTypeLabel: UILabel!
+    @IBOutlet weak var changePaymentButton: UIButton!
     
     @IBOutlet weak var confirmBtn : UIButton!
 
@@ -38,6 +40,9 @@ class PatientDetailViewController: UIViewController {
     var bookingreq : BookingReq = BookingReq()
     var isFollowup : Bool = false
     var invoiceView : InvoiceView!
+    var selectedPaymentType : String = "wallet"
+    var cardId : String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initialLoad()
@@ -53,6 +58,7 @@ class PatientDetailViewController: UIViewController {
         self.populateData()
 //        self.setupFont()
          IQKeyboardManager.shared.enable = false
+        self.changePaymentButton.addTarget(self, action: #selector(changePaymentAction(_sender:)), for: .touchUpInside)
 //        self.scrollView.addSubview(self.scrollInnerView)
 //        self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.scrollInnerView.frame.height)
     }
@@ -62,12 +68,24 @@ class PatientDetailViewController: UIViewController {
         self.navigationItem.title = "Enter patient detail"
     }
     
-//    func setupFont(){
-//        [self.doctorNameLbl , self.clinicDetailLbl , self.patientDetailLbl ,self.bookingforTitleLbl,self.dateandtimeTitleLbl ,self.doctorInfoTitleLbl,self.bookingforLbl,self.dateandtimeLbl].forEach { (label) in
-//
-//            Common.setFontWithType(to: label, size: 16, type: .meduim)
-//        }
-//    }
+    @IBAction private func changePaymentAction(_sender:UIButton){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.PaymentSelectViewController) as! PaymentSelectViewController
+        vc.modalPresentationStyle = .automatic
+        vc.onSelectPaymentType = { (paymentType,card_id,lastfour) in
+            self.selectedPaymentType = paymentType
+            self.cardId = card_id
+            if self.selectedPaymentType == "stripe"{
+                self.paymentTypeLabel.text = "XXXX-XXXX-XXXX-\(lastfour)"
+            }else{
+            self.paymentTypeLabel.text = paymentType
+            }
+            vc.dismiss(animated: true, completion: nil)
+            
+        }
+        let nav = UINavigationController(rootViewController: vc)
+        self.navigationController?.present(nav, animated: true, completion: nil)
+        
+    }
 
      func setupAction(){
         self.confirmBtn.addTap {
@@ -82,6 +100,10 @@ class PatientDetailViewController: UIViewController {
                     params.updateValue(UserDefaultConfig.PatientID, forKey: "selectedPatient") // self.bookingreq.selectedPatient = UserDefaultConfig.PatientID
                     params.updateValue("\(self.categoryId)", forKey: "service_id") //self.bookingreq.service_id = "\(self.categoryId)"
                     params.updateValue(self.bookingreq.scheduled_at, forKey: "scheduled_at") //self.bookingreq.scheduled_at = self.bookingreq.scheduled_at
+                    params.updateValue(self.selectedPaymentType, forKey: "payment_mode")
+                    if self.selectedPaymentType == "stripe"{
+                        params.updateValue(self.cardId, forKey: "card_id")
+                    }
                
                  
                 
@@ -93,7 +115,12 @@ class PatientDetailViewController: UIViewController {
                     params.updateValue(self.isFollowup ? "follow_up" : "consultation", forKey: "booking_for") //self.bookingreq.booking_for =  self.isFollowup ? "follow_up" : "consultation"
                     params.updateValue(UserDefaultConfig.PatientID, forKey: "selectedPatient") // self.bookingreq.selectedPatient = UserDefaultConfig.PatientID
                     params.updateValue(self.searchDoctor.doctor_service?.first?.service_id ?? 0, forKey: "service_id") //self.bookingreq.service_id = "\(self.categoryId)"
-                    params.updateValue(self.bookingreq.scheduled_at, forKey: "scheduled_at") //self.bookingreq.scheduled_at = self.bookingreq.scheduled_at
+                    params.updateValue(self.bookingreq.scheduled_at, forKey: "scheduled_at")
+                    //self.bookingreq.scheduled_at = self.bookingreq.scheduled_at
+                    params.updateValue(self.selectedPaymentType, forKey: "payment_mode")
+                    if self.selectedPaymentType == "stripe"{
+                        params.updateValue(self.cardId, forKey: "card_id")
+                    }
                     }
 
                 self.bookingApointment(booking : params)

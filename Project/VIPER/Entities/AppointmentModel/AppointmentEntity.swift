@@ -48,6 +48,7 @@ struct Appointments : Mappable {
     var updated_at : String?
     var deleted_at : String?
     var status : String?
+    var patient_rating : Int?
     var hospital : Hospital?
     var invoice : Invoice?
     
@@ -81,6 +82,7 @@ struct Appointments : Mappable {
         status <- map["status"]
         hospital <- map["hospital"]
         invoice <- map["invoice"]
+        patient_rating <- map["patient_rating"]
     }
     
 }
