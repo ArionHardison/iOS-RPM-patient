@@ -202,6 +202,7 @@ extension ReminderDetailViewController : PresenterOutputProtocol {
     
     func showError(error: CustomError) {
         showToast(msg: error.localizedDescription)
+        self.navigationController?.popViewController(animated: true)
     }
     
     

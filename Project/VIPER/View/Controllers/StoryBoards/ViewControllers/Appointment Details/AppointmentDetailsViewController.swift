@@ -188,11 +188,20 @@ extension AppointmentDetailsViewController {
         
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if self.updatedVisitedDetail.patient_rating == 0{
-            return 4
+        if !isFromVisited{
+            if self.visitedDetail.appointments?[index].patient_rating == 0{
+                return 4
+            }else{
+                return 2
+            }
         }else{
-            return 2
+            if self.updatedVisitedDetail.patient_rating == 0{
+                return 4
+            }else{
+                return 2
+            }
         }
+
     }
     
 }
