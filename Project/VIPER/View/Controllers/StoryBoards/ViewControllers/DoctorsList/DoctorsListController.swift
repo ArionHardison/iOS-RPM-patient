@@ -20,7 +20,7 @@ class DoctorsListController: UIViewController {
     var doctorProfile : [Doctor_profile] = [Doctor_profile]()
     
     var catagoryID : Int  = -1
-    
+    var isUpdate : Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,12 +29,15 @@ class DoctorsListController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.getDoctorsList(count: 0)
         self.navigationController?.navigationBar.isHidden = true
        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
             self.navigationController?.navigationBar.isHidden = false
+        self.doctorProfile.removeAll()
+        self.isUpdate = false
     }
        
 }
@@ -47,7 +50,7 @@ extension DoctorsListController {
         self.btnBack.addTarget(self, action: #selector(backButtonClick), for: .touchUpInside)
 //        self.filterImageButton.addTarget(self, action: #selector(filterAction(sender:)), for: .touchUpInside)
         self.filterImageButton.addTarget(self, action: #selector(filterAction(sender:)), for: .touchUpInside)
-        self.getDoctorsList()
+     
 
     }
 //    @IBAction private func filterAction(sender:UIButton){
@@ -148,6 +151,16 @@ extension DoctorsListController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 170
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if self.doctorProfile.count >= 10{
+        if indexPath.row == (self.doctorProfile.count - 3){
+            isUpdate = true
+            let count = self.doctorProfile[self.doctorProfile.count - 1].doctor_id ?? 0
+            self.getDoctorsList(count: count)
+        }
+    }
+    }
         
 }
 
@@ -157,8 +170,24 @@ extension DoctorsListController : PresenterOutputProtocol{
     func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
         switch String(describing: modelClass) {
             case model.type.DoctorsDetailModel:
+                
                  let data = dataDict as? DoctorsDetailModel
-                 self.doctorProfile = data?.specialities?.doctor_profile ?? [Doctor_profile]()
+//                 self.doctorProfile = data?.specialities?.doctor_profile ?? [Doctor_profile]()
+                if !isUpdate{
+                    self.doctorProfile = data?.specialities?.doctor_profile ?? [Doctor_profile]()
+//                self.searchDoctors = data?.search_doctors ?? [Search_doctors]()
+                }else{
+                    for i in 0...((data?.specialities?.doctor_profile?.count ?? 0)){
+                        if i == 10{
+                        guard let data = data?.specialities?.doctor_profile?[i - 1] else { return  }
+//                        self.searchDoctors.append(data)
+                        }else{
+                            guard let data = data?.specialities?.doctor_profile?[i] else { return  }
+                            self.doctorProfile.append(data)
+                        }
+                    }
+                   
+                }
                  self.doctorsListTV.reloadData()
                 break
             
@@ -171,8 +200,9 @@ extension DoctorsListController : PresenterOutputProtocol{
         
     }
     
-    func getDoctorsList(){
-        self.presenter?.HITAPI(api: Base.catagoryList.rawValue+"/\(self.catagoryID ?? 0)", params: nil, methodType: .GET, modelClass: DoctorsDetailModel.self, token: true)
+    func getDoctorsList(count:Int){
+        let url = Base.catagoryList.rawValue+"/\(self.catagoryID )?page=\(count)"
+        self.presenter?.HITAPI(api: url, params: nil, methodType: .GET, modelClass: DoctorsDetailModel.self, token: true)
     }
     
     func cancelAppointment(id : String){

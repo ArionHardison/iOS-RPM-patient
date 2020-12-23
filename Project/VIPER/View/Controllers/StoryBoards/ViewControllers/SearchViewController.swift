@@ -16,7 +16,8 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchCountLbl : UILabel!
     
    var searchDoctors : [Search_doctors] = [Search_doctors]()
-    
+    var isUpdate : Bool = false
+    var isFromSearch : Bool = false
     lazy var loader : UIView = {
         return createActivityIndicator(self.view.window ?? self.view)
     }()
@@ -30,7 +31,13 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.isNavigationBarHidden = false
-        self.getSearchDoctorList()
+        self.getSearchDoctorList(count: 0)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.isUpdate = false
+        self.isFromSearch = false
+        self.searchDoctors.removeAll()
     }
     
     func initailSetup(){
@@ -117,7 +124,16 @@ extension SearchViewController : UITableViewDelegate,UITableViewDataSource{
     func setupTableViewCell(){
         self.searchResult.registerCell(withId: XIB.Names.SearchCell)
     }
-    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if self.searchDoctors.count >= 10 {
+        if indexPath.row == self.searchDoctors.count - 3{
+            isUpdate = true
+            let count = self.searchDoctors[self.searchDoctors.count - 1].id ?? 0
+            self.getSearchDoctorList(count: count)
+            
+        }
+    }
+    }
 }
 
 
@@ -129,7 +145,24 @@ extension SearchViewController : PresenterOutputProtocol{
             case model.type.DoctorsListModel:
                 self.loader.isHideInMainThread(true)
                 let data = dataDict as? DoctorsListModel
+                if !isUpdate{
                 self.searchDoctors = data?.search_doctors ?? [Search_doctors]()
+                }else{
+                    if !isFromSearch{
+                    for i in 0...((data?.search_doctors?.count ?? 0)){
+                        if i == 10{
+                        guard let data = data?.search_doctors?[i - 1] else { return  }
+//                        self.searchDoctors.append(data)
+                        }else{
+                            guard let data = data?.search_doctors?[i] else { return  }
+                            self.searchDoctors.append(data)
+                        }
+                    }
+                    }else{
+                        self.searchDoctors = data?.search_doctors ?? []
+                    }
+                   
+                }
                 DispatchQueue.main.async {
                     self.searchResult.reloadInMainThread()
                 }
@@ -145,9 +178,16 @@ extension SearchViewController : PresenterOutputProtocol{
         
     }
     
-    func getSearchDoctorList(){
-        self.presenter?.HITAPI(api: Base.searchDoctors.rawValue, params: nil, methodType: .GET, modelClass: DoctorsListModel.self, token: true)
+    func getSearchDoctorList(count:Int){
+//        var params = [String:Any]()
+//        params.updateValue("\(count)", forKey: "page")
+        let url = "\(Base.searchDoctors.rawValue)?page=\(count)"
+        self.presenter?.HITAPI(api:url, params: nil, methodType: .GET, modelClass: DoctorsListModel.self, token: true)
+        if count > 1 {
+            
+        }else{
         self.loader.isHidden = false
+        }
     }
     
 }
@@ -161,8 +201,9 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         if !searchText.isEmpty{
-
-              self.presenter?.HITAPI(api: Base.searchDoctors.rawValue + "?search=\(searchText)", params: nil, methodType: .GET, modelClass: DoctorsListModel.self, token: true)
+                    
+            self.presenter?.HITAPI(api: Base.searchDoctors.rawValue + "?search=\(searchText)", params: nil, methodType: .GET, modelClass: DoctorsListModel.self, token: true)
+            self.isFromSearch = true
             
         }
         

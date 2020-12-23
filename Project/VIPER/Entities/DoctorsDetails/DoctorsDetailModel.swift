@@ -93,6 +93,7 @@ struct Doctor_profile : Mappable {
     var affiliations : String?
     var specialities : Int?
     var fees : Int?
+    var profile_video : String?
     var speciality : Speciality?
     var hospital : [Hospital]?
     
@@ -110,6 +111,7 @@ struct Doctor_profile : Mappable {
         doctor_id <- map["doctor_id"]
         gender <- map["gender"]
         profile_pic <- map["profile_pic"]
+        profile_video <- map["profile_video"]
         medical_assoc_name <- map["medical_assoc_name"]
         awards <- map["awards"]
         profile_description <- map["profile_description"]

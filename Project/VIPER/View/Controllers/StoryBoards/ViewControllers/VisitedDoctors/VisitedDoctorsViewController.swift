@@ -16,6 +16,7 @@ class VisitedDoctorsViewController: UIViewController {
     
     
     var visitedDoctors : [Appointments] = [Appointments]()
+    var isUpdate : Bool = false
     lazy var loader : UIView = {
         return createActivityIndicator(self.view.window ?? self.view)
     }()
@@ -28,7 +29,7 @@ class VisitedDoctorsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
-        self.getVisitedhDoctorList()
+        self.getVisitedhDoctorList(count: 0)
     }
     
     
@@ -130,6 +131,14 @@ extension VisitedDoctorsViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if self.visitedDoctors.count >= 10{
+            self.isUpdate = true
+            if indexPath.row == self.visitedDoctors.count - 3{
+                self.getVisitedhDoctorList(count: self.visitedDoctors[self.visitedDoctors.count - 1].id ?? 0)
+            }
+        }
+    }
     
 }
 
@@ -146,6 +155,21 @@ extension VisitedDoctorsViewController : PresenterOutputProtocol{
                     self.noDataView.isHidden = true
                     self.visitedDoctorsTable.isHidden = false
                     self.visitedDoctors = data?.vistedDoctors?.appointments ?? []
+                    if !isUpdate{
+                        self.visitedDoctors = data?.vistedDoctors?.appointments ?? []
+    //                self.searchDoctors = data?.search_doctors ?? [Search_doctors]()
+                    }else{
+                        for i in 0...((data?.vistedDoctors?.appointments?.count ?? 0)){
+                            if i == 10{
+                            guard let data = data?.vistedDoctors?.appointments?[i - 1] else { return  }
+    //                        self.searchDoctors.append(data)
+                            }else{
+                                guard let data = data?.vistedDoctors?.appointments?[i] else { return  }
+                                self.visitedDoctors.append(data)
+                            }
+                        }
+                       
+                    }
                     self.visitedDoctorsTable.reloadInMainThread()
                 }else{
                     self.noDataView.isHidden = false
@@ -163,8 +187,9 @@ extension VisitedDoctorsViewController : PresenterOutputProtocol{
         
     }
     
-    func getVisitedhDoctorList(){
-        self.presenter?.HITAPI(api: Base.visitedDoctor.rawValue, params: nil, methodType: .GET, modelClass: UpdatedVistedDoctor.self, token: true)
+    func getVisitedhDoctorList(count:Int){
+        let url = "\(Base.visitedDoctor.rawValue)?page=\(count)"
+        self.presenter?.HITAPI(api: url, params: nil, methodType: .GET, modelClass: UpdatedVistedDoctor.self, token: true)
         self.loader.isHidden = false
     }
     

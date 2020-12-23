@@ -8,6 +8,7 @@
 
 import UIKit
 import ObjectMapper
+import AVKit
 
 class DoctorDetailsController: UIViewController {
     
@@ -24,7 +25,8 @@ class DoctorDetailsController: UIViewController {
     @IBOutlet weak var verifiedImg: UIImageView!
     @IBOutlet weak var labelVerified: UILabel!
     @IBOutlet weak var labelConsultationfee: UILabel!
-
+    @IBOutlet weak var buttonPlayVideo: UIButton!
+    
     @IBOutlet weak var labelAvailability: UILabel!
     @IBOutlet weak var labelMonday: UILabel!
     @IBOutlet weak var labelTue: UILabel!
@@ -65,6 +67,7 @@ class DoctorDetailsController: UIViewController {
     var isFromSearchDoctor:Bool = true
     var speciality : [String] = [String]()
     var categoryID : Int = 0
+    var videoURL : NSURL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,6 +111,14 @@ class DoctorDetailsController: UIViewController {
                }else{
                    self.btnFavourite.setImage(UIImage(named: "love_red"), for: .normal)
                }
+                if detail.doctor_profile?.profile_video == ""{
+                    self.buttonPlayVideo.isHidden = true
+                }else{
+                    self.buttonPlayVideo.isHidden = false
+                    let url =  imageURL +  (detail.doctor_profile?.profile_video ?? "")
+                    self.videoURL = NSURL(string: url)
+                    self.buttonPlayVideo.addTarget(self, action: #selector(playProfileVideo(sender:)), for: .touchUpInside)
+                }
     }else{        let detail : Hospital = (self.docProfile.hospital?.first) ?? Hospital()
             self.labelDoctorName.text = "\(detail.first_name ?? "") \(detail.last_name ?? "")"
             self.imgDoctor.setURLImage(detail.doctor_profile?.profile_pic ?? "")
@@ -124,6 +135,14 @@ class DoctorDetailsController: UIViewController {
             }else{
                 self.btnFavourite.setImage(UIImage(named: "love_red"), for: .normal)
             }
+            }
+            if self.docProfile.hospital?.first?.doctor_profile?.profile_video == ""{
+                self.buttonPlayVideo.isHidden = true
+            }else{
+                self.buttonPlayVideo.isHidden = false
+                let url = imageURL + (self.docProfile.profile_video ?? "")
+                self.videoURL = NSURL(string: url )
+                self.buttonPlayVideo.addTarget(self, action: #selector(playProfileVideo(sender:)), for: .touchUpInside)
             }
         }else{
             
@@ -146,8 +165,19 @@ class DoctorDetailsController: UIViewController {
                      self.imgDoctor.makeRoundedCorner()
                 
             self.labelConsultationfee.text = "Consulation Fees  " +  "$ \(self.docProfile.fees ?? 0)"
-            self.labelQualification.text = "\(self.docProfile.speciality?.name ?? "")"
+            self.labelQualification.text = "\(self.searchDoctor.doctor_profile?.speciality?.name ?? "")"
                 self.labelQualification.text = "\(self.searchDoctor.doctor_profile?.certification ?? "")".capitalized
+            if self.searchDoctor.doctor_profile?.profile_video == ""{
+                    self.buttonPlayVideo.isHidden = true
+                }else{
+                    self.buttonPlayVideo.isHidden = false
+                     let url = imageURL + (self.searchDoctor.doctor_profile?.profile_video ?? "")
+                    self.videoURL = NSURL(string: url )
+                
+                    
+                    
+                    
+                }
         //        self.labelPercentage.text = "\(self.docProfile.feedback?.first.) %"
                 self.speciality.append((self.searchDoctor.doctor_profile?.speciality?.name ?? "").capitalized)
                  //   self.imgLocationPreview.pin_setImage(from: URL(string: detail.clinic?.static_map ?? "")!)
@@ -159,7 +189,8 @@ class DoctorDetailsController: UIViewController {
                         self.btnFavourite.setImage(UIImage(named: "love_red"), for: .normal)
                     }
                 }
-            
+
+                
             self.servicesTV.reloadInMainThread()
             self.specilizationTV.reloadInMainThread()
             self.timingTableView.reloadInMainThread()
@@ -167,17 +198,25 @@ class DoctorDetailsController: UIViewController {
         
     }
     
+    @IBAction private func playProfileVideo(sender:UIButton){
+        let playerVC = AVPlayerViewController()
+        let player = AVPlayer(url: self.videoURL! as URL)
+        playerVC.player = player
+        self.present(playerVC, animated: true, completion: {
+            playerVC.player!.play()
+        })
+    }
     
     func setupAction(){
         self.btnFavourite.addTap {
             if !self.isFromSearchDoctor{
                 if self.isfromFavourite{
-                    self.addRemoveFav(patient_id: UserDefaultConfig.PatientID, doctor_id: (self.favouriteDoctor?.id ?? 0).description)
+                    self.addRemoveFav(patient_id: UserDefaultConfig.PatientID, doctor_id: (self.favouriteDoctor?.hospital?.doctor_profile?.doctor_id ?? 0).description)
                 }else{
-            self.addRemoveFav(patient_id: UserDefaultConfig.PatientID, doctor_id:(self.docProfile.id ?? 0).description)
+            self.addRemoveFav(patient_id: UserDefaultConfig.PatientID, doctor_id:(self.docProfile.doctor_id ?? 0).description)
             }
             }else{
-                self.addRemoveFav(patient_id: UserDefaultConfig.PatientID, doctor_id:(self.searchDoctor.id ?? 0).description)
+                self.addRemoveFav(patient_id: UserDefaultConfig.PatientID, doctor_id:(self.searchDoctor.doctor_profile?.doctor_id ?? 0).description)
             }
             }
         

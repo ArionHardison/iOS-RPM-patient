@@ -364,6 +364,7 @@ struct User : Mappable {
     var updated_at : String?
     var deleted_at : String?
     var stripe_cust_id : String?
+    var currency : Currency?
 
     init?(map: Map) {
 
@@ -395,6 +396,7 @@ struct User : Mappable {
         updated_at <- map["updated_at"]
         deleted_at <- map["deleted_at"]
         stripe_cust_id <- map["stripe_cust_id"]
+        currency <- map["currency"]
     }
 
 }

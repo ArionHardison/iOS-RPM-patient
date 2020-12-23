@@ -188,7 +188,7 @@ extension ReminderDetailViewController : PresenterOutputProtocol {
           switch String(describing: modelClass) {
            
               
-                      case model.type.TwilioAccess:
+                      case model.type.RemainderSuccess:
                       guard let data = dataDict as? RemainderSuccess else { return }
                       showToast(msg: "SucessFully Added")
                       if data.status == 200 {

@@ -36,7 +36,7 @@ extension AddCardViewController {
     
     func initialLoads() {
         
-        STPPaymentConfiguration.shared().publishableKey = stripeKey//need to add on drive code
+        STPPaymentConfiguration.shared().publishableKey = profileDetali.currency?.stripe_publishable_key ?? stripeKey//stripeKey//need to add on drive code
         self.creditCardView.cardHolderString =  String.removeNil(UserDefaultConfig.UserName)
         self.creditCardView.defaultCardColor = .primary
 //        self.creditCardView.
