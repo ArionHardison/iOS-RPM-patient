@@ -126,6 +126,7 @@ extension SearchViewController : UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if self.searchDoctors.count >= 10 {
+            if !isFromSearch{
         if indexPath.row == self.searchDoctors.count - 3{
             isUpdate = true
             let count = self.searchDoctors[self.searchDoctors.count - 1].id ?? 0
@@ -133,6 +134,7 @@ extension SearchViewController : UITableViewDelegate,UITableViewDataSource{
             
         }
     }
+        }
     }
 }
 
@@ -201,9 +203,11 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         if !searchText.isEmpty{
-                    
-            self.presenter?.HITAPI(api: Base.searchDoctors.rawValue + "?search=\(searchText)", params: nil, methodType: .GET, modelClass: DoctorsListModel.self, token: true)
-            self.isFromSearch = true
+            DispatchQueue.main.async {
+                self.presenter?.HITAPI(api: Base.searchDoctors.rawValue + "?search=\(searchText)", params: nil, methodType: .GET, modelClass: DoctorsListModel.self, token: true)
+                self.isFromSearch = true
+            }
+          
             
         }
         
