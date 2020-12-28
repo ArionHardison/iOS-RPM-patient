@@ -145,8 +145,8 @@ class ProfileViewController: UIViewController {
             self.chronicTxt.text = profile.patient?.profile?.chronic_diseases ?? ""
             self.injuriesTxt.text = profile.patient?.profile?.injuries ?? ""
             self.surgeriesTxt.text = profile.patient?.profile?.surgeries ?? ""
-            self.isSmoking = profile.patient?.profile?.smoking == "false" ? false : true
-            self.isAlchol = profile.patient?.profile?.alcohol == "false" ? false : true
+            self.isSmoking = profile.patient?.profile?.smoking == "NO" ? false : true
+            self.isAlchol = profile.patient?.profile?.alcohol == "NO" ? false : true
             self.activityTxt.text = profile.patient?.profile?.activity ?? ""
             self.foodPreferenceTxt.text = profile.patient?.profile?.food ?? ""
             self.occupationTxt.text = profile.patient?.profile?.occupation ?? ""
@@ -342,7 +342,7 @@ extension ProfileViewController{
         self.segmentProfile.setTitle("Personal".uppercased(), forSegmentAt: 0)
         self.segmentProfile.setTitle("Medical".uppercased(), forSegmentAt: 1)
         self.segmentProfile.setTitle("Lifestyle".uppercased(), forSegmentAt: 2)
-        
+//        self.smokeYesBtn.tag = 101
         [self.alcoholYesBtn,self.smokeYesBtn].forEach { (btn) in
 
             if #available(iOS 14.0, *) {
@@ -351,6 +351,11 @@ extension ProfileViewController{
                     UIAction(title: Constants.string.Yes.localize(), image: checkedImg, handler: { [self] (action) in
 
                         btn?.setImage(checkedImg, for: .normal)
+                        if btn?.tag == 101 {
+                            isSmoking = true
+                        }else{
+                            isAlchol = true
+                        }
 
 
                     }),
@@ -358,12 +363,17 @@ extension ProfileViewController{
                     UIAction(title: Constants.string.No.localize(), image: uncheckedImg, handler: { [self] (action) in
 
                         btn?.setImage(uncheckedImg, for: .normal)
+                        if btn?.tag == 101 {
+                            isSmoking = false
+                        }else{
+                            isAlchol = false
+                        }
 
                     })
                 ])
                 
                 btn?.showsMenuAsPrimaryAction = true
-
+                
             } else {
                 
                 btn?.addTap {
@@ -484,3 +494,6 @@ extension ProfileViewController{
     return results
 }
 }
+
+
+

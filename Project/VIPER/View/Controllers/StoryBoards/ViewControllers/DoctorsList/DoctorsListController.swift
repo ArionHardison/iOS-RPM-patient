@@ -177,17 +177,23 @@ extension DoctorsListController : PresenterOutputProtocol{
                     self.doctorProfile = data?.specialities?.doctor_profile ?? [Doctor_profile]()
 //                self.searchDoctors = data?.search_doctors ?? [Search_doctors]()
                 }else{
+                    if data?.specialities?.doctor_profile?.count ?? 0 > 0{
                     for i in 0...((data?.specialities?.doctor_profile?.count ?? 0)){
-                        if i == 10{
+//                        self.doctorProfile.append(data?.specialities?.doctor_profile?[i] ?? <#default value#>)
+//                        if i == 10{
                         guard let data = data?.specialities?.doctor_profile?[i - 1] else { return  }
-//                        self.searchDoctors.append(data)
-                        }else{
-                            guard let data = data?.specialities?.doctor_profile?[i] else { return  }
-                            self.doctorProfile.append(data)
-                        }
+                        self.doctorProfile.append(data)
                     }
-                   
                 }
+                }
+//                        self.searchDoctors.append(data)
+//                        }else{
+//                            guard let data = data?.specialities?.doctor_profile?[i] else { return  }
+//                            self.doctorProfile.append(data)
+//                        }
+//                    }
+                   
+//                }
                  self.doctorsListTV.reloadData()
                 break
             
