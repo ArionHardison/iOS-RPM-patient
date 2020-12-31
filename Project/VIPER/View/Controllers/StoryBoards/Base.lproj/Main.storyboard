@@ -5591,7 +5591,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9q6-1f-Hmy">
                                         <rect key="frame" x="0.0" y="239" width="414" height="60"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Hel" placeholder="Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uWm-j7-RA4">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uWm-j7-RA4">
                                                 <rect key="frame" x="10" y="15" width="404" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="w5X-wO-O7s"/>

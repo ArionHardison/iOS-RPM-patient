@@ -69,6 +69,7 @@ extension ReminderDetailViewController {
         self.timeTxt.isUserInteractionEnabled = isNewReminder
         self.alaramSwiftch.isUserInteractionEnabled = isNewReminder
         self.NotifySwiftch.isUserInteractionEnabled = isNewReminder
+        self.timeTxt.placeholder = "Time"
         self.setData()
 
     }

@@ -8,6 +8,7 @@
 
 import UIKit
 import ObjectMapper
+import StoreKit
 
 class SettingsViewController: UIViewController {
     @IBOutlet weak var showReminderLabel: UILabel!
@@ -34,6 +35,9 @@ class SettingsViewController: UIViewController {
         self.aboutLabel.addTap {
             self.privacyPolicyAction()
         }
+        self.rateLabel.addTap {
+            self.rateAction()
+        }
     }
 
 }
@@ -47,6 +51,8 @@ extension SettingsViewController {
         self.rateLabel.text = "Rate Us On AppStore"
         self.ReminderSwitch.addTarget(self, action: #selector(reminderAction(sender:)), for: .valueChanged)
         self.logOutButton.addTarget(self, action: #selector(logoutAction(sender:)), for: .touchUpInside)
+        self.rateLabel.isUserInteractionEnabled = true
+        
         
         
     }
@@ -99,8 +105,23 @@ extension SettingsViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    @IBAction private func rateAction() {
+        if #available(iOS 10.3, *) {
+            SKStoreReviewController.requestReview()
+
+        } else if let url = URL(string: "itms-apps://itunes.apple.com/app/" + "appId") {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
     
 }
+
+
 
 
 extension SettingsViewController : PresenterOutputProtocol{

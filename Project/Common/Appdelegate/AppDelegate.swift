@@ -28,6 +28,7 @@ import CallKit
 import AVFoundation
 import Intents
 import AVKit
+import ObjectMapper
 
 
 @UIApplicationMain
@@ -387,6 +388,8 @@ extension AppDelegate:CXProviderDelegate{
        
        
         let url =  "\("/api/patient//video/cancel?")room_id=\(roomId)"
+        self.presenter?.HITAPI(api: url, params: nil, methodType: .GET, modelClass: CardSuccess.self, token: true)
+        
     
     
        
@@ -421,4 +424,17 @@ extension Data {
         let hexString = map { String(format: "%02.2hhx", $0) }.joined()
         return hexString
     }
+}
+
+
+extension AppDelegate : PresenterOutputProtocol{
+    func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
+    
+    }
+    
+    func showError(error: CustomError) {
+                        
+    }
+    
+    
 }
