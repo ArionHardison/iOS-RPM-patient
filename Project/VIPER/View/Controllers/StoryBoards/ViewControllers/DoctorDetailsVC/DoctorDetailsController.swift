@@ -104,8 +104,8 @@ class DoctorDetailsController: UIViewController {
                self.labelPercentage.text = "\(detail.feedback_percentage ?? "") %"
                 self.speciality.append(self.favouriteDoctor?.hospital?.doctor_profile?.speciality?.name ?? "")
             //   self.imgLocationPreview.pin_setImage(from: URL(string: detail.clinic?.static_map ?? "")!)
-               self.labelClinicName.text = detail.clinic?.name ?? "".capitalized
-               self.labelLocationValue.text = detail.clinic?.address ?? "".capitalized
+               self.labelClinicName.text = detail.clinic?.name ?? "No Clinic Name".capitalized
+                self.labelLocationValue.text =  (detail.clinic?.address ?? "No Address Found")
                if (detail.is_favourite ?? "") == "false"{
                    self.btnFavourite.setImage(UIImage(named: "love"), for: .normal)
                }else{
@@ -128,8 +128,8 @@ class DoctorDetailsController: UIViewController {
             self.labelPercentage.text = "\(detail.feedback_percentage ?? "") %"
             self.speciality.append(self.docProfile.speciality?.name ?? "")
          //   self.imgLocationPreview.pin_setImage(from: URL(string: detail.clinic?.static_map ?? "")!)
-            self.labelClinicName.text = detail.clinic?.name ?? "".capitalized
-            self.labelLocationValue.text = detail.clinic?.address ?? "".capitalized
+            self.labelClinicName.text = detail.clinic?.name ?? "No Clinic Name".capitalized
+            self.labelLocationValue.text = detail.clinic?.address ?? "No Address Found"
             if (detail.is_favourite ?? "") == "false"{
                 self.btnFavourite.setImage(UIImage(named: "love"), for: .normal)
             }else{
@@ -181,8 +181,8 @@ class DoctorDetailsController: UIViewController {
         //        self.labelPercentage.text = "\(self.docProfile.feedback?.first.) %"
                 self.speciality.append((self.searchDoctor.doctor_profile?.speciality?.name ?? "").capitalized)
                  //   self.imgLocationPreview.pin_setImage(from: URL(string: detail.clinic?.static_map ?? "")!)
-            self.labelClinicName.text = self.searchDoctor.clinic?.name ?? "".capitalized
-                self.labelLocationValue.text = self.searchDoctor.clinic?.address ?? "".capitalized
+            self.labelClinicName.text = self.searchDoctor.clinic?.name ?? "No Clinic Name".capitalized
+                self.labelLocationValue.text = self.searchDoctor.clinic?.address ?? "No Address Found"
                 if (self.searchDoctor.is_favourite ?? "") == "false"{
                         self.btnFavourite.setImage(UIImage(named: "love"), for: .normal)
                     }else{

@@ -40,6 +40,9 @@ PODS:
   - PubNub (4.15.8):
     - PubNub/Core (= 4.15.8)
   - PubNub/Core (4.15.8)
+  - SDWebImage (5.10.0):
+    - SDWebImage/Core (= 5.10.0)
+  - SDWebImage/Core (5.10.0)
   - SKCountryPicker (1.2.9)
   - Stripe (20.1.1)
   - TwilioVideo (2.12.0)
@@ -59,6 +62,7 @@ DEPENDENCIES:
   - PINRemoteImage
   - PopupDialog
   - PubNub
+  - SDWebImage
   - SKCountryPicker
   - Stripe (~> 20.1.1)
   - TwilioVideo (~> 2.10)
@@ -83,6 +87,7 @@ SPEC REPOS:
     - PINRemoteImage
     - PopupDialog
     - PubNub
+    - SDWebImage
     - SKCountryPicker
     - Stripe
     - TwilioVideo
@@ -106,11 +111,12 @@ SPEC CHECKSUMS:
   PINRemoteImage: f1295b29f8c5e640e25335a1b2bd9d805171bd01
   PopupDialog: 720c92befd8bc23c13442254945213db5612f149
   PubNub: 4567e4ce42021aa772a7f038acd8db4576592485
+  SDWebImage: 9169792e9eec3e45bba2a0c02f74bf8bd922d1ee
   SKCountryPicker: 7ad1e7dfb482cfb26855e33c2d70dbf1eaf218fe
   Stripe: 2cb10595133247a96ece092eb0614786c604382f
   TwilioVideo: 057061e4302e4b2862b0ac6cf69a3321e7c29b19
   TwilioVoice: c440f2c964d3b0eba946c30c9f1018d8e5d82af9
 
-PODFILE CHECKSUM: 93fdd2d3da2e7bc7a48d2d6bb1e11de601600577
+PODFILE CHECKSUM: d39a72b7e6af34f6953747598fbbb71de56cd264
 
 COCOAPODS: 1.10.0

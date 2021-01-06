@@ -8,6 +8,7 @@
 
 import UIKit
 import ObjectMapper
+import SDWebImage
 
 class SummaryViewController: UIViewController {
     
@@ -39,6 +40,10 @@ class SummaryViewController: UIViewController {
     var price : String = ""
     var selectedPaymentType : String = "wallet"
     var cardId : String = ""
+    
+    private lazy var loader  : UIView = {
+        return createActivityIndicator(self.view)
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,6 +137,16 @@ extension SummaryViewController : UICollectionViewDelegate,UICollectionViewDataS
         
         let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: XIB.Names.PhotosCell, for: indexPath) as! PhotosCell
         cell.photoImage.setURLImage(self.doctors.specialities?.doctor_profile?[indexPath.row].profile_pic ?? "")
+//        let imageUrl = imageURL + (self.doctors.specialities?.doctor_profile?[indexPath.row].profile_pic ?? "")
+//        cell.photoImage.sd_setImage(with: URL(string:imageUrl), placeholderImage: #imageLiteral(resourceName: "userPlaceholder-2"))
+//
+//        Cache.image(forUrl: imageUrl) { (image) in
+//                        if image != nil {
+//                           DispatchQueue.main.async {
+//                            cell.photoImage.image = image
+//                     }
+//                }x
+//        }
 //        cell.photoImage.makeRoundedCorner()
         return cell
         
@@ -139,7 +154,7 @@ extension SummaryViewController : UICollectionViewDelegate,UICollectionViewDataS
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: Double(80), height: 80)
+        return CGSize(width: 60, height: 60)
         
     }
     
@@ -182,6 +197,7 @@ extension SummaryViewController : PresenterOutputProtocol{
     func showSuccess(api: String, dataArray: [Mappable]?, dataDict: Mappable?, modelClass: Any) {
         switch String(describing: modelClass) {
             case model.type.DoctorsDetailModel:
+                self.loader.isHideInMainThread(true)
                 let data = dataDict as? DoctorsDetailModel
                 self.doctors = data!
                 self.setupData()
@@ -235,7 +251,8 @@ extension SummaryViewController : PresenterOutputProtocol{
     }
     
     func getDoctorsList(id : String){
-        self.presenter?.HITAPI(api: Base.catagoryList.rawValue + "/\(id ?? "")", params: nil, methodType: .GET, modelClass: DoctorsDetailModel.self, token: true)
+        self.presenter?.HITAPI(api: Base.catagoryList.rawValue + "/\(id )", params: nil, methodType: .GET, modelClass: DoctorsDetailModel.self, token: true)
+        self.loader.isHidden = false
     }
     
     func applyPromo(id : String,promocode : String){

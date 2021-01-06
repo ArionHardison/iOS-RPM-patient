@@ -70,26 +70,26 @@ extension MedicalRecordsViewController : UITableViewDelegate,UITableViewDataSour
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.medical.count > 0{
-            return self.medical.count + 1
-        }
+//        if self.medical.count > 0{
+//            return self.medical.count + 1
+//        }
         return self.medical.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = self.listTable.dequeueReusableCell(withIdentifier: XIB.Names.FavDoctorTableViewCell, for: indexPath) as! FavDoctorTableViewCell
-        if indexPath.row == self.medical.count{
+//        if indexPath.row == self.medical.count{
 //            cell.doctorImage.setURLImage(self.medical[indexPath.row].doctor_profile?.profile_pic ?? "")
-            cell.labelName.text = "Other Doctors"
-            cell.labelSpeciality.text = "Nil"
-            return cell
-        }else{
+//            cell.labelName.text = "Other Doctors"
+//            cell.labelSpeciality.text = "Nil"
+//            return cell
+////        }else{
         cell.doctorImage.setURLImage(self.medical[indexPath.row].doctor_profile?.profile_pic ?? "")
         cell.labelName.text = "\(self.medical[indexPath.row].first_name ?? "Other") \(self.medical[indexPath.row].last_name ?? "Doctors")"
         cell.labelSpeciality.text = "\(self.medical[indexPath.row].doctor_profile?.speciality?.name ?? "Nil")"
         return cell
-        }
+//        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -75,7 +75,7 @@ extension UpcomingDetailsController {
         self.doctorName.text = "\(self.appointment.appointments?[self.index].hospital?.first_name ?? "") \(self.appointment.appointments?[self.index].hospital?.last_name ?? "")".capitalized
         self.labelHospitalName.text = "\(self.appointment.appointments?[self.index].hospital?.clinic?.name ?? ""), \(self.appointment.appointments?[self.index].hospital?.clinic?.address ?? "")".capitalized
         self.labelDate.text = dateConvertor(self.appointment.appointments?[self.index].scheduled_at ?? "", _input: .date_time, _output: .DMY_Time)
-        self.labelPatientName.text = (self.appointment.first_name ?? "").capitalized + " " + (self.appointment.last_name ?? "").capitalized
+            self.labelPatientName.text = self.appointment.appointments?[self.index].booking_for ?? ""
 //        self.doctorName.text = self.appointment.hospital?.clinic?.name ?? "".capitalized
         self.labelDesignation.text = self.appointment.appointments?[self.index].hospital?.doctor_profile?.speciality?.name ?? "".uppercased()
         self.doctorImg.setImage(with: self.appointment.appointments?[self.index].hospital?.doctor_profile?.profile_pic, placeHolder: #imageLiteral(resourceName: "1"))

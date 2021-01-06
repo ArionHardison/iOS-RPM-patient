@@ -72,10 +72,12 @@ extension DoctorsListController {
             if availablity == "AvailableAllDAY"{
                 let url = "/api/patient/doctor_catagory/\(self.catagoryID)?gender=\(gender)&fees=\(price)"
                 self.presenter?.HITAPI(api: url, params: nil, methodType: .GET, modelClass: DoctorsDetailModel.self, token: true)
+                self.isUpdate = false
             }else{
             let url = "/api/patient/doctor_catagory/\(self.catagoryID)?availability_type=\(availablity)&gender=\(gender)&fees=\(price)"
             self.presenter?.HITAPI(api: url, params: nil, methodType: .GET, modelClass: DoctorsDetailModel.self, token: true)
             }
+            self.isUpdate = false
             vc.dismiss(animated: true, completion: nil)
 
 
@@ -107,7 +109,7 @@ extension DoctorsListController : UITableViewDelegate,UITableViewDataSource{
         cell.docterName.text = "\(detail.hospital?[0].first_name ?? "") \(detail.hospital?[0].last_name ?? "")"
         cell.SplistLbl.text = detail.speciality?.name ?? ""
         cell.availablityLbl.text = "\(detail.hospital?[0].availability ?? "Available Today")"
-        cell.clinicNameLbl.text = "\(detail.hospital?[0].clinic?.name ?? ""),\(detail.hospital?[0].clinic?.address ?? "")"
+        cell.clinicNameLbl.text = "\(detail.hospital?[0].clinic?.name ?? ""),\(detail.hospital?[0].clinic?.address ?? "No Address Found")"
         cell.likeCountLbl.text = "\(detail.hospital?[0].feedback_percentage ?? "0") %"
         cell.feeLbl.text = "$"+"\(detail.fees ?? 0)"
     }

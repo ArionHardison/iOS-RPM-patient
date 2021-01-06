@@ -106,17 +106,8 @@ extension SettingsViewController {
     }
     
     @IBAction private func rateAction() {
-        if #available(iOS 10.3, *) {
             SKStoreReviewController.requestReview()
 
-        } else if let url = URL(string: "itms-apps://itunes.apple.com/app/" + "appId") {
-            if #available(iOS 10, *) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-
-            } else {
-                UIApplication.shared.openURL(url)
-            }
-        }
     }
     
 }

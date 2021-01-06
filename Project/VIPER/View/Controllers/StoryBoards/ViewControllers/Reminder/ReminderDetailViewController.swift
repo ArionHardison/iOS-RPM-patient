@@ -150,6 +150,7 @@ extension ReminderDetailViewController : UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == dateTxt{
             let view = DatePickerAlert.getView
+            view.TitleLbl.text = "Select Date"
                 view.alertdelegate = self
             AlertBuilder().addView(fromVC: self , view).show()
             return false

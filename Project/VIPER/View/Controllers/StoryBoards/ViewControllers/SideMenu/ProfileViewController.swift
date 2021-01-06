@@ -352,9 +352,9 @@ extension ProfileViewController{
 
                         btn?.setImage(checkedImg, for: .normal)
                         if btn?.tag == 101 {
-                            isSmoking = true
-                        }else{
                             isAlchol = true
+                        }else{
+                            isSmoking = true
                         }
 
 
@@ -364,9 +364,10 @@ extension ProfileViewController{
 
                         btn?.setImage(uncheckedImg, for: .normal)
                         if btn?.tag == 101 {
-                            isSmoking = false
-                        }else{
                             isAlchol = false
+                        }else{
+                            isSmoking = false
+                            
                         }
 
                     })

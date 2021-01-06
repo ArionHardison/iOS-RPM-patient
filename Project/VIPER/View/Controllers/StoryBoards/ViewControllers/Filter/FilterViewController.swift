@@ -131,12 +131,12 @@ extension FilterViewController {
         seleGender = selectedGender
         
         if selectedPrice == "1-20"{
-            price = "10"
+            price = "1-10"
             
-        }else if selectedAvailablity == "20-30" {
-            price = "20"
+        }else if selectedPrice == "20-30" {
+            price = "20-30"
             
-        }else if selectedAvailablity == "30+" {
+        }else if selectedPrice == "30+" {
             price = "30"
             
         }

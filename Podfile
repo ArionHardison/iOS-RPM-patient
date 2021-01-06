@@ -22,5 +22,6 @@ target 'MiDokter User' do
     pod 'SKCountryPicker'
     pod 'Stripe', '~> 20.1.1'
     pod 'CreditCardForm'
+    pod 'SDWebImage'
 
 end

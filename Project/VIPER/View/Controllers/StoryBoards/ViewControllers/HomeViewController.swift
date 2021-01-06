@@ -24,6 +24,11 @@
             return createActivityIndicator(self.view.window ?? self.view)
         }()
         
+        override var preferredStatusBarStyle: UIStatusBarStyle {
+            return .lightContent
+        }
+        
+        
         var titles = ["Find Doctors","Chat","Search Doctors","Visited Doctors"]
         var subTitles = ["Specialities","Ask Question on health related","Base on Hospitals","See you visited doctors"]
         var imageArray = ["finddoctors","Group 9","searchdoctors","visitedDoctors"]

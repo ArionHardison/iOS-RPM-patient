@@ -124,7 +124,7 @@ extension PatientRecordsViewController : PresenterOutputProtocol {
             case model.type.PatientRecord:
                 self.loader.isHideInMainThread(true)
                 let data = dataDict as? PatientRecord
-                self.patientRecords = data?.record_details ?? []
+                self.patientRecords = data?.record_details?.reversed() ?? []
                 self.patientRecordTableView.reloadInMainThread()
                 break
             

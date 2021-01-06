@@ -148,8 +148,8 @@ class RelativeDetailViewController: UIViewController {
                self.chronicTxt.text = self.userRelatives.profile?.chronic_diseases ?? ""
                self.injuriesTxt.text = self.userRelatives.profile?.injuries ?? ""
                self.surgeriesTxt.text = self.userRelatives.profile?.surgeries ?? ""
-               self.isSmoking = self.userRelatives.profile?.smoking == "false" ? false : true
-               self.isAlchol = self.userRelatives.profile?.alcohol == "false" ? false : true
+               self.isSmoking = self.userRelatives.profile?.smoking == "NO" ? false : true
+               self.isAlchol = self.userRelatives.profile?.alcohol == "NO" ? false : true
                self.activityTxt.text = self.userRelatives.profile?.activity ?? ""
                self.foodPreferenceTxt.text = self.userRelatives.profile?.food ?? ""
                self.occupationTxt.text = self.userRelatives.profile?.occupation ?? ""
@@ -369,7 +369,7 @@ extension RelativeDetailViewController{
         self.segmentProfile.setTitle("Personal".uppercased(), forSegmentAt: 0)
         self.segmentProfile.setTitle("Medical".uppercased(), forSegmentAt: 1)
         self.segmentProfile.setTitle("Lifestyle".uppercased(), forSegmentAt: 2)
-        
+//        self.smokeYesBtn.tag = 101
         [self.alcoholYesBtn,self.smokeYesBtn].forEach { (btn) in
 
             if #available(iOS 14.0, *) {
@@ -378,6 +378,12 @@ extension RelativeDetailViewController{
                     UIAction(title: Constants.string.Yes.localize(), image: checkedImg, handler: { [self] (action) in
 
                         btn?.setImage(checkedImg, for: .normal)
+                        if btn?.tag == 101 {
+                            isAlchol = true
+                        }else{
+                           
+                            isSmoking = true
+                        }
 
 
                     }),
@@ -385,12 +391,18 @@ extension RelativeDetailViewController{
                     UIAction(title: Constants.string.No.localize(), image: uncheckedImg, handler: { [self] (action) in
 
                         btn?.setImage(uncheckedImg, for: .normal)
+                        if btn?.tag == 101 {
+                            isAlchol = false
+                        }else{
+                            isSmoking = false
+                            
+                        }
 
                     })
                 ])
                 
                 btn?.showsMenuAsPrimaryAction = true
-
+                
             } else {
                 
                 btn?.addTap {
