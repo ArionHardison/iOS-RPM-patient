@@ -73,6 +73,7 @@ class DoctorDetailsController: UIViewController {
         super.viewDidLoad()
         //View Setup
         self.initialLoads()
+        self.checkToday(day: Date().dayOfWeek()!)
 
     }
     
@@ -278,12 +279,12 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
                 return self.speciality.count
         }else if tableView == self.timingTableView{
             if isFromSearchDoctor{
-                return self.searchDoctor.timing?.count ?? 0
+                return 1//self.searchDoctor.timing?.count ?? 0
             }else{
                 if isfromFavourite{
-                    return (self.favouriteDoctor?.hospital?.timing?.count ?? 0)
+                    return 1//(self.favouriteDoctor?.hospital?.timing?.count ?? 0)
                 }else{
-                return (self.docProfile.hospital?.first?.timing?.count ?? 0)
+                return 1//(self.docProfile.hospital?.first?.timing?.count ?? 0)
                 }
             }
         }
@@ -304,7 +305,8 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
         }else if tableView == self.timingTableView{
             if let timing : Timing = self.searchDoctor.timing?[indexPath.row]{
                 cell.dotImg.isHidden = false
-                self.setSeatchCountLbl(label: cell.serviceLbl, day: "\(timing.day ?? "") - " , timing: "\(timing.start_time ?? "") : \(timing.end_time ?? "")")
+                cell.serviceLbl.text = "\(timing.start_time ?? ""):\(timing.end_time ?? "")"
+//                self.setSeatchCountLbl(label: cell.serviceLbl, day: "\(timing.day ?? "") - " , timing: "\(timing.start_time ?? "") : \(timing.end_time ?? "")")
             }
         }
         
@@ -325,7 +327,8 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
                         if let timing : Timing = self.favouriteDoctor?.hospital?.timing?[indexPath.row]{
 //                            cell.dotImg.isHidden = true
 //                            cell.lblLeadConstraints.constant = -50
-                            self.setSeatchCountLbl(label: cell.serviceLbl, day: "\(timing.day ?? "") -" , timing: "\(timing.start_time ?? "") : \(timing.end_time ?? "")")
+                            cell.serviceLbl.text = "\(timing.start_time ?? ""):\(timing.end_time ?? "")"
+//                            self.setSeatchCountLbl(label: cell.serviceLbl, day: "\(timing.day ?? "") -" , timing: "\(timing.start_time ?? "") : \(timing.end_time ?? "")")
                         }
                     }
                     
@@ -345,7 +348,8 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
             if let timing : Timing = self.docProfile.hospital?.first?.timing?[indexPath.row]{
                 cell.dotImg.isHidden = true
 //                cell.lblLeadConstraints.constant = -10
-                self.setSeatchCountLbl(label: cell.serviceLbl, day: "\(timing.day ?? "") -" , timing: "\(timing.start_time ?? "") : \(timing.end_time ?? "")")
+                cell.serviceLbl.text = "\(timing.start_time ?? "") : \(timing.end_time ?? "")"
+//                self.setSeatchCountLbl(label: cell.serviceLbl, day: "\(timing.day ?? "") -" , timing: "\(timing.start_time ?? "") : \(timing.end_time ?? "")")
             }
         }
         
@@ -358,7 +362,11 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if tableView == self.timingTableView{
+            return 20
+        }else{
         return 40
+        }
     }
 //
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -548,6 +556,34 @@ extension DoctorDetailsController : UICollectionViewDelegate , UICollectionViewD
         self.photosCV.reloadData()
          self.reviewsCV.reloadData()
     }
+    func checkToday(day:String){
+        switch day {
+        case "Monday":
+            self.labelMonday.textColor = .red
+            break
+        case "Tuesday":
+            self.labelTue.textColor = .red
+            break
+        case "Wednesday":
+            self.labelWed.textColor = .red
+            break
+        case "Thursday":
+            self.labelThu.textColor = .red
+           break
+        case "Friday":
+            self.labelFri.textColor = .red
+            break
+        case "Saturday":
+            self.labelSat.textColor = .red
+            break
+        case "Sunday":
+            self.labelSun.textColor = .red
+            break
+            
+        default:
+        break
+        }
+    }
 }
 
 
@@ -591,5 +627,14 @@ extension DoctorDetailsController : PresenterOutputProtocol{
 extension NSLayoutConstraint {
     func constraintWithMultiplier(_ multiplier: CGFloat) -> NSLayoutConstraint {
         return NSLayoutConstraint(item: self.firstItem!, attribute: self.firstAttribute, relatedBy: self.relation, toItem: self.secondItem, attribute: self.secondAttribute, multiplier: multiplier, constant: self.constant)
+    }
+}
+
+extension Date {
+    func dayOfWeek() -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter.string(from: self).capitalized
+        // or use capitalized(with: locale) if you want
     }
 }
