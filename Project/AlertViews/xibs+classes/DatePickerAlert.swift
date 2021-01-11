@@ -27,7 +27,7 @@ class DatePickerAlert : UIView {
         self.setupView(view: view)
         self.submitBtn.setCorneredElevation()
        
-        self.datepicker.maximumDate = Date()
+//        self.datepicker.maximumDate = Date()
         self.datepicker.tintColor = .AppBlueColor
         
         self.setupAction()

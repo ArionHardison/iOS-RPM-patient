@@ -151,6 +151,7 @@ extension ReminderDetailViewController : UITextFieldDelegate {
         if textField == dateTxt{
             let view = DatePickerAlert.getView
             view.TitleLbl.text = "Select Date"
+            view.datepicker.minimumDate = Date()
                 view.alertdelegate = self
             AlertBuilder().addView(fromVC: self , view).show()
             return false

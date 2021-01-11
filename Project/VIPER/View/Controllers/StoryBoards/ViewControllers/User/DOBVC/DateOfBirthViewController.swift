@@ -49,6 +49,7 @@ class DateOfBirthViewController: UIViewController {
         self.datepickerBtn.addTap {
             let view = DatePickerAlert.getView
             view.alertdelegate = self
+            view.datepicker.maximumDate = Date()
             AlertBuilder().addView(fromVC: self , view).show()
         }
     }
@@ -90,6 +91,7 @@ extension DateOfBirthViewController : PresenterOutputProtocol{
     }
     
     func showError(error: CustomError) {
+        showToast(msg: error.localizedDescription)
         
     }
     

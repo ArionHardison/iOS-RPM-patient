@@ -279,11 +279,20 @@ extension DoctorDetailsController : UITableViewDelegate,UITableViewDataSource{
                 return self.speciality.count
         }else if tableView == self.timingTableView{
             if isFromSearchDoctor{
+                if self.searchDoctor.timing?.count ?? 0 == 0{
+                    return 0
+                }
                 return 1//self.searchDoctor.timing?.count ?? 0
             }else{
                 if isfromFavourite{
+                    if self.searchDoctor.timing?.count ?? 0 == 0{
+                        return 0
+                    }
                     return 1//(self.favouriteDoctor?.hospital?.timing?.count ?? 0)
                 }else{
+                    if self.searchDoctor.timing?.count ?? 0 == 0{
+                        return 0
+                    }
                 return 1//(self.docProfile.hospital?.first?.timing?.count ?? 0)
                 }
             }

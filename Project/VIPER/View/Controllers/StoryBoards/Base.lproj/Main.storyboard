@@ -1111,8 +1111,9 @@
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doctor" translatesAutoresizingMaskIntoConstraints="NO" id="mN2-pt-6L8">
                                                                                 <rect key="frame" x="30" y="63" width="66" height="66"/>
                                                                             </imageView>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="like" translatesAutoresizingMaskIntoConstraints="NO" id="NJj-S5-lth">
-                                                                                <rect key="frame" x="332" y="133.5" width="25" height="25"/>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="new_like" translatesAutoresizingMaskIntoConstraints="NO" id="NJj-S5-lth">
+                                                                                <rect key="frame" x="326" y="130.5" width="31" height="31"/>
+                                                                                <color key="tintColor" name="TextBlackColor"/>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr.Alvin Fernandes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sm0-lJ-e65">
                                                                                 <rect key="frame" x="30" y="137" width="126" height="17.5"/>
@@ -1177,10 +1178,10 @@
                                                                             <constraint firstItem="hAM-ps-gH2" firstAttribute="centerY" secondItem="Sm0-lJ-e65" secondAttribute="centerY" id="Xbr-8U-1aD"/>
                                                                             <constraint firstItem="8Az-ES-hpT" firstAttribute="centerY" secondItem="NJj-S5-lth" secondAttribute="centerY" id="aEN-2Q-KdF"/>
                                                                             <constraint firstItem="8Az-ES-hpT" firstAttribute="leading" secondItem="NJj-S5-lth" secondAttribute="trailing" constant="5" id="ak4-M6-yxK"/>
-                                                                            <constraint firstItem="NJj-S5-lth" firstAttribute="height" secondItem="O7p-kO-ZCb" secondAttribute="width" multiplier="0.06" id="cU2-j2-Edk"/>
+                                                                            <constraint firstItem="NJj-S5-lth" firstAttribute="height" secondItem="O7p-kO-ZCb" secondAttribute="width" multiplier="0.075" id="cU2-j2-Edk"/>
                                                                             <constraint firstItem="mN2-pt-6L8" firstAttribute="height" secondItem="O7p-kO-ZCb" secondAttribute="width" multiplier="0.16" id="jH4-QP-lFU"/>
                                                                             <constraint firstItem="Sm0-lJ-e65" firstAttribute="leading" secondItem="mN2-pt-6L8" secondAttribute="leading" id="kdr-a0-gJw"/>
-                                                                            <constraint firstItem="NJj-S5-lth" firstAttribute="width" secondItem="O7p-kO-ZCb" secondAttribute="width" multiplier="0.06" id="lHB-Cj-0QC"/>
+                                                                            <constraint firstItem="NJj-S5-lth" firstAttribute="width" secondItem="O7p-kO-ZCb" secondAttribute="width" multiplier="0.075" id="lHB-Cj-0QC"/>
                                                                             <constraint firstItem="Sm0-lJ-e65" firstAttribute="top" secondItem="mN2-pt-6L8" secondAttribute="bottom" constant="8" id="p63-LZ-AGP"/>
                                                                             <constraint firstItem="Sm0-lJ-e65" firstAttribute="width" relation="greaterThanOrEqual" secondItem="O7p-kO-ZCb" secondAttribute="width" multiplier="0.15" id="rlc-J2-Ds6"/>
                                                                             <constraint firstItem="8Az-ES-hpT" firstAttribute="centerY" secondItem="hAM-ps-gH2" secondAttribute="centerY" multiplier="0.8" id="vcR-8d-AuO"/>
@@ -8790,7 +8791,7 @@
     </designables>
     <color key="tintColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
     <resources>
-        <image name="1" width="241" height="179"/>
+        <image name="1" width="256" height="106.5"/>
         <image name="AcceptCall" width="256" height="256"/>
         <image name="AddPlaceholder" width="337.5" height="337.5"/>
         <image name="EndCall" width="256" height="256"/>
@@ -8818,6 +8819,7 @@
         <image name="love" width="32" height="32"/>
         <image name="menu_icon" width="128" height="128"/>
         <image name="mic.slash.fill" catalog="system" width="108" height="128"/>
+        <image name="new_like" width="16" height="16"/>
         <image name="no_data" width="128" height="128"/>
         <image name="phone.down.circle.fill" catalog="system" width="128" height="121"/>
         <image name="pin" width="32" height="32"/>

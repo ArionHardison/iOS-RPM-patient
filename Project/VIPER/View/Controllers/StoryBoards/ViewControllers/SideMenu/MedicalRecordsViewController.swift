@@ -93,15 +93,15 @@ extension MedicalRecordsViewController : UITableViewDelegate,UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == self.medical.count{
-            let recordVC = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.PatientRecordsViewController) as! PatientRecordsViewController
-            recordVC.doctorId = 0
-            self.navigationController?.pushViewController(recordVC, animated: true)
-        }else{
+//        if indexPath.row == self.medical.count{
+//            let recordVC = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.PatientRecordsViewController) as! PatientRecordsViewController
+//            recordVC.doctorId = 0
+//            self.navigationController?.pushViewController(recordVC, animated: true)
+//        }else{
         let recordVC = self.storyboard?.instantiateViewController(withIdentifier: Storyboard.Ids.PatientRecordsViewController) as! PatientRecordsViewController
-        recordVC.doctorId = self.medical[indexPath.row].clinic?.doctor_id ?? 0
+        recordVC.doctorId = self.medical[indexPath.row].id ?? 0
         self.navigationController?.pushViewController(recordVC, animated: true)
-        }
+//        }
 
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
